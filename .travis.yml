@@ -18,10 +18,10 @@ jobs:
       script: ./gradlew test
 
     - stage: Set minor version
-      branches:
-        only:
-          - master
       script:
-        - ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH
+        - if [ "$TRAVIS_BRANCH" == "master" ]; then
+              ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
+          fi
+
 
 
