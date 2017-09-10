@@ -14,8 +14,8 @@ before_install:
 
 jobs:
   include:
-    - stage: Unit test
-      script: ./gradlew test
+    - stage: Test variables
+      script: echo TRAVIS_BUILD_NUMBER
 
-    - stage: Increment version
-      script: ./gradlew test
+   # - stage: Increment version
+   #   script: ./gradlew test

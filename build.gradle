@@ -1,8 +1,10 @@
 group 'taxi.drive.app'
-version '0.1'
+version projectVersion
 
 apply plugin: 'groovy'
 apply plugin: 'java'
+
+apply from: 'tasks.gradle'
 
 sourceCompatibility = 1.8
 
