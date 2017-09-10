@@ -14,11 +14,11 @@ before_install:
 
 jobs:
   include:
-    - stage: Increment version
+    - stage: Set minor version
       script:
         - git checkout $TRAVIS_BRANCH
         - ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER
-        - git add $VERSION_FILE
+        - git add gradle.properties
         - git commit -m 'Update version [skip ci]'
         - git push http://$CREDENTIALS@$PROJECT_PATH HEAD:$TRAVIS_BRANCH
 
