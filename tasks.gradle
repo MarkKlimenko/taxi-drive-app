@@ -2,6 +2,8 @@ import groovy.json.JsonSlurper
 
 task setMinorVersion {
     doLast {
+        ["git", "checkout", ciBranchName].execute().text
+
         def sourceFile = new File('gradle.properties')
         def versionField = (sourceFile.text =~ /^projectVersion.+\b/)[0]
         def rawVersionField = versionField.split('\\.')
@@ -14,6 +16,10 @@ task setMinorVersion {
             }
             sourceFile.write(sourceFile.text.replaceAll(/^projectVersion.+\b/, versionField))
         }
+
+        ["git", "add", "gradle.properties"].execute().text
+        ["git", "commit", "-m","Set minor version [skip ci]"].execute().text
+        ["git", "push", "http://${ciCredentials}@${ciProjectPath}", "HEAD:" + ciBranchName].execute().text
     }
 }
 

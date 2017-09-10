@@ -19,9 +19,6 @@ jobs:
 
     - stage: Set minor version
       script:
-        - git checkout $TRAVIS_BRANCH
-        - ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER
-        - git add gradle.properties
-        - git commit -m 'Set minor version [skip ci]'
-        - git push http://$CREDENTIALS@$PROJECT_PATH HEAD:$TRAVIS_BRANCH
+        - ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH
+
 
