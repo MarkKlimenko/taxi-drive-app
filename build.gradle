@@ -8,7 +8,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "gradle.plugin.com.markklim.plugins:set-minor-version:0.2"
+        classpath "gradle.plugin.com.markklim.plugins:set-minor-version:0.3"
     }
 }
 
