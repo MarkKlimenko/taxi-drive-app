@@ -1,5 +1,7 @@
 language: groovy
 
+install: true
+
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
