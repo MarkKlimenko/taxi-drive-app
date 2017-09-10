@@ -1,6 +1,6 @@
 import groovy.json.JsonSlurper
 
-task setMinorVersion {
+/*task setMinorVersion {
     doLast {
         ["git", "checkout", ciBranchName].execute().text
 
@@ -21,7 +21,7 @@ task setMinorVersion {
         ["git", "commit", "-m","Set minor version [skip ci]"].execute().text
         ["git", "push", "http://${ciCredentials}@${ciProjectPath}", "HEAD:" + ciBranchName].execute().text
     }
-}
+}*/
 
 /*
 task releaseTrain {

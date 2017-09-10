@@ -1,8 +1,20 @@
 group 'taxi.drive.app'
 version projectVersion
 
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.markklim.plugins:set-minor-version:0.2"
+    }
+}
+
 apply plugin: 'groovy'
 apply plugin: 'java'
+apply plugin: "com.markklim.plugins.smv"
 
 apply from: 'tasks.gradle'
 
@@ -13,6 +25,6 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
