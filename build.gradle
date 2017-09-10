@@ -8,7 +8,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "gradle.plugin.com.markklim.plugins:set-minor-version:0.6"
+        classpath "gradle.plugin.com.markklim.plugins:set-minor-version:0.8"
     }
 }
 
@@ -30,8 +30,8 @@ dependencies {
 }
 
 setMinorVersion {
-    setMinorVersion minorVersion
-    setCiBranchName ciBranchName
-    setCiCredentials ciCredentials
-    setCiProjectPath ciProjectPath
+    smvMinorVersion = minorVersion
+    smvCiBranchName = ciBranchName
+    smvCiCredentials = ciCredentials
+    smvCiProjectPath = ciProjectPath
 }
