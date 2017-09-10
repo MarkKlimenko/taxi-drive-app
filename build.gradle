@@ -30,8 +30,8 @@ dependencies {
 }
 
 setMinorVersion {
-    smvMinorVersion = minorVersion
-    smvCiBranchName = ciBranchName
-    smvCiCredentials = ciCredentials
-    smvCiProjectPath = ciProjectPath
+    setSmvMinorVersion minorVersion
+    setSmvCiBranchName ciBranchName
+    setSmvCiCredentials ciCredentials
+    setSmvCiProjectPath ciProjectPath
 }
