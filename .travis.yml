@@ -14,8 +14,14 @@ before_install:
 
 jobs:
   include:
-    - stage: Test variables
-      script: echo $TRAVIS_BUILD_NUMBER
+    - stage: Increment version
+      script:
+        - git checkout $TRAVIS_BRANCH
+        - ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER
+        - git add $VERSION_FILE
+        - git commit -m 'Update version [skip ci]'
+        - git push http://$CREDENTIALS@$PROJECT_PATH HEAD:$TRAVIS_BRANCH
 
    # - stage: Increment version
    #   script: ./gradlew test
+
