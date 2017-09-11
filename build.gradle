@@ -42,7 +42,7 @@ setMinorVersion {
 }
 
 releaseToDocker {
-    setRtdRegistryUrl 'hub.docker.com/r/markklim'
+    setRtdRegistryUrl 'docker.io/markklim'
     setRtdImageName 'taxi-drive-app'
     setRtdDockerFileLocation 'src/main/resources/docker'
     setRtdWarFileName 'taxi-drive-app.war'
