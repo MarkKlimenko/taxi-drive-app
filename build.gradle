@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'gradle.plugin.com.markklim.plugins:set-minor-version:0.9'
-        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.1'
+        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.2'
     }
 }
 
