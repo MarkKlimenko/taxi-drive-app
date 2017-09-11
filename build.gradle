@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'gradle.plugin.com.markklim.plugins:set-minor-version:0.9'
-        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.4'
+        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.6'
     }
 }
 
@@ -42,7 +42,8 @@ setMinorVersion {
 }
 
 releaseToDocker {
-    setRtdRegistryUrl 'docker.io/markklim'
+    setRtdRegistryUrl ''
+    setRtdRefName 'markklim'
     setRtdImageName 'taxi-drive-app'
     setRtdDockerFileLocation 'src/main/resources/docker'
     setRtdWarFileName 'taxi-drive-app.war'
