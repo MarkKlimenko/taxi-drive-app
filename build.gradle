@@ -8,8 +8,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'gradle.plugin.com.markklim.plugins:set-minor-version:0.9'
-        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.8'
+        classpath 'gradle.plugin.com.markklim.plugins:set-minor-version:0.10'
+        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.9'
     }
 }
 
@@ -35,20 +35,20 @@ dependencies {
 }
 
 setMinorVersion {
-    setSmvMinorVersion minorVersion
-    setSmvCiBranchName ciBranchName
-    setSmvCiCredentials ciCredentials
-    setSmvCiProjectPath ciProjectPath
+    mVersion = minorVersion
+    branchName = ciBranchName
+    credentials = ciCredentials
+    projectPath = ciProjectPath
 }
 
 releaseToDocker {
-    setRtdDockerHub true
-    setRtdRegistryUrl 'markklim'
-    setRtdImageName 'taxi-drive-app'
-    setRtdDockerFileLocation 'src/main/resources/docker'
-    setRtdWarFileName 'taxi-drive-app.war'
-    setRtdProjectVersion projectVersion
-    setRtdDockerUsername dockerUsername
-    setRtdDockerPassword dockerPassword
-    setRtdRmiAfterPush true
+    dockerHub = true
+    registryUrl = 'markklim'
+    imageName = 'taxi-drive-app'
+    dockerFileLocation = 'src/main/resources/docker'
+    imageFileName = 'taxi-drive-app.war'
+    imageVersion = projectVersion
+    username = dockerUsername
+    password = dockerPassword
+    rmiAfterPush  = true
 }

@@ -17,21 +17,21 @@ install: true
 
 jobs:
   include:
-#    - stage: Unit tests
-#      script: ./gradlew test
-#
-#    - stage: Set minor version
-#      script:
-#        - if [ "$TRAVIS_BRANCH" == "master" ]; then
-#              ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
-#          fi
+    - stage: Unit tests
+      script: ./gradlew test
 
-     - stage: Release to docker
-       script:
-         - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    - stage: Set minor version
+      script:
+        - if [ "$TRAVIS_BRANCH" == "master" ]; then
+              ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
+          fi
+
+    - stage: Release to docker
+      script:
+        - if [ "$TRAVIS_BRANCH" == "master" ]; then
               ./gradlew build;
               ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
-           fi
+          fi
 
 
 
