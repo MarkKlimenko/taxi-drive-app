@@ -36,7 +36,6 @@ setMinorVersion {
     setSmvCiBranchName ciBranchName
     setSmvCiCredentials ciCredentials
     setSmvCiProjectPath ciProjectPath
-    setSmvCiCommitMessage 'Increment version'
 }
 
 releaseToDocker {
