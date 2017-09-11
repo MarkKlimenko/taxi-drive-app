@@ -1,6 +1,7 @@
 language: groovy
 
-install: true
+services:
+  - docker
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -11,6 +12,8 @@ cache:
 
 before_install:
   - chmod +x gradlew
+
+install: true
 
 jobs:
   include:
