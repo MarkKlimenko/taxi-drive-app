@@ -29,6 +29,7 @@ jobs:
      - stage: Release to docker
        script:
          - if [ "$TRAVIS_BRANCH" == "master" ]; then
+              ./gradlew build;
               ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
            fi
 
