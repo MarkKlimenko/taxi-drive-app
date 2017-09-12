@@ -31,7 +31,7 @@ before_deploy:
         ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
     fi
 
-deploy:
+after_deploy:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
         echo "**** Release to Docker ****";
         ./gradlew build;
