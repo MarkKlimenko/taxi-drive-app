@@ -3,18 +3,22 @@ version projectVersion
 
 buildscript {
     repositories {
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
         maven {
             url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE'
         classpath 'gradle.plugin.com.markklim.plugins:set-minor-version:0.10'
         classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.9'
     }
 }
 
 apply plugin: 'groovy'
-apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'com.markklim.plugins.smv'
 apply plugin: 'com.markklim.plugins.rtd'
@@ -31,7 +35,9 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.12'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.springframework.boot:spring-boot-starter-jersey:1.5.7.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE'
 }
 
 setMinorVersion {
