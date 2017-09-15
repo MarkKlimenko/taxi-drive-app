@@ -11,9 +11,13 @@ import org.springframework.data.cassandra.mapping.Table
 class Person {
 
     @PrimaryKey
-    private final UUID  id
-    private final String login
-    private final String name
+    UUID  id
+    String login
+    String name
+
+    Person(){
+
+    }
 
     Person(String login, String name) {
         this.id = UUID.randomUUID()
