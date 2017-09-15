@@ -1,2 +1,3 @@
 rootProject.name = 'taxi-drive-app'
+include 'application'
 

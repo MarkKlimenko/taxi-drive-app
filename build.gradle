@@ -12,33 +12,11 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE'
         classpath 'gradle.plugin.com.markklim.plugins:set-minor-version:0.10'
-        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.9'
     }
 }
 
-apply plugin: 'groovy'
-apply plugin: 'war'
 apply plugin: 'com.markklim.plugins.smv'
-apply plugin: 'com.markklim.plugins.rtd'
-
-apply from: 'tasks.gradle'
-
-war {
-    archiveName = 'taxi-drive-app.war'
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.12'
-    compile 'org.springframework.boot:spring-boot-starter-jersey:1.5.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE'
-}
 
 setMinorVersion {
     mVersion = minorVersion
@@ -47,14 +25,3 @@ setMinorVersion {
     projectPath = ciProjectPath
 }
 
-releaseToDocker {
-    dockerHub = true
-    registryUrl = 'markklim'
-    imageName = 'taxi-drive-app'
-    dockerFileLocation = 'src/main/resources/docker'
-    imageFileName = 'taxi-drive-app.war'
-    imageVersion = projectVersion
-    username = dockerUsername
-    password = dockerPassword
-    rmiAfterPush  = true
-}
