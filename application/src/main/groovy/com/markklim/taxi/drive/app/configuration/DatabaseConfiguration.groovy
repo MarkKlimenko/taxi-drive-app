@@ -6,7 +6,6 @@ import org.springframework.data.cassandra.config.java.AbstractCassandraConfigura
 @Configuration
 class DatabaseConfiguration extends AbstractCassandraConfiguration {
 
-
     String getContactPoints() {
         return "localhost"
     }
@@ -17,6 +16,6 @@ class DatabaseConfiguration extends AbstractCassandraConfiguration {
     }
 
     String getKeyspaceName() {
-        'taxidrive'
+        'tda'
     }
 }

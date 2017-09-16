@@ -13,15 +13,17 @@ class Person {
     @PrimaryKey
     UUID  id
     String login
-    String name
+    String firstName
+    String lastName
 
     Person(){
 
     }
 
-    Person(String login, String name) {
+    Person(String login, String firstName, String lastName) {
         this.id = UUID.randomUUID()
         this.login = login
-        this.name = name
+        this.firstName = firstName
+        this.lastName = lastName
     }
 }

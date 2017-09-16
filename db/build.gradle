@@ -1,0 +1,25 @@
+group 'taxi.drive.app'
+version '0.1.46'
+
+buildscript {
+    repositories {
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'groovy'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+    compile 'com.datastax.cassandra:cassandra-driver-core:3.3.0'
+    compile 'com.datastax.cassandra:cassandra-driver-mapping:3.3.0'
+    compile 'com.datastax.cassandra:cassandra-driver-extras:3.3.0'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+}

@@ -22,6 +22,6 @@ class UpdateController {
     @PUT
     @Path('person')
     putPerson() {
-        personService.addPerson()
+        personService.add()
     }
 }
