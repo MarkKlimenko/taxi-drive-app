@@ -23,3 +23,10 @@ dependencies {
     compile 'com.datastax.cassandra:cassandra-driver-extras:3.3.0'
     compile 'org.slf4j:slf4j-simple:1.7.25'
 }
+
+// TODO: Execute in task
+task migratorInitialize(type:JavaExec) {
+    main = 'ScriptExecutor'
+    args Eval.me('test')
+    classpath = sourceSets.main.runtimeClasspath
+}

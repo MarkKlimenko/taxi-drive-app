@@ -3,8 +3,7 @@ package com.markklim.taxi.drive.db.configuration
 import com.datastax.driver.core.Cluster
 import com.datastax.driver.core.Session
 
-
-class MigratorConfiguration {
+class Migrator {
     private static Cluster cluster = null
     private static Session session = null
 
