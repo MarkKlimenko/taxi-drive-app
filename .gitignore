@@ -4,3 +4,8 @@
 /build/
 
 /out/
+/application/build/
+/application/out/
+
+/db/out/
+/db/build/
