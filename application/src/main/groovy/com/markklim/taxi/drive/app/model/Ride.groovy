@@ -5,26 +5,14 @@ import groovy.transform.ToString
 import org.springframework.data.cassandra.mapping.PrimaryKey
 import org.springframework.data.cassandra.mapping.Table
 
-@Table('person')
+@Table('ride')
 @EqualsAndHashCode(includes = ['login'])
 @ToString(includeNames = true, includeFields = true, excludes = 'id')
-class Person {
+class Ride {
 
     @PrimaryKey
     UUID  id
-    String login
-    String firstName
-    String lastName
-    Date dateOfBirth
+    Address fromAddress
+    Address toAddress
 
-    Person(){
-
-    }
-
-    Person(String login, String firstName, String lastName) {
-        this.id = UUID.randomUUID()
-        this.login = login
-        this.firstName = firstName
-        this.lastName = lastName
-    }
 }

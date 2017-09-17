@@ -36,7 +36,8 @@ migrator {
 }
 
 migratorExecute {
-    script = 'db/src/main/resources/scripts/migrations'
+    //script = 'db/src/main/resources/scripts/migrations'
+    script = 'db/src/main/resources/scripts/dictionaries'
     placeholders = [
             keyspace: 'tda'
     ]
