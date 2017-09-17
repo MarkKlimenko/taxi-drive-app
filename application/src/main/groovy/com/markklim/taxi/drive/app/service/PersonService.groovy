@@ -26,7 +26,7 @@ class PersonService {
     }
 
     void add() {
-        cassandraTemplate.insert(new Person('login', 'firstName', 'lastName'))
+        cassandraTemplate.insert(new Person(login:'login', firstName:'firstName', lastName:'lastName'))
     }
 
     protected List<Person> executeQuery (Select select){
