@@ -6,7 +6,13 @@ buildscript {
         repositories {
             mavenCentral()
             jcenter()
+            maven {
+                url 'https://plugins.gradle.org/m2/'
+            }
         }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.markklim.plugins:migrator-for-cassandra:0.1.20'
     }
 }
 
@@ -15,6 +21,7 @@ repositories {
 }
 
 apply plugin: 'groovy'
+apply plugin: 'com.markklim.plugins.mfc'
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.12'
@@ -23,3 +30,15 @@ dependencies {
     compile 'com.datastax.cassandra:cassandra-driver-extras:3.3.0'
     compile 'org.slf4j:slf4j-simple:1.7.25'
 }
+
+migrator {
+    keyspace = 'tda'
+}
+
+migratorExecute {
+    script = 'db/src/main/resources/scripts/migrations'
+    placeholders = [
+            keyspace: 'tda'
+    ]
+}
+
