@@ -12,7 +12,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'gradle.plugin.com.markklim.plugins:migrator-for-cassandra:0.1.14'
+        classpath 'gradle.plugin.com.markklim.plugins:migrator-for-cassandra:0.1.20'
     }
 }
 
@@ -37,5 +37,8 @@ migrator {
 
 migratorExecute {
     script = 'db/src/main/resources/scripts/migrations'
+    placeholders = [
+            keyspace: 'tda'
+    ]
 }
 
