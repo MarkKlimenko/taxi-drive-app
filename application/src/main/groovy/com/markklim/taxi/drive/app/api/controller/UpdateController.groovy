@@ -1,6 +1,9 @@
 package com.markklim.taxi.drive.app.api.controller
 
+import com.markklim.taxi.drive.app.model.Person
+import com.markklim.taxi.drive.app.model.Ride
 import com.markklim.taxi.drive.app.service.PersonService
+import com.markklim.taxi.drive.app.service.RideService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
@@ -19,9 +22,18 @@ class UpdateController {
     @Autowired
     PersonService personService
 
+    @Autowired
+    RideService rideService
+
     @PUT
     @Path('person')
-    putPerson() {
-        personService.add()
+    putPerson(Person person) {
+        personService.add(person)
+    }
+
+    @PUT
+    @Path('ride')
+    putRide(Ride ride) {
+        rideService.add(ride)
     }
 }

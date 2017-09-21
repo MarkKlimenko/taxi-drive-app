@@ -2,6 +2,7 @@ package com.markklim.taxi.drive.app.api.controller
 
 import com.markklim.taxi.drive.app.model.Person
 import com.markklim.taxi.drive.app.service.PersonService
+import com.markklim.taxi.drive.app.service.RideService
 import org.springframework.beans.factory.annotation.Autowired
 
 import javax.ws.rs.Consumes
@@ -19,15 +20,24 @@ class ReadOnlyController {
     @Autowired
     PersonService personService
 
+    @Autowired
+    RideService rideService
+
     @GET
     @Path('person/all')
-    putPerson() {
+    getAllPersons() {
         personService.getAll()
     }
 
     @GET
     @Path('person/login/{login}')
-    List<Person> putPerson(@PathParam('login') String login) {
-         personService.getByLogin(login)
+    List<Person> getPersonByLogin(@PathParam('login') String login) {
+        personService.getByLogin(login)
+    }
+
+    @GET
+    @Path('ride/all')
+    getAllRides() {
+        rideService.getAll()
     }
 }

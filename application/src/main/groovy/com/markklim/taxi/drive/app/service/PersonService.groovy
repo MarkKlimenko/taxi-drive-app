@@ -13,23 +13,22 @@ class PersonService {
     private CassandraTemplate cassandraTemplate
 
     List<Person> getAll() {
-        Select select = QueryBuilder.select().from("person")
+        Select select = QueryBuilder.select().from('person')
         executeQuery(select)
-        //cassandraTemplate.select('select * from person', Person.class)
     }
 
     List<Person> getByLogin(String login) {
-        Select select = QueryBuilder.select().from("person")
-                        select.where(QueryBuilder.eq("login", login))
+        Select select = QueryBuilder.select().from('person')
+        select.where(QueryBuilder.eq('personLogin', login))
 
         executeQuery(select)
     }
 
-    void add() {
-        cassandraTemplate.insert(new Person(login:'login', firstName:'firstName', lastName:'lastName'))
+    void add(Person person) {
+        cassandraTemplate.insert(person)
     }
 
-    protected List<Person> executeQuery (Select select){
+    protected List<Person> executeQuery(Select select) {
         cassandraTemplate.select(select, Person.class)
     }
 

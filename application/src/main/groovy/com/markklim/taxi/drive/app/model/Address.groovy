@@ -1,9 +1,11 @@
 package com.markklim.taxi.drive.app.model
 
 import groovy.transform.Canonical
+import org.springframework.data.cassandra.mapping.UserDefinedType
 
 @Canonical
-class Address implements Serializable {
+@UserDefinedType("address")
+class Address {
     String country
     String state
     String city
