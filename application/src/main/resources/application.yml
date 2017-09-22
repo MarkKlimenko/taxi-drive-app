@@ -1,3 +1,25 @@
+
+server:
+    servlet-path: /mvc
+
+---
+spring:
+    profiles: local
+
 server:
     port: 8087
-    servlet-path: /mvc
+
+cassandra:
+    host: localhost
+    port: 9042
+    keyspace: tda
+
+---
+spring:
+    profiles: dev
+
+---
+spring:
+    profiles: prod
+
+---

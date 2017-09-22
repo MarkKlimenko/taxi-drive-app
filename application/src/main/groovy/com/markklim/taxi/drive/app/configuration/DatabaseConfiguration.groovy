@@ -1,21 +1,22 @@
 package com.markklim.taxi.drive.app.configuration
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.cassandra.config.java.AbstractCassandraConfiguration
 
 @Configuration
 class DatabaseConfiguration extends AbstractCassandraConfiguration {
 
-    String getContactPoints() {
-        return "localhost"
-    }
+    @Value('${cassandra.host}') String host
+    @Value('${cassandra.port}') Integer port
+    @Value('${cassandra.keyspace}') String keyspace
 
     @Override
-    protected int getPort() {
-        9042
-    }
+    String getContactPoints() { host }
 
-    String getKeyspaceName() {
-        'tda'
-    }
+    @Override
+    protected int getPort() { port }
+
+    @Override
+    String getKeyspaceName() { keyspace }
 }
