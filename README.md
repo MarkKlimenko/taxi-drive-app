@@ -1,7 +1,7 @@
 # Taxi drive app
 
 Travis
-Test Travis stage for branches
+Test Travis stage for new repo
 <pre>
 {
 	"personLogin":"89147217660",
