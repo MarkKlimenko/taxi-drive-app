@@ -2,6 +2,10 @@
 server:
     servlet-path: /mvc
 
+javamelody:
+    init-parameters:
+      monitoring-path: /system/monitoring
+
 ---
 spring:
     profiles: local
@@ -21,5 +25,8 @@ spring:
 ---
 spring:
     profiles: prod
+
+javamelody:
+    enabled: false
 
 ---
