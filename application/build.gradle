@@ -35,6 +35,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0'
+
+    compile 'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0'
 }
 
 releaseToDocker {
