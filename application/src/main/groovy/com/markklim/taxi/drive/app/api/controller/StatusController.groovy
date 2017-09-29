@@ -1,5 +1,7 @@
 package com.markklim.taxi.drive.app.api.controller
 
+import com.markklim.taxi.drive.app.service.UtilService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
 import javax.ws.rs.Consumes
@@ -13,9 +15,13 @@ import javax.ws.rs.core.MediaType
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 class StatusController {
+    @Autowired
+    UtilService utilService
+
     @GET
     @Path('status')
     getStatus() {
-        [service:'available']
+        [version: utilService.getVersion(),
+         db: utilService.getDbStatus()]
     }
 }

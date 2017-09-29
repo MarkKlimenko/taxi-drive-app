@@ -1,3 +1,5 @@
+project:
+    version: @projectVersion@
 
 server:
     servlet-path: /mvc

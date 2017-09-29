@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 group 'taxi.drive.app'
 version projectVersion
 
@@ -12,8 +14,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE'
-        classpath 'gradle.plugin.com.markklim.plugins:release-to-docker:0.9'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE',
+                  'gradle.plugin.com.markklim.plugins:release-to-docker:0.9'
     }
 }
 
@@ -30,13 +32,22 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.12'
-    compile 'org.springframework.boot:spring-boot-starter-jersey:1.5.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE'
-    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0'
+    compile 'org.codehaus.groovy:groovy-all:2.4.12',
+            'org.springframework.boot:spring-boot-starter-jersey:1.5.7.RELEASE',
+            'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE',
+            'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE',
+            'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0',
 
-    compile 'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0'
+            'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0'
+}
+
+processResources {
+    filesMatching('application.properties') {
+        expand(project.properties)
+    }
+    filter ReplaceTokens, tokens: [
+            projectVersion: projectVersion
+    ]
 }
 
 releaseToDocker {
@@ -50,3 +61,4 @@ releaseToDocker {
     password = dockerPassword
     rmiAfterPush  = true
 }
+
