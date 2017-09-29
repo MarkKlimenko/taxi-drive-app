@@ -31,7 +31,7 @@ class ReadOnlyController {
 
     @GET
     @Path('person/login/{login}')
-    List<Person> getPersonByLogin(@PathParam('login') String login) {
+    getPersonByLogin(@PathParam('login') String login) {
         personService.getByLogin(login)
     }
 
