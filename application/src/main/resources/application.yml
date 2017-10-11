@@ -40,7 +40,7 @@ spring:
     data:
         cassandra:
             keyspace-name: tda
-            contact-points: cassandra
+            contact-points: 10.1.55.80
             port: 9042
             username: cassandra
             password: cassandra
