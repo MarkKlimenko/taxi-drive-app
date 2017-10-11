@@ -36,4 +36,4 @@ Test Travis stage for new repo
 
 - "JAVA_OPTS=-Dmessaging.user=admin
 
-docker run --restart always -d --name tda -p 8087:8087 -e JAVA_OPTS="-Dspring.profiles.active=local" markklim/taxi-drive-app:0.1
+docker run --restart always -d --name tda -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod" markklim/taxi-drive-app:0.1
