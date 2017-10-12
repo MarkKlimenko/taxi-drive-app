@@ -1,6 +1,5 @@
 package com.markklim.taxi.drive.app.api.controller
 
-import com.markklim.taxi.drive.app.model.Person
 import com.markklim.taxi.drive.app.service.PersonService
 import com.markklim.taxi.drive.app.service.RideService
 import org.springframework.beans.factory.annotation.Autowired
