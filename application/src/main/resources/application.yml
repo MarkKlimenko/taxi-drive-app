@@ -8,7 +8,9 @@ javamelody:
     init-parameters:
         monitoring-path: /service/monitoring
 
+---
 spring:
+    profiles: local
     data:
         cassandra:
             keyspace-name: tda
@@ -16,12 +18,17 @@ spring:
             username: cassandra
             password: cassandra
 
----
-spring:
-    profiles: local
-
 server:
     port: 8087
+
+keycloak:
+    auth-server-url: http://sso.vostok.systems/auth
+    realm: vostok
+    resource: tda-local
+    ssl-required: external
+    credentials:
+        secret: 167210ac-c1dd-49c3-b5c0-c443791a6ef2
+    use-resource-role-mappings: true
 
 ---
 spring:
@@ -30,8 +37,23 @@ spring:
 ---
 spring:
     profiles: prod
+    data:
+        cassandra:
+            keyspace-name: tda
+            contact-points: 10.1.55.80
+            port: 9042
+            username: cassandra
+            password: cassandra
 
 javamelody:
     enabled: false
 
+keycloak:
+    auth-server-url: http://sso.vostok.systems/auth
+    realm: vostok
+    resource: tda
+    ssl-required: external
+    credentials:
+        secret: d8595f21-437d-4d06-9aaf-c974795c75af
+    use-resource-role-mappings: true
 ---
