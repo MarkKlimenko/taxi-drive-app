@@ -1,5 +1,10 @@
 package com.markklim.taxi.drive.app.configuration
 
+class SecurityConfiguration {
+
+}
+
+/*
 import org.keycloak.adapters.KeycloakConfigResolver
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver
 import org.keycloak.adapters.springsecurity.KeycloakSecurityComponents
@@ -20,10 +25,12 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @Configuration
 @EnableWebSecurity
 @ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
-class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
-    /**
+class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
+    */
+/**
      * Registers the KeycloakAuthenticationProvider with the authentication manager.
-     */
+     *//*
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
@@ -36,9 +43,11 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
         return new KeycloakSpringBootConfigResolver();
     }
 
-    /**
+    */
+/**
      * Defines the session authentication strategy.
-     */
+     *//*
+
     @Bean
     @Override
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
@@ -55,3 +64,4 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .anyRequest().permitAll();
     }
 }
+*/
