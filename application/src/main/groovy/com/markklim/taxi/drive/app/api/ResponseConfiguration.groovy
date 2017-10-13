@@ -8,7 +8,7 @@ import javax.ws.rs.ext.Provider
 
 @Provider
 @PreMatching
-class ResponseConfig implements ContainerResponseFilter {
+class ResponseConfiguration implements ContainerResponseFilter {
     @Override
     void filter(ContainerRequestContext requestCtx, ContainerResponseContext responseCtx) throws IOException {
         responseCtx.getHeaders().add("Access-Control-Allow-Origin", "*")
