@@ -10,9 +10,9 @@ import org.springframework.data.cassandra.mapping.Table
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
 
-@Table(UserDB.TABLE)
+@Table(UserFields.TABLE)
 @Canonical
-@EqualsAndHashCode(includes = [UserDB.ID])
+@EqualsAndHashCode(includes = [UserFields.ID])
 @ToString(includeNames = true, includeFields = true)
 class User {
 
@@ -33,7 +33,7 @@ class User {
 
 }
 
-class UserDB {
+class UserFields {
     public static final TABLE = 'user'
     public static final ID = 'userId'
     public static final FIRST_NAME = 'firstName'

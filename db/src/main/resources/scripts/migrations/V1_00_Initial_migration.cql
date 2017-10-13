@@ -18,14 +18,6 @@ CREATE TABLE %keyspace%.person (personLogin text PRIMARY KEY,
                                 dateOfBirth date,
                                 ridesAmount int);
 
-// USER TABLE
-CREATE TABLE %keyspace%.user (userId text PRIMARY KEY,
-                              firstName text,
-                              lastName text,
-                              email text,
-                              dateIn timestamp,
-                              loginTime timestamp);
-
 // RIDE TABLE
 CREATE TABLE %keyspace%.ride (id UUID PRIMARY KEY,
                               personLogin text,
@@ -42,3 +34,11 @@ CREATE INDEX person_time ON %keyspace%.ride (time);
 CREATE TABLE %keyspace%.car (carId int PRIMARY KEY,
                              carNumber text,
                              model text);
+
+// USER TABLE
+CREATE TABLE %keyspace%.user (userId text PRIMARY KEY,
+                              firstName text,
+                              lastName text,
+                              email text,
+                              dateIn timestamp,
+                              loginTime timestamp);
