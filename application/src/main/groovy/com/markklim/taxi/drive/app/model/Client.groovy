@@ -10,14 +10,14 @@ import org.springframework.data.cassandra.mapping.Table
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDate
 
-@Table('person')
+@Table('client')
 @Canonical
-@EqualsAndHashCode(includes = ['personLogin'])
+@EqualsAndHashCode(includes = ['clientLogin'])
 @ToString(includeNames = true, includeFields = true)
-class Person {
+class Client {
 
     @PrimaryKey
-    String personLogin
+    String clientLogin
 
     String firstName
 

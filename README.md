@@ -4,7 +4,7 @@ Travis
 Test Travis stage for new repo
 <pre>
 {
-	"personLogin":"89147217660",
+	"clientLogin":"89147217660",
 	"firstName":"Mark",
 	"lastName":"Klimenko",
 	"dateOfBirth": "1994-05-26",
@@ -13,7 +13,7 @@ Test Travis stage for new repo
 
 
 {
-	"personLogin":"89147217660",
+	"clientLogin":"89147217660",
 	"fromAddress":{
 		"country":"Russia",
 		"state":"Primorskiy",

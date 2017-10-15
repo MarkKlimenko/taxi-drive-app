@@ -11,8 +11,8 @@ CREATE TYPE %keyspace%.address (country text,
                                 street text,
                                 building text);
 
-// PERSON TABLE
-CREATE TABLE %keyspace%.person (personLogin text PRIMARY KEY,
+// CLIENT TABLE
+CREATE TABLE %keyspace%.client (clientLogin text PRIMARY KEY,
                                 firstName text,
                                 lastName text,
                                 dateOfBirth date,
@@ -20,15 +20,15 @@ CREATE TABLE %keyspace%.person (personLogin text PRIMARY KEY,
 
 // RIDE TABLE
 CREATE TABLE %keyspace%.ride (id UUID PRIMARY KEY,
-                              personLogin text,
+                              clientLogin text,
                               fromAddress frozen <address>,
                               toAddress frozen <address>,
                               time timestamp,
                               rideDuration int,
                               carId int,
                               menInCar int);
-CREATE INDEX person_personLogin ON %keyspace%.ride (personLogin);
-CREATE INDEX person_time ON %keyspace%.ride (time);
+CREATE INDEX ride_clientLogin ON %keyspace%.ride (clientLogin);
+CREATE INDEX ride_time ON %keyspace%.ride (time);
 
 // CAR TABLE
 CREATE TABLE %keyspace%.car (carId int PRIMARY KEY,
