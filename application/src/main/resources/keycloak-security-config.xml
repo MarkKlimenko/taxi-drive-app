@@ -55,6 +55,7 @@
     <bean id="corsFilter" class="com.markklim.taxi.drive.app.configuration.authentication.CorsFilter" />
 
     <security:http auto-config="false" entry-point-ref="authenticationEntryPoint">
+        <security:csrf disabled="true"/>
         <security:custom-filter ref="keycloakPreAuthActionsFilter" before="LOGOUT_FILTER" />
         <security:custom-filter ref="keycloakAuthenticationProcessingFilter" before="FORM_LOGIN_FILTER" />
         <security:custom-filter ref="corsFilter" before="HEADERS_FILTER"/>
