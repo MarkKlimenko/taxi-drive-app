@@ -54,7 +54,7 @@ before_install:
 jobs:
   include:
     - stage: Unit tests
-      script: ./gradlew test
+      script: ./gradles test
 
     - stage: Set minor version
       script:
