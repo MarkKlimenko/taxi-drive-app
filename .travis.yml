@@ -1,39 +1,63 @@
+#language: groovy
+#
+#services:
+#  - docker
+#
+#cache:
+#  directories:
+#    - $HOME/.gradle/caches/
+#    - $HOME/.gradle/wrapper/
+#
+#
+#before_install:
+#  - chmod +x gradlew
+#
+#install: true
+#
+#script:
+#  - if [ true ]; then
+#        echo "**** Unit tests ****";
+#        ./gradlew test;
+#    fi
+#
+#  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+#        echo "**** Set minor version ****";
+#        ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
+#    fi
+#
+#  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+#        echo "**** Release to Docker ****";
+#        ./gradlew build;
+#        ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
+#    fi
+#
+#before_cache:
+#  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+#
+#
+#
+#
 language: groovy
 
-services:
-  - docker
+install: true
 
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-
 before_install:
   - chmod +x gradlew
 
-install: true
+jobs:
+  include:
+    - stage: Unit tests
+      script: ./gradlew test
 
-script:
-  - if [ true ]; then
-        echo "**** Unit tests ****";
-        ./gradlew test;
-    fi
-
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-        echo "**** Set minor version ****";
-        ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
-    fi
-
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-        echo "**** Release to Docker ****";
-        ./gradlew build;
-        ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
-    fi
-
-before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-
-
-
-
+    - stage: Set minor version
+      script:
+        - if [ "$TRAVIS_BRANCH" == "release" ]; then
+              ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
+          fi
