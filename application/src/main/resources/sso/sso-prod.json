@@ -1,0 +1,13 @@
+{
+  "realm": "vostok",
+  "auth-server-url": "http://sso.vostok.systems/auth",
+  "ssl-required": "external",
+  "resource": "tda",
+  "enable-basic-auth" : true,
+  "enable-cors" : true,
+  "credentials": {
+    "secret": "4e4bf2f8-1f54-4076-a358-046845cc2aa7"
+  },
+  "use-resource-role-mappings": true,
+  "principal-attribute": "preferred_username"
+}

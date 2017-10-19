@@ -1,6 +1,6 @@
 package com.markklim.taxi.drive.app.api.controller
 
-import com.markklim.taxi.drive.app.service.PersonService
+import com.markklim.taxi.drive.app.service.ClientService
 import com.markklim.taxi.drive.app.service.RideService
 import org.springframework.beans.factory.annotation.Autowired
 
@@ -17,21 +17,21 @@ import javax.ws.rs.core.MediaType
 class ReadOnlyController {
 
     @Autowired
-    PersonService personService
+    ClientService clientService
 
     @Autowired
     RideService rideService
 
     @GET
-    @Path('person/all')
-    getAllPersons() {
-        personService.getAll()
+    @Path('client/all')
+    getAllClients() {
+        clientService.getAll()
     }
 
     @GET
-    @Path('person/login/{login}')
-    getPersonByLogin(@PathParam('login') String login) {
-        personService.getByLogin(login)
+    @Path('client/login/{login}')
+    getClientByLogin(@PathParam('login') String login) {
+        clientService.getByLogin(login)
     }
 
     @GET

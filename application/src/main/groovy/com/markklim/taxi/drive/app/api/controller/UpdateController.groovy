@@ -1,8 +1,8 @@
 package com.markklim.taxi.drive.app.api.controller
 
-import com.markklim.taxi.drive.app.model.Person
+import com.markklim.taxi.drive.app.model.Client
 import com.markklim.taxi.drive.app.model.Ride
-import com.markklim.taxi.drive.app.service.PersonService
+import com.markklim.taxi.drive.app.service.ClientService
 import com.markklim.taxi.drive.app.service.RideService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -20,15 +20,15 @@ import javax.ws.rs.core.MediaType
 class UpdateController {
 
     @Autowired
-    PersonService personService
+    ClientService clientService
 
     @Autowired
     RideService rideService
 
     @PUT
-    @Path('person')
-    putPerson(Person person) {
-        personService.add(person)
+    @Path('client')
+    putClient(Client client) {
+        clientService.add(client)
     }
 
     @PUT

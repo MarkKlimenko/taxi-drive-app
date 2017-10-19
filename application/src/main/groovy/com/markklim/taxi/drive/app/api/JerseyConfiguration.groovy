@@ -14,6 +14,6 @@ class JerseyConfiguration extends ResourceConfig  {
         register(UpdateController.class)
         register(ReadOnlyController.class)
         register(UserController.class)
-        register(ResponseConfig.class)
+        register(ResponseConfiguration.class)
     }
 }

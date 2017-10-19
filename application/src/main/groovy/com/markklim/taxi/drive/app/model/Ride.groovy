@@ -20,7 +20,7 @@ class Ride {
 
     @PrimaryKey
     UUID id = UUID.randomUUID()
-    String personLogin
+    String clientLogin
 
     @CassandraType(type = DataType.Name.UDT, userTypeName = "address")
     Address fromAddress
