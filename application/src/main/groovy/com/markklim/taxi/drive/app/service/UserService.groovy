@@ -25,9 +25,8 @@ class UserService {
         LocalDateTime now = LocalDateTime.now()
         if (user.userId.isEmpty()) {
             user.userId = UUIDs.timeBased().toString()
-            user.loginTime = now
+            user.dateIn = now
         }
-        user.dateIn = now
         user
     }
 
