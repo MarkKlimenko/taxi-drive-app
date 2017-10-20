@@ -3,11 +3,18 @@ language: groovy
 services:
   - docker
 
+addons:
+  sonarcloud:
+    organization: "hurryfox-sonar-org-key"
+    token:
+      secure: $SONAR_TOKEN
+    branches:
+      - master
+
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-
 
 before_install:
   - chmod +x gradlew
