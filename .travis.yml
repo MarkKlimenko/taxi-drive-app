@@ -33,7 +33,7 @@ jobs:
     - stage: Unit tests & Sonar scaner
       script:
         - ./gradlew test
-        - ./gradlew sonarqube
+        - sonar-scanner
 
     - stage: Set minor version
       script:
