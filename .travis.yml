@@ -25,16 +25,15 @@ before_install:
 
 install: true
 
-script:
-  - sonar-scanner
-
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 
 jobs:
   include:
-    - stage: Unit tests
-      script: ./gradlew test
+    - stage: Unit tests & Sonar scaner
+      script:
+        - ./gradlew test
+        - ./gradlew sonarqube
 
     - stage: Set minor version
       script:
