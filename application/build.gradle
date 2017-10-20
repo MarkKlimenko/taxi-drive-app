@@ -15,7 +15,8 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE',
-                  'gradle.plugin.com.markklim.plugins:release-to-docker:0.9'
+                  'gradle.plugin.com.markklim.plugins:release-to-docker:0.9',
+                  'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5'
     }
 }
 
@@ -23,6 +24,7 @@ apply plugin: 'groovy'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 apply plugin: 'com.markklim.plugins.rtd'
+apply plugin: 'org.sonarqube'
 
 war {
     archiveName = 'taxi-drive-app.war'

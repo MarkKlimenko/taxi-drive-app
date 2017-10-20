@@ -13,12 +13,10 @@ buildscript {
     }
     dependencies {
         classpath 'gradle.plugin.com.markklim.plugins:set-minor-version:0.10'
-        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5'
     }
 }
 
 apply plugin: 'com.markklim.plugins.smv'
-apply plugin: 'org.sonarqube'
 
 setMinorVersion {
     mVersion = minorVersion
