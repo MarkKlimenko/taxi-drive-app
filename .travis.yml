@@ -35,18 +35,18 @@ jobs:
         - ./gradlew test
         - sonar-scanner
 
-    - stage: Set minor version
-      script:
-        - if [ "$TRAVIS_BRANCH" == "release" ]; then
-            ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
-          fi
-
-    - stage: Release to docker
-      script:
-        - if [ "$TRAVIS_BRANCH" == "release" ]; then
-            ./gradlew build;
-            ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
-          fi
+#    - stage: Set minor version
+#      script:
+#        - if [ "$TRAVIS_BRANCH" == "release" ]; then
+#            ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
+#          fi
+#
+#    - stage: Release to docker
+#      script:
+#        - if [ "$TRAVIS_BRANCH" == "release" ]; then
+#            ./gradlew build;
+#            ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
+#          fi
 
 
 
