@@ -20,6 +20,7 @@ class Ride {
 
     @PrimaryKey
     UUID id = UUID.randomUUID()
+
     String clientLogin
 
     @CassandraType(type = DataType.Name.UDT, userTypeName = "address")
@@ -29,11 +30,21 @@ class Ride {
     Address toAddress
 
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    LocalDateTime time
+    LocalDateTime dateIn
 
-    Integer rideDuration
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    LocalDateTime rideIn
 
-    Integer carId
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    LocalDateTime rideOut
 
-    Integer menInCar
+    String carId
+
+    Integer adultInCar
+
+    Integer childrenInCar
+
+    Integer price
+
+    String state
 }
