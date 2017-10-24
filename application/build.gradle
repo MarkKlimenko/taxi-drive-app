@@ -45,6 +45,9 @@ dependencies {
             'org.keycloak:keycloak-spring-security-adapter:3.2.0.Final',
 
             'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE',
+                'org.testng:testng:6.11'
 }
 
 processResources {
