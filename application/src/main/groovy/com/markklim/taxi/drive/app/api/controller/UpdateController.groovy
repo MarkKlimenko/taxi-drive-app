@@ -1,9 +1,11 @@
 package com.markklim.taxi.drive.app.api.controller
 
 import com.markklim.taxi.drive.app.model.Client
+import com.markklim.taxi.drive.app.model.PriceDtd
 import com.markklim.taxi.drive.app.model.Ride
-import com.markklim.taxi.drive.app.service.ClientService
-import com.markklim.taxi.drive.app.service.RideService
+import com.markklim.taxi.drive.app.service.EvaluationService
+import com.markklim.taxi.drive.app.service.entity.ClientService
+import com.markklim.taxi.drive.app.service.entity.RideService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
@@ -25,6 +27,9 @@ class UpdateController {
     @Autowired
     RideService rideService
 
+    @Autowired
+    EvaluationService evaluationService
+
     @PUT
     @Path('client')
     putClient(Client client) {
@@ -35,5 +40,11 @@ class UpdateController {
     @Path('ride')
     putRide(Ride ride) {
         rideService.add(ride)
+    }
+
+    @PUT
+    @Path('price/dtd')
+    putPriceDtd(PriceDtd priceDtd) {
+        evaluationService.addPriceDtd(priceDtd)
     }
 }

@@ -1,7 +1,7 @@
 package com.markklim.taxi.drive.app.api.controller
 
-import com.markklim.taxi.drive.app.service.ClientService
-import com.markklim.taxi.drive.app.service.RideService
+import com.markklim.taxi.drive.app.service.entity.ClientService
+import com.markklim.taxi.drive.app.service.entity.RideService
 import org.springframework.beans.factory.annotation.Autowired
 
 import javax.ws.rs.Consumes

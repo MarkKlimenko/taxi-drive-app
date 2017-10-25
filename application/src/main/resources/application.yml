@@ -51,3 +51,22 @@ sso:
     config: /WEB-INF/classes/sso/sso-prod.json
 
 ---
+spring:
+    profiles: integration
+    data:
+        cassandra:
+            keyspace-name: tda
+            contact-points: localhost
+            port: 9042
+            username: cassandra
+            password: cassandra
+
+server:
+    contextPath: /tda
+
+javamelody:
+    enabled: false
+
+sso.enabled.integration: false
+sso:
+    config: /WEB-INF/classes/sso/sso-local.json

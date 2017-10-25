@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.service
+package com.markklim.taxi.drive.app.service.entity
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select

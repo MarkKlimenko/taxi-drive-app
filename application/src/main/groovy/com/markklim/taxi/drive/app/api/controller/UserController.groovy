@@ -1,7 +1,7 @@
 package com.markklim.taxi.drive.app.api.controller
 
 import com.markklim.taxi.drive.app.model.User
-import com.markklim.taxi.drive.app.service.UserService
+import com.markklim.taxi.drive.app.service.entity.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
