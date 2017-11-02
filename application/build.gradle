@@ -44,7 +44,9 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-security:1.5.7.RELEASE',
             'org.keycloak:keycloak-spring-security-adapter:3.2.0.Final',
 
-            'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0'
+            'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
+
+            'org.apache.poi:poi-ooxml:3.15'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.8.RELEASE',
                 'org.testng:testng:6.11'
