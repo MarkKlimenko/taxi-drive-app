@@ -1,6 +1,7 @@
 package com.markklim.taxi.drive.app.api
 
 import com.markklim.taxi.drive.app.api.controller.ReadOnlyController
+import com.markklim.taxi.drive.app.api.controller.RideController
 import com.markklim.taxi.drive.app.api.controller.StatusController
 import com.markklim.taxi.drive.app.api.controller.UpdateController
 import com.markklim.taxi.drive.app.api.controller.UserController
@@ -15,5 +16,6 @@ class JerseyConfiguration extends ResourceConfig  {
         register(ReadOnlyController.class)
         register(UserController.class)
         register(ResponseConfiguration.class)
+        register(RideController.class)
     }
 }

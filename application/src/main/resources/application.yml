@@ -47,6 +47,7 @@ javamelody:
     enabled: false
 
 sso.enabled.prod: true
+sso.enabled.test: false
 sso:
     config: /WEB-INF/classes/sso/sso-prod.json
 
