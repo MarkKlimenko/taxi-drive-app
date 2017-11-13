@@ -2,6 +2,7 @@ package com.markklim.taxi.drive.app.component.evaluation
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
+import com.markklim.taxi.drive.app.model.PriceCtc
 import com.markklim.taxi.drive.app.dao.UniversalDao
 import com.markklim.taxi.drive.app.model.PriceDtd
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,6 +19,13 @@ class PriceFormer {
         select.where(QueryBuilder.eq('id', generateId(from,to)))
 
         universalDao.selectSingle(select, PriceDtd.class).price
+    }
+
+    Integer priceCityToCity(String from, String to) {
+        Select select = QueryBuilder.select().from('price_ctc')
+        select.where(QueryBuilder.eq('id', generateId(from,to)))
+
+        universalDao.selectSingle(select, PriceCtc.class).price
     }
 
     protected Integer generateId(String distFrom, String distTo) {
