@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.service.entity
+package com.markklim.taxi.drive.app.dao.impl
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class UserService {
+class UserDao {
 
     @Autowired
     private CassandraTemplate cassandraTemplate

@@ -1,11 +1,12 @@
 package com.markklim.taxi.drive.app.component
 
+import com.markklim.taxi.drive.app.model.Address
 import org.springframework.stereotype.Component
 
 @Component
-class DefineDistrictComponent {
+class DistrictMatcher {
 
-    String defineDistrict(String street, String building) {
+    String defineDistrict(Address address) {
         // TODO: Продумать логику получения района исходя из улицы
         "District"
     }

@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.service.entity
+package com.markklim.taxi.drive.app.dao.impl
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ClientService {
+class ClientDao {
     @Autowired
     @Delegate
     UniversalDao universalDao

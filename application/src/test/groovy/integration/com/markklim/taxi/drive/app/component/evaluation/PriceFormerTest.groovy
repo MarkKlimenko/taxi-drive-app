@@ -1,7 +1,7 @@
 package integration.com.markklim.taxi.drive.app.component.evaluation
 
 import com.markklim.taxi.drive.app.Application
-import com.markklim.taxi.drive.app.component.evaluation.PriceFormer
+import com.markklim.taxi.drive.app.component.PriceFormer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource

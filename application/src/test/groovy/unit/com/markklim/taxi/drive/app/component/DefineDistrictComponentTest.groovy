@@ -1,6 +1,6 @@
 package unit.com.markklim.taxi.drive.app.component
 
-import com.markklim.taxi.drive.app.component.DefineDistrictComponent
+import com.markklim.taxi.drive.app.component.DistrictMatcher
 import com.markklim.taxi.drive.app.model.Address
 import org.testng.annotations.Test
 import org.testng.annotations.DataProvider
@@ -19,7 +19,7 @@ class DefineDistrictComponentTest {
 
     @Test(dataProvider = "define_district_test")
     void defineDistrict(Address address, String expDistrict) throws Exception {
-        new DefineDistrictComponent()
+        new DistrictMatcher()
                 .defineDistrict(address.street, address.building)
                 .with { assertEquals(it, expDistrict) }
     }
