@@ -2,7 +2,6 @@ package com.markklim.taxi.drive.app.component.evaluation
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
-import com.markklim.taxi.drive.app.component.database.QueryHelper
 import com.markklim.taxi.drive.app.model.PriceCtc
 import com.markklim.taxi.drive.app.dao.UniversalDao
 import com.markklim.taxi.drive.app.model.PriceDtd
