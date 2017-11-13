@@ -18,7 +18,7 @@ spring:
             username: cassandra
             password: cassandra
 
-sso.enabled.local: true
+sso.enabled.local: false
 sso:
     config: sso/sso-local.json
 
