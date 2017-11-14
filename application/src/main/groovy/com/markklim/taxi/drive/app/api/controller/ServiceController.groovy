@@ -14,14 +14,15 @@ import javax.ws.rs.core.MediaType
 @Path('service')
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-class StatusController {
+class ServiceController {
     @Autowired
+    @Delegate
     UtilService utilService
 
     @GET
     @Path('status')
     getStatus() {
-        [version: utilService.getVersion(),
-         db: utilService.getDbStatus()]
+        [version: getVersion(),
+         db: getDbStatus()]
     }
 }
