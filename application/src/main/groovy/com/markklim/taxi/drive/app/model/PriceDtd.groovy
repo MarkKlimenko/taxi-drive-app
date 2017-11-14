@@ -23,9 +23,16 @@ class PriceDtd {
     PriceDtd(@JsonProperty("distFrom") String distFrom,
              @JsonProperty("distTo") String distTo,
              @JsonProperty("price") Integer price) {
-        this.id = distFrom.hashCode() + distTo.hashCode()
         this.distFrom =  distFrom
         this.distTo = distTo
         this.price = price
+        this.id = generateId()
+    }
+
+    void generateId(){
+        if(distFrom == null || distTo == null)
+            throw new IllegalStateException("distFrom and distTo fields" +
+                    " must be initialize")
+        id = distFrom.hashCode() + distTo.hashCode()
     }
 }

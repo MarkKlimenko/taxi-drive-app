@@ -1,6 +1,7 @@
 package com.markklim.taxi.drive.app.service.settings
 
 import com.markklim.taxi.drive.app.component.FileToPojoConverter
+import com.markklim.taxi.drive.app.component.database.QueryHelper
 import com.markklim.taxi.drive.app.model.PriceDtd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service
@@ -13,9 +14,13 @@ class FillPriceTableService {
     @Autowired
     FileToPojoConverter fileToPojoConverter
 
-    void fillPriceTableFromExcel(FileInputStream fis){
-        List<PriceDtd> priceDtdList = fileToPojoConverter.getPriceDtdListFromExcel(fis)
+    @Autowired
+    QueryHelper queryHelper
 
-        //TODO очищаем существующую таблицу и заполняем новыми элементами
+    void fillPriceTableFromExcel(FileInputStream fis){
+        println "начали"
+        List<PriceDtd> priceDtdList = fileToPojoConverter.getPriceDtdListFromExcel(fis)
+        queryHelper.setPriceDtd(priceDtdList)
+        println "Все ок"
     }
 }

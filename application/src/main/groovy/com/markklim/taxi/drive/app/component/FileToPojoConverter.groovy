@@ -1,16 +1,13 @@
 package com.markklim.taxi.drive.app.component
 
 import com.markklim.taxi.drive.app.model.PriceDtd
-import com.markklim.taxi.drive.app.util.UtilHash
+
 import org.apache.poi.ss.usermodel.Cell
-import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.springframework.stereotype.Component
-
-import java.util.stream.Stream
 
 /**
  * Created by viktor on 02.11.17.
@@ -62,6 +59,6 @@ class FileToPojoConverter {
         priceDtd.setDistFrom(distFrom)
         priceDtd.setDistTo(distTo)
         priceDtd.setPrice(price)
-        priceDtd.setId(UtilHash.getPriceDtdHashCode(distFrom, distTo))
+        priceDtd.generateId()
     }
 }

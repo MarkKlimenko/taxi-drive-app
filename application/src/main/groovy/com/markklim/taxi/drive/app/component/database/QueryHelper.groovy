@@ -17,4 +17,8 @@ class QueryHelper {
     public <T> T getFirst(Select select, Class<T> entityClass) {
         cassandraTemplate.select(select, entityClass).first()
     }
+
+    public <T> void setPriceDtd(List<T> listEntities) {
+        cassandraTemplate.insert(listEntities)
+    }
 }
