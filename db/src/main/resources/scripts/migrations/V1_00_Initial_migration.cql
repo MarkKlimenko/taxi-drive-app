@@ -53,3 +53,9 @@ CREATE TABLE %keyspace%.price_dtd (id int PRIMARY KEY,
                                    distFrom text,
                                    distTo text,
                                    price int);
+
+// CITY_TO_CITY_PRICE
+CREATE TABLE %keyspace%.price_ctc (id int PRIMARY KEY,
+                                   cityFrom text,
+                                   cityTo text,
+                                   price int);

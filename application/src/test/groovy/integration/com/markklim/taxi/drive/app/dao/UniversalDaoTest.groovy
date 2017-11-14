@@ -14,7 +14,7 @@ import org.testng.annotations.Test
 
 import static org.testng.Assert.*
 
-@TestPropertySource(locations = "classpath:test-properties.properties")
+@TestPropertySource(locations = 'classpath:test-properties.properties')
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
 class UniversalDaoTest extends AbstractTestNGSpringContextTests {
@@ -23,11 +23,11 @@ class UniversalDaoTest extends AbstractTestNGSpringContextTests {
     @Delegate
     UniversalDao universalDao
 
-    Client singleClient = new Client([clientLogin: '+79147654321',
-                                      firstName: "Mark",
-                                      lastName: "Klimenko",
-                                      ridesAmount: 5,
-                                      clientType: null])
+    Client singleClient = [clientLogin: '+79147654321',
+                           firstName  : 'Mark',
+                           lastName   : 'Klimenko',
+                           ridesAmount: 9,
+                           clientType : null] as Client
 
     @Test
     void insertSingleTest() {

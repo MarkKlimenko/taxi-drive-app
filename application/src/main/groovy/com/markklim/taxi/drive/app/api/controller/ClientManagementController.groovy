@@ -1,5 +1,6 @@
 package com.markklim.taxi.drive.app.api.controller
 
+import com.markklim.taxi.drive.app.model.Address
 import com.markklim.taxi.drive.app.service.ClientManagementService
 import org.springframework.beans.factory.annotation.Autowired
 
@@ -12,11 +13,20 @@ import javax.ws.rs.core.MediaType
 class ClientManagementController {
 
     @Autowired
+    @Delegate
     ClientManagementService clientManagementService
 
     @GET
     @Path('client/check/{id}')
     checkUserById(@PathParam('id') String id) {
-        clientManagementService.checkUserById(id)
+        checkClient(id)
+    }
+
+    @POST
+    @Path('ride/evaluate')
+    getPrice(@QueryParam('addressFrom') Address addressFrom,
+             @QueryParam('addressTo') Address addressTo,
+             @QueryParam('clientLogin') String clientLogin) {
+        calculatePrice(addressFrom, addressTo, clientLogin)
     }
 }
