@@ -1,8 +1,8 @@
 package com.markklim.taxi.drive.app.dao.impl
 
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class SettingsDao {
 
     String getValueById(String id) {

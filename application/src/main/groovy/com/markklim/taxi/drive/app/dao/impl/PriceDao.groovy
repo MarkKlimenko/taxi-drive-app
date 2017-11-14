@@ -7,9 +7,9 @@ import com.markklim.taxi.drive.app.model.PriceCtc
 import com.markklim.taxi.drive.app.model.PriceDtd
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.cassandra.core.CassandraTemplate
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class PriceDao {
     @Autowired
     private CassandraTemplate cassandraTemplate

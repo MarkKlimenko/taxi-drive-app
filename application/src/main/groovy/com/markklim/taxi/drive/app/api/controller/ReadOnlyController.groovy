@@ -2,7 +2,6 @@ package com.markklim.taxi.drive.app.api.controller
 
 import com.markklim.taxi.drive.app.dao.impl.ClientDao
 import com.markklim.taxi.drive.app.dao.impl.RideDao
-import com.markklim.taxi.drive.app.service.PriceService
 import org.springframework.beans.factory.annotation.Autowired
 
 import javax.ws.rs.Consumes

@@ -7,11 +7,11 @@ import com.markklim.taxi.drive.app.model.User
 import com.markklim.taxi.drive.app.model.UserFields
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.cassandra.core.CassandraTemplate
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
 import java.time.LocalDateTime
 
-@Service
+@Component
 class UserDao {
 
     @Autowired

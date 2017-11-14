@@ -19,6 +19,10 @@ class PriceFormer {
         getDistrictsRidePrice(defineDistrict(from), defineDistrict(to))
     }
 
+    Integer formDtdPrice(String districtFrom, String districtTo) {
+        getDistrictsRidePrice(districtFrom, districtTo)
+    }
+
     Integer formCtcPrice(String from, String to) {
         getCitiesRidePrice(from, to)
     }

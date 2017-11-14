@@ -27,6 +27,6 @@ class ClientManagementController {
     getPrice(@QueryParam('addressFrom') Address addressFrom,
              @QueryParam('addressTo') Address addressTo,
              @QueryParam('clientLogin') String clientLogin) {
-        getPrice(addressFrom, addressTo, clientLogin)
+        calculatePrice(addressFrom, addressTo, clientLogin)
     }
 }
