@@ -33,6 +33,6 @@ class UpdateController {
     @PUT
     @Path('ride')
     putRide(Ride ride) {
-        //rideDao.add(ride)
+        rideDao.add(ride)
     }
 }

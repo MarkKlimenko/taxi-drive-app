@@ -3,7 +3,7 @@ package com.markklim.taxi.drive.app.dao.impl
 import org.springframework.stereotype.Component
 
 @Component
-class SettingsDao {
+class SettingDao {
 
     String getValueById(String id) {
         [ [id:'freeRideAmount', setting:'10'],

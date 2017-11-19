@@ -2,7 +2,8 @@ package com.markklim.taxi.drive.app.service
 
 import com.markklim.taxi.drive.app.component.PriceFormer
 import com.markklim.taxi.drive.app.dao.impl.ClientDao
-import com.markklim.taxi.drive.app.dao.impl.SettingsDao
+import com.markklim.taxi.drive.app.dao.impl.RideDao
+import com.markklim.taxi.drive.app.dao.impl.SettingDao
 import com.markklim.taxi.drive.app.model.Address
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -13,7 +14,10 @@ class ClientManagementService {
     ClientDao clientDao
 
     @Autowired
-    SettingsDao settingsDao
+    RideDao rideDao
+
+    @Autowired
+    SettingDao settingDao
 
     @Autowired
     PriceFormer priceFormer
@@ -22,7 +26,8 @@ class ClientManagementService {
         clientDao.getByLogin(id).with {
             if(it) {
                 Map clientInfo = it.asMap()
-                clientInfo << [nextRideFree: settingsDao.getValueById('freeRideAmount')]
+                clientInfo << [nextRideFree: settingDao.getValueById('freeRideAmount')]
+                clientInfo << [previousRides: rideDao.getPreviousRides(id, 5,3)]
                 clientInfo
             } else { [:] }
         }
