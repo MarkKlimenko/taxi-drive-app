@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.model
+package com.markklim.taxi.drive.app.dao.entity
 
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode

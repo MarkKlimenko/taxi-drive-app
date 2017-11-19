@@ -3,7 +3,7 @@ package com.markklim.taxi.drive.app.dao.impl
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
 import com.markklim.taxi.drive.app.dao.UniversalDao
-import com.markklim.taxi.drive.app.model.Ride
+import com.markklim.taxi.drive.app.dao.entity.Ride
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 

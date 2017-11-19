@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.model.dictionary
+package com.markklim.taxi.drive.app.dao.entity
 
 class Country {
     String name

@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.model
+package com.markklim.taxi.drive.app.dao.domain
 
 import groovy.transform.Canonical
 import org.springframework.data.cassandra.mapping.UserDefinedType

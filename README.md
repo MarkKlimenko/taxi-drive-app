@@ -7,13 +7,11 @@ Test Travis stage for new repo
 	"clientLogin":"89147217660",
 	"firstName":"Mark",
 	"lastName":"Klimenko",
-	"dateOfBirth": "1994-05-26",
 	"ridesAmount": "5"
 }
 
-
 {
-	"clientLogin":"89147217660",
+	"clientLogin":"+79147654321",
 	"fromAddress":{
 		"country":"Russia",
 		"state":"Primorskiy",
@@ -28,7 +26,7 @@ Test Travis stage for new repo
 		"street":"Lugovaya",
 		"building":"74/8"
 	},
-	"time": "1994-05-26T12:45:30",
+	"dateIn": "2017-11-13T12:45:30",
 	"carId": 5,
 	"menInCar": 2
 }

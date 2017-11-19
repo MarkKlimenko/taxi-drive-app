@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.model
+package com.markklim.taxi.drive.app.dao.entity
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -8,24 +8,25 @@ import groovy.transform.ToString
 import org.springframework.data.cassandra.mapping.PrimaryKey
 import org.springframework.data.cassandra.mapping.Table
 
-@Table('price_dtd')
+@Table('price_ctc')
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)
-class PriceDtd {
+class PriceCtc {
     @PrimaryKey
     Integer id
-    String distFrom
-    String distTo
+    String cityFrom
+    String cityTo
     Integer price
 
     @JsonCreator
-    PriceDtd(@JsonProperty("distFrom") String distFrom,
-             @JsonProperty("distTo") String distTo,
+    PriceCtc(@JsonProperty("cityFrom") String cityFrom,
+             @JsonProperty("cityTo") String cityTo,
              @JsonProperty("price") Integer price) {
-        this.id = distFrom.hashCode() + distTo.hashCode()
-        this.distFrom =  distFrom
-        this.distTo = distTo
+        this.id = cityFrom.hashCode() + cityTo.hashCode()
+        this.cityFrom =  cityFrom
+        this.cityTo = cityTo
         this.price = price
     }
 }
+
