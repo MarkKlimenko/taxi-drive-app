@@ -1,7 +1,7 @@
 package com.markklim.taxi.drive.app.component
 
 import com.markklim.taxi.drive.app.dao.impl.PriceDao
-import com.markklim.taxi.drive.app.model.Address
+import com.markklim.taxi.drive.app.dao.domain.Address
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 

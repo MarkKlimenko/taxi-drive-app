@@ -1,7 +1,7 @@
 package unit.com.markklim.taxi.drive.app.component
 
 import com.markklim.taxi.drive.app.component.DistrictMatcher
-import com.markklim.taxi.drive.app.model.Address
+import com.markklim.taxi.drive.app.dao.domain.Address
 import org.testng.annotations.Test
 import org.testng.annotations.DataProvider
 

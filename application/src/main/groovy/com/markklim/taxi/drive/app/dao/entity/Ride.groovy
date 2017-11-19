@@ -1,7 +1,8 @@
-package com.markklim.taxi.drive.app.model
+package com.markklim.taxi.drive.app.dao.entity
 
 import com.datastax.driver.core.DataType
 import com.markklim.taxi.drive.app.api.adapter.LocalDateTimeAdapter
+import com.markklim.taxi.drive.app.dao.domain.Address
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
