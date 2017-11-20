@@ -27,7 +27,6 @@ class ClientManagementController {
     @POST
     @Path('ride/evaluate')
     getPrice(Ride ride) {
-       //calculatePrice(ride)
-       [price: 124]
+       [price: calculatePrice(ride)]
     }
 }

@@ -59,3 +59,10 @@ CREATE TABLE %keyspace%.price_ctc (id int PRIMARY KEY,
                                    cityFrom text,
                                    cityTo text,
                                    price int);
+
+// -------------------------- FAKE DATA ----------------------
+
+// INSERT price Churkin -> Tikhaya
+INSERT INTO %keyspace%.price_dtd (id, distfrom, distto, price)
+VALUES (-224293539, 'Churkin', 'Tikhaya', 256)
+IF NOT EXISTS;

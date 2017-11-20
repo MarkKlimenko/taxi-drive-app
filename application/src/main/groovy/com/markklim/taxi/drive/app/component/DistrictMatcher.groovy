@@ -8,6 +8,12 @@ class DistrictMatcher {
 
     String defineDistrict(Address address) {
         // TODO: Продумать логику получения района исходя из улицы
-        "District"
+        if (address.street == "Vilkova") {
+            "Churkin"
+        } else if (address.street == "Borisenko") {
+            "Tikhaya"
+        } else {
+            "District"
+        }
     }
 }
