@@ -37,8 +37,6 @@ class PriceDao {
 
     // TODO: Change to proper implementation
     protected Integer generateId(String distFrom, String distTo) {
-        Integer id = distFrom.hashCode() * 37 + distTo.hashCode()
-        println("ID = $id")
-        id
+        distFrom.hashCode() + distTo.hashCode()
     }
 }
