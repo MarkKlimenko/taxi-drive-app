@@ -41,4 +41,8 @@ class ClientManagementService {
             priceFormer.formCtcPrice(ride.fromAddress.city, ride.toAddress.city)
         }
     }
+
+    List<Ride> getActiveRides() {
+        rideDao.getActiveRides()
+    }
 }

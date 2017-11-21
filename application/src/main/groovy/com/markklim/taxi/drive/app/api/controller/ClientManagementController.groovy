@@ -30,4 +30,10 @@ class ClientManagementController {
        //calculatePrice(ride)
        [price: 124]
     }
+
+    @GET
+    @Path('ride/active')
+    getActiveRides() {
+        clientManagementService.getActiveRides()
+    }
 }
