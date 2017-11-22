@@ -40,20 +40,11 @@ jobs:
               sleep 3;
           done;
 
-        - ./gradlew migratorDropKeyspace
+        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations
+        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test
+        - ./gradlew integrationTest
 
-
-
-
-#        - docker logs cassandra
-#        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations
-#        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test
-#        - docker logs cassandra
-#        - ./gradlew integrationTest
-#        - ./gradlew migratorDropKeyspace
-#        - docker logs cassandra
-#
-#        - sonar-scanner
+        - sonar-scanner
 
     - stage: Set minor version
       script:
