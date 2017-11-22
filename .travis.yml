@@ -32,16 +32,16 @@ jobs:
   include:
     - stage: Unit tests & Sonar scaner
       script:
-        - ./gradlew test
+        - ./gradlew test;
 
-        - docker run --name cassandra -p 127.0.0.1:9042:9042 -d cassandra:3.11
-        - ./gradlew migratorDropKeyspace
-        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations
-        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test
-        - ./gradlew integrationTest
-        - ./gradlew migratorDropKeyspace
+          docker run --name cassandra -p 127.0.0.1:9042:9042 -d cassandra:3.11;
+          ./gradlew migratorDropKeyspace;
+          ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations;
+          ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test;
+          ./gradlew integrationTest;
+          ./gradlew migratorDropKeyspace;
 
-        - sonar-scanner
+          sonar-scanner;
 
     - stage: Set minor version
       script:
