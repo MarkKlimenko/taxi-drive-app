@@ -36,7 +36,7 @@ jobs:
 
         - docker run --name cassandra -p 127.0.0.1:9042:9042 -d cassandra:3.11
         - while ! docker run --link cassandra:cassandra --rm cassandra cqlsh cassandra; do
-              echo 'Waiting for cassandra...'
+              echo 'Waiting for cassandra...';
               sleep 3;
           done;
 
