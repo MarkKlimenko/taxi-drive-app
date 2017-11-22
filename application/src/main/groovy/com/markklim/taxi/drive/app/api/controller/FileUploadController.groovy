@@ -1,7 +1,8 @@
 package com.markklim.taxi.drive.app.api.controller
 
 import com.markklim.taxi.drive.app.service.settings.FillPriceTableService
-import com.sun.jersey.multipart.FormDataParam
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition
+import org.glassfish.jersey.media.multipart.FormDataParam
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
@@ -24,7 +25,8 @@ class FileUploadController {
 
     @POST
     @Path('file/pricing')
-    putPriceListFile(@FormDataParam("file") InputStream inputFile){
-        fillPriceTableService.fillPriceTableFromExcel(inputFile)
+    putPriceListFile(@FormDataParam("file") InputStream inputFile,
+                     @FormDataParam("file") FormDataContentDisposition fileMetaData){
+        fillPriceTableService.fillPriceTableFromExcel(inputFile, fileMetaData)
     }
 }

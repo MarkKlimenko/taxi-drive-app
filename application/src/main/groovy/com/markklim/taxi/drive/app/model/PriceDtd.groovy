@@ -29,10 +29,21 @@ class PriceDtd {
         this.id = generateId()
     }
 
+    PriceDtd(){
+
+    }
+
     void generateId(){
         if(distFrom == null || distTo == null)
             throw new IllegalStateException("distFrom and distTo fields" +
                     " must be initialize")
         id = distFrom.hashCode() + distTo.hashCode()
+    }
+
+    @Override
+    String toString() {
+        return "\nFrom: " + distFrom + "\n" +
+                "To: " + distTo + "\n" +
+                "Price: " + price + "\n"
     }
 }

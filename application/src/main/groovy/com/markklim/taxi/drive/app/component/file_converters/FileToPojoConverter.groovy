@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.component
+package com.markklim.taxi.drive.app.component.file_converters
 
 import com.markklim.taxi.drive.app.model.PriceDtd
 
@@ -6,7 +6,6 @@ import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
-import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.springframework.stereotype.Component
 
 /**
@@ -15,18 +14,19 @@ import org.springframework.stereotype.Component
 //TODO в дальнейшем нужно сделать этот класс абстрактным. PriceDtd заменить на generic (по необходимости)
 //при добавлении новых методов конвертирования, класс будет разрастаться.
 @Component
-class FileToPojoConverter {
+abstract class FileToPojoConverter {
     //на случай, если в будущем придется работать не только с excel файлами
     private Workbook workbook
+    abstract Workbook createWorkbook(InputStream fis)
 
-    List<PriceDtd> getPriceDtdListFromExcel(FileInputStream fis){
-        List<PriceDtd> priceDtdList = new ArrayList<>()
-        workbook = new XSSFWorkbook(fis)
+    List<PriceDtd> getPriceDtdListFromExcel(InputStream fis){
+        List<PriceDtd> priceDtdList
+        workbook = createWorkbook(fis)
         //Предполагается, что необходимые данные будут находиться на одной странице файла.
         //При усложнении структуры передаваемого документа,
         // придется пробегаться по всем страницам файла
         Sheet sheet = workbook.getSheetAt(0)
-        priceDtdList = getListFromSheet(fis, sheet)
+        priceDtdList = getListFromSheet(sheet)
         return priceDtdList
     }
 
@@ -37,10 +37,11 @@ class FileToPojoConverter {
         while (rowIterator.hasNext()){
             objectList.add(getPriceDtdFromRow(rowIterator.next()))
         }
+        return objectList
     }
 
     private PriceDtd getPriceDtdFromRow(Row row){
-        PriceDtd priceDtd = PriceDtd
+        PriceDtd priceDtd = new PriceDtd()
         ArrayList<Cell> cells = new ArrayList<>(3)
 
         Iterator<Cell> cellIterator = row.iterator()

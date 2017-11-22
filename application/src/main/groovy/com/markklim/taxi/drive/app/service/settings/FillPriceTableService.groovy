@@ -1,8 +1,9 @@
 package com.markklim.taxi.drive.app.service.settings
 
-import com.markklim.taxi.drive.app.component.FileToPojoConverter
-import com.markklim.taxi.drive.app.component.database.QueryHelper
-import com.markklim.taxi.drive.app.model.PriceDtd;
+import com.markklim.taxi.drive.app.component.file_converters.FileToPojoConverter
+import com.markklim.taxi.drive.app.dao.impl.PriceDao
+import com.markklim.taxi.drive.app.model.PriceDtd
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service
 
@@ -15,12 +16,15 @@ class FillPriceTableService {
     FileToPojoConverter fileToPojoConverter
 
     @Autowired
-    QueryHelper queryHelper
+    PriceDao priceDao
 
-    void fillPriceTableFromExcel(FileInputStream fis){
-        println "начали"
+    void fillPriceTableFromExcel(InputStream fis, FormDataContentDisposition fileMetaData){
+        println "начали, " + fileMetaData.fileName
         List<PriceDtd> priceDtdList = fileToPojoConverter.getPriceDtdListFromExcel(fis)
-        queryHelper.setPriceDtd(priceDtdList)
+        priceDtdList.each {
+            PriceDtd dtd -> priceDao.addPriceDtd(dtd)
+                dtd.toString()
+        }
         println "Все ок"
     }
 }
