@@ -33,6 +33,11 @@ jobs:
     - stage: Unit tests & Sonar scaner
       script:
         - ./gradlew test
+
+        - docker run --name cassandra -p 127.0.0.1:9042:9042 -d cassandra:3.11
+        - docker ps -a
+        - ./gradlew integrationTest
+
         - sonar-scanner
 
     - stage: Set minor version
