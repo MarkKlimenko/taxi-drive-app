@@ -43,6 +43,10 @@ docker run -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_O
 
 docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod" markklim/taxi-drive-app:0.1
 
+CASSANDRA CQLSH:
+docker run -it --link cassandra:cassandra --rm cassandra cqlsh cassandra <some commands for example auth -u cassandra -p cassandra>
+
+
 gradlew migratorDropKeyspace -PmigratorUser=cassandra -PmigratorPassword=cassandra 
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/migrations
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/dictionaries
