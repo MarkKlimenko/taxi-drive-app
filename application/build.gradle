@@ -59,6 +59,18 @@ processResources {
     ]
 }
 
+test {
+    useTestNG{
+        exclude 'integration/**'
+    }
+}
+
+task integrationTest(type: Test) {
+    useTestNG {
+        include 'integration/**'
+    }
+}
+
 releaseToDocker {
     dockerHub = true
     registryUrl = 'markklim'
