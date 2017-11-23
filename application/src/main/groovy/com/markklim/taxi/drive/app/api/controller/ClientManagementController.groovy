@@ -31,6 +31,12 @@ class ClientManagementController {
        [price: 124]
     }
 
+    @POST
+    @Path('ride/new')
+    addNewRide(Ride ride) {
+        clientManagementService.addNewRide(ride)
+    }
+
     @GET
     @Path('ride/active')
     getActiveRides() {

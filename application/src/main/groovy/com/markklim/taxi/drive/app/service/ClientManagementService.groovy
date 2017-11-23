@@ -42,6 +42,12 @@ class ClientManagementService {
         }
     }
 
+    Map addNewRide(Ride ride) {
+        ride.state = 'active'
+        rideDao.add(ride)
+        [ride: ride, status: 'OK']
+    }
+
     List<Ride> getActiveRides() {
         rideDao.getActiveRides()
     }

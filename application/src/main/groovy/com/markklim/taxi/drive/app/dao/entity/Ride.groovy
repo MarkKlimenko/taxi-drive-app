@@ -6,6 +6,7 @@ import com.markklim.taxi.drive.app.dao.domain.Address
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import org.springframework.data.annotation.Transient
 import org.springframework.data.cassandra.mapping.CassandraType
 import org.springframework.data.cassandra.mapping.PrimaryKey
 import org.springframework.data.cassandra.mapping.Table
@@ -45,7 +46,17 @@ class Ride {
 
     Integer childrenInCar
 
+    String prepaid
+
+    String comment
+
     Integer price
 
     String state
+
+    @Transient
+    String distFrom
+
+    @Transient
+    String distTo
 }

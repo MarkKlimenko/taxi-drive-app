@@ -31,8 +31,8 @@ class RideDao {
                 .take(ridesAmount)
     }
 
-    void add(Ride client) {
-        insertSingle(client)
+    void add(Ride ride) {
+        insertSingle(ride)
     }
 
     List<Ride> getActiveRides() {
