@@ -19,14 +19,21 @@ import javax.ws.rs.core.MediaType
 @Path('api')
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.MULTIPART_FORM_DATA)
-class FileUploadController {
+class AppSettingController {
     @Autowired
     FillPriceTableService fillPriceTableService
 
     @POST
-    @Path('file/pricing')
-    putPriceListFile(@FormDataParam("file") InputStream inputFile,
-                     @FormDataParam("file") FormDataContentDisposition fileMetaData){
-        fillPriceTableService.fillPriceTableFromExcel(inputFile, fileMetaData)
+    @Path('file/pricing_dtd')
+    postPriceDtdListFile(@FormDataParam("file") InputStream inputFile,
+                         @FormDataParam("file") FormDataContentDisposition fileMetaData){
+        fillPriceTableService.fillPriceDtdTableFromExcel(inputFile, fileMetaData)
+    }
+
+    @POST
+    @Path('file/pricing_ctc')
+    postPriceCtcListFile(@FormDataParam("file") InputStream inputFile,
+                         @FormDataParam("file") FormDataContentDisposition fileMetaData){
+        fillPriceTableService.fillPriceCtcTableFromExcel(inputFile, fileMetaData)
     }
 }

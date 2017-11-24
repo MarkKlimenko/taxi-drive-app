@@ -30,14 +30,13 @@ class PriceDtd {
     }
 
     PriceDtd(){
-
     }
 
     void generateId(){
         if(distFrom == null || distTo == null)
             throw new IllegalStateException("distFrom and distTo fields" +
                     " must be initialize")
-        id = distFrom.hashCode() + distTo.hashCode()
+        id = 37 * distFrom.hashCode() + 37 * distTo.hashCode()
     }
 
     @Override

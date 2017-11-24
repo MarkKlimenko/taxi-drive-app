@@ -21,6 +21,10 @@ class PriceDao {
         cassandraTemplate.insert(priceDtd)
     }
 
+    void addPriceCtc(PriceCtc priceCtc){
+        cassandraTemplate.insert(priceCtc)
+    }
+
     Integer getDistrictsRidePrice(String from, String to) {
         Select select = QueryBuilder.select().from('price_dtd')
         select.where(QueryBuilder.eq('id', generateId(from,to)))

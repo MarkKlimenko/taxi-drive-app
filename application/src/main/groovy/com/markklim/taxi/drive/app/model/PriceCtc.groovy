@@ -28,5 +28,22 @@ class PriceCtc {
         this.cityTo = cityTo
         this.price = price
     }
+
+    PriceCtc(){
+    }
+
+    void generateId(){
+        if(cityFrom == null || cityTo == null)
+            throw new IllegalStateException("distFrom and distTo fields" +
+                    " must be initialize")
+        id = 37 * cityFrom.hashCode() + 37 * cityTo.hashCode()
+    }
+
+    @Override
+    String toString() {
+        return "\nFrom: " + cityFrom + "\n" +
+                "To: " + cityTo + "\n" +
+                "Price: " + price + "\n"
+    }
 }
 
