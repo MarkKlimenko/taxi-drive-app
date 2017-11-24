@@ -50,3 +50,4 @@ docker run -it --link cassandra:cassandra --rm cassandra cqlsh cassandra <some c
 gradlew migratorDropKeyspace -PmigratorUser=cassandra -PmigratorPassword=cassandra 
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/migrations
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/dictionaries
+gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/test

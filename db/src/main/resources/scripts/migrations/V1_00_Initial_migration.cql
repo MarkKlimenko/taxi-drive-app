@@ -61,3 +61,10 @@ CREATE TABLE %keyspace%.price_ctc (id int PRIMARY KEY,
                                    cityFrom text,
                                    cityTo text,
                                    price int);
+// SETTINGS
+CREATE TABLE %keyspace%.setting (setting text PRIMARY KEY,
+                                 value text);
+
+// SYSTEM_PROPERTIES
+CREATE TABLE %keyspace%.system_property (property text PRIMARY KEY,
+                                         value text);
