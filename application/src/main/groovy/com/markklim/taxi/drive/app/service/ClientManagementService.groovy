@@ -1,10 +1,10 @@
 package com.markklim.taxi.drive.app.service
 
 import com.markklim.taxi.drive.app.component.PriceFormer
+import com.markklim.taxi.drive.app.dao.entity.Ride
 import com.markklim.taxi.drive.app.dao.impl.ClientDao
 import com.markklim.taxi.drive.app.dao.impl.RideDao
 import com.markklim.taxi.drive.app.dao.impl.SettingDao
-import com.markklim.taxi.drive.app.model.Address
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -33,12 +33,22 @@ class ClientManagementService {
         }
     }
 
-    Integer calculatePrice(Address addressFrom, Address addressTo, String clientLogin) {
+    Integer calculatePrice(Ride ride) {
         // TODO: Используя номер клиента надо реализовать возможность скидок
-        if (addressFrom.city == addressTo.city) {
-            priceFormer.formDtdPrice(addressFrom, addressTo)
+        if (ride.fromAddress.city == ride.toAddress.city) {
+            priceFormer.formDtdPrice(ride.fromAddress, ride.toAddress)
         } else {
-            priceFormer.formCtcPrice(addressFrom.city, addressTo.city)
+            priceFormer.formCtcPrice(ride.fromAddress.city, ride.toAddress.city)
         }
+    }
+
+    Map addNewRide(Ride ride) {
+        ride.state = 'active'
+        rideDao.add(ride)
+        [ride: ride, status: 'OK']
+    }
+
+    List<Ride> getActiveRides() {
+        rideDao.getActiveRides()
     }
 }

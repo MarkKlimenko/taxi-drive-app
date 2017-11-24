@@ -1,4 +1,4 @@
-package com.markklim.taxi.drive.app.model
+package com.markklim.taxi.drive.app.dao.entity
 
 import com.markklim.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 import groovy.transform.Canonical
