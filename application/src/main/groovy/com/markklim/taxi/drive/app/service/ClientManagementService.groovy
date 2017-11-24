@@ -41,4 +41,14 @@ class ClientManagementService {
             priceFormer.formCtcPrice(ride.fromAddress.city, ride.toAddress.city)
         }
     }
+
+    Map addNewRide(Ride ride) {
+        ride.state = 'active'
+        rideDao.add(ride)
+        [ride: ride, status: 'OK']
+    }
+
+    List<Ride> getActiveRides() {
+        rideDao.getActiveRides()
+    }
 }

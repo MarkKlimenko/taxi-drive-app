@@ -31,7 +31,14 @@ class RideDao {
                 .take(ridesAmount)
     }
 
-    void add(Ride client) {
-        insertSingle(client)
+    void add(Ride ride) {
+        insertSingle(ride)
+    }
+
+    List<Ride> getActiveRides() {
+        Select select = QueryBuilder.select().from('ride')
+        select.where(QueryBuilder.eq('state', 'active'))
+
+        selectAll(select, Ride.class)
     }
 }

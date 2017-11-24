@@ -29,4 +29,16 @@ class ClientManagementController {
     getPrice(Ride ride) {
        [price: calculatePrice(ride)]
     }
+
+    @POST
+    @Path('ride/new')
+    addNewRide(Ride ride) {
+        clientManagementService.addNewRide(ride)
+    }
+
+    @GET
+    @Path('ride/active')
+    getActiveRides() {
+        clientManagementService.getActiveRides()
+    }
 }

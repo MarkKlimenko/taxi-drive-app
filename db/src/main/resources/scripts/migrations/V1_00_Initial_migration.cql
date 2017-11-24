@@ -30,7 +30,9 @@ CREATE TABLE %keyspace%.ride (id UUID PRIMARY KEY,
                               adultInCar int,
                               childrenInCar int,
                               price int,
-                              state text);
+                              state text,
+                              prepaid text,
+                              comment text);
 CREATE INDEX ride_clientLogin ON %keyspace%.ride (clientLogin);
 CREATE INDEX ride_dateIn ON %keyspace%.ride (dateIn);
 CREATE INDEX ride_state ON %keyspace%.ride (state);
@@ -59,3 +61,10 @@ CREATE TABLE %keyspace%.price_ctc (id int PRIMARY KEY,
                                    cityFrom text,
                                    cityTo text,
                                    price int);
+// SETTINGS
+CREATE TABLE %keyspace%.setting (setting text PRIMARY KEY,
+                                 value text);
+
+// SYSTEM_PROPERTIES
+CREATE TABLE %keyspace%.system_property (property text PRIMARY KEY,
+                                         value text);
