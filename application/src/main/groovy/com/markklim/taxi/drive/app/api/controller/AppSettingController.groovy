@@ -1,7 +1,7 @@
 package com.markklim.taxi.drive.app.api.controller
 
+
 import com.markklim.taxi.drive.app.service.settings.FillPriceTableService
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition
 import org.glassfish.jersey.media.multipart.FormDataParam
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -25,15 +25,13 @@ class AppSettingController {
 
     @POST
     @Path('file/pricing_dtd')
-    postPriceDtdListFile(@FormDataParam("file") InputStream inputFile,
-                         @FormDataParam("file") FormDataContentDisposition fileMetaData){
-        fillPriceTableService.fillPriceDtdTableFromExcel(inputFile, fileMetaData)
+    postPriceDtdListFile(@FormDataParam("file") InputStream inputFile){
+        fillPriceTableService.fillPriceDtdTableFromExcel(inputFile)
     }
 
     @POST
     @Path('file/pricing_ctc')
-    postPriceCtcListFile(@FormDataParam("file") InputStream inputFile,
-                         @FormDataParam("file") FormDataContentDisposition fileMetaData){
-        fillPriceTableService.fillPriceCtcTableFromExcel(inputFile, fileMetaData)
+    postPriceCtcListFile(@FormDataParam("file") InputStream inputFile){
+        fillPriceTableService.fillPriceCtcTableFromExcel(inputFile)
     }
 }

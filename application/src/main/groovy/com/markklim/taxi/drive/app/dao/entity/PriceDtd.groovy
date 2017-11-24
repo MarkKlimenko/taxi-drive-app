@@ -2,6 +2,7 @@ package com.markklim.taxi.drive.app.dao.entity
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.markklim.taxi.drive.app.utils.IdUtil
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -36,7 +37,7 @@ class PriceDtd {
         if(distFrom == null || distTo == null)
             throw new IllegalStateException("distFrom and distTo fields" +
                     " must be initialize")
-        id = 37 * distFrom.hashCode() + 37 * distTo.hashCode()
+        id = IdUtil.generateId(distFrom, distTo)
     }
 
     @Override

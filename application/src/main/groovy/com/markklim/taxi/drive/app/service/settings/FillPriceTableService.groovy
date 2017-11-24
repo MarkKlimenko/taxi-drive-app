@@ -1,12 +1,10 @@
 package com.markklim.taxi.drive.app.service.settings
 
 import com.markklim.taxi.drive.app.component.file_converters.ExcelConvertersManager
-import com.markklim.taxi.drive.app.component.file_converters.ExcelToPojoConverter
-import com.markklim.taxi.drive.app.component.file_converters.ExcelToPriceDtdConverter
+
+import com.markklim.taxi.drive.app.dao.entity.PriceDtd
+import com.markklim.taxi.drive.app.dao.entity.PriceCtc
 import com.markklim.taxi.drive.app.dao.impl.PriceDao
-import com.markklim.taxi.drive.app.model.PriceCtc
-import com.markklim.taxi.drive.app.model.PriceDtd
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service
 
@@ -21,23 +19,20 @@ class FillPriceTableService {
     @Autowired
     PriceDao priceDao
 
-    void fillPriceDtdTableFromExcel(InputStream fis, FormDataContentDisposition fileMetaData){
-        println "начали, " + fileMetaData.fileName
+    void fillPriceDtdTableFromExcel(InputStream fis){
+
         List<PriceDtd> priceDtdList = excelConvertersManager.getPriceDtdList(fis)
         priceDtdList.each {
             PriceDtd dtd -> priceDao.addPriceDtd(dtd)
             println dtd.toString()
         }
-        println "Все ок"
     }
 
-    void fillPriceCtcTableFromExcel(InputStream fis, FormDataContentDisposition fileMetaData){
-        println "начали, " + fileMetaData.fileName
+    void fillPriceCtcTableFromExcel(InputStream fis){
         List<PriceCtc> priceCtcList = excelConvertersManager.getPriceCtcList(fis)
         priceCtcList.each {
             PriceCtc ctc -> priceDao.addPriceCtc(ctc)
             println ctc.toString()
         }
-        println "Все ок"
     }
 }
