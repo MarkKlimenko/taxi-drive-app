@@ -51,3 +51,6 @@ gradlew migratorDropKeyspace -PmigratorUser=cassandra -PmigratorPassword=cassand
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/migrations
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/dictionaries
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/test
+
+gradlew migratorExecute -PmigratorHost=192.168.99.100 -PmigratorScript=db/src/main/resources/scripts/migrations
+gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
