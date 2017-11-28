@@ -54,3 +54,4 @@ gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -P
 
 gradlew migratorExecute -PmigratorHost=192.168.99.100 -PmigratorScript=db/src/main/resources/scripts/migrations
 gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
+-Dspring.data.cassandra.contact-points=92.168.99.100
