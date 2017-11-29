@@ -27,4 +27,8 @@ class UniversalDao {
     public <T> T insertSingle(T entity) {
         cassandraTemplate.insert(entity)
     }
+
+    public <T> void deleteSingle(Class<T> entityClass, String id) {
+        cassandraTemplate.deleteById(entityClass, id)
+    }
 }

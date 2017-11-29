@@ -68,3 +68,9 @@ CREATE TABLE %keyspace%.setting (setting text PRIMARY KEY,
 // SYSTEM_PROPERTIES
 CREATE TABLE %keyspace%.system_property (property text PRIMARY KEY,
                                          value text);
+
+
+// INITIAL DATA - need to be moved to separate file after plugin fix
+INSERT INTO %keyspace%.setting (setting, value) values ('ride_free', '10');
+
+INSERT INTO %keyspace%.system_property(property, value) values ('geoVersion', 'a3ed4431-1874-4cc8-bf1d-a3bd0ed8cd62');

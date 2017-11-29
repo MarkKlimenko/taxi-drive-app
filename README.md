@@ -4,9 +4,9 @@ Travis
 Test Travis stage for new repo
 <pre>
 {
-	"clientLogin":"89147217660",
-	"firstName":"Mark",
-	"lastName":"Klimenko",
+	"clientLogin":"89147654321",
+	"firstName":"Polly",
+	"lastName":"Crocodile",
 	"ridesAmount": "5"
 }
 
@@ -51,3 +51,7 @@ gradlew migratorDropKeyspace -PmigratorUser=cassandra -PmigratorPassword=cassand
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/migrations
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/dictionaries
 gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/test
+
+gradlew migratorExecute -PmigratorHost=192.168.99.100 -PmigratorScript=db/src/main/resources/scripts/migrations
+gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
+-Dspring.data.cassandra.contact-points=92.168.99.100
