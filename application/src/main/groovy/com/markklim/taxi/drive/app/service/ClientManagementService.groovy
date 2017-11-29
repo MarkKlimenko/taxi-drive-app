@@ -35,6 +35,7 @@ class ClientManagementService {
 
     Integer calculatePrice(Ride ride) {
         // TODO: Используя номер клиента надо реализовать возможность скидок
+        findDiscount(ride.clientLogin)
         if (ride.fromAddress.city == ride.toAddress.city) {
             priceFormer.formDtdPrice(ride.fromAddress, ride.toAddress)
         } else {
@@ -50,5 +51,9 @@ class ClientManagementService {
 
     List<Ride> getActiveRides() {
         rideDao.getActiveRides()
+    }
+
+    private findDiscount(String clientLogin) {
+        clientDao.getByLogin(clientLogin)
     }
 }
