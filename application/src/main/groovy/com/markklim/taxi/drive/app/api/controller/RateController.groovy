@@ -24,11 +24,13 @@ class RateController {
     @Path('dtd/file/load')
     priceDtdListFile(@FormDataParam("file") InputStream inputFile){
         fillPriceTableService.fillPriceDtdTableFromExcel(inputFile)
+        [status: 'success']
     }
 
     @POST
     @Path('ctc/file/load')
     priceCtcListFile(@FormDataParam("file") InputStream inputFile){
         fillPriceTableService.fillPriceCtcTableFromExcel(inputFile)
+        [status: 'success']
     }
 }
