@@ -12,26 +12,23 @@ import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
-/**
- * Created by viktor on 02.11.17.
- */
 @Controller
 @Path('api')
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.MULTIPART_FORM_DATA)
-class AppSettingController {
+class RateController {
     @Autowired
     FillPriceTableService fillPriceTableService
 
     @POST
-    @Path('file/pricing_dtd')
-    postPriceDtdListFile(@FormDataParam("file") InputStream inputFile){
+    @Path('file/dtd/load')
+    priceDtdListFile(@FormDataParam("file") InputStream inputFile){
         fillPriceTableService.fillPriceDtdTableFromExcel(inputFile)
     }
 
     @POST
-    @Path('file/pricing_ctc')
-    postPriceCtcListFile(@FormDataParam("file") InputStream inputFile){
+    @Path('file/ctc/load')
+    priceCtcListFile(@FormDataParam("file") InputStream inputFile){
         fillPriceTableService.fillPriceCtcTableFromExcel(inputFile)
     }
 }

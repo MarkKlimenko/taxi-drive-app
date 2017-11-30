@@ -14,9 +14,6 @@ abstract class ExcelToPojoConverter<T> {
     public List<T> getDataFromExcel(InputStream fis){
         List<T> dataList
         workbook = new XSSFWorkbook(fis)
-        // Предполагается, что необходимые данные будут находиться на одной странице файла.
-        // При усложнении структуры передаваемого документа,
-        // придется пробегаться по всем страницам файла
         Sheet sheet = workbook.getSheetAt(0)
         dataList = getListFromSheet(sheet)
         return dataList

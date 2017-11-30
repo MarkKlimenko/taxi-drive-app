@@ -20,19 +20,14 @@ class FillPriceTableService {
     PriceDao priceDao
 
     void fillPriceDtdTableFromExcel(InputStream fis){
-
-        List<PriceDtd> priceDtdList = excelConvertersManager.getPriceDtdList(fis)
-        priceDtdList.each {
-            PriceDtd dtd -> priceDao.addPriceDtd(dtd)
-            println dtd.toString()
+        excelConvertersManager.getPriceDtdList(fis).each {
+            priceDao.addPriceDtd(it)
         }
     }
 
     void fillPriceCtcTableFromExcel(InputStream fis){
-        List<PriceCtc> priceCtcList = excelConvertersManager.getPriceCtcList(fis)
-        priceCtcList.each {
-            PriceCtc ctc -> priceDao.addPriceCtc(ctc)
-            println ctc.toString()
+        excelConvertersManager.getPriceCtcList(fis).each {
+            priceDao.addPriceCtc(it)
         }
     }
 }

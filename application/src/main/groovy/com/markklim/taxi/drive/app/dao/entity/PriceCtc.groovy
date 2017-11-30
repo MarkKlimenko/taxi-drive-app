@@ -24,27 +24,14 @@ class PriceCtc {
     PriceCtc(@JsonProperty("cityFrom") String cityFrom,
              @JsonProperty("cityTo") String cityTo,
              @JsonProperty("price") Integer price) {
-        this.id = cityFrom.hashCode() + cityTo.hashCode()
         this.cityFrom =  cityFrom
         this.cityTo = cityTo
         this.price = price
-    }
-
-    PriceCtc(){
+        this.id = generateId()
     }
 
     void generateId(){
-        if(cityFrom == null || cityTo == null)
-            throw new IllegalStateException("distFrom and distTo fields" +
-                    " must be initialize")
         id = IdUtil.generateId(cityFrom, cityTo)
-    }
-
-    @Override
-    String toString() {
-        return "\nFrom: " + cityFrom + "\n" +
-                "To: " + cityTo + "\n" +
-                "Price: " + price + "\n"
     }
 }
 

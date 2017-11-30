@@ -10,15 +10,11 @@ class ExcelToPriceCtcConverter extends ExcelToPojoConverter<PriceCtc>{
 
     @Override
     PriceCtc createAndInitElement(List<Cell> cells) {
-        priceCtc = new PriceCtc()
-        String distFrom = cells.get(0).getStringCellValue()
-        String distTo = cells.get(1).getStringCellValue()
+        String cityFrom = cells.get(0).getStringCellValue()
+        String cityTo = cells.get(1).getStringCellValue()
         int price = cells.get(2).getNumericCellValue()
-        priceCtc.setCityFrom(distFrom)
-        priceCtc.setCityTo(distTo)
-        priceCtc.setPrice(price)
+        priceCtc = new PriceCtc(cityFrom, cityTo, price)
         priceCtc.generateId()
-        println priceCtc
         return priceCtc
     }
 }
