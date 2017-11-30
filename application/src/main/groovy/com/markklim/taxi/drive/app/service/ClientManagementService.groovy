@@ -26,7 +26,7 @@ class ClientManagementService {
         clientDao.getByLogin(id).with {
             if(it) {
                 Map clientInfo = it.asMap()
-                clientInfo << [nextRideFree: settingDao.getValueById('freeRideAmount')]
+                clientInfo << [nextRideFree: settingDao.getValue('freeRideAmount')]
                 clientInfo << [previousRides: rideDao.getPreviousRides(id, 5,3)]
                 clientInfo
             } else { [:] }

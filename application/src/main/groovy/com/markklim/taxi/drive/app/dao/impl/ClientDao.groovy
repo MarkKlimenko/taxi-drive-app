@@ -28,4 +28,8 @@ class ClientDao {
     void add(Client client) {
         universalDao.insertSingle(client)
     }
+
+    void delete(Client client) {
+        deleteSingle(Client.class, client.clientLogin)
+    }
 }
