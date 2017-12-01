@@ -8,6 +8,10 @@ javamelody:
     init-parameters:
         monitoring-path: /service/monitoring
 
+spring:
+    profiles:
+        active: local
+
 ---
 spring:
     profiles: local
@@ -15,8 +19,8 @@ spring:
         cassandra:
             keyspace-name: tda
             contact-points: localhost
-            username: cassandra
-            password: cassandra
+            username:
+            password:
 
 sso.enabled.local: false
 sso:
@@ -34,11 +38,11 @@ spring:
     profiles: prod
     data:
         cassandra:
-            keyspace-name: tda
+            keyspace-name: tda_prod
             contact-points: 172.18.0.22
             port: 9042
-            username: cassandra
-            password: cassandra
+            username:
+            password:
 
 server:
     contextPath: /tda
@@ -58,8 +62,8 @@ spring:
             keyspace-name: tda
             contact-points: localhost
             port: 9042
-            username: cassandra
-            password: cassandra
+            username:
+            password:
 
 server:
     contextPath: /tda
