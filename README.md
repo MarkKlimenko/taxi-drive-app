@@ -60,9 +60,9 @@ Travis
 Test Travis stage for new repo
 <pre>
 {
-	"clientLogin":"89147217660",
-	"firstName":"Mark",
-	"lastName":"Klimenko",
+	"clientLogin":"89147654321",
+	"firstName":"Polly",
+	"lastName":"Crocodile",
 	"ridesAmount": "5"
 }
 
