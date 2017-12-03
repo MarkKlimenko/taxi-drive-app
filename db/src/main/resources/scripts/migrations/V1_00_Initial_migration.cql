@@ -70,8 +70,10 @@ CREATE TABLE %keyspace%.setting (setting text PRIMARY KEY,
 CREATE TABLE %keyspace%.system_property (property text PRIMARY KEY,
                                          value text);
 
-
-// INITIAL DATA - need to be moved to separate file after plugin fix
-INSERT INTO %keyspace%.setting (setting, value) values ('ride_free', '10');
-
-INSERT INTO %keyspace%.system_property(property, value) values ('geoVersion', 'a3ed4431-1874-4cc8-bf1d-a3bd0ed8cd62');
+// STREET_DISTRICT_MAPPER
+CREATE TABLE %keyspace%.street_district_mapper (id int PRIMARY KEY,
+                                                districtId text,
+                                                streetId text,
+                                                building text);
+CREATE INDEX sdm_districtId ON %keyspace%.street_district_mapper (districtId);
+CREATE INDEX sdm_streetId ON %keyspace%.street_district_mapper (streetId);
