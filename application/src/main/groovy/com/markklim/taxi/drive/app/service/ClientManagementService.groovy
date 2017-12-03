@@ -26,7 +26,7 @@ class ClientManagementService {
         clientDao.getByLogin(id).with {
             if(it) {
                 Map clientInfo = it.asMap()
-                clientInfo << [nextRideFree: settingDao.getValue('freeRideAmount')]
+                clientInfo << [isRideFree: isRideFree(clientInfo.ridesAmount)]
                 clientInfo << [previousRides: rideDao.getPreviousRides(id, 5,3)]
                 clientInfo
             } else { [:] }
@@ -44,11 +44,21 @@ class ClientManagementService {
 
     Map addNewRide(Ride ride) {
         ride.state = 'active'
+
+        // TODO: Calculate price
+
         rideDao.add(ride)
         [ride: ride, status: 'OK']
     }
 
     List<Ride> getActiveRides() {
         rideDao.getActiveRides()
+    }
+
+    protected Boolean isRideFree (Integer ridesAmount) {
+        Integer freeRideAmount = settingDao.getValue('freeRideAmount') as Integer
+
+        if((ridesAmount+1) % freeRideAmount == 0) { return true }
+        false
     }
 }
