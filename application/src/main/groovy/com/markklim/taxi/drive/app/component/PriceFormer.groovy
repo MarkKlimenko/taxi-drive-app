@@ -16,7 +16,9 @@ class PriceFormer {
     DistrictMatcher districtMatcher
 
     Integer formDtdPrice(Address from, Address to) {
-        getDistrictsRidePrice(defineDistrict(from), defineDistrict(to))
+        def districtFrom = getDistrict(from)
+        def districtTo = getDistrict(to)
+        formDtdPrice(districtFrom, districtTo)
     }
 
     Integer formDtdPrice(String districtFrom, String districtTo) {
@@ -25,5 +27,9 @@ class PriceFormer {
 
     Integer formCtcPrice(String from, String to) {
         getCitiesRidePrice(from, to)
+    }
+
+    private getDistrict(Address address) {
+        address.district ? address.district : defineDistrict(address)
     }
 }

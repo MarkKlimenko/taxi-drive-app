@@ -9,7 +9,8 @@ CREATE TYPE %keyspace%.address (country text,
                                 state text,
                                 city text,
                                 street text,
-                                building text);
+                                building text,
+                                district text);
 
 // CLIENT TABLE
 CREATE TABLE %keyspace%.client (clientLogin text PRIMARY KEY,

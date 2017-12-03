@@ -15,6 +15,7 @@ class SettingDao {
 
     String getValue(String property) {
         Select select = QueryBuilder.select().from('setting')
+        select.where(QueryBuilder.eq("setting", property))
         selectSingle(select, Setting.class).value
     }
 }
