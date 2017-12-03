@@ -56,8 +56,5 @@ class Street {
 class District {
     @PrimaryKey
     String id
-    String shortName
     String name
-    String street
-    String building
 }
