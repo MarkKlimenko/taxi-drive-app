@@ -1,18 +1,18 @@
-package com.markklim.taxi.drive.app.service
+package com.markklim.taxi.drive.app.dao.impl
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
 import com.datastax.driver.core.utils.UUIDs
-import com.markklim.taxi.drive.app.model.User
-import com.markklim.taxi.drive.app.model.UserFields
+import com.markklim.taxi.drive.app.dao.entity.User
+import com.markklim.taxi.drive.app.dao.entity.UserFields
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.cassandra.core.CassandraTemplate
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
 import java.time.LocalDateTime
 
-@Service
-class UserService {
+@Component
+class UserDao {
 
     @Autowired
     private CassandraTemplate cassandraTemplate

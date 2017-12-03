@@ -1,10 +1,12 @@
-package com.markklim.taxi.drive.app.model
+package com.markklim.taxi.drive.app.dao.entity
 
 import com.datastax.driver.core.DataType
 import com.markklim.taxi.drive.app.api.adapter.LocalDateTimeAdapter
+import com.markklim.taxi.drive.app.dao.domain.Address
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import org.springframework.data.annotation.Transient
 import org.springframework.data.cassandra.mapping.CassandraType
 import org.springframework.data.cassandra.mapping.PrimaryKey
 import org.springframework.data.cassandra.mapping.Table
@@ -20,6 +22,7 @@ class Ride {
 
     @PrimaryKey
     UUID id = UUID.randomUUID()
+
     String clientLogin
 
     @CassandraType(type = DataType.Name.UDT, userTypeName = "address")
@@ -29,11 +32,31 @@ class Ride {
     Address toAddress
 
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    LocalDateTime time
+    LocalDateTime dateIn
 
-    Integer rideDuration
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    LocalDateTime rideIn
 
-    Integer carId
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    LocalDateTime rideOut
 
-    Integer menInCar
+    String carId
+
+    Integer adultInCar
+
+    Integer childrenInCar
+
+    String prepaid
+
+    String comment
+
+    Integer price
+
+    String state
+
+    @Transient
+    String distFrom
+
+    @Transient
+    String distTo
 }

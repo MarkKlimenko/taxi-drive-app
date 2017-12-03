@@ -1,7 +1,8 @@
 package com.markklim.taxi.drive.app.api.controller
 
-import com.markklim.taxi.drive.app.service.ClientService
-import com.markklim.taxi.drive.app.service.RideService
+import com.markklim.taxi.drive.app.dao.impl.ClientDao
+import com.markklim.taxi.drive.app.dao.impl.RideDao
+import com.markklim.taxi.drive.app.dao.impl.SystemPropertyDao
 import org.springframework.beans.factory.annotation.Autowired
 
 import javax.ws.rs.Consumes
@@ -17,26 +18,29 @@ import javax.ws.rs.core.MediaType
 class ReadOnlyController {
 
     @Autowired
-    ClientService clientService
+    ClientDao clientDao
 
     @Autowired
-    RideService rideService
+    RideDao rideDao
+
+    @Autowired
+    SystemPropertyDao systemPropertyDao
 
     @GET
     @Path('client/all')
     getAllClients() {
-        clientService.getAll()
+        clientDao.getAll()
     }
 
     @GET
     @Path('client/login/{login}')
     getClientByLogin(@PathParam('login') String login) {
-        clientService.getByLogin(login)
+        clientDao.getByLogin(login)
     }
 
     @GET
-    @Path('ride/all')
-    getAllRides() {
-        rideService.getAll()
+    @Path('system/property/{property}')
+    getSystemProperty(@PathParam('property') String property) {
+        systemPropertyDao.getValue(property)
     }
 }

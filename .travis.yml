@@ -1,12 +1,23 @@
 language: groovy
+dist: trusty
 
 services:
   - docker
 
+addons:
+  sonarcloud:
+    organization: hurryfox-sonar-org-key
+    token:
+      secure: $SONAR_TOKEN
+    branches:
+      - master
+
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+    - $HOME/.m2/repository
+    - $HOME/.sonar/cache
+    - $HOME/.gradle
+    - .gradle
 
 
 before_install:
@@ -19,8 +30,22 @@ before_cache:
 
 jobs:
   include:
-    - stage: Unit tests
-      script: ./gradlew test
+    - stage: Unit tests & Sonar scaner
+      script:
+        - ./gradlew test
+        - sonar-scanner
+
+    - stage: Integration tests
+      script:
+        - docker run --name cassandra -p 127.0.0.1:9042:9042 -d cassandra:3.11
+        - while ! docker run --link cassandra:cassandra --rm cassandra cqlsh cassandra; do
+              echo 'Waiting for cassandra...';
+              sleep 3;
+          done;
+
+        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations
+        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test
+        - ./gradlew integrationTest
 
     - stage: Set minor version
       script:

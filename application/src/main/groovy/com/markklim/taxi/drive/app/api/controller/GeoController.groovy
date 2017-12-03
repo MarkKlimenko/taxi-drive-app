@@ -1,27 +1,34 @@
 package com.markklim.taxi.drive.app.api.controller
 
-import com.markklim.taxi.drive.app.service.UtilService
+import com.markklim.taxi.drive.app.dao.entity.Street
+import com.markklim.taxi.drive.app.service.GeoService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.GET
+import javax.ws.rs.PUT
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
 @Controller
-@Path('service')
+@Path('api')
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-class StatusController {
+class GeoController {
     @Autowired
-    UtilService utilService
+    GeoService geoService
 
     @GET
-    @Path('status')
-    getStatus() {
-        [version: utilService.getVersion(),
-         db: utilService.getDbStatus()]
+    @Path('geo/all')
+    putClient() {
+        geoService.getGeoInfo()
+    }
+
+    @PUT
+    @Path('geo/street')
+    putRide(Street street) {
+        geoService.addStreet(street)
     }
 }

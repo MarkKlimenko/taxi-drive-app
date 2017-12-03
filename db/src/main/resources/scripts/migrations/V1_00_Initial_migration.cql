@@ -15,25 +15,32 @@ CREATE TYPE %keyspace%.address (country text,
 CREATE TABLE %keyspace%.client (clientLogin text PRIMARY KEY,
                                 firstName text,
                                 lastName text,
-                                dateOfBirth date,
-                                ridesAmount int);
+                                ridesAmount int,
+                                clientType text);
 
 // RIDE TABLE
 CREATE TABLE %keyspace%.ride (id UUID PRIMARY KEY,
                               clientLogin text,
                               fromAddress frozen <address>,
                               toAddress frozen <address>,
-                              time timestamp,
-                              rideDuration int,
-                              carId int,
-                              menInCar int);
+                              dateIn timestamp,
+                              rideIn timestamp,
+                              rideOut timestamp,
+                              carId text,
+                              adultInCar int,
+                              childrenInCar int,
+                              price int,
+                              state text,
+                              prepaid text,
+                              comment text);
 CREATE INDEX ride_clientLogin ON %keyspace%.ride (clientLogin);
-CREATE INDEX ride_time ON %keyspace%.ride (time);
+CREATE INDEX ride_dateIn ON %keyspace%.ride (dateIn);
+CREATE INDEX ride_state ON %keyspace%.ride (state);
 
 // CAR TABLE
 CREATE TABLE %keyspace%.car (carId int PRIMARY KEY,
                              carNumber text,
-                             model text);
+                             carModel text);
 
 // USER TABLE
 CREATE TABLE %keyspace%.user (userId text PRIMARY KEY,
@@ -42,3 +49,28 @@ CREATE TABLE %keyspace%.user (userId text PRIMARY KEY,
                               email text,
                               dateIn timestamp,
                               loginTime timestamp);
+
+// DIST_TO_DIST_PRICE
+CREATE TABLE %keyspace%.price_dtd (id int PRIMARY KEY,
+                                   distFrom text,
+                                   distTo text,
+                                   price int);
+
+// CITY_TO_CITY_PRICE
+CREATE TABLE %keyspace%.price_ctc (id int PRIMARY KEY,
+                                   cityFrom text,
+                                   cityTo text,
+                                   price int);
+// SETTINGS
+CREATE TABLE %keyspace%.setting (setting text PRIMARY KEY,
+                                 value text);
+
+// SYSTEM_PROPERTIES
+CREATE TABLE %keyspace%.system_property (property text PRIMARY KEY,
+                                         value text);
+
+
+// INITIAL DATA - need to be moved to separate file after plugin fix
+INSERT INTO %keyspace%.setting (setting, value) values ('ride_free', '10');
+
+INSERT INTO %keyspace%.system_property(property, value) values ('geoVersion', 'a3ed4431-1874-4cc8-bf1d-a3bd0ed8cd62');
