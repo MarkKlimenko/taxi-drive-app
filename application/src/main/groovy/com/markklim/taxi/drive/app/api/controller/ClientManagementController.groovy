@@ -27,7 +27,14 @@ class ClientManagementController {
     @POST
     @Path('ride/evaluate')
     getPrice(Ride ride) {
-       [price: calculatePrice(ride)]
+        try {
+            [status: "OK",
+             message: "",
+             price: calculatePrice(ride)]
+        } catch (IllegalArgumentException e) {
+            [status: "ERROR",
+             message: e.message]
+        }
     }
 
     @POST

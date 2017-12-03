@@ -1,69 +1,54 @@
-// INSERT price Spassk -> Adarka
+// INSERT price Спасск -> Адарка
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (143940113, 'Spassk', 'Adarka', 450)
+VALUES (-1712284993, 'Спасск', 'Адарка', 450)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Annenka
+// INSERT price Спасск -> Анненка
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (-1000200441, 'Spassk', 'Annenka', 440)
+VALUES (-120584933, 'Спасск', 'Анненка', 440)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Aleksandrovka
+// INSERT price Спасск -> Александровка
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (-1640351263, 'Spassk', 'Aleksandrovka', 630)
+VALUES (-1238888587, 'Спасск', 'Александровка', 630)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Busevka
+// INSERT price Спасск -> Бусевка
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (92332590, 'Spassk', 'Busevka', 300)
+VALUES (-1528498201, 'Спасск', 'Бусевка', 300)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Vishnevka
+// INSERT price Спасск -> Вишневка
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (2037741012, 'Spassk', 'Vishnevka', 420)
+VALUES (-127244869, 'Спасск', 'Вишневка', 420)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Vasilkovka
+// INSERT price Спасск -> Луговое
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (-309505244, 'Spassk', 'Vasilkovka', 720)
+VALUES (-1672756461, 'Спасск', 'Луговое', 320)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Gaivoron
+// INSERT price Спасск -> Арсеньев
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (680140080, 'Spassk', 'Gaivoron', 340)
+VALUES (-1888156135, 'Спасск', 'Арсеньев', 1960)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> 26km
+// INSERT price Спасск -> Анучино
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (-1810764627, 'Spassk', '26km', 600)
+VALUES (67667713, 'Спасск', 'Анучино', 2550)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Duhovskoe
+// INSERT price Спасск -> Артем
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (-1313336525, 'Spassk', 'Duhovskoe', 850)
+VALUES (1981004752, 'Спасск', 'Артем', 3580)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Drozdov
+// INSERT price Спасск -> Барабаш
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (1778366873, 'Spassk', 'Drozdov', 670)
+VALUES (-1244484369, 'Спасск', 'Барабаш', 4100)
 IF NOT EXISTS;
 
-// INSERT price Spassk -> Evseevka
+// INSERT price Спасск -> Дальнереченск
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (-1077475023, 'Spassk', 'Evseevka', 510)
-IF NOT EXISTS;
-
-// INSERT price Spassk -> Arsenev
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (-881066397, 'Spassk', 'Arsenev', 1960)
-IF NOT EXISTS;
-
-// INSERT price Spassk -> Anuchino
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (2086611620, 'Spassk', 'Anuchino', 2550)
-IF NOT EXISTS;
-
-// INSERT price Spassk -> Luchegorsk
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price)
-VALUES (954479218, 'Spassk', 'Luchegorsk', 4430)
+VALUES (812563707, 'Спасск', 'Дальнереченск', 3290)
 IF NOT EXISTS;
