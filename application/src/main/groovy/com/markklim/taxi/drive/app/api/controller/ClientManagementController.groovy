@@ -29,7 +29,7 @@ class ClientManagementController {
     getPrice(Ride ride) {
         try {
             [status: "OK",
-             price: calculatePrice(ride)]
+             price: calculatePrice(ride) as String]
         } catch (IllegalArgumentException e) {
             [status: "ERROR",
              message: e.message]

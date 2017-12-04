@@ -69,11 +69,3 @@ CREATE TABLE %keyspace%.setting (setting text PRIMARY KEY,
 // SYSTEM_PROPERTIES
 CREATE TABLE %keyspace%.system_property (property text PRIMARY KEY,
                                          value text);
-
-// STREET_DISTRICT_MAPPER
-CREATE TABLE %keyspace%.street_district_mapper (id int PRIMARY KEY,
-                                                districtId text,
-                                                streetId text,
-                                                building text);
-CREATE INDEX sdm_districtId ON %keyspace%.street_district_mapper (districtId);
-CREATE INDEX sdm_streetId ON %keyspace%.street_district_mapper (streetId);

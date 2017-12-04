@@ -30,7 +30,7 @@ CREATE TABLE %keyspace%.district (id text PRIMARY KEY,
 CREATE INDEX district_name ON %keyspace%.district (name);
 
 // STREET_DISTRICT_MAPPER
-CREATE TABLE %keyspace%.street_district_mapper (id int PRIMARY KEY,
+CREATE TABLE %keyspace%.street_district_mapper (id UUID PRIMARY KEY,
                                                 districtId text,
                                                 streetId text,
                                                 building text);

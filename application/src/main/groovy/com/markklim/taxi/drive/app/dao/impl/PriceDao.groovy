@@ -19,7 +19,12 @@ class PriceDao {
         select.where(QueryBuilder.eq('id', generateId(from,to)))
 
         // TODO: Exception
-        universalDao.selectSingle(select, PriceDtd.class).price
+        PriceDtd priceDtd =  universalDao.selectSingle(select, PriceDtd.class)
+        if(priceDtd) {
+            return priceDtd.price
+        } else {
+            throw new IllegalArgumentException('no_such_district_in_db')
+        }
     }
 
     Integer getCitiesRidePrice(String from, String to) {
