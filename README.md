@@ -93,8 +93,9 @@ Test Travis stage for new repo
 
 docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod -Dspring.data.cassandra.contact-points=172.18.0.22" markklim/taxi-drive-app:0.1
 docker run -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod -Dspring.data.cassandra.contact-points=172.18.0.22" markklim/taxi-drive-app:0.1
-
 docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod" markklim/taxi-drive-app:0.1
+
+docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod -Dspring.data.cassandra.username=XXX -Dspring.data.cassandra.password=XXX" markklim/taxi-drive-app:0.1
 
 CASSANDRA CQLSH:
 docker run -it --link cassandra:cassandra --rm cassandra cqlsh cassandra <some commands for example auth -u cassandra -p cassandra>

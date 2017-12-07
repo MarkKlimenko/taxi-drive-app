@@ -69,7 +69,7 @@ server:
     contextPath: /tda
 
 javamelody:
-    enabled: false
+    enabled: true
 
 sso.enabled.integration: false
 sso:
