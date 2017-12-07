@@ -23,3 +23,12 @@ CREATE TABLE %keyspace%.street (id text PRIMARY KEY,
                                 city text);
 CREATE INDEX street_name ON %keyspace%.street (name);
 CREATE INDEX street_city ON %keyspace%.street (city);
+
+// DISTRICT
+CREATE TABLE %keyspace%.district (id text PRIMARY KEY,
+                                  shortName text,
+                                  name text,
+                                  street text,
+                                  building text);
+CREATE INDEX district_name ON %keyspace%.district (name);
+CREATE INDEX district_street ON %keyspace%.district (street);

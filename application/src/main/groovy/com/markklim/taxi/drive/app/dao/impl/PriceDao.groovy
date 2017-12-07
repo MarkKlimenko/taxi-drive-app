@@ -29,18 +29,17 @@ class PriceDao {
         Select select = QueryBuilder.select().from('price_dtd')
         select.where(QueryBuilder.eq('id', generateId(from,to)))
 
+        // TODO: Exception
         universalDao.selectSingle(select, PriceDtd.class).price
     }
 
     Integer getCitiesRidePrice(String from, String to) {
         Select select = QueryBuilder.select().from('price_ctc')
         select.where(QueryBuilder.eq('id', generateId(from,to)))
-
         universalDao.selectSingle(select, PriceCtc.class).price
     }
 
-    // TODO: Change to proper implementation
-    protected Integer generateId(String distFrom, String distTo) {
-        distFrom.hashCode() + distTo.hashCode()
+    private Integer generateId(String from, String to) {
+        [from, to].sort().hashCode()
     }
 }
