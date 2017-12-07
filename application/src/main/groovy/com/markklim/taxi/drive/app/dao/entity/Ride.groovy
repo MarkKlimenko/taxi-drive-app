@@ -53,10 +53,4 @@ class Ride {
     Integer price
 
     String state
-
-    @Transient
-    String distFrom
-
-    @Transient
-    String distTo
 }

@@ -48,3 +48,16 @@ class Street {
     String name
     String city
 }
+
+@Table('district')
+@Canonical
+@EqualsAndHashCode(includes = ['id'])
+@ToString(includeNames = true, includeFields = true)
+class District {
+    @PrimaryKey
+    String id
+    String shortName
+    String name
+    String street
+    String building
+}
