@@ -11,7 +11,7 @@ abstract class ExcelToPojoConverter<T> {
 
     abstract T createAndInitElement(List<Cell> cells)
 
-    public List<T> getDataFromExcel(InputStream fis){
+    List<T> getDataFromExcel(InputStream fis){
         List<T> dataList
         workbook = new XSSFWorkbook(fis)
         Sheet sheet = workbook.getSheetAt(0)

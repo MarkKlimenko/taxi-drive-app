@@ -2,17 +2,15 @@ package com.markklim.taxi.drive.app.service.settings
 
 import com.markklim.taxi.drive.app.component.file_converters.ExcelConvertersManager
 
-import com.markklim.taxi.drive.app.dao.entity.PriceDtd
-import com.markklim.taxi.drive.app.dao.entity.PriceCtc
 import com.markklim.taxi.drive.app.dao.impl.PriceDao
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 /**
  * Created by viktor on 02.11.17.
  */
 @Service
-class FillPriceTableService {
+class RateService {
     @Autowired
     ExcelConvertersManager excelConvertersManager
 

@@ -27,11 +27,7 @@ class PriceCtc {
         this.cityFrom =  cityFrom
         this.cityTo = cityTo
         this.price = price
-        this.id = generateId()
-    }
-
-    void generateId(){
-        id = IdUtil.generateId(cityFrom, cityTo)
+        this.id = IdUtil.generateId(cityFrom, cityTo)
     }
 }
 

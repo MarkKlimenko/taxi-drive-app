@@ -27,10 +27,6 @@ class PriceDtd {
         this.distFrom =  distFrom
         this.distTo = distTo
         this.price = price
-        this.id = generateId()
-    }
-
-    void generateId(){
-        id = IdUtil.generateId(distFrom, distTo)
+        this.id = IdUtil.generateId(distFrom, distTo)
     }
 }

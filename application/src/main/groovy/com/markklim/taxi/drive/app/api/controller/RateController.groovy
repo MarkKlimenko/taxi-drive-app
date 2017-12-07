@@ -1,7 +1,7 @@
 package com.markklim.taxi.drive.app.api.controller
 
 
-import com.markklim.taxi.drive.app.service.settings.FillPriceTableService
+import com.markklim.taxi.drive.app.service.settings.RateService
 import org.glassfish.jersey.media.multipart.FormDataParam
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -18,18 +18,18 @@ import javax.ws.rs.core.MediaType
 @Consumes(MediaType.MULTIPART_FORM_DATA)
 class RateController {
     @Autowired
-    FillPriceTableService fillPriceTableService
+    RateService fillPriceTableService
 
     @POST
     @Path('dtd/file/load')
-    priceDtdListFile(@FormDataParam("file") InputStream inputFile){
+    priceDtd(@FormDataParam("file") InputStream inputFile){
         fillPriceTableService.fillPriceDtdTableFromExcel(inputFile)
         [status: 'success']
     }
 
     @POST
     @Path('ctc/file/load')
-    priceCtcListFile(@FormDataParam("file") InputStream inputFile){
+    priceCtc(@FormDataParam("file") InputStream inputFile){
         fillPriceTableService.fillPriceCtcTableFromExcel(inputFile)
         [status: 'success']
     }
