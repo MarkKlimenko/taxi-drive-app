@@ -76,12 +76,12 @@ jobs:
               sshpass -p $DEPLOYER_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOYER_USER@vostok.systems docker rm tda || true;
           sshpass -p $DEPLOYER_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOYER_USER@vostok.systems docker pull markklim/taxi-drive-app:0.1;
           sshpass -p $DEPLOYER_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOYER_USER@vostok.systems
-              'docker run
+              docker run
               --restart always
               --name tda
               --net dockernet
               --ip 172.18.0.21
               -p 8087:8080
-              -e JAVA_OPTS="-Dspring.profiles.active=prod -Dspring.data.cassandra.username=$CASSANDRA_USER -Dspring.data.cassandra.password=$CASSANDRA_PASSWORD"
+              -e JAVA_OPTS=\"-Dspring.profiles.active=prod -Dspring.data.cassandra.username=$CASSANDRA_USER -Dspring.data.cassandra.password=$CASSANDRA_PASSWORD\"
               -d
-              markklim/taxi-drive-app:0.1';
+              markklim/taxi-drive-app:0.1;
