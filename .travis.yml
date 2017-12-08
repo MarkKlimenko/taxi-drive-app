@@ -4,6 +4,8 @@ dist: trusty
 services:
   - docker
 
+sudo: true
+
 addons:
   sonarcloud:
     organization: hurryfox-sonar-org-key
@@ -28,38 +30,58 @@ install: true
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 
+
+stages:
+  - name: unit_tests_and_sonar_scaner
+  - name: integration_tests
+  - name: set_minor_version
+    if: branch = release
+  - name: release_docker
+    if: branch = release
+  - name: deploy_prod
+    if: branch = deploy/prod
+
+
 jobs:
   include:
-    - stage: Unit tests & Sonar scaner
-      script:
-        - ./gradlew test
-        - sonar-scanner
+  - stage: unit_tests_and_sonar_scaner
+    script:
+      - ./gradlew test
+      - sonar-scanner
 
-    - stage: Integration tests
-      script:
-        - docker run --name cassandra -p 127.0.0.1:9042:9042 -d cassandra:3.11
-        - while ! docker run --link cassandra:cassandra --rm cassandra cqlsh cassandra; do
-              echo 'Waiting for cassandra...';
-              sleep 3;
-          done;
+  - stage: integration_tests
+    script:
+      - docker run --name cassandra -p 127.0.0.1:9042:9042 -d cassandra:3.11
+      - while ! docker run --link cassandra:cassandra --rm cassandra cqlsh cassandra; do
+            echo 'Waiting for cassandra...';
+            sleep 3;
+        done;
+      - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations
+      - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test
+      - ./gradlew integrationTest
 
-        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations
-        - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test
-        - ./gradlew integrationTest
+  - stage: set_minor_version
+    script:
+      - ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
 
-    - stage: Set minor version
-      script:
-        - if [ "$TRAVIS_BRANCH" == "release" ]; then
-            ./gradlew setMinorVersion -PminorVersion=$TRAVIS_BUILD_NUMBER -PciBranchName=$TRAVIS_BRANCH -PciCredentials=$CREDENTIALS -PciProjectPath=$PROJECT_PATH;
-          fi
+  - stage: release_docker
+    script:
+      - ./gradlew build;
+      - ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
 
-    - stage: Release to docker
-      script:
-        - if [ "$TRAVIS_BRANCH" == "release" ]; then
-            ./gradlew build;
-            ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
-          fi
-
-
-
-
+  - stage: deploy_prod
+    script:
+        - sudo apt-get install -qq sshpass;
+          sshpass -p $DEPLOYER_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOYER_USER@vostok.systems docker stop tda || true &&
+              sshpass -p $DEPLOYER_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOYER_USER@vostok.systems docker rm tda || true;
+          sshpass -p $DEPLOYER_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOYER_USER@vostok.systems docker pull markklim/taxi-drive-app:0.1;
+          sshpass -p $DEPLOYER_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOYER_USER@vostok.systems
+              docker run
+              --restart always
+              --name tda
+              --net dockernet
+              --ip 172.18.0.21
+              -p 8087:8080
+              -e JAVA_OPTS=\"-Dspring.profiles.active=prod -Dspring.data.cassandra.username=$CASSANDRA_USER -Dspring.data.cassandra.password=$CASSANDRA_PASSWORD\"
+              -d
+              markklim/taxi-drive-app:0.1;

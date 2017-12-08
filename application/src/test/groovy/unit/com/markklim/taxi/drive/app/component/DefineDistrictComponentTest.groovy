@@ -15,9 +15,9 @@ class DefineDistrictComponentTest {
          [new Address(null, null, "Spassk", "Pushkina", "22"), "District"]]
     }
 
-    @Test(dataProvider = "define_district_test")
-    void defineDistrict(Address address, String expDistrict) throws Exception {
-        new DistrictMatcher().defineDistrict(address)
-                .with { assertEquals(it, expDistrict) }
-    }
+//    @Test(dataProvider = "define_district_test")
+//    void defineDistrict(Address address, String expDistrict) throws Exception {
+//        new DistrictMatcher().defineDistrict(address)
+//                .with { assertEquals(it, expDistrict) }
+//    }
 }
