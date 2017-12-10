@@ -47,7 +47,12 @@ dependencies {
 
             'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
 
-            'systems.vostok.tda:tda-district-mapper:0.1.2'
+            'systems.vostok.tda:tda-district-mapper:0.1.2',
+            'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
+
+            'org.apache.poi:poi-ooxml:3.15',
+
+            'org.glassfish.jersey.media:jersey-media-multipart:2.19'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.8.RELEASE',
                 'org.testng:testng:6.11'

@@ -2,6 +2,7 @@ package com.markklim.taxi.drive.app.dao.entity
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.markklim.taxi.drive.app.utils.IdUtil
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -23,9 +24,9 @@ class PriceDtd {
     PriceDtd(@JsonProperty("distFrom") String distFrom,
              @JsonProperty("distTo") String distTo,
              @JsonProperty("price") Integer price) {
-        this.id = distFrom.hashCode() + distTo.hashCode()
         this.distFrom =  distFrom
         this.distTo = distTo
         this.price = price
+        this.id = IdUtil.generateId(distFrom, distTo)
     }
 }

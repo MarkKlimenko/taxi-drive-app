@@ -26,7 +26,7 @@ class ClientDao {
     }
 
     void add(Client client) {
-        insertSingle(client)
+        universalDao.insertSingle(client)
     }
 
     void delete(Client client) {
