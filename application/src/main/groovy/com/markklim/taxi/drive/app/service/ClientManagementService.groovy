@@ -39,7 +39,7 @@ class ClientManagementService {
     }
 
     Integer calculatePrice(Ride ride) {
-        if (ride.fromAddress.city == ride.toAddress.city) {
+        if (ride.fromAddress.city == ride.toAddress.city && ride.toAddress.city == 'Спасск-Дальний') {
             calculateDtdPrice(ride)
         } else {
             priceFormer.formCtcPrice(ride.fromAddress.city, ride.toAddress.city)

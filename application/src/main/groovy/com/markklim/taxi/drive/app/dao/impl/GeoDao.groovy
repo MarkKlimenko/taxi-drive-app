@@ -32,6 +32,11 @@ class GeoDao {
         selectAll(select, Street.class)
     }
 
+    List<District> getAllDistricts() {
+        Select select = QueryBuilder.select().from('district')
+        selectAll(select, District.class)
+    }
+
     List<District> getDistrictsByStreet(String street) {
         Select select = QueryBuilder.select().from('district')
         select.where(QueryBuilder.eq("street", street))
@@ -44,7 +49,36 @@ class GeoDao {
         selectSingle(select, Street.class)
     }
 
+
+    void addState(State state) {
+        insertSingle(state)
+    }
+
+    void addCity(City city) {
+        insertSingle(city)
+    }
+
     void addStreet(Street street) {
         insertSingle(street)
+    }
+
+    void addDistrict(District district) {
+        insertSingle(district)
+    }
+
+    void deleteState(State state) {
+        deleteSingle(State.class, state.id)
+    }
+
+    void deleteCity(City city) {
+        deleteSingle(City.class, city.id)
+    }
+
+    void deleteStreet(Street street) {
+        deleteSingle(Street.class, street.id)
+    }
+
+    void deleteDistrict(District district) {
+        deleteSingle(District.class, district.id)
     }
 }
