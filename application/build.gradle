@@ -32,6 +32,7 @@ war {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -44,6 +45,9 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-security:1.5.7.RELEASE',
             'org.keycloak:keycloak-spring-security-adapter:3.2.0.Final',
 
+            'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
+
+            'systems.vostok.tda:tda-district-mapper:0.1.2',
             'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
 
             'org.apache.poi:poi-ooxml:3.15',

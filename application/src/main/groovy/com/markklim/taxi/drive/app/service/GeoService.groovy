@@ -19,7 +19,8 @@ class GeoService {
         [geoVersion : systemPropertyDao.getValue('geoVersion').value,
          states : geoDao.getAllStates(),
          cities : geoDao.getAllCities(),
-         streets: geoDao.getAllStreets()]
+         streets: geoDao.getAllStreets(),
+         districts: geoDao.getAllDistricts()]
     }
 
     Map addState() {
@@ -32,11 +33,11 @@ class GeoService {
 
     Map addStreet(Street street) {
         geoDao.addStreet(street)
-        refreshGeoVersion()
+        updateGeoVersion()
         [state: 'success']
     }
 
-    void refreshGeoVersion() {
+    void updateGeoVersion() {
         systemPropertyDao.add([property: 'geoVersion',
                                value   : UUID.randomUUID().toString()] as SystemProperty)
     }

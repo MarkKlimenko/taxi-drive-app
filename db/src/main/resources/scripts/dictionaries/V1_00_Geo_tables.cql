@@ -26,9 +26,14 @@ CREATE INDEX street_city ON %keyspace%.street (city);
 
 // DISTRICT
 CREATE TABLE %keyspace%.district (id text PRIMARY KEY,
-                                  shortName text,
-                                  name text,
-                                  street text,
-                                  building text);
+                                  name text);
 CREATE INDEX district_name ON %keyspace%.district (name);
-CREATE INDEX district_street ON %keyspace%.district (street);
+
+// STREET_DISTRICT_MAPPER
+CREATE TABLE %keyspace%.street_district_mapper (id UUID PRIMARY KEY,
+                                                districtId text,
+                                                streetId text,
+                                                building text);
+CREATE INDEX sdm_districtId ON %keyspace%.street_district_mapper (districtId);
+CREATE INDEX sdm_streetId ON %keyspace%.street_district_mapper (streetId);
+
