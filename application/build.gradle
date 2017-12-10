@@ -32,9 +32,7 @@ war {
 
 repositories {
     mavenCentral()
-    maven {
-        url 'https://dl.bintray.com/hurryfox/hurryfox/'
-    }
+    jcenter()
 }
 
 dependencies {
@@ -49,7 +47,7 @@ dependencies {
 
             'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
 
-            'systems.vostok.tda:tda-district-mapper:0.1.1'
+            'systems.vostok.tda:tda-district-mapper:0.1.2'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.8.RELEASE',
                 'org.testng:testng:6.11'
