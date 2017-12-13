@@ -37,18 +37,13 @@ class GeoDao {
         selectAll(select, District.class)
     }
 
-    List<District> getDistrictsByStreet(String street) {
-        Select select = QueryBuilder.select().from('district')
-        select.where(QueryBuilder.eq("street", street))
-        selectAll(select, District.class)
-    }
-
-    Street getStreetIdByName(String name) {
+    Street getStreetByNameAndCity(String streetName, String city) {
         Select select = QueryBuilder.select().from('street')
-        select.where(QueryBuilder.eq("name", name))
+        select.where(QueryBuilder.eq('name', streetName))
+                .and(QueryBuilder.gt('city', city))
+
         selectSingle(select, Street.class)
     }
-
 
     void addState(State state) {
         insertSingle(state)

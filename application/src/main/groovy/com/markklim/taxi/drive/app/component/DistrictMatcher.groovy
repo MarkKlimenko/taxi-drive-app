@@ -1,55 +1,33 @@
 package com.markklim.taxi.drive.app.component
 
 import com.markklim.taxi.drive.app.dao.domain.Address
-import com.markklim.taxi.drive.app.dao.entity.District
+import com.markklim.taxi.drive.app.dao.entity.StreetDistrictMapper
 import com.markklim.taxi.drive.app.dao.impl.GeoDao
+import com.markklim.taxi.drive.app.dao.impl.StreetDistrictDao
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import systems.vostok.tda.service.DistrictMapperService
 
 @Component
 class DistrictMatcher {
 
     @Autowired
-    @Delegate
+    StreetDistrictDao streetDistrictDao
+
+    @Autowired
     GeoDao geoDao
 
+    @Autowired
+    DistrictMapperService districtMapperService
+
+    String getDistrictId(Address address) {
+        address.district ?: defineDistrict(address)
+    }
+
     String defineDistrict(Address address) {
-        def street = getStreetIdByName(address.street)
-        throwEnterDistrictIfNull(street)
-        List<District> districts = getDistrictsByStreet(street.id)
-        throwEnterDistrictIfNull(districts)
-        if (districts.size() == 1) {
-            districts[0].shortName
-        } else if (districts.size() > 1) {
-            def highLimit = findBuildingRange(districts, address.building.toInteger())
-            districts.find {it.building.toInteger() == highLimit}.shortName
-        }
-    }
+        List<StreetDistrictMapper> mapper = geoDao.getStreetByNameAndCity(address.street, 'spd').id
+                .with { streetDistrictDao.getByStreetId(it) }
 
-    private throwEnterDistrictIfNull(Object obj) {
-        if (!obj) {
-            throw new IllegalArgumentException('enter_district_implicitly')
-        }
-    }
-
-    private findBuildingRange(List<District> districts, Integer searchBuilding) {
-        def highLimit = 0
-        districts.each {
-            def currentBuilding = it.building.toInteger()
-            if (searchBuilding == currentBuilding) {
-                highLimit = currentBuilding
-                return
-            }
-            if (highLimit == 0) {
-                if (searchBuilding < currentBuilding) {
-                    highLimit = currentBuilding
-                }
-            } else {
-                if (searchBuilding < currentBuilding && currentBuilding < highLimit) {
-                    highLimit = currentBuilding
-                }
-            }
-        }
-        highLimit
+        districtMapperService.getDistrict(mapper, address as Map)
     }
 }
