@@ -20,12 +20,14 @@ class DistrictMatcher {
     @Autowired
     DistrictMapperService districtMapperService
 
+    static final String DEFAULT_CITY = 'spd'
+
     String getDistrictId(Address address) {
         address.district ?: defineDistrict(address)
     }
 
     String defineDistrict(Address address) {
-        List<StreetDistrictMapper> mapper = geoDao.getStreetByNameAndCity(address.street, 'spd').id
+        List<StreetDistrictMapper> mapper = geoDao.getStreetByNameAndCity(address.street, DEFAULT_CITY).id
                 .with { streetDistrictDao.getByStreetId(it) }
 
         districtMapperService.getDistrict(mapper, address as Map)

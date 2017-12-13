@@ -22,8 +22,9 @@ class PriceFormer {
     @Autowired
     ClientDao clientDao
 
-    private static final VIP_DISCOUNT = 0.2
-    private static final FREE_DISCOUNT = 1
+    static final Double VIP_DISCOUNT = 0.2
+    static final Double FREE_DISCOUNT = 1
+    static final Double ZERO_DISCOUNT = 0
 
     Integer calculateDtdPrice(Ride ride) {
         Double discount = calculateDiscount(ride.clientLogin)
@@ -31,6 +32,7 @@ class PriceFormer {
         if (discount == FREE_DISCOUNT) {
             0
         } else {
+
             priceDao.getDistrictsRidePrice(districtMatcher.getDistrictId(ride.fromAddress), districtMatcher.getDistrictId(ride.toAddress)) * (1 - discount)
         }
     }
@@ -54,6 +56,6 @@ class PriceFormer {
                 return VIP_DISCOUNT
             }
         }
-        0
+        ZERO_DISCOUNT
     }
 }
