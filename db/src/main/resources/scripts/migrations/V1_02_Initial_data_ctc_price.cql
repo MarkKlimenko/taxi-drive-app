@@ -1,3 +1,4 @@
+// TODO: REWRITE
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1712284993, 'Спасск', 'Адарка', 450);
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-120584933, 'Спасск', 'Анненка', 440);
 INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1238888587, 'Спасск', 'Александровка', 630);

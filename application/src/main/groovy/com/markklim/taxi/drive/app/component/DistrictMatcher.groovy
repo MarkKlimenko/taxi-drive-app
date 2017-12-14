@@ -1,6 +1,7 @@
 package com.markklim.taxi.drive.app.component
 
 import com.markklim.taxi.drive.app.dao.domain.Address
+import com.markklim.taxi.drive.app.dao.entity.Street
 import com.markklim.taxi.drive.app.dao.entity.StreetDistrictMapper
 import com.markklim.taxi.drive.app.dao.impl.GeoDao
 import com.markklim.taxi.drive.app.dao.impl.StreetDistrictDao
@@ -27,9 +28,13 @@ class DistrictMatcher {
     }
 
     String defineDistrict(Address address) {
-        List<StreetDistrictMapper> mapper = geoDao.getStreetByNameAndCity(address.street, DEFAULT_CITY).id
-                .with { streetDistrictDao.getByStreetId(it) }
+        Street street =  geoDao.getStreetByNameAndCity(address.street, DEFAULT_CITY)
 
+        if(!street) {
+            throw new IllegalArgumentException('no_such_street_in_db')
+        }
+
+        List<StreetDistrictMapper> mapper = streetDistrictDao.getByStreetId(street.id)
         districtMapperService.getDistrict(mapper, address as Map)
     }
 }

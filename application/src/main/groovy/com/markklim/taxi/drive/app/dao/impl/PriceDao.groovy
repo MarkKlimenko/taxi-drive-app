@@ -14,9 +14,9 @@ class PriceDao {
     @Autowired
     UniversalDao universalDao
 
-    Integer getDistrictsRidePrice(String from, String to) {
+    Integer getDistrictsRidePrice(String districtFrom, String districtTo) {
         Select select = QueryBuilder.select().from('price_dtd')
-        select.where(QueryBuilder.eq('id', generateId(from, to)))
+        select.where(QueryBuilder.eq('id', generateId(districtFrom, districtTo)))
 
         // TODO: Exception
         PriceDtd priceDtd = universalDao.selectSingle(select, PriceDtd.class)

@@ -32,8 +32,9 @@ class PriceFormer {
         if (discount == FREE_DISCOUNT) {
             0
         } else {
-
-            priceDao.getDistrictsRidePrice(districtMatcher.getDistrictId(ride.fromAddress), districtMatcher.getDistrictId(ride.toAddress)) * (1 - discount)
+            String districtFrom = districtMatcher.getDistrictId(ride.fromAddress)
+            String districtTo = districtMatcher.getDistrictId(ride.toAddress)
+            priceDao.getDistrictsRidePrice(districtFrom, districtTo) * (1 - discount)
         }
     }
 

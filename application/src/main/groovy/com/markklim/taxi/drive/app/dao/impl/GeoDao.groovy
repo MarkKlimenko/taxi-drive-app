@@ -40,7 +40,8 @@ class GeoDao {
     Street getStreetByNameAndCity(String streetName, String city) {
         Select select = QueryBuilder.select().from('street')
         select.where(QueryBuilder.eq('name', streetName))
-                .and(QueryBuilder.gt('city', city))
+                .and(QueryBuilder.eq('city', city))
+        select.allowFiltering()
 
         selectSingle(select, Street.class)
     }
