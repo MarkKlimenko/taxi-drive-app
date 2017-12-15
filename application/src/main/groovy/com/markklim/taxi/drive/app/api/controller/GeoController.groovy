@@ -1,6 +1,7 @@
 package com.markklim.taxi.drive.app.api.controller
 
 import com.markklim.taxi.drive.app.dao.entity.Street
+import com.markklim.taxi.drive.app.dao.impl.GeoDao
 import com.markklim.taxi.drive.app.service.GeoService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -21,10 +22,31 @@ class GeoController {
     @Autowired
     GeoService geoService
 
+    @Autowired
+    GeoDao geoDao
+
     @GET
     @Path('geo/all')
     putClient() {
         geoService.getGeoInfo()
+    }
+
+    @GET
+    @Path('geo/city/all')
+    getAllCities() {
+        geoDao.getAllCities()
+    }
+
+    @GET
+    @Path('geo/street/all')
+    getAllStreets() {
+        geoDao.getAllStreets()
+    }
+
+    @GET
+    @Path('geo/district/all')
+    getAllDistricts() {
+        geoDao.getAllDistricts()
     }
 
     @PUT
