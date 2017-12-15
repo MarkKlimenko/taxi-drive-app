@@ -21,7 +21,7 @@ class DistrictMatcher {
     @Autowired
     DistrictMapperService districtMapperService
 
-    static final String DEFAULT_CITY = 'spd'
+    static final String DEFAULT_CITY = 'spa'
 
     String getDistrictId(Address address) {
         address.district ?: defineDistrict(address)
@@ -34,7 +34,9 @@ class DistrictMatcher {
             throw new IllegalArgumentException('no_such_street_in_db')
         }
 
-        List<StreetDistrictMapper> mapper = streetDistrictDao.getByStreetId(street.id)
-        districtMapperService.getDistrict(mapper, address as Map)
+        List<Map> mapper = streetDistrictDao.getByStreetId(street.id)
+                .collect {  [streetId: it.streetId, building: it.building, districtId: it.districtId] }
+
+        districtMapperService.getDistrict(mapper, [streetId: street.id, building: address.building])
     }
 }
