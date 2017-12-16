@@ -1,5 +1,6 @@
 package com.markklim.taxi.drive.app.service
 
+import com.markklim.taxi.drive.app.dao.entity.City
 import com.markklim.taxi.drive.app.dao.entity.Street
 import com.markklim.taxi.drive.app.dao.entity.SystemProperty
 import com.markklim.taxi.drive.app.dao.impl.GeoDao
@@ -27,8 +28,16 @@ class GeoService {
         [:]
     }
 
-    Map addCity() {
-        [:]
+    Map addCity(City city) {
+        geoDao.addCity(city)
+        updateGeoVersion()
+        [state: 'success']
+    }
+
+    Map deleteCity(City city) {
+        geoDao.deleteCity(city)
+        updateGeoVersion()
+        [state: 'success']
     }
 
     Map addStreet(Street street) {

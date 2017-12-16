@@ -1,5 +1,6 @@
 package com.markklim.taxi.drive.app.api.controller
 
+import com.markklim.taxi.drive.app.dao.entity.City
 import com.markklim.taxi.drive.app.dao.entity.Street
 import com.markklim.taxi.drive.app.dao.impl.GeoDao
 import com.markklim.taxi.drive.app.service.GeoService
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
 import javax.ws.rs.Consumes
+import javax.ws.rs.DELETE
 import javax.ws.rs.GET
 import javax.ws.rs.POST
 import javax.ws.rs.PUT
@@ -50,9 +52,21 @@ class GeoController {
     }
 
     @PUT
+    @Path('geo/city')
+    putCity(City city) {
+        geoService.addCity(city)
+    }
+
+    @PUT
     @Path('geo/street')
     putRide(Street street) {
         geoService.addStreet(street)
+    }
+
+    @DELETE
+    @Path('geo/city')
+    deleteCity(City city) {
+        geoService.deleteCity(city)
     }
 
     @POST
