@@ -40,6 +40,12 @@ class GeoService {
         [state: 'success']
     }
 
+    Map deleteStreet(Street street) {
+        geoDao.deleteStreet(street)
+        updateGeoVersion()
+        [state: 'success']
+    }
+
     Map addStreet(Street street) {
         geoDao.addStreet(street)
         updateGeoVersion()

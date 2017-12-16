@@ -69,6 +69,12 @@ class GeoController {
         geoService.deleteCity(city)
     }
 
+    @DELETE
+    @Path('geo/street')
+    deleteStreet(Street street) {
+        geoService.deleteStreet(street)
+    }
+
     @POST
     @Path('geo/version/update')
     updateGeoVersion() {
