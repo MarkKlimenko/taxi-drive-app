@@ -1,4 +1,4 @@
-// STREETS (IN PROCESS)
+// STREETS
 INSERT INTO %keyspace%.street (id, name, city) VALUES ('1izap', '1-й Западный пер.', 'spa');
 INSERT INTO %keyspace%.street (id, name, city) VALUES ('1irab', '1-й Рабочий пер.', 'spa');
 INSERT INTO %keyspace%.street (id, name, city) VALUES ('1agr', '1-я Гражданская', 'spa');
@@ -104,4 +104,109 @@ INSERT INTO %keyspace%.street (id, name, city) VALUES ('lesn', 'Лесная', '
 INSERT INTO %keyspace%.street (id, name, city) VALUES ('lin', 'Линейная', 'spa');
 INSERT INTO %keyspace%.street (id, name, city) VALUES ('lozov', 'Лозовая', 'spa');
 INSERT INTO %keyspace%.street (id, name, city) VALUES ('lomon', 'Ломоносова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('matr', 'Матросова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('mayak', 'Маяковского', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('meln', 'Мельничная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('malnper', 'Мельничный пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('mira', 'Мира', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('michail', 'Михайловская', 'spa');
 
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('michur', 'Мичурина', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('mozhay', 'Можайского', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('molod', 'Молодёжная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('mosk', 'Московская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('muchin', 'Мухинский', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nabere', 'Набережная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nagorn', 'Нагорная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nadrec', 'Надреченская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nadrper', 'Надреченский пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('narodn', 'Народная', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nararm', 'Народоармейская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nachim', 'Нахимова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nekras', 'Некрасова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nikol', 'Николаевская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nikper', 'Николаевский пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('nov', 'Новая', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('olkash', 'Олега Кошевого', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('ovrash', 'Овражный', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('ozern', 'Озерная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('oktyabr', 'Октябрьская', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('oficers', 'Офицерский пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('pamoroz', 'Павлика Морозова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('parkov', 'Парковая', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('partiz', 'Партизанская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('parper', 'Партизанский пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('parf', 'Парфёнова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('pervom', 'Первомайская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('pioner', 'Пионерская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('planern', 'Планерная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('pogran', 'Пограничная', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('podgorn', 'Подгорная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('podsobn', 'Подсобная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('pokus', 'Покуса', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('polev', 'Полевая', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('pochtper', 'Почтовый пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('prigor', 'Пригородный', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('promor', 'Приморская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('pesch', 'Песчанный пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('proleta', 'Пролетарская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('promish', 'Промышленная', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('puschin', 'Пушкинская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('repin', 'Репина', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('ross', 'Российская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('svper', 'Свободный пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('sklads', 'Складская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('sovetsk', 'Советская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('sovchoz', 'Совхозный пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('sologub', 'Сологуба', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('sopochn', 'Сопочная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('sosnov', 'Сосновая', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('spass', 'Спасская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('spper', 'Спасский пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('sport', 'Спортивная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('stach', 'Стахановский пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('stepn', 'Степная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('studper', 'Студенческий пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('suvor', 'Суворовская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('such', 'Сухановская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('stroyper', 'Строительный пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('torg', 'Торговая', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('transp', 'Транспортная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('tupik', 'Тупиковый пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('uborev', 'Уборевича', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('urosh', 'Урожайная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('fabrich', 'Фабричная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('fadeeva', 'Фадеева', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chabar', 'Хабаровская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chalt', 'Халтурина', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chank', 'Ханкайская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('hasan', 'Хасанская', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chresh', 'Хрещатинская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chrust', 'Хрустальная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('cement', 'Цементная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chap', 'Чапаевская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chevsper', 'Черёмуховский пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('cherhoper', 'Черёмуховый пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('cherny', 'Чернышевского', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chechov', 'Чеховская', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chkal', 'Чкалова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('tara', 'Тараса Шевченко', 'spa');
+
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('shifer', 'Шиферная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('scholn', 'Школьная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('scper', 'Школьный пер.', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('cholo', 'Шолохова', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('shoss', 'Шоссейная', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('shturm', 'Штурмовая', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('chors', 'Щорса', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('energ', 'Энергетиков', 'spa');
+INSERT INTO %keyspace%.street (id, name, city) VALUES ('ubil', 'Юбилейная', 'spa');
+
+// ~ 190
