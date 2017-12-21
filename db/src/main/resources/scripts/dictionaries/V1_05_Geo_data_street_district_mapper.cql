@@ -1,4 +1,4 @@
-// TODO: Rewrite
+// TODO: Add all districts maps
 INSERT INTO %keyspace%.street_district_mapper (id, streetId, building, districtId) VALUES (now(), '1izap', '', 'cemz');
 INSERT INTO %keyspace%.street_district_mapper (id, streetId, building, districtId) VALUES (now(), '1irab', '', 'grd');
 INSERT INTO %keyspace%.street_district_mapper (id, streetId, building, districtId) VALUES (now(), '1agr', '', 'vokz');
