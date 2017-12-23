@@ -47,8 +47,8 @@ class PriceFormer {
     }
 
     Boolean isRideFree(Integer ridesAmount) {
-        settingDao.getValue('ride_free')
-            .collect { (ridesAmount + 1) % (it as Integer) == 0 }
+        (settingDao.getValue('ride_free') as Integer)
+            .collect { (ridesAmount + 1) % it == 0 }
             .first()
     }
 
