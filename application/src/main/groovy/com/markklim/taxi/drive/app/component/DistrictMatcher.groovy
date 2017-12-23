@@ -16,6 +16,9 @@ class DistrictMatcher {
     StreetDistrictDao streetDistrictDao
 
     @Autowired
+    EntityMatcher entityMatcher
+
+    @Autowired
     GeoDao geoDao
 
     @Autowired
@@ -24,7 +27,7 @@ class DistrictMatcher {
     static final String DEFAULT_CITY = 'spa'
 
     String getDistrictId(Address address) {
-        address.district ?: defineDistrict(address)
+        address.district ? entityMatcher.getDistrictId(address.district) : defineDistrict(address)
     }
 
     String defineDistrict(Address address) {

@@ -17,6 +17,9 @@ class PriceFormer {
     DistrictMatcher districtMatcher
 
     @Autowired
+    EntityMatcher entityMatcher
+
+    @Autowired
     SettingDao settingDao
 
     @Autowired
@@ -39,7 +42,8 @@ class PriceFormer {
     }
 
     Integer calculateCtcPrice(Ride ride) {
-        priceDao.getCitiesRidePrice(ride.fromAddress.city, ride.toAddress.city)
+        priceDao.getCitiesRidePrice(entityMatcher.getCityId(ride.fromAddress.city),
+                entityMatcher.getCityId(ride.toAddress.city))
     }
 
     Boolean isRideFree(Integer ridesAmount) {
