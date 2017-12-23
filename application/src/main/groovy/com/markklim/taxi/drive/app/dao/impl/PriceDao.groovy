@@ -8,6 +8,8 @@ import com.markklim.taxi.drive.app.dao.entity.PriceDtd
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
+import static com.markklim.taxi.drive.app.util.CommonUtil.*
+
 @Component
 class PriceDao {
 
@@ -34,7 +36,11 @@ class PriceDao {
         universalDao.selectSingle(select, PriceCtc.class).price
     }
 
-    private Integer generateId(String from, String to) {
-        [from, to].sort().hashCode()
+    void addPriceCtc (PriceCtc priceCtc) {
+        universalDao.insertSingle(priceCtc)
+    }
+
+    void addPriceDtd (PriceDtd priceDtd) {
+        universalDao.insertSingle(priceDtd)
     }
 }

@@ -11,8 +11,8 @@ INSERT INTO %keyspace%.city (id, name, state) VALUES ('ari', 'Ариадное',
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('art', 'Артем', 'pk');
 
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('arta', 'Артем(аэропорт)', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('arc', 'Архангеловка(хаб)', 'hk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('arc', 'Архангеловка(прим)', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('arch', 'Архангеловка(хаб)', 'hk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('arcp', 'Архангеловка(прим)', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('bel', 'Бельцово', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('bar', 'Барабаш', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('bez', 'Безверхово', 'pk');
@@ -31,7 +31,7 @@ INSERT INTO %keyspace%.city (id, name, state) VALUES ('val', 'Валентин',
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('vla', 'Владивосток', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('vos', 'Восток', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('vra', 'Врангель', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('vis', 'Высокое', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('viso', 'Высокое', 'pk');
 
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('vya', 'Вяземский', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('gay', 'Гайворон', 'pk');
@@ -45,7 +45,9 @@ INSERT INTO %keyspace%.city (id, name, state) VALUES ('gri', 'Грибное', '
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('dag', 'Дальнегорск', 'pk');
 
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('dar', 'Дальнереченск', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('dacsol', 'Дачи Солнечные', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('dmi', 'Дмитриевка', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('droz', 'Дроздов', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('dos', 'Достоевка', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('duh', 'Духовское', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('dun', 'Дунай', 'pk');
@@ -84,7 +86,7 @@ INSERT INTO %keyspace%.city (id, name, state) VALUES ('lug', 'Луговое', '
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('luc', 'Лучки', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('may', 'Майское', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('mal', 'Малые ключи', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('mel', 'Мельгуновка', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('melg', 'Мельгуновка', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('mer', 'Меркушовка', 'pk');
 
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('mic', 'Михайловский', 'pk');
@@ -113,7 +115,7 @@ INSERT INTO %keyspace%.city (id, name, state) VALUES ('osi', 'Осиновски
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('per', 'Перелетное', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('pol', 'Полтавка', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('pre', 'Преображение', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('pro', 'Прохоры', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('proch', 'Прохоры', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('pog', 'Пограничный', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('par', 'Партизанск', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('pro', 'Промысловка', 'pk');
@@ -132,8 +134,8 @@ INSERT INTO %keyspace%.city (id, name, state) VALUES ('ruz', 'Ружино', 'pk
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('svi', 'Свиягино', 'pk');
 
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('sin', 'Синий гай', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('ser', 'Сергеевка', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('ser', 'Серебрянка', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('serg', 'Сергеевка', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('sere', 'Серебрянка', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('sib', 'Сибирцево', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('siv', 'Сиваковка', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('slav', 'Славянка', 'pk');
@@ -142,9 +144,9 @@ INSERT INTO %keyspace%.city (id, name, state) VALUES ('sne', 'Снегуровк
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('sos', 'Сосновка', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('spa', 'Спасск-Дальний', 'pk');
 
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('spasta', 'Спасск-Дальний(СТА)', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('spaczd', 'Спасск-Дальний(Цемзавод)', 'pk');
-INSERT INTO %keyspace%.city (id, name, state) VALUES ('spa6', 'Спасск-Дальний(6 км)', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('spasta', 'Спасск-Дальний (СТА)', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('spaczd', 'Спасск-Дальний (Цемзавод)', 'pk');
+INSERT INTO %keyspace%.city (id, name, state) VALUES ('spa6', 'Спасск-Дальний (6 км)', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('ste', 'Степное', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('sun', 'Сунгач', 'pk');
 INSERT INTO %keyspace%.city (id, name, state) VALUES ('tav', 'Тавричанка', 'pk');

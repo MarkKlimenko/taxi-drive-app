@@ -8,6 +8,8 @@ import groovy.transform.ToString
 import org.springframework.data.cassandra.mapping.PrimaryKey
 import org.springframework.data.cassandra.mapping.Table
 
+import static com.markklim.taxi.drive.app.util.CommonUtil.*
+
 @Table('price_dtd')
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
@@ -23,7 +25,7 @@ class PriceDtd {
     PriceDtd(@JsonProperty("distFrom") String distFrom,
              @JsonProperty("distTo") String distTo,
              @JsonProperty("price") Integer price) {
-        this.id = distFrom.hashCode() + distTo.hashCode()
+        this.id = generateId(distFrom, distTo)
         this.distFrom =  distFrom
         this.distTo = distTo
         this.price = price

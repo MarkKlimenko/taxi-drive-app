@@ -46,6 +46,13 @@ class GeoDao {
         selectSingle(select, Street.class)
     }
 
+    City getCityByName(String cityName) {
+        Select select = QueryBuilder.select().from('city')
+        select.where(QueryBuilder.eq('name', cityName))
+
+        selectSingle(select, City.class)
+    }
+
     void addState(State state) {
         insertSingle(state)
     }

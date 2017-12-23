@@ -1,12 +1,1 @@
 // TODO: REWRITE
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1712284993, 'Спасск', 'Адарка', 450);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-120584933, 'Спасск', 'Анненка', 440);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1238888587, 'Спасск', 'Александровка', 630);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1528498201, 'Спасск', 'Бусевка', 300);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-127244869, 'Спасск', 'Вишневка', 420);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1672756461, 'Спасск', 'Луговое', 320);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1888156135, 'Спасск', 'Арсеньев', 1960);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (67667713, 'Спасск', 'Анучино', 2550);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (1981004752, 'Спасск', 'Артем', 3580);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (-1244484369, 'Спасск', 'Барабаш', 4100);
-INSERT INTO %keyspace%.price_ctc (id, cityFrom, cityTo, price) VALUES (812563707, 'Спасск', 'Дальнереченск', 3290);
