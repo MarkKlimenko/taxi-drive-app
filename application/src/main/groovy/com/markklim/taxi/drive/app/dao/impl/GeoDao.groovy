@@ -4,10 +4,10 @@ import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
 import com.markklim.taxi.drive.app.dao.UniversalDao
 import com.markklim.taxi.drive.app.dao.entity.City
-import com.markklim.taxi.drive.app.dao.entity.Client
 import com.markklim.taxi.drive.app.dao.entity.District
 import com.markklim.taxi.drive.app.dao.entity.State
 import com.markklim.taxi.drive.app.dao.entity.Street
+import com.markklim.taxi.drive.app.util.WordUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -16,6 +16,9 @@ class GeoDao {
     @Autowired
     @Delegate
     UniversalDao universalDao
+
+    @Autowired
+    WordUtil wordUtil
 
     List<State> getAllStates() {
         Select select = QueryBuilder.select().from('state')

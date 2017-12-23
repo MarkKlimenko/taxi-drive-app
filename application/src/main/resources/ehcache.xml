@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
+         updateCheck="false"
+         monitoring="on"
+         dynamicConfig="false"
+         name="tdaCache">
+
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            timeToIdleSeconds="3600"
+            memoryStoreEvictionPolicy="LRU"
+            overflowToDisk="false"
+    />
+
+    <cache name="districtsModifiedList" maxElementsInMemory="1000" timeToLiveSeconds="3600" timeToIdleSeconds="1800"/>
+    <cache name="citiesModifiedList" maxElementsInMemory="1000" timeToLiveSeconds="3600" timeToIdleSeconds="1800"/>
+
+    <cache name="districtIdByName" maxElementsInMemory="1000" timeToLiveSeconds="3600" timeToIdleSeconds="1800"/>
+    <cache name="cityIdByName" maxElementsInMemory="1000" timeToLiveSeconds="3600" timeToIdleSeconds="1800"/>
+</ehcache>

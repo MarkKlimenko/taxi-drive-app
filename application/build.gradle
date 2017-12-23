@@ -43,6 +43,9 @@ dependencies {
             'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0',
             'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
 
+            'org.springframework.boot:spring-boot-starter-cache:1.5.7.RELEASE',
+            'net.sf.ehcache:ehcache:2.10.4',
+
             'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE',
 
             'org.springframework.boot:spring-boot-starter-security:1.5.7.RELEASE',

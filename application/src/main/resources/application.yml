@@ -7,6 +7,7 @@ server:
 javamelody:
     init-parameters:
         monitoring-path: /service/monitoring
+    advisor-auto-proxy-creator-enabled: false
 
 spring:
     profiles:
