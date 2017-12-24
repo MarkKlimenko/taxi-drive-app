@@ -43,4 +43,22 @@ class PriceDao {
     void addPriceDtd (PriceDtd priceDtd) {
         universalDao.insertSingle(priceDtd)
     }
+
+    List<PriceDtd> getAllDtdRates() {
+        Select select = QueryBuilder.select().from('price_dtd')
+        universalDao.selectAll(select, PriceDtd.class)
+    }
+
+    List<PriceCtc> getAllCtcRates() {
+        Select select = QueryBuilder.select().from('price_ctc')
+        universalDao.selectAll(select, PriceCtc.class)
+    }
+
+    void deleteCtcRate(PriceCtc priceCtc) {
+        universalDao.deleteSingle(PriceCtc.class, priceCtc.id)
+    }
+
+    void deleteDtdRate(PriceDtd priceDtd) {
+        universalDao.deleteSingle(PriceDtd.class, priceDtd.id)
+    }
 }
