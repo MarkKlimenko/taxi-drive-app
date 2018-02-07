@@ -52,7 +52,7 @@
         </property>
     </bean>
 
-    <bean id="corsFilter" class="com.markklim.taxi.drive.app.configuration.authentication.CorsFilter" />
+    <bean id="corsFilter" class="systems.vostok.taxi.drive.app.configuration.authentication.CorsFilter" />
 
     <security:http auto-config="false" entry-point-ref="authenticationEntryPoint">
         <security:csrf disabled="true"/>

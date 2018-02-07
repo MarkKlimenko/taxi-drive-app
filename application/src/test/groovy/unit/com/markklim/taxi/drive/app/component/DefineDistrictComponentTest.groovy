@@ -1,11 +1,7 @@
 package unit.com.markklim.taxi.drive.app.component
 
-import com.markklim.taxi.drive.app.component.DistrictMatcher
-import com.markklim.taxi.drive.app.dao.domain.Address
-import org.testng.annotations.Test
+import systems.vostok.taxi.drive.app.dao.entity.Address
 import org.testng.annotations.DataProvider
-
-import static org.junit.Assert.*
 
 class DefineDistrictComponentTest {
 

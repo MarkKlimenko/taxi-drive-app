@@ -1,6 +1,6 @@
 package unit.com.markklim.taxi.drive.app.api.adapter
 
-import com.markklim.taxi.drive.app.api.adapter.LocalDateAdapter
+import systems.vostok.taxi.drive.app.api.adapter.LocalDateAdapter
 
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test

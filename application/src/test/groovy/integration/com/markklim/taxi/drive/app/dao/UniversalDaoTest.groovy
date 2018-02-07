@@ -2,9 +2,9 @@ package integration.com.markklim.taxi.drive.app.dao
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
-import com.markklim.taxi.drive.app.Application
-import com.markklim.taxi.drive.app.dao.UniversalDao
-import com.markklim.taxi.drive.app.dao.entity.Client
+import systems.vostok.taxi.drive.app.Application
+import systems.vostok.taxi.drive.app.dao.UniversalDao
+import systems.vostok.taxi.drive.app.dao.entity.Client
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource

@@ -1,6 +1,6 @@
 package unit.com.markklim.taxi.drive.app.api.adapter
 
-import com.markklim.taxi.drive.app.api.adapter.LocalDateTimeAdapter
+import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 import org.junit.Before
 import org.junit.Test
 

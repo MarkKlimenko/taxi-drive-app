@@ -1,16 +1,13 @@
 package integration.com.markklim.taxi.drive.app.component.evaluation
 
-import com.markklim.taxi.drive.app.Application
-import com.markklim.taxi.drive.app.component.PriceFormer
+import systems.vostok.taxi.drive.app.Application
+import systems.vostok.taxi.drive.app.component.PriceFormer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests
 import org.springframework.test.context.web.WebAppConfiguration
 import org.testng.annotations.DataProvider
-import org.testng.annotations.Test
-
-import static org.testng.Assert.*
 
 @TestPropertySource(locations = "classpath:test-properties.properties")
 @SpringBootTest(classes = Application.class)
