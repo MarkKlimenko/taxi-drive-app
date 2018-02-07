@@ -13,6 +13,8 @@ buildscript {
     }
     dependencies {
         classpath 'gradle.plugin.com.markklim.plugins:migrator-for-cassandra:0.1.23'
+        classpath 'gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:5.0.7'
+        classpath 'org.postgresql:postgresql:42.1.4'
     }
 }
 
@@ -22,6 +24,7 @@ repositories {
 
 apply plugin: 'groovy'
 apply plugin: 'com.markklim.plugins.mfc'
+apply plugin: 'org.flywaydb.flyway'
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.12'
@@ -42,3 +45,11 @@ migratorExecute {
     ]
 }
 
+flyway {
+    url = 'jdbc:postgresql://192.168.99.100:5432/tda'
+    user = 'postgres'
+    password = 'admin'
+    placeholders = [
+            'schema': 'tda',
+    ]
+}
