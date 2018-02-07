@@ -47,7 +47,9 @@ dependencies {
             'net.sf.ehcache:ehcache:2.10.4',
 
             'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE',
+            'org.postgresql:postgresql:42.1.4',
 
+            'org.springframework.boot:spring-boot-starter-data-jpa:1.5.10.RELEASE',
             'org.springframework.boot:spring-boot-starter-security:1.5.7.RELEASE',
             'org.keycloak:keycloak-spring-security-adapter:3.2.0.Final',
 
