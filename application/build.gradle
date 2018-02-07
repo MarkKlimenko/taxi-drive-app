@@ -22,12 +22,11 @@ buildscript {
 
 apply plugin: 'groovy'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
 apply plugin: 'com.markklim.plugins.rtd'
 apply plugin: 'org.sonarqube'
 
-war {
-    archiveName = 'taxi-drive-app.war'
+jar {
+    archiveName = 'taxi-drive-app.jar'
 }
 
 repositories {
