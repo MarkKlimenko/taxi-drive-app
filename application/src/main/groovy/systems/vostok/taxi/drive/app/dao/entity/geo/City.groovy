@@ -9,13 +9,13 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = 'city')
+@Table(name = 'cities')
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)
 class City {
     @Id
-    Long id
+    String id
     String name
     String state
 }

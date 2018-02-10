@@ -9,12 +9,12 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = 'district')
+@Table(name = 'districts')
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)
 class District {
     @Id
-    Long id
+    String id
     String name
 }

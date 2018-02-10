@@ -10,7 +10,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = 'address')
+@Table(name = 'addresses')
 @Canonical
 class Address {
     @Id

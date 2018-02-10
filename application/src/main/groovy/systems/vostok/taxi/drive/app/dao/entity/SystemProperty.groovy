@@ -9,7 +9,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = 'system_property')
+@Table(name = 'system_properties')
 @Canonical
 @EqualsAndHashCode(includes = ['property'])
 @ToString(includeNames = true, includeFields = true)

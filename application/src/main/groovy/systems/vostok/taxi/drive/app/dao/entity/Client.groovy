@@ -11,7 +11,7 @@ import javax.persistence.Table
 import javax.persistence.Transient
 
 @Entity
-@Table(name = 'client')
+@Table(name = 'clients')
 @Canonical
 @EqualsAndHashCode(includes = ['clientLogin'])
 @ToString(includeNames = true, includeFields = true)

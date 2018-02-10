@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = 'ride')
+@Table(name = 'rides')
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true, excludes = 'id')

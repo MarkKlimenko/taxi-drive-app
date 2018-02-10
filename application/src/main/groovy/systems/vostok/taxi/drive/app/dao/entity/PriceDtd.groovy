@@ -15,7 +15,7 @@ import javax.persistence.Table
 import static systems.vostok.taxi.drive.app.util.CommonUtil.*
 
 @Entity
-@Table(name = 'price_dtd')
+@Table(name = 'prices_dtd')
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)

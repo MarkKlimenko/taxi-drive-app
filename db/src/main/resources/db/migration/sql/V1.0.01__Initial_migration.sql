@@ -1,112 +1,133 @@
-// Create keyspace
-CREATE KEYSPACE %keyspace% WITH REPLICATION = {
-    'class' : 'SimpleStrategy',
-    'replication_factor' : 1
-};
-
-// ADDRESS DATATYPE
-CREATE TYPE "${schema}".address (country text,
-                                state text,
-                                city text,
-                                street text,
-                                building text,
-                                district text);
-
-// CLIENT TABLE
-CREATE TABLE "${schema}".client (clientLogin text PRIMARY KEY,
-                                firstName text,
-                                lastName text,
-                                ridesAmount int,
-                                clientType text);
-
-// RIDE TABLE
-CREATE TABLE "${schema}".ride (id UUID PRIMARY KEY,
-                              clientLogin text,
-                              fromAddress frozen <address>,
-                              toAddress frozen <address>,
-                              dateIn timestamp,
-                              rideIn timestamp,
-                              rideOut timestamp,
-                              carId text,
-                              adultInCar int,
-                              childrenInCar int,
-                              price int,
-                              state text,
-                              prepaid text,
-                              comment text);
-CREATE INDEX ride_clientLogin ON "${schema}".ride (clientLogin);
-CREATE INDEX ride_dateIn ON "${schema}".ride (dateIn);
-CREATE INDEX ride_state ON "${schema}".ride (state);
-
-// CAR TABLE
-CREATE TABLE "${schema}".car (carId int PRIMARY KEY,
-                             carNumber text,
-                             carModel text);
-
-// USER TABLE
-CREATE TABLE "${schema}".user (userId text PRIMARY KEY,
-                              firstName text,
-                              lastName text,
-                              email text,
-                              dateIn timestamp,
-                              loginTime timestamp);
-
-// DIST_TO_DIST_PRICE
-CREATE TABLE "${schema}".price_dtd (id int PRIMARY KEY,
-                                   distFrom text,
-                                   distTo text,
-                                   price int);
-
-// CITY_TO_CITY_PRICE
-CREATE TABLE "${schema}".price_ctc (id int PRIMARY KEY,
-                                   cityFrom text,
-                                   cityTo text,
-                                   price int);
-// SETTINGS
-CREATE TABLE "${schema}".setting (setting text PRIMARY KEY,
-                                 value text);
-
-// SYSTEM_PROPERTIES
-CREATE TABLE "${schema}".system_property (property text PRIMARY KEY,
-                                         value text);
+-- Create sequences -- TODO: decrease VARCHAR(255)
+CREATE SEQUENCE "${schema}".sq_entity;
+CREATE SEQUENCE "${schema}".sq_ride;
 
 
--- COUNTRY
-CREATE TABLE %keyspace%.country (id text PRIMARY KEY,
-name text);
-CREATE INDEX county_name ON %keyspace%.country (name);
+-- Create geo tables
+CREATE TABLE "${schema}".countries (
+  id   VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+CREATE INDEX countries_name ON "${schema}".countries (name);
 
--- STATE
-CREATE TABLE %keyspace%.state (id text PRIMARY KEY,
-name text,
-  country text);
-CREATE INDEX state_name ON %keyspace%.state (name);
-CREATE INDEX state_country ON %keyspace%.state (country);
+CREATE TABLE "${schema}".states (
+  id      VARCHAR(255) PRIMARY KEY,
+  name    VARCHAR(255) NOT NULL,
+  country VARCHAR(255) REFERENCES "${schema}".countries (id)
+);
+CREATE INDEX states_name ON "${schema}".states (name);
+CREATE INDEX states_country ON "${schema}".states (country);
 
--- CITY
-CREATE TABLE %keyspace%.city (id text PRIMARY KEY,
-name text,
-  state text);
-CREATE INDEX city_name ON %keyspace%.city (name);
-CREATE INDEX city_state ON %keyspace%.city (state);
+CREATE TABLE "${schema}".cities (
+  id    VARCHAR(255) PRIMARY KEY,
+  name  VARCHAR(255) NOT NULL,
+  state VARCHAR(255) REFERENCES "${schema}".states (id)
+);
+CREATE INDEX cities_name ON "${schema}".cities (name);
+CREATE INDEX cities_state ON "${schema}".cities (state);
 
--- STREET
-CREATE TABLE %keyspace%.street (id text PRIMARY KEY,
-name text,
-  city text);
-CREATE INDEX street_name ON %keyspace%.street (name);
-CREATE INDEX street_city ON %keyspace%.street (city);
+CREATE TABLE "${schema}".street (
+  id   VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  city VARCHAR(255) REFERENCES "${schema}".cities (id)
+);
+CREATE INDEX streets_name ON "${schema}".street (name);
+CREATE INDEX streets_city ON "${schema}".street (city);
 
--- DISTRICT
-CREATE TABLE %keyspace%.district (id text PRIMARY KEY,
-name text);
-CREATE INDEX district_name ON %keyspace%.district (name);
+CREATE TABLE "${schema}".districts (
+  id   VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+CREATE INDEX district_name ON "${schema}".districts (name);
 
--- STREET_DISTRICT_MAPPER
-CREATE TABLE %keyspace%.street_district_mapper (id UUID PRIMARY KEY,
-  districtId text,
-  streetId text,
-  building text);
-CREATE INDEX sdm_districtId ON %keyspace%.street_district_mapper (districtId);
-CREATE INDEX sdm_streetId ON %keyspace%.street_district_mapper (streetId);
+CREATE TABLE "${schema}".street_district_mapper (
+  id          INTEGER PRIMARY KEY,
+  district_id VARCHAR(255) NOT NULL,
+  street_id   VARCHAR(255) NOT NULL,
+  building    VARCHAR(255) NOT NULL
+);
+CREATE INDEX sdm_districtId ON "${schema}".street_district_mapper (district_id);
+CREATE INDEX sdm_streetId ON "${schema}".street_district_mapper (street_id);
 
+
+-- Create common tables
+CREATE TABLE "${schema}".clients (
+  login        VARCHAR(255) PRIMARY KEY,
+  first_name   VARCHAR(255) NOT NULL,
+  last_name    VARCHAR(255),
+  rides_amount INTEGER,
+  client_type  VARCHAR(255)
+);
+
+CREATE TABLE "${schema}".addresses (
+  id       INTEGER PRIMARY KEY,
+  country  VARCHAR(255),
+  state    VARCHAR(255),
+  city     VARCHAR(255),
+  street   VARCHAR(255),
+  building VARCHAR(255),
+  district VARCHAR(255)
+);
+
+CREATE TABLE "${schema}".rides (
+  id              INTEGER PRIMARY KEY,
+  client          VARCHAR(255) REFERENCES "${schema}".clients (login),
+  from_address    INTEGER REFERENCES "${schema}".addresses (id),
+  to_address      INTEGER REFERENCES "${schema}".addresses (id),
+  date_in         TIMESTAMP,
+  ride_in         TIMESTAMP,
+  ride_out        TIMESTAMP,
+  car_id          INTEGER REFERENCES "${schema}".cars (id),
+  adult_in_car    INTEGER,
+  children_in_car INTEGER,
+  price           INTEGER,
+  state           VARCHAR(255),
+  prepaid         VARCHAR(255),
+  comment         VARCHAR(255)
+);
+CREATE INDEX ride_client_login ON "${schema}".rides (client);
+CREATE INDEX ride_date_in ON "${schema}".rides (date_in);
+CREATE INDEX ride_state ON "${schema}".rides (state);
+
+CREATE TABLE "${schema}".cars (
+  id     INTEGER PRIMARY KEY,
+  call   VARCHAR(255) UNIQUE,
+  number VARCHAR(255) NOT NULL,
+  model  VARCHAR(255) NOT NULL
+);
+CREATE INDEX cars_call ON "${schema}".cars (call);
+
+CREATE TABLE "${schema}".app_users (
+  id         VARCHAR(255) PRIMARY KEY,
+  name       VARCHAR(255) NOT NULL,
+  email      VARCHAR(255),
+  date_in    TIMESTAMP    NOT NULL,
+  login_time TIMESTAMP    NOT NULL
+);
+CREATE INDEX app_users_name ON "${schema}".app_users (name);
+
+CREATE TABLE "${schema}".settings (
+  setting VARCHAR(255) PRIMARY KEY,
+  value   VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE "${schema}".system_properties (
+  property VARCHAR(255) PRIMARY KEY,
+  value    VARCHAR(255) NOT NULL
+);
+
+
+-- Create price tables
+CREATE TABLE "${schema}".prices_dtd (
+  id        INTEGER PRIMARY KEY,
+  dist_from VARCHAR(255) REFERENCES "${schema}".districts (id),
+  dist_to   VARCHAR(255) REFERENCES "${schema}".districts (id),
+  price     INTEGER NOT NULL
+);
+
+CREATE TABLE "${schema}".prices_ctc (
+  id       INTEGER PRIMARY KEY,
+  cityFrom VARCHAR(255) REFERENCES "${schema}".cities (id),
+  cityTo   VARCHAR(255) REFERENCES "${schema}".cities (id),
+  price    INTEGER NOT NULL
+);

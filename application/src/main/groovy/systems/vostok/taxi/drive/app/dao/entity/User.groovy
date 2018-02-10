@@ -14,18 +14,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = 'app_user')
+@Table(name = 'app_users')
 @Canonical
 @EqualsAndHashCode(includes = ['userId'])
 @ToString(includeNames = true, includeFields = true)
 class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long userId
+    String id
 
-    String firstName
-    String lastName
+    String name
     String email
 
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
