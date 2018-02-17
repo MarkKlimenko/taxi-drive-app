@@ -46,18 +46,14 @@ class GeoService {
 
     def deleteGeoEntity(String entityType, String entityId) {
         crudService.deleteById(entityType, entityId)
-        updateGeoVersion()
+       /* updateGeoVersion()*/
         entityId
     }
 
-
-
-
-
-    def putGeoEntity(String entityType, Map entity) {
-        //geoRepositories.find{ entityType == it.entityType }
-        countryRepository.save(entity)
-                .with { /*updateGeoVersion();*/ it }
+    def putGeoEntity(String entityType, Map entityMap) {
+        def entity = crudService.put(entityType, entityMap)
+        /*updateGeoVersion();*/
+        entity
     }
 
     @CacheEvict(['citiesModifiedList', 'cityIdByName', 'districtsModifiedList', 'districtIdByName'])

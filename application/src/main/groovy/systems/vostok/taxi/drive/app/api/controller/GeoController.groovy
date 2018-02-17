@@ -49,8 +49,8 @@ class GeoController {
 
     @PUT
     @Path('geo/{entity}')
-    putGeoEntity(@PathParam('entity') String entityType, Map entity) {
-        geoService.putGeoEntity(entityType, entity)
+    putGeoEntity(@PathParam('entity') String entityType, Map entityMap) {
+        geoService.putGeoEntity(entityType, entityMap)
     }
 
 
