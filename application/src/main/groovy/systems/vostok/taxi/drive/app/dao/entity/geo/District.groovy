@@ -17,4 +17,5 @@ class District {
     @Id
     String id
     String name
+    String city
 }
