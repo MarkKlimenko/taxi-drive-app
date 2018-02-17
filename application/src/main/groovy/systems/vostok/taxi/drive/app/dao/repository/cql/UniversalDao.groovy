@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.dao.repository
+package systems.vostok.taxi.drive.app.dao.repository.cql
 
 import com.datastax.driver.core.querybuilder.Select
 import org.springframework.beans.factory.annotation.Autowired

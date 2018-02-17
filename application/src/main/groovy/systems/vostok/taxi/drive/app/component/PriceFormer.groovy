@@ -2,9 +2,9 @@ package systems.vostok.taxi.drive.app.component
 
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
-import systems.vostok.taxi.drive.app.dao.repository.impl.ClientDao
-import systems.vostok.taxi.drive.app.dao.repository.impl.PriceDao
-import systems.vostok.taxi.drive.app.dao.repository.impl.SettingDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.SettingDao
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 

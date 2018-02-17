@@ -1,23 +1,19 @@
-package systems.vostok.taxi.drive.app.dao.repository.impl
+package systems.vostok.taxi.drive.app.dao.repository.sql.impl
 
-import com.datastax.driver.core.querybuilder.QueryBuilder
-import com.datastax.driver.core.querybuilder.Select
-import systems.vostok.taxi.drive.app.dao.repository.UniversalDao
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Repository
 import systems.vostok.taxi.drive.app.dao.entity.Ride
+import systems.vostok.taxi.drive.app.dao.repository.sql.BasicRepository
 
-import java.sql.Timestamp
-import java.time.LocalDateTime
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.RIDE
 
-@Component
-class RideRepository {
+@Repository
+interface RideRepository extends BasicRepository<Ride, Long> {
+    String entityType = RIDE
 
-    @Autowired
-    @Delegate
-    UniversalDao universalDao
+    //List<Ride> getPreviousRides(String clientLogin, int periodMonth, int ridesAmount)
+    //List<Ride> getActiveRides()
 
-    List<Ride> getPreviousRides(String clientLogin, int periodMonth, int ridesAmount) {
+    /*List<Ride> getPreviousRides(String clientLogin, int periodMonth, int ridesAmount) {
         Timestamp dateGraterThan =  Timestamp.valueOf(LocalDateTime.now().minusMonths(periodMonth))
 
         Select select = QueryBuilder.select().from('ride')
@@ -40,5 +36,5 @@ class RideRepository {
         select.where(QueryBuilder.eq('state', 'active'))
 
         selectAll(select, Ride.class)
-    }
+    }*/
 }

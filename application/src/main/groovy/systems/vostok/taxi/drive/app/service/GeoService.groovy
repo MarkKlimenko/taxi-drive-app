@@ -3,14 +3,12 @@ package systems.vostok.taxi.drive.app.service
 import systems.vostok.taxi.drive.app.dao.entity.geo.City
 import systems.vostok.taxi.drive.app.dao.entity.geo.District
 import systems.vostok.taxi.drive.app.dao.entity.SystemProperty
-import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.dao.repository.impl.GeoDao
-import systems.vostok.taxi.drive.app.dao.repository.impl.SystemPropertyDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.GeoDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.SystemPropertyDao
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
-import systems.vostok.taxi.drive.app.dao.repository.impl.geo.CountryRepository
 import systems.vostok.taxi.drive.app.util.WordUtil
 
 import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.*
@@ -18,16 +16,7 @@ import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.*
 @Service
 class GeoService {
     @Autowired
-    GeoDao geoDao
-
-    @Autowired
     WordUtil wordUtil
-
-    @Autowired
-    SystemPropertyDao systemPropertyDao
-
-    @Autowired
-    CountryRepository countryRepository
 
     @Autowired
     CrudService crudService

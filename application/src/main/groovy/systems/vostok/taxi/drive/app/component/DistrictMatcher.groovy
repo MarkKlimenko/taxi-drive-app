@@ -2,8 +2,8 @@ package systems.vostok.taxi.drive.app.component
 
 import systems.vostok.taxi.drive.app.dao.entity.Address
 import systems.vostok.taxi.drive.app.dao.entity.geo.Street
-import systems.vostok.taxi.drive.app.dao.repository.impl.GeoDao
-import systems.vostok.taxi.drive.app.dao.repository.impl.StreetDistrictDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.GeoDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.StreetDistrictDao
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import systems.vostok.tda.service.DistrictMapperService

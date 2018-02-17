@@ -1,9 +1,9 @@
 package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
-import systems.vostok.taxi.drive.app.dao.repository.impl.ClientDao
-import systems.vostok.taxi.drive.app.dao.repository.impl.RideRepository
-import systems.vostok.taxi.drive.app.dao.repository.impl.SystemPropertyDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientDao
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.RideRepositoryT
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.SystemPropertyDao
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.GET
@@ -21,7 +21,7 @@ class ReadOnlyController {
     ClientDao clientDao
 
     @Autowired
-    RideRepository rideDao
+    RideRepositoryT rideDao
 
     @Autowired
     SystemPropertyDao systemPropertyDao
