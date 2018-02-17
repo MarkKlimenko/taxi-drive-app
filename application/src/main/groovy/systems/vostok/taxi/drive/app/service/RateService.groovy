@@ -3,7 +3,7 @@ package systems.vostok.taxi.drive.app.service
 import systems.vostok.taxi.drive.app.component.EntityMatcher
 import systems.vostok.taxi.drive.app.dao.entity.PriceCtc
 import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
-import systems.vostok.taxi.drive.app.dao.impl.PriceDao
+import systems.vostok.taxi.drive.app.dao.repository.impl.PriceDao
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import system.vostok.tda.service.ExcelParserService

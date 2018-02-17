@@ -8,6 +8,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.SequenceGenerator
 import javax.persistence.Table
 
 @Entity
@@ -17,9 +18,10 @@ import javax.persistence.Table
 @ToString(includeNames = true, includeFields = true)
 class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = 'ID_GENERATOR')
+    @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
     Long id
 
-    String carNumber
-    String carModel
+    String number
+    String model
 }

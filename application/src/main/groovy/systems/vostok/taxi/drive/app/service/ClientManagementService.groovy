@@ -3,8 +3,8 @@ package systems.vostok.taxi.drive.app.service
 import systems.vostok.taxi.drive.app.component.PriceFormer
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
-import systems.vostok.taxi.drive.app.dao.impl.ClientDao
-import systems.vostok.taxi.drive.app.dao.impl.RideDao
+import systems.vostok.taxi.drive.app.dao.repository.impl.ClientDao
+import systems.vostok.taxi.drive.app.dao.repository.impl.RideRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -15,7 +15,7 @@ class ClientManagementService {
     ClientDao clientDao
 
     @Autowired
-    RideDao rideDao
+    RideRepository rideDao
 
     @Autowired
     PriceFormer priceFormer

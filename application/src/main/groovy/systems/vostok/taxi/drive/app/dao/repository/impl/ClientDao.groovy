@@ -1,8 +1,8 @@
-package systems.vostok.taxi.drive.app.dao.impl
+package systems.vostok.taxi.drive.app.dao.repository.impl
 
 import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.Select
-import systems.vostok.taxi.drive.app.dao.UniversalDao
+import systems.vostok.taxi.drive.app.dao.repository.UniversalDao
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.entity.Client

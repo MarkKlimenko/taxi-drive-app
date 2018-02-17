@@ -5,7 +5,9 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.SequenceGenerator
 import javax.persistence.Table
 
 @Entity
@@ -15,6 +17,8 @@ import javax.persistence.Table
 @ToString(includeNames = true, includeFields = true)
 class StreetDistrictMapper {
     @Id
+    @GeneratedValue(generator = 'ID_GENERATOR')
+    @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
     Long id
 
     String districtId

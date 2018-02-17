@@ -1,7 +1,5 @@
 -- Create sequences -- TODO: decrease VARCHAR(255)
-CREATE SEQUENCE "${schema}".sq_entity;
-CREATE SEQUENCE "${schema}".sq_ride;
-
+CREATE SEQUENCE "${schema}".seq_global;
 
 -- Create geo tables
 CREATE TABLE "${schema}".countries (
@@ -26,13 +24,13 @@ CREATE TABLE "${schema}".cities (
 CREATE INDEX cities_name ON "${schema}".cities (name);
 CREATE INDEX cities_state ON "${schema}".cities (state);
 
-CREATE TABLE "${schema}".street (
+CREATE TABLE "${schema}".streets (
   id   VARCHAR(255) PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   city VARCHAR(255) REFERENCES "${schema}".cities (id)
 );
-CREATE INDEX streets_name ON "${schema}".street (name);
-CREATE INDEX streets_city ON "${schema}".street (city);
+CREATE INDEX streets_name ON "${schema}".streets (name);
+CREATE INDEX streets_city ON "${schema}".streets (city);
 
 CREATE TABLE "${schema}".districts (
   id   VARCHAR(255) PRIMARY KEY,
@@ -41,9 +39,9 @@ CREATE TABLE "${schema}".districts (
 CREATE INDEX district_name ON "${schema}".districts (name);
 
 CREATE TABLE "${schema}".street_district_mapper (
-  id          INTEGER PRIMARY KEY,
-  district_id VARCHAR(255) NOT NULL,
-  street_id   VARCHAR(255) NOT NULL,
+  id          BIGINT PRIMARY KEY,
+  district_id VARCHAR(255) REFERENCES "${schema}".districts (id) NOT NULL,
+  street_id   VARCHAR(255) REFERENCES "${schema}".streets (id) NOT NULL,
   building    VARCHAR(255) NOT NULL
 );
 CREATE INDEX sdm_districtId ON "${schema}".street_district_mapper (district_id);
@@ -56,7 +54,7 @@ CREATE TABLE "${schema}".clients (
   first_name   VARCHAR(255) NOT NULL,
   last_name    VARCHAR(255),
   rides_amount INTEGER,
-  client_type  VARCHAR(255)
+  type  VARCHAR(255)
 );
 
 CREATE TABLE "${schema}".addresses (
@@ -69,40 +67,40 @@ CREATE TABLE "${schema}".addresses (
   district VARCHAR(255)
 );
 
-CREATE TABLE "${schema}".rides (
-  id              INTEGER PRIMARY KEY,
-  client          VARCHAR(255) REFERENCES "${schema}".clients (login),
-  from_address    INTEGER REFERENCES "${schema}".addresses (id),
-  to_address      INTEGER REFERENCES "${schema}".addresses (id),
-  date_in         TIMESTAMP,
-  ride_in         TIMESTAMP,
-  ride_out        TIMESTAMP,
-  car_id          INTEGER REFERENCES "${schema}".cars (id),
-  adult_in_car    INTEGER,
-  children_in_car INTEGER,
-  price           INTEGER,
-  state           VARCHAR(255),
-  prepaid         VARCHAR(255),
-  comment         VARCHAR(255)
-);
-CREATE INDEX ride_client_login ON "${schema}".rides (client);
-CREATE INDEX ride_date_in ON "${schema}".rides (date_in);
-CREATE INDEX ride_state ON "${schema}".rides (state);
-
 CREATE TABLE "${schema}".cars (
-  id     INTEGER PRIMARY KEY,
+  id     BIGINT PRIMARY KEY,
   call   VARCHAR(255) UNIQUE,
   number VARCHAR(255) NOT NULL,
   model  VARCHAR(255) NOT NULL
 );
 CREATE INDEX cars_call ON "${schema}".cars (call);
 
+CREATE TABLE "${schema}".rides (
+id              BIGINT PRIMARY KEY,
+client          VARCHAR(255) REFERENCES "${schema}".clients (login),
+from_address    INTEGER REFERENCES "${schema}".addresses (id),
+to_address      INTEGER REFERENCES "${schema}".addresses (id),
+date_in         TIMESTAMP,
+ride_in         TIMESTAMP,
+ride_out        TIMESTAMP,
+car_id          BIGINT REFERENCES "${schema}".cars (id),
+adult_in_car    INTEGER,
+children_in_car INTEGER,
+price           INTEGER,
+state           VARCHAR(255),
+prepaid         VARCHAR(255),
+comment         VARCHAR(255)
+);
+CREATE INDEX ride_client_login ON "${schema}".rides (client);
+CREATE INDEX ride_date_in ON "${schema}".rides (date_in);
+CREATE INDEX ride_state ON "${schema}".rides (state);
+
 CREATE TABLE "${schema}".app_users (
   id         VARCHAR(255) PRIMARY KEY,
   name       VARCHAR(255) NOT NULL,
   email      VARCHAR(255),
   date_in    TIMESTAMP    NOT NULL,
-  login_time TIMESTAMP    NOT NULL
+  last_login_time TIMESTAMP    NOT NULL
 );
 CREATE INDEX app_users_name ON "${schema}".app_users (name);
 
@@ -119,15 +117,15 @@ CREATE TABLE "${schema}".system_properties (
 
 -- Create price tables
 CREATE TABLE "${schema}".prices_dtd (
-  id        INTEGER PRIMARY KEY,
+  id        BIGINT PRIMARY KEY,
   dist_from VARCHAR(255) REFERENCES "${schema}".districts (id),
   dist_to   VARCHAR(255) REFERENCES "${schema}".districts (id),
   price     INTEGER NOT NULL
 );
 
 CREATE TABLE "${schema}".prices_ctc (
-  id       INTEGER PRIMARY KEY,
-  cityFrom VARCHAR(255) REFERENCES "${schema}".cities (id),
-  cityTo   VARCHAR(255) REFERENCES "${schema}".cities (id),
+  id       BIGINT PRIMARY KEY,
+  city_from VARCHAR(255) REFERENCES "${schema}".cities (id),
+  city_to   VARCHAR(255) REFERENCES "${schema}".cities (id),
   price    INTEGER NOT NULL
 );

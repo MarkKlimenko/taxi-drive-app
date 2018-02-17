@@ -11,6 +11,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.SequenceGenerator
 import javax.persistence.Table
 
 import static systems.vostok.taxi.drive.app.util.CommonUtil.*
@@ -22,7 +23,8 @@ import static systems.vostok.taxi.drive.app.util.CommonUtil.*
 @ToString(includeNames = true, includeFields = true)
 class PriceCtc {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = 'ID_GENERATOR')
+    @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
     Long id
 
     String cityFrom

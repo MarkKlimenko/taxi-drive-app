@@ -9,6 +9,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.SequenceGenerator
 import javax.persistence.Table
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
@@ -20,10 +21,11 @@ import java.time.LocalDateTime
 @ToString(includeNames = true, includeFields = true, excludes = 'id')
 class Ride {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = 'ID_GENERATOR')
+    @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
     Long id
 
-    String clientLogin
+    String client
     Integer fromAddress
     Integer toAddress
 
@@ -36,7 +38,7 @@ class Ride {
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     LocalDateTime rideOut
 
-    String carId
+    Long carId
     Integer adultInCar
     Integer childrenInCar
     String prepaid

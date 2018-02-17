@@ -2,15 +2,18 @@ package systems.vostok.taxi.drive.app.service
 
 import systems.vostok.taxi.drive.app.dao.entity.geo.City
 import systems.vostok.taxi.drive.app.dao.entity.geo.District
-import systems.vostok.taxi.drive.app.dao.entity.geo.Street
 import systems.vostok.taxi.drive.app.dao.entity.SystemProperty
-import systems.vostok.taxi.drive.app.dao.impl.GeoDao
-import systems.vostok.taxi.drive.app.dao.impl.SystemPropertyDao
+import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.GeoDao
+import systems.vostok.taxi.drive.app.dao.repository.impl.SystemPropertyDao
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
+import systems.vostok.taxi.drive.app.dao.repository.impl.geo.CountryRepository
 import systems.vostok.taxi.drive.app.util.WordUtil
+
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.*
 
 @Service
 class GeoService {
@@ -23,40 +26,38 @@ class GeoService {
     @Autowired
     SystemPropertyDao systemPropertyDao
 
+    @Autowired
+    CountryRepository countryRepository
+
+    @Autowired
+    CrudService crudService
+
     Map getGeoInfo() {
-        [geoVersion : systemPropertyDao.getValue('geoVersion').value,
-         states : geoDao.getAllStates(),
-         cities : geoDao.getAllCities(),
-         streets: geoDao.getAllStreets(),
-         districts: geoDao.getAllDistricts()]
+        [geoVersion : crudService.getById('systemProperty', 'geoVersion').value,
+         states : getAllGeoEntities(STATE),
+         cities : getAllGeoEntities(CITY),
+         streets: getAllGeoEntities(STR),
+         districts: getAllGeoEntities('district')]
     }
 
-    Map addState() {
-        [:]
+    def getAllGeoEntities(String entityType) {
+        crudService.getAll(entityType)
     }
 
-    Map addCity(City city) {
-        geoDao.addCity(city)
+    def deleteGeoEntity(String entityType, String entityId) {
+        crudService.deleteById(entityType, entityId)
         updateGeoVersion()
-        [state: 'success']
+        entityId
     }
 
-    Map deleteCity(City city) {
-        geoDao.deleteCity(city)
-        updateGeoVersion()
-        [state: 'success']
-    }
 
-    Map deleteStreet(Street street) {
-        geoDao.deleteStreet(street)
-        updateGeoVersion()
-        [state: 'success']
-    }
 
-    Map addStreet(Street street) {
-        geoDao.addStreet(street)
-        updateGeoVersion()
-        [state: 'success']
+
+
+    def putGeoEntity(String entityType, Map entity) {
+        //geoRepositories.find{ entityType == it.entityType }
+        countryRepository.save(entity)
+                .with { /*updateGeoVersion();*/ it }
     }
 
     @CacheEvict(['citiesModifiedList', 'cityIdByName', 'districtsModifiedList', 'districtIdByName'])

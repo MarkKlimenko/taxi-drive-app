@@ -24,11 +24,12 @@ spring:
             password:
     datasource:
         url: jdbc:postgresql://192.168.99.100:5432/tda
-        username: postgres
-        password: admin
+        username: tda_klimenko
+        password: 12345
+
     jpa:
         hibernate:
-            ddl-auto: create-drop
+            ddl-auto: validate
 
 sso.enabled.local: false
 sso:
@@ -36,6 +37,9 @@ sso:
 
 server:
     port: 8087
+
+
+
 
 
 

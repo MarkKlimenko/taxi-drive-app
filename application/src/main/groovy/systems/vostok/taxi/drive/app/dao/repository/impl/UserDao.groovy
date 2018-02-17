@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.dao.impl
+package systems.vostok.taxi.drive.app.dao.repository.impl
 
 import com.datastax.driver.core.querybuilder.Select
 import systems.vostok.taxi.drive.app.dao.entity.User

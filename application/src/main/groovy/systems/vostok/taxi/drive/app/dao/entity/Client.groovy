@@ -17,12 +17,12 @@ import javax.persistence.Transient
 @ToString(includeNames = true, includeFields = true)
 class Client {
     @Id
-    String clientLogin
+    String login
 
     String firstName
     String lastName
     Integer ridesAmount
-    String clientType
+    String type
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Transient

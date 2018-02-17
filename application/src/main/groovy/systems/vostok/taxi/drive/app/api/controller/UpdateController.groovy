@@ -1,11 +1,11 @@
 package systems.vostok.taxi.drive.app.api.controller
 
-import systems.vostok.taxi.drive.app.dao.impl.RideDao
+import systems.vostok.taxi.drive.app.dao.repository.impl.RideRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
-import systems.vostok.taxi.drive.app.dao.impl.ClientDao
+import systems.vostok.taxi.drive.app.dao.repository.impl.ClientDao
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.DELETE
@@ -23,7 +23,7 @@ class UpdateController {
     ClientDao clientDao
 
     @Autowired
-    RideDao rideDao
+    RideRepository rideDao
 
     @PUT
     @Path('client')

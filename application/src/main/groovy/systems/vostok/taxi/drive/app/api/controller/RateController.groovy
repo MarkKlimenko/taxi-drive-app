@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import systems.vostok.taxi.drive.app.dao.entity.PriceCtc
 import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
-import systems.vostok.taxi.drive.app.dao.impl.PriceDao
+import systems.vostok.taxi.drive.app.dao.repository.impl.PriceDao
 import systems.vostok.taxi.drive.app.service.RateService
 
 import javax.ws.rs.Consumes
