@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 @Service
 class ClientManagementService {
 
-    @Autowired
+    /*@Autowired
     ClientDao clientDao
 
     @Autowired
@@ -50,5 +50,5 @@ class ClientManagementService {
 
     List<Ride> getActiveRides() {
         rideDao.getActiveRides()
-    }
+    }*/
 }

@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 
 import javax.persistence.EntityManager
 
-class BasicRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BasicRepository<T, ID> {
+class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BasicRepository<T, ID> {
 
     private final EntityManager entityManager
     private final Class<T> entityClass
 
-    BasicRepositoryImpl(JpaEntityInformation entityInformation, EntityManager entityManager) {
+    CustomBasicRepository(JpaEntityInformation entityInformation, EntityManager entityManager) {
         super(entityInformation, entityManager)
 
         this.entityManager = entityManager

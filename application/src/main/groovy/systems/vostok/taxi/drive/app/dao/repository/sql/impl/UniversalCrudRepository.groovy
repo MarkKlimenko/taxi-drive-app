@@ -1,11 +1,11 @@
-package systems.vostok.taxi.drive.app.service
+package systems.vostok.taxi.drive.app.dao.repository.sql.impl
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.repository.sql.BasicRepository
 
 @Service
-class CrudService {
+class UniversalCrudRepository {
     @Autowired
     List<BasicRepository> repositories
 

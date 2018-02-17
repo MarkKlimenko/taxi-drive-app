@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType
 @Path('api')
 @Produces(MediaType.APPLICATION_JSON)
 class RateController {
-    @Autowired
+    /*@Autowired
     RateService rateService
 
     @Autowired
@@ -75,5 +75,5 @@ class RateController {
     @Path('rate/ctc')
     deleteCtcRate(PriceCtc priceCtc) {
         priceDao.deleteCtcRate(priceCtc)
-    }
+    }*/
 }

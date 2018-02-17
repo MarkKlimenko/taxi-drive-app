@@ -2,7 +2,6 @@ package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.GeoDao
 import systems.vostok.taxi.drive.app.service.GeoService
 
 import javax.ws.rs.*
@@ -44,6 +43,6 @@ class GeoController {
     @POST
     @Path('geo/version/update')
     updateGeoVersion() {
-        geoService.updateGeoVersion()
+        geoService.updateGeoCache()
     }
 }

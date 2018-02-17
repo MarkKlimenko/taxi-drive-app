@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class PriceFormer {
-    @Autowired
+   /* @Autowired
     PriceDao priceDao
 
     @Autowired
@@ -62,5 +62,5 @@ class PriceFormer {
             }
         }
         ZERO_DISCOUNT
-    }
+    }*/
 }

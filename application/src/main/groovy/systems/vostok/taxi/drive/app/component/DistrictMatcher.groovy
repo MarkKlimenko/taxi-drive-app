@@ -11,14 +11,11 @@ import systems.vostok.tda.service.DistrictMapperService
 @Component
 class DistrictMatcher {
 
-    @Autowired
-    StreetDistrictDao streetDistrictDao
+
 
     @Autowired
     EntityMatcher entityMatcher
 
-    @Autowired
-    GeoDao geoDao
 
     @Autowired
     DistrictMapperService districtMapperService
