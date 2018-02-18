@@ -8,11 +8,11 @@ interface SqlEntities {
     String DISTRICT = 'district'
     
     String CLIENT = 'client'
-    String PRICE_DTD = 'price_dtd'
-    String PRICE_CTC = 'price_ctc'
+    String PRICE_DTD = 'price-dtd'
+    String PRICE_CTC = 'price-ctc'
     String RIDE = 'ride'
     String SETTING = 'setting'
-    String STREET_DISTRICT_MAPPER = 'sd_mapper'
-    String SYSTEM_PROPERTY = 'system_property'
+    String STREET_DISTRICT_MAPPER = 'sd-mapper'
+    String SYSTEM_PROPERTY = 'system-property'
     String USER = 'user'
 }
