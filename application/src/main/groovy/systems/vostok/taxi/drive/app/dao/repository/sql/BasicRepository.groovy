@@ -6,4 +6,5 @@ import org.springframework.data.repository.NoRepositoryBean
 @NoRepositoryBean
 interface BasicRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
     T convertToEntityType(Map entity)
+    ID convertToIdType(String entity)
 }

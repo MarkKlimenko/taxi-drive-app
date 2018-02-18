@@ -6,6 +6,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.entity.geo.City
 import systems.vostok.taxi.drive.app.dao.entity.geo.District
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.StreetDistrictMapperRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.util.WordUtil
 
@@ -19,6 +20,10 @@ class GeoService {
 
     @Autowired
     UniversalCrudRepository crudRepository
+
+
+    @Autowired
+    StreetDistrictMapperRepository streetDistrictMapperRepository
 
     Map getGeoInfo() {
         [geoVersion: crudRepository.getById(SYSTEM_PROPERTY, GEO_VERSION).value,

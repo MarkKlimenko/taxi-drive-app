@@ -55,7 +55,7 @@ CREATE TABLE "${schema}".clients (
   first_name   VARCHAR(255) NOT NULL,
   last_name    VARCHAR(255),
   rides_amount INTEGER,
-  type  VARCHAR(255)
+  type         VARCHAR(255)
 );
 
 CREATE TABLE "${schema}".addresses (
