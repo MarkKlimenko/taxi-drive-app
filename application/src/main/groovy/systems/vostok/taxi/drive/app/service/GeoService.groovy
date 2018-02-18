@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.entity.geo.City
 import systems.vostok.taxi.drive.app.dao.entity.geo.District
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.StreetDistrictMapperRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.UniversalCrudRepository
+import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.util.WordUtil
 
 import static systems.vostok.taxi.drive.app.util.constant.Properties.GEO_VERSION
