@@ -1,11 +1,5 @@
 package systems.vostok.taxi.drive.app.service
 
-import systems.vostok.taxi.drive.app.component.PriceFormer
-import systems.vostok.taxi.drive.app.dao.entity.Client
-import systems.vostok.taxi.drive.app.dao.entity.Ride
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientDao
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.RideRepositoryT
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service

@@ -20,7 +20,7 @@ class UniversalCrudRepository {
     }
 
     def getById(String entityType, String entityId) {
-        repositories.find{ entityType == it.entityType }.getOne(entityId)
+        repositories.find{ entityType == it.entityType }.findOne(entityId)
     }
 
     def deleteById(String entityType, String entityId) {

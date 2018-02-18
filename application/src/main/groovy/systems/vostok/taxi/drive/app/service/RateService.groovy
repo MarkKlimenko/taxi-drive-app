@@ -1,22 +1,19 @@
 package systems.vostok.taxi.drive.app.service
 
-import systems.vostok.taxi.drive.app.component.EntityMatcher
-import systems.vostok.taxi.drive.app.dao.entity.PriceCtc
-import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceDao
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import system.vostok.tda.service.ExcelParserService
+import systems.vostok.taxi.drive.app.dao.entity.PriceCtc
+import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
 
 @Service
 class RateService {
 
-    @Autowired
-    @Delegate
-    EntityMatcher entityMatcher
+    /* @Autowired
+     @Delegate
+     EntityMatcher entityMatcher
 
-    @Autowired
-    PriceDao priceDao
+     @Autowired
+     PriceDao priceDao*/
 
     void uploadDtdConfig(InputStream file) {
         new ExcelParserService().parseDocument(file, 0, 'MIRROR_DIAGONAL')

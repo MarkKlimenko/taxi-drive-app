@@ -4,13 +4,13 @@ CREATE SEQUENCE "${schema}".seq_global;
 -- Create geo tables
 CREATE TABLE "${schema}".countries (
   id   VARCHAR(255) PRIMARY KEY,
-  name VARCHAR(255) NOT NULL
+  name VARCHAR(255) UNIQUE NOT NULL
 );
 CREATE INDEX countries_name ON "${schema}".countries (name);
 
 CREATE TABLE "${schema}".states (
   id      VARCHAR(255) PRIMARY KEY,
-  name    VARCHAR(255) NOT NULL,
+  name    VARCHAR(255) UNIQUE NOT NULL,
   country VARCHAR(255) REFERENCES "${schema}".countries (id) NOT NULL
 );
 CREATE INDEX states_name ON "${schema}".states (name);
@@ -18,7 +18,7 @@ CREATE INDEX states_country ON "${schema}".states (country);
 
 CREATE TABLE "${schema}".cities (
   id    VARCHAR(255) PRIMARY KEY,
-  name  VARCHAR(255) NOT NULL,
+  name  VARCHAR(255) UNIQUE NOT NULL,
   state VARCHAR(255) REFERENCES "${schema}".states (id) NOT NULL
 );
 CREATE INDEX cities_name ON "${schema}".cities (name);
@@ -26,7 +26,7 @@ CREATE INDEX cities_state ON "${schema}".cities (state);
 
 CREATE TABLE "${schema}".streets (
   id   VARCHAR(255) PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(255) UNIQUE NOT NULL,
   city VARCHAR(255) REFERENCES "${schema}".cities (id) NOT NULL
 );
 CREATE INDEX streets_name ON "${schema}".streets (name);
@@ -34,7 +34,7 @@ CREATE INDEX streets_city ON "${schema}".streets (city);
 
 CREATE TABLE "${schema}".districts (
   id   VARCHAR(255) PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(255) UNIQUE NOT NULL,
   city VARCHAR(255) REFERENCES "${schema}".cities (id) NOT NULL
 );
 CREATE INDEX district_name ON "${schema}".districts (name);

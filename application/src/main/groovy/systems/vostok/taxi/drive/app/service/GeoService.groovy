@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
-import systems.vostok.taxi.drive.app.dao.entity.SystemProperty
 import systems.vostok.taxi.drive.app.dao.entity.geo.City
 import systems.vostok.taxi.drive.app.dao.entity.geo.District
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.util.WordUtil
 
+import static systems.vostok.taxi.drive.app.util.constant.Properties.GEO_VERSION
 import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.*
 
 @Service
@@ -18,10 +18,10 @@ class GeoService {
     WordUtil wordUtil
 
     @Autowired
-    UniversalCrudRepository crudService
+    UniversalCrudRepository crudRepository
 
     Map getGeoInfo() {
-        [geoVersion: crudService.getById(SYSTEM_PROPERTY, 'geoVersion').value,
+        [geoVersion: crudRepository.getById(SYSTEM_PROPERTY, GEO_VERSION).value,
          states    : getAllGeoEntities(STATE),
          cities    : getAllGeoEntities(CITY),
          streets   : getAllGeoEntities(STREET),
@@ -29,36 +29,36 @@ class GeoService {
     }
 
     def getAllGeoEntities(String entityType) {
-        crudService.getAll(entityType)
+        crudRepository.getAll(entityType)
     }
 
     def deleteGeoEntity(String entityType, String entityId) {
-        crudService.deleteById(entityType, entityId)
-        /* updateGeoCache()*/
+        crudRepository.deleteById(entityType, entityId)
+        updateGeoCache()
         entityId
     }
 
     def putGeoEntity(String entityType, Map entityMap) {
-        def entity = crudService.put(entityType, entityMap)
-        /*updateGeoCache();*/
+        def entity = crudRepository.put(entityType, entityMap)
+        updateGeoCache();
         entity
     }
 
     @CacheEvict(['citiesModifiedList', 'cityIdByName', 'districtsModifiedList', 'districtIdByName'])
-    void updateGeoCache() {
-        systemPropertyDao.add([property: 'geoVersion',
-                               value   : UUID.randomUUID().toString()] as SystemProperty)
+    def updateGeoCache() {
+        crudRepository.put(SYSTEM_PROPERTY, [property: GEO_VERSION,
+                                             value   : UUID.randomUUID().toString()])
     }
 
     @Cacheable(value = 'citiesModifiedList')
     List<City> getCitiesModifiedList() {
-        geoDao.getAllCities()
+        crudRepository.getAll(CITY)
                 .each { it.name = wordUtil.modifyGeoName(it.name) }
     }
 
     @Cacheable(value = 'districtsModifiedList')
     List<District> getDistrictsModifiedList() {
-        geoDao.getAllDistricts()
+        crudRepository.getAll(DISTRICT)
                 .each { it.name = wordUtil.modifyGeoName(it.name) }
     }
 }

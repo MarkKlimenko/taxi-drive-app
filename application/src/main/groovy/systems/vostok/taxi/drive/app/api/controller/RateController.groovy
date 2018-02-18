@@ -1,18 +1,7 @@
 package systems.vostok.taxi.drive.app.api.controller
 
-import org.glassfish.jersey.media.multipart.FormDataParam
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import systems.vostok.taxi.drive.app.dao.entity.PriceCtc
-import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceDao
-import systems.vostok.taxi.drive.app.service.RateService
 
-import javax.ws.rs.Consumes
-import javax.ws.rs.DELETE
-import javax.ws.rs.GET
-import javax.ws.rs.POST
-import javax.ws.rs.PUT
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
