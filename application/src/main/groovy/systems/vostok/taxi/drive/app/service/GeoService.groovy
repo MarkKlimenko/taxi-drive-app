@@ -21,7 +21,6 @@ class GeoService {
     @Autowired
     UniversalCrudRepository crudRepository
 
-
     @Autowired
     StreetDistrictMapperRepository streetDistrictMapperRepository
 

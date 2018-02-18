@@ -10,7 +10,7 @@ import javax.persistence.EntityManager
 
 class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BasicRepository<T, ID> {
 
-    private static final String ID_MUST_NOT_BE_NULL = "The given id must not be null!"
+    private static final String ID_MUST_NOT_BE_NULL = 'The given id must not be null!'
 
     private final EntityManager entityManager
     private final JpaEntityInformation entityInformation
@@ -37,13 +37,15 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     void delete(ID id) {
         Assert.notNull(id, ID_MUST_NOT_BE_NULL)
 
-        T entity = findOne(id)
+        findOne(id).with(this.&checkEntityExistence)
+                .with(this.&delete)
+    }
 
+    T checkEntityExistence(T entity) {
         if (!entity) {
             throw new EmptyResultDataAccessException(
-                    String.format("No %s entity with id %s exists!", entityInformation.getJavaType(), id), 1)
+                    String.format("No %s entity with such id exists!", entityInformation.javaType), 1)
         }
-
-        delete(entity)
+        entity
     }
 }
