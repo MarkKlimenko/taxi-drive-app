@@ -27,6 +27,13 @@ class GeoController {
         geoService.getAllGeoEntities(entityType)
     }
 
+    @GET
+    @Path('geo/{entityType}/{entityId}')
+    getGeoEntity(@PathParam('entityType') String entityType,
+                 @PathParam('entityId') String entityId) {
+        geoService.getGeoEntity(entityType, entityId)
+    }
+
     @DELETE
     @Path('geo/{entityType}/{entityId}')
     deleteGeoEntity(@PathParam('entityType') String entityType,

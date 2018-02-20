@@ -36,15 +36,18 @@ class GeoService {
         crudRepository.getAll(entityType)
     }
 
-    def deleteGeoEntity(String entityType, String entityId) {
+    def getGeoEntity(String entityType, String entityId) {
+        crudRepository.getById(entityType, entityId)
+    }
+
+    void deleteGeoEntity(String entityType, String entityId) {
         crudRepository.deleteById(entityType, entityId)
         updateGeoCache()
-        entityId
     }
 
     def putGeoEntity(String entityType, Map entityMap) {
         def entity = crudRepository.put(entityType, entityMap)
-        updateGeoCache();
+        updateGeoCache()
         entity
     }
 
