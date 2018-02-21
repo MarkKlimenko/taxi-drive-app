@@ -49,3 +49,4 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
         entity
     }
 }
+

@@ -52,8 +52,8 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-security:1.5.7.RELEASE',
             'org.keycloak:keycloak-spring-security-adapter:3.2.0.Final',
 
-            'systems.vostok.tda:tda-district-mapper:0.1.3',
-            'systems.vostok.tda:tda-excel-parser:0.1.5'
+            'systems.vostok.tda:tda-district-mapper:0.1.6',
+            'systems.vostok.tda:tda-excel-parser:0.1.6'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.8.RELEASE',
                 'org.testng:testng:6.11'
