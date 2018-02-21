@@ -8,12 +8,13 @@ import javax.ws.rs.Consumes
 import javax.ws.rs.GET
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
-import javax.ws.rs.core.MediaType
+
+import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
 
 @Controller
 @Path('service')
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 class ServiceController {
     @Autowired
     @Delegate
@@ -23,7 +24,7 @@ class ServiceController {
     @Path('status')
     getStatus() {
         [version: getVersion(),
-         dbSql: getDbStatus()/*,
+         dbSql  : getDbStatus()/*,
          dbCql: getDbStatus()*/]
     }
 }

@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller
 
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
-import javax.ws.rs.core.MediaType
+
+import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
 
 @Controller
 @Path('api')
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
 class RateController {
     /*@Autowired
     RateService rateService

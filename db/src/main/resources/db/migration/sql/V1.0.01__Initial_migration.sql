@@ -43,7 +43,7 @@ CREATE TABLE "${schema}".street_district_mapper (
   id          BIGINT PRIMARY KEY,
   district_id VARCHAR(255) REFERENCES "${schema}".districts (id) NOT NULL,
   street_id   VARCHAR(255) REFERENCES "${schema}".streets (id) NOT NULL,
-  building    VARCHAR(255) NOT NULL
+  building    VARCHAR(255)
 );
 CREATE INDEX sdm_districtId ON "${schema}".street_district_mapper (district_id);
 CREATE INDEX sdm_streetId ON "${schema}".street_district_mapper (street_id);

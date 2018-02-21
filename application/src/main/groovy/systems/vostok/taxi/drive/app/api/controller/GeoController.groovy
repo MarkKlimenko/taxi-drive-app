@@ -5,12 +5,13 @@ import org.springframework.stereotype.Controller
 import systems.vostok.taxi.drive.app.service.GeoService
 
 import javax.ws.rs.*
-import javax.ws.rs.core.MediaType
+
+import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
 
 @Controller
 @Path('api')
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 class GeoController {
     @Autowired
     GeoService geoService

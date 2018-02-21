@@ -6,12 +6,13 @@ import systems.vostok.taxi.drive.app.dao.entity.Ride
 import systems.vostok.taxi.drive.app.service.ClientManagementService
 
 import javax.ws.rs.*
-import javax.ws.rs.core.MediaType
+
+import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
 
 @Controller
 @Path('api')
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 class ClientManagementController {
 
     @Autowired
@@ -29,9 +30,9 @@ class ClientManagementController {
     getPrice(Ride ride) {
         try {
             [status: "OK",
-             price: calculatePrice(ride) as String]
+             price : calculatePrice(ride) as String]
         } catch (IllegalArgumentException e) {
-            [status: "ERROR",
+            [status : "ERROR",
              message: e.message]
         }
     }
