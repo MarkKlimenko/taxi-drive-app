@@ -1,7 +1,14 @@
 package systems.vostok.taxi.drive.app.api.controller
 
+import org.springframework.beans.factory.annotation.Autowired
+import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
+
 import javax.ws.rs.Consumes
+import javax.ws.rs.DELETE
+import javax.ws.rs.GET
+import javax.ws.rs.PUT
 import javax.ws.rs.Path
+import javax.ws.rs.PathParam
 import javax.ws.rs.Produces
 
 import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
@@ -10,52 +17,32 @@ import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)
 class UniversalCrudController {
-
-/*//    @Autowired
-//    ClientDao clientDao
-//
-//    @Autowired
-//    RideRepositoryT rideDao
-//
-//    @Autowired
-//    SystemPropertyDao systemPropertyDao
-
-    @GET
-    @Path('client/all')
-    getAllClients() {
-        clientDao.getAll()
-    }
-
-    @GET
-    @Path('client/login/{login}')
-    getClientByLogin(@PathParam('login') String login) {
-        clientDao.getByLogin(login)
-    }
-
-    @GET
-    @Path('system/property/{property}')
-    getSystemProperty(@PathParam('property') String property) {
-        systemPropertyDao.getValue(property)
-    }
-
-//    @Autowired
-//    RideRepositoryT rideDao
+    @Autowired
+    UniversalCrudRepository crudRepository
 
     @PUT
-    @Path('client')
-    putClient(Client client) {
-        clientDao.add(client)
+    @Path('{entityType}')
+    putGeoEntity(@PathParam('entityMap') String entityType, Map entityMap) {
+        crudRepository.put(entityType, entityMap)
+    }
+
+    @GET
+    @Path('{entityType}')
+    getAllGeoEntities(@PathParam('entityType') String entityType) {
+        crudRepository.getAll(entityType)
+    }
+
+    @GET
+    @Path('{entityType}/{entityId}')
+    getGeoEntity(@PathParam('entityType') String entityType,
+                 @PathParam('entityId') String entityId) {
+        crudRepository.getById(entityType, entityId)
     }
 
     @DELETE
-    @Path('client')
-    deleteClient(Client client) {
-        clientDao.delete(client)
+    @Path('{entityType}/{entityId}')
+    deleteGeoEntity(@PathParam('entityType') String entityType,
+                    @PathParam('entityId') String entityId) {
+        crudRepository.deleteById(entityType, entityId)
     }
-
-    @PUT
-    @Path('ride')
-    putRide(Ride ride) {
-        rideDao.add(ride)
-    }*/
 }
