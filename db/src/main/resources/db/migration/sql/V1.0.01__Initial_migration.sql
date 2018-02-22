@@ -118,15 +118,15 @@ CREATE TABLE "${schema}".system_properties (
 
 -- Create price tables
 CREATE TABLE "${schema}".prices_dtd (
-  id        BIGINT PRIMARY KEY,
-  dist_from VARCHAR(255) REFERENCES "${schema}".districts (id),
-  dist_to   VARCHAR(255) REFERENCES "${schema}".districts (id),
+  id        INTEGER PRIMARY KEY,
+  dist_from VARCHAR(255) NOT NULL REFERENCES "${schema}".districts (id),
+  dist_to   VARCHAR(255) NOT NULL REFERENCES "${schema}".districts (id),
   price     INTEGER NOT NULL
 );
 
 CREATE TABLE "${schema}".prices_ctc (
-  id       BIGINT PRIMARY KEY,
-  city_from VARCHAR(255) REFERENCES "${schema}".cities (id),
-  city_to   VARCHAR(255) REFERENCES "${schema}".cities (id),
-  price    INTEGER NOT NULL
+  id        INTEGER PRIMARY KEY,
+  city_from VARCHAR(255) NOT NULL REFERENCES "${schema}".cities (id),
+  city_to   VARCHAR(255) NOT NULL REFERENCES "${schema}".cities (id),
+  price     INTEGER NOT NULL
 );

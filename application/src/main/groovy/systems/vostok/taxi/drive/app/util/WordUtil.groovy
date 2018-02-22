@@ -1,11 +1,7 @@
 package systems.vostok.taxi.drive.app.util
 
-import org.springframework.stereotype.Component
-
-@Component
 class WordUtil {
-
-    String modifyGeoName(String name) {
+    static String modifyGeoName(String name) {
         name.toUpperCase()
                 .replaceAll(/[Ё]/, 'Е')
                 .replaceAll(/[(]/, '')

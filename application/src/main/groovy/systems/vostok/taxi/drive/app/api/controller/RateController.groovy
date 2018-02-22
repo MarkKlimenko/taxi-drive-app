@@ -21,14 +21,14 @@ class RateController {
     RateService rateService
 
     @POST
-    @Path('rate/dtd/config/upload')
+    @Path('price-dtd/upload')
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     uploadDtdConfig(@FormDataParam('file') InputStream file) {
         rateService.uploadDtdConfig(file)
     }
 
     @POST
-    @Path('rate/ctc/config/upload')
+    @Path('price-ctc/upload')
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     uploadCtcConfig(@FormDataParam('file') InputStream file) {
         rateService.uploadCtcConfig(file)

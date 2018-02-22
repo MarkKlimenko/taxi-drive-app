@@ -6,15 +6,11 @@ import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
-
 import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import javax.persistence.Id
-import javax.persistence.SequenceGenerator
 import javax.persistence.Table
 
-import static systems.vostok.taxi.drive.app.util.CommonUtil.*
+import static systems.vostok.taxi.drive.app.util.CommonUtil.generateId
 
 @Entity
 @Table(name = 'prices_ctc')
@@ -23,20 +19,20 @@ import static systems.vostok.taxi.drive.app.util.CommonUtil.*
 @ToString(includeNames = true, includeFields = true)
 class PriceCtc {
     @Id
-    @GeneratedValue(generator = 'ID_GENERATOR')
-    @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
-    Long id
+    Integer id
 
     String cityFrom
     String cityTo
     Integer price
+
+    PriceCtc() {}
 
     @JsonCreator
     PriceCtc(@JsonProperty('cityFrom') String cityFrom,
              @JsonProperty('cityTo') String cityTo,
              @JsonProperty('price') Integer price) {
         this.id = generateId(cityFrom, cityTo)
-        this.cityFrom =  cityFrom
+        this.cityFrom = cityFrom
         this.cityTo = cityTo
         this.price = price
     }

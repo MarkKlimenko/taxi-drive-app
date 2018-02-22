@@ -2,6 +2,7 @@ package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo.DistrictRepository
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.DELETE

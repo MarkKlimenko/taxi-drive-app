@@ -16,9 +16,6 @@ import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.*
 @Service
 class GeoService {
     @Autowired
-    WordUtil wordUtil
-
-    @Autowired
     UniversalCrudRepository crudRepository
 
     @Autowired
@@ -60,12 +57,12 @@ class GeoService {
     @Cacheable(value = 'citiesModifiedList')
     List<City> getCitiesModifiedList() {
         crudRepository.getAll(CITY)
-                .each { it.name = wordUtil.modifyGeoName(it.name) }
+                .each { it.name = WordUtil.modifyGeoName(it.name) }
     }
 
     @Cacheable(value = 'districtsModifiedList')
     List<District> getDistrictsModifiedList() {
         crudRepository.getAll(DISTRICT)
-                .each { it.name = wordUtil.modifyGeoName(it.name) }
+                .each { it.name = WordUtil.modifyGeoName(it.name) }
     }
 }

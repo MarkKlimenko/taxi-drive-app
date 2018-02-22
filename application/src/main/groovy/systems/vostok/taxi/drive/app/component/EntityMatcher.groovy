@@ -9,9 +9,6 @@ import systems.vostok.taxi.drive.app.util.WordUtil
 @Component
 class EntityMatcher {
     @Autowired
-    WordUtil wordUtil
-
-    @Autowired
     GeoService geoService
 
     @Cacheable('districtIdByName')
@@ -25,7 +22,7 @@ class EntityMatcher {
     }
 
     protected String getEntityId(String name, List entities) {
-        name = wordUtil.modifyGeoName(name)
+        name = WordUtil.modifyGeoName(name)
         Object entity = entities.find { it.name == name }
         if (!entity) {
             throw new NullPointerException("No such entity ${name} in geo table")

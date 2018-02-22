@@ -22,9 +22,14 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
         this.entityInformation = entityInformation
     }
 
-    T convertToEntityType(Map entity) {
-        entityInformation.javaType
-                .newInstance(entity)
+    T convertToEntityType(Object entity) {
+        Class targetClass = entityInformation.javaType
+
+        if(!targetClass.isInstance(entity)) {
+            return entityInformation.javaType
+                    .newInstance(entity) as T
+        }
+        entity as T
     }
 
     ID convertToIdType(String entityId) {
