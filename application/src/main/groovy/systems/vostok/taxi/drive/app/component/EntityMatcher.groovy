@@ -25,7 +25,7 @@ class EntityMatcher {
         name = WordUtil.modifyGeoName(name)
         Object entity = entities.find { it.name == name }
         if (!entity) {
-            throw new NullPointerException("No such entity ${name} in geo table")
+            throw new NullPointerException("No such entity $name in geo table")
         }
         entity.id
     }

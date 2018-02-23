@@ -5,10 +5,7 @@ import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.component.EntityMatcher
 import systems.vostok.taxi.drive.app.dao.entity.PriceCtc
 import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
-import systems.vostok.taxi.drive.app.dao.repository.sql.BasicRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo.CityRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo.DistrictRepository
 import systems.vostok.taxi.drive.app.util.JavaConverters
 import systems.vostok.tda.domain.ParsedRow
 import systems.vostok.tda.service.ExcelParserService
@@ -26,12 +23,6 @@ class RateService {
 
     @Autowired
     UniversalCrudRepository crudRepository
-
-    @Autowired
-    DistrictRepository districtRepository
-
-    @Autowired
-    CityRepository cityRepository
 
     void uploadDtdConfig(InputStream file) {
         new ExcelParserService().parseDocument(file, 0, MIRROR_DIAGONAL())
@@ -55,27 +46,13 @@ class RateService {
 
     protected PriceDtd composePriceDtd(ParsedRow parsedRow) {
         Iterable row = JavaConverters.convertIterable(parsedRow.content)
-        def findDistrict = { findIdByName(it, districtRepository) }
 
-        new PriceDtd(findDistrict(row[0]), findDistrict(row[1]), row[2] as Integer)
+        new PriceDtd(entityMatcher.getDistrictId(row[0]), entityMatcher.getDistrictId(row[1]), row[2] as Integer)
     }
 
     protected PriceCtc composePriceCtc(ParsedRow parsedRow) {
         Iterable row = JavaConverters.convertIterable(parsedRow.content)
-        def findDistrict = { findIdByName(it, cityRepository) }
 
-        new PriceCtc(findDistrict(row[0]), findDistrict(row[1]), row[3] as Integer)
-    }
-
-    protected String findIdByName(String name, BasicRepository repository) {
-        def checkExistence = {
-            if (!it) {
-                throw new NullPointerException("No such entity name '$name'")
-            }
-            it
-        }
-
-        repository.findIdByName(name)
-                .with(checkExistence)
+        new PriceCtc(entityMatcher.getCityId(row[0]), entityMatcher.getCityId(row[1]), row[3] as Integer)
     }
 }
