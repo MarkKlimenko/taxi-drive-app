@@ -5,23 +5,35 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.cassandra.core.CassandraTemplate
 import org.springframework.stereotype.Service
 
+import javax.persistence.EntityManager
+import javax.persistence.PersistenceContext
+
 @Service
 class UtilService {
-    @Value('${project.version}') String version
+    @Value('${project.version}')
+    String version
 
     @Autowired
     private CassandraTemplate cassandraTemplate
 
-    String getVersion() {
-        version
-    }
+    @PersistenceContext
+    EntityManager entityManager
 
-    String getDbStatus() {
+    String getCqlStatus() {
         try {
             cassandraTemplate.execute('SELECT * FROM system_schema.keyspaces;')
             'OK'
         } catch (Exception e) {
-            'ERROR'
+            e.toString()
+        }
+    }
+
+    String getSqlStatus() {
+        try {
+            entityManager.createNativeQuery("SELECT 'OK' FROM flyway_schema_history;")
+                    .getSingleResult() as String
+        } catch (Exception e) {
+            e.toString()
         }
     }
 }

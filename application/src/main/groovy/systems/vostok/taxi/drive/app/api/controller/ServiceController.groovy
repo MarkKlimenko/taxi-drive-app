@@ -24,7 +24,7 @@ class ServiceController {
     @Path('status')
     getStatus() {
         [version: getVersion(),
-         dbSql  : getDbStatus()/*,
-         dbCql: getDbStatus()*/]
+         dbCql  : getCqlStatus(),
+         dbSql  : getSqlStatus()]
     }
 }
