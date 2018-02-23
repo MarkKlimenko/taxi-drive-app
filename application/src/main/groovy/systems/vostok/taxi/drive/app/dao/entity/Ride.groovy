@@ -45,4 +45,10 @@ class Ride {
     String comment
     Integer price
     String state
+
+
+    static interface Constants {
+        String STATE_ACTIVE = 'active'
+        String STATE_PENDING = 'pending'
+    }
 }
