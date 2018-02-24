@@ -1,6 +1,7 @@
 package systems.vostok.taxi.drive.app.service
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.component.PriceFormer
 import systems.vostok.taxi.drive.app.dao.entity.Client
@@ -30,7 +31,7 @@ class ClientManagementService {
         clientRepository.getOne(id).with {
             if(it) {
                 it.rideFree = priceFormer.isRideFree(it.ridesAmount)
-                it.previousRides = rideRepository.getPreviousRides(id, getTargetDateFrom(),getTargetRidesAmount())
+                it.previousRides = findPreviousRides(id)
                 it
             }
             null
@@ -46,27 +47,34 @@ class ClientManagementService {
         }
     }
 
-    Map addNewRide(Ride ride) {
+    Ride addNewRide(Ride ride) {
         ride.state = STATE_ACTIVE
 
         // TODO: Calculate price
 
         rideRepository.save(ride)
-        [ride: ride, status: 'OK']
     }
 
     List<Ride> getActiveRides() {
         rideRepository.findByState(STATE_ACTIVE)
     }
 
-    private Timestamp getTargetDateFrom() {
-        // TODO: Change to db value
-        final Integer PERIOD_MONTHS = 5
-        Timestamp.valueOf(LocalDateTime.now().minusMonths(PERIOD_MONTHS))
-    }
+    private List<Ride> findPreviousRides(String clientId) {
+        def getTargetDateFrom = {
+            // TODO: Change to db value
+            final Integer PERIOD_MONTHS = 5
+            Timestamp.valueOf(LocalDateTime.now().minusMonths(PERIOD_MONTHS))
+        }
 
-    private Integer getTargetRidesAmount() {
-        // TODO: Change to db value
-        3
+        def getTargetRidesAmount = {
+            // TODO: Change to db value
+            3
+        }
+
+        def constructPageable = {
+            new PageRequest(0, getTargetRidesAmount())
+        }
+
+        rideRepository.findPreviousRides(clientId, getTargetDateFrom(), constructPageable())
     }
 }

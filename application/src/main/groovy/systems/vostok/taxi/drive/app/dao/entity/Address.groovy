@@ -23,6 +23,9 @@ class Address {
     String district
 
     @JsonCreator
+    Address() {}
+
+    @JsonCreator
     Address(@JsonProperty String country,
             @JsonProperty String state,
             @JsonProperty String city,
@@ -39,5 +42,15 @@ class Address {
         this.street = street
         this.building = building
         this.district = district
+    }
+
+    @JsonCreator
+    Address(@JsonProperty Map<String, String> address) {
+        this(address.country,
+                address.state,
+                address.city,
+                address.street,
+                address.building,
+                address.district)
     }
 }

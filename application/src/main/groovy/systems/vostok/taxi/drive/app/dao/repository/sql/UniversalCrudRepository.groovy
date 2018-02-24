@@ -35,10 +35,9 @@ class UniversalCrudRepository {
         repository.findOne(id)
     }
 
-    def deleteById(String entityType, String entityId) {
+    void deleteById(String entityType, String entityId) {
         BasicRepository repository = repositories.find { entityType == it.entityType }
-        def id = repository.convertToIdType(entityId)
-        repository.delete(id)
-        entityId
+        repository.convertToIdType(entityId)
+            .with(repository.&delete)
     }
 }

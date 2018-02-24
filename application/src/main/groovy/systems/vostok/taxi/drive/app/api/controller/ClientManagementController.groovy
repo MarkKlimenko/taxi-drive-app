@@ -37,8 +37,8 @@ class ClientManagementController {
         }
     }
 
-    @POST
-    @Path('ride/new')
+    @PUT
+    @Path('ride')
     addNewRide(Ride ride) {
         clientManagementService.addNewRide(ride)
     }

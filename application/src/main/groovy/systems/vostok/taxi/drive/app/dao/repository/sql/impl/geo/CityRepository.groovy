@@ -1,6 +1,6 @@
 package systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo
 
-import org.springframework.data.cassandra.repository.Query
+import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 import systems.vostok.taxi.drive.app.dao.entity.geo.City

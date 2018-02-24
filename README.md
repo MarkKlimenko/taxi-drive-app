@@ -56,32 +56,45 @@ gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
 
 ## Useful information 
 
-Travis
-Test Travis stage for new repo
+### Test Ride Workflow
+**Create client**
 <pre>
 {
-	"clientLogin":"89147654321",
+	"login":"+79147654321",
 	"firstName":"Polly",
 	"lastName":"Crocodile",
-	"ridesAmount": "5"
+	"ridesAmount": 5
 }
+</pre>
 
+**Create address from**
+<pre>
 {
-	"clientLogin":"+79147654321",
-	"fromAddress":{
 		"country":"Russia",
 		"state":"Primorskiy",
 		"city":"Vladivostok",
 		"street":"Svetlanskaya",
 		"building":"64"
-	},
-	"toAddress":{
+}
+</pre>
+
+**Create address to**
+<pre>
+{
 		"country":"Russia",
 		"state":"Primorskiy",
 		"city":"Vladivostok",
 		"street":"Lugovaya",
-		"building":"74/8"
-	},
+		"building":"3"
+}
+</pre>
+
+**Create ride**
+<pre>
+{
+	"clientLogin":"+79147654321",
+	"fromAddress": -13275131,
+	"toAddress": 1437201388,
 	"dateIn": "2017-11-13T12:45:30",
 	"carId": 5,
 	"menInCar": 2

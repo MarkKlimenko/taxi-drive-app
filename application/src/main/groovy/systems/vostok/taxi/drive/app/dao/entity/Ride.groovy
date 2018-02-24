@@ -1,5 +1,6 @@
 package systems.vostok.taxi.drive.app.dao.entity
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.SequenceGenerator
 import javax.persistence.Table
+import javax.persistence.Transient
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
 
@@ -46,6 +48,13 @@ class Ride {
     Integer price
     String state
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Transient
+    Address rawFromAddress
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Transient
+    Address rawToAddress
 
     static interface Constants {
         String STATE_ACTIVE = 'active'
