@@ -56,8 +56,7 @@ class PriceFormer {
 
     Boolean isRideFree(Integer ridesAmount) {
         (settingRepository.findValueBySetting(SETTING_RIDE_FREE) as Integer)
-                .collect { (ridesAmount + 1) % it == 0 }
-                .first()
+                .with { (ridesAmount + 1) % it == 0 }
     }
 
     private Double calculateDiscount(String clientLogin) {
