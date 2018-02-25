@@ -26,12 +26,12 @@ class Address {
     Address() {}
 
     @JsonCreator
-    Address(@JsonProperty String country,
-            @JsonProperty String state,
-            @JsonProperty String city,
-            @JsonProperty String street,
-            @JsonProperty String building,
-            @JsonProperty String district) {
+    Address(@JsonProperty('country') String country,
+            @JsonProperty('state') String state,
+            @JsonProperty('city') String city,
+            @JsonProperty('street') String street,
+            @JsonProperty('building') String building,
+            @JsonProperty('district') String district) {
 
         this.id = [country, state, city, street, building, district]
                 .with(CommonUtil.&generateId)
