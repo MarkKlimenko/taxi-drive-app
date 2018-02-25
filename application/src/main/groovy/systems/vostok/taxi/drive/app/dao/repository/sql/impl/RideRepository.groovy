@@ -8,6 +8,7 @@ import systems.vostok.taxi.drive.app.dao.entity.Ride
 import systems.vostok.taxi.drive.app.dao.repository.sql.BasicRepository
 
 import java.sql.Timestamp
+import java.time.LocalDateTime
 
 import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.RIDE
 
@@ -43,7 +44,7 @@ interface RideRepository extends BasicRepository<Ride, Long> {
 
     @Query('SELECT r FROM Ride r WHERE r.client = :client AND r.dateIn > :targetDateFrom ORDER BY r.dateIn DESC')
     List<Ride> findPreviousRides(@Param('client') String client,
-                                 @Param('targetDateFrom') Timestamp targetDateFrom,
+                                 @Param('targetDateFrom') LocalDateTime targetDateFrom,
                                  Pageable pageable)
 
 }

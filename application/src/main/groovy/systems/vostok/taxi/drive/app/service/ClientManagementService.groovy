@@ -8,12 +8,11 @@ import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.RideRepository
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo.AddressRepository
 
-import java.sql.Timestamp
 import java.time.LocalDateTime
 
 import static systems.vostok.taxi.drive.app.dao.entity.Ride.Constants.STATE_ACTIVE
-
 
 @Service
 class ClientManagementService {
@@ -25,16 +24,16 @@ class ClientManagementService {
     RideRepository rideRepository
 
     @Autowired
+    AddressRepository addressRepository
+
+    @Autowired
     PriceFormer priceFormer
 
     Client checkClient(String id) {
-        clientRepository.getOne(id).with {
-            if(it) {
-                it.rideFree = priceFormer.isRideFree(it.ridesAmount)
-                it.previousRides = findPreviousRides(id)
-                it
-            }
-            null
+        clientRepository.findOne(id)?.with {
+            it.rideFree = priceFormer.isRideFree(it.ridesAmount)
+            it.previousRides = findPreviousRides(id)
+            it
         }
     }
 
@@ -63,7 +62,7 @@ class ClientManagementService {
         def getTargetDateFrom = {
             // TODO: Change to db value
             final Integer PERIOD_MONTHS = 5
-            Timestamp.valueOf(LocalDateTime.now().minusMonths(PERIOD_MONTHS))
+            LocalDateTime.now().minusMonths(PERIOD_MONTHS)
         }
 
         def getTargetRidesAmount = {
@@ -75,6 +74,12 @@ class ClientManagementService {
             new PageRequest(0, getTargetRidesAmount())
         }
 
+        def addRawAddresses = {
+            it.rawFromAddress = addressRepository.findOne(it.fromAddress)
+            it.rawToAddress = addressRepository.findOne(it.toAddress)
+        }
+
         rideRepository.findPreviousRides(clientId, getTargetDateFrom(), constructPageable())
+                .each(addRawAddresses)
     }
 }

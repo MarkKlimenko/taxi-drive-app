@@ -16,6 +16,9 @@ import javax.persistence.Table
 class Setting {
     @Id
     String setting
-
     String value
+
+    static interface Constants {
+        String SETTING_RIDE_FREE = 'ride_free'
+    }
 }

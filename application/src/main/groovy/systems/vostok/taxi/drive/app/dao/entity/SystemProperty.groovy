@@ -16,6 +16,9 @@ import javax.persistence.Table
 class SystemProperty {
     @Id
     String property
-
     String value
+
+    static interface Constants {
+        String PROPERTY_GEO_VERSION = 'geo_version'
+    }
 }

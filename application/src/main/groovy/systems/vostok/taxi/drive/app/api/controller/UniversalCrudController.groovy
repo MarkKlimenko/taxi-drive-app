@@ -23,14 +23,14 @@ class UniversalCrudController {
     @GET
     @Path('{entityType}')
     getAllGeoEntities(@PathParam('entityType') String entityType) {
-        crudRepository.getAll(entityType)
+        crudRepository.findAll(entityType)
     }
 
     @GET
     @Path('{entityType}/{entityId}')
     getGeoEntity(@PathParam('entityType') String entityType,
                  @PathParam('entityId') String entityId) {
-        crudRepository.getById(entityType, entityId)
+        crudRepository.findById(entityType, entityId)
     }
 
     @DELETE

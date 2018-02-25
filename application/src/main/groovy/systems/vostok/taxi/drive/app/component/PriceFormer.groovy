@@ -7,6 +7,10 @@ import systems.vostok.taxi.drive.app.dao.entity.Ride
 import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceCtcRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceDtdRepository
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.SettingRepository
+
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.SETTING
+import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.SETTING_RIDE_FREE
 
 @Component
 class PriceFormer {
@@ -15,6 +19,9 @@ class PriceFormer {
 
     @Autowired
     PriceDtdRepository priceDtdRepository
+
+    @Autowired
+    SettingRepository settingRepository
 
     @Autowired
     UniversalCrudRepository universalCrudRepository
@@ -48,7 +55,7 @@ class PriceFormer {
     }
 
     Boolean isRideFree(Integer ridesAmount) {
-        (settingDao.getValue('ride_free') as Integer)
+        (settingRepository.findValueBySetting(SETTING_RIDE_FREE) as Integer)
                 .collect { (ridesAmount + 1) % it == 0 }
                 .first()
     }

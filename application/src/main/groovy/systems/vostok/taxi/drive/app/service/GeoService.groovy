@@ -10,7 +10,7 @@ import systems.vostok.taxi.drive.app.dao.repository.sql.impl.StreetDistrictMappe
 import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.util.WordUtil
 
-import static systems.vostok.taxi.drive.app.util.constant.Properties.GEO_VERSION
+import static systems.vostok.taxi.drive.app.dao.entity.SystemProperty.Constants.PROPERTY_GEO_VERSION
 import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.*
 
 @Service
@@ -22,7 +22,7 @@ class GeoService {
     StreetDistrictMapperRepository streetDistrictMapperRepository
 
     Map getGeoInfo() {
-        [geoVersion: crudRepository.getById(SYSTEM_PROPERTY, GEO_VERSION).value,
+        [geoVersion: crudRepository.findById(SYSTEM_PROPERTY, PROPERTY_GEO_VERSION).value,
          states    : getAllGeoEntities(STATE),
          cities    : getAllGeoEntities(CITY),
          streets   : getAllGeoEntities(STREET),
@@ -30,11 +30,11 @@ class GeoService {
     }
 
     def getAllGeoEntities(String entityType) {
-        crudRepository.getAll(entityType)
+        crudRepository.findAll(entityType)
     }
 
     def getGeoEntity(String entityType, String entityId) {
-        crudRepository.getById(entityType, entityId)
+        crudRepository.findById(entityType, entityId)
     }
 
     void deleteGeoEntity(String entityType, String entityId) {
@@ -50,19 +50,19 @@ class GeoService {
 
     @CacheEvict(['citiesModifiedList', 'cityIdByName', 'districtsModifiedList', 'districtIdByName'])
     def updateGeoCache() {
-        crudRepository.put(SYSTEM_PROPERTY, [property: GEO_VERSION,
+        crudRepository.put(SYSTEM_PROPERTY, [property: PROPERTY_GEO_VERSION,
                                              value   : UUID.randomUUID().toString()])
     }
 
     @Cacheable(value = 'citiesModifiedList')
     List<City> getCitiesModifiedList() {
-        crudRepository.getAll(CITY)
+        crudRepository.findAll(CITY)
                 .each { it.name = WordUtil.modifyGeoName(it.name) }
     }
 
     @Cacheable(value = 'districtsModifiedList')
     List<District> getDistrictsModifiedList() {
-        crudRepository.getAll(DISTRICT)
+        crudRepository.findAll(DISTRICT)
                 .each { it.name = WordUtil.modifyGeoName(it.name) }
     }
 }

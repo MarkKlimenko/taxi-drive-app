@@ -25,11 +25,11 @@ class UniversalCrudRepository {
         repository.save(entities)
     }
 
-    def getAll(String entityType) {
+    def findAll(String entityType) {
         repositories.find { entityType == it.entityType }.findAll()
     }
 
-    def getById(String entityType, String entityId) {
+    def findById(String entityType, String entityId) {
         BasicRepository repository = repositories.find { entityType == it.entityType }
         def id = repository.convertToIdType(entityId)
         repository.findOne(id)

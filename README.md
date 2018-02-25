@@ -96,7 +96,6 @@ gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
 	"fromAddress": -13275131,
 	"toAddress": 1437201388,
 	"dateIn": "2017-11-13T12:45:30",
-	"carId": 5,
 	"menInCar": 2
 }
 </pre>
