@@ -100,6 +100,39 @@ gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
 }
 </pre>
 
+### Check ride price
+**Check ctc price**
+<pre>
+{
+	"client":"+79147654321",
+	"rawFromAddress": {
+		"city":"Спасск-Дальний"
+		
+	},
+	"rawToAddress": {
+		"city":"Бусевка"
+		
+	}
+}
+</pre>
+
+**Check dtd price**
+<pre>
+{
+	"client":"+79147654320",
+	"rawFromAddress": {
+		"city":"Спасск-Дальний",
+		"street":"Парковая",
+		"building": "5"
+	},
+	"rawToAddress": {
+		"city":"Спасск-Дальний",
+		"street":"Новая",
+		"building": "125"
+	}
+}
+</pre>
+
 
 - "JAVA_OPTS=-Dmessaging.user=admin
 

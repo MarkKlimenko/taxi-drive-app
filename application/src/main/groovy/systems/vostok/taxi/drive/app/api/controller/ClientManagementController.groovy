@@ -16,13 +16,12 @@ import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_
 class ClientManagementController {
 
     @Autowired
-    @Delegate
     ClientManagementService clientManagementService
 
     @GET
     @Path('client/check/{id}')
     checkUserById(@PathParam('id') String id) {
-        checkClient(id)
+        clientManagementService.checkClient(id)
     }
 
     @POST
@@ -30,7 +29,7 @@ class ClientManagementController {
     getPrice(Ride ride) {
         try {
             [status: "OK",
-             price : calculatePrice(ride) as String]
+             price : clientManagementService.calculatePrice(ride) as String]
         } catch (IllegalArgumentException e) {
             [status : "ERROR",
              message: e.message]

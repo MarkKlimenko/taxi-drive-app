@@ -39,7 +39,7 @@ class ClientManagementService {
 
     Integer calculatePrice(Ride ride) {
         // TODO: Get default city from settings
-        if (ride.fromAddress.city == ride.toAddress.city && ride.toAddress.city == 'Спасск-Дальний') {
+        if (ride.rawFromAddress.city == ride.rawToAddress.city && ride.rawToAddress.city == 'Спасск-Дальний') {
             priceFormer.calculateDtdPrice(ride)
         } else {
             priceFormer.calculateCtcPrice(ride)
@@ -58,7 +58,7 @@ class ClientManagementService {
         rideRepository.findByState(STATE_ACTIVE)
     }
 
-    private List<Ride> findPreviousRides(String clientId) {
+    protected List<Ride> findPreviousRides(String clientId) {
         def getTargetDateFrom = {
             // TODO: Change to db value
             final Integer PERIOD_MONTHS = 5

@@ -9,4 +9,6 @@ import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.STREET_DIS
 @Repository
 interface StreetDistrictMapperRepository extends BasicRepository<StreetDistrictMapper, Long> {
     String entityType = STREET_DISTRICT_MAPPER
+
+    List<StreetDistrictMapper> findByStreetId(String streetId)
 }

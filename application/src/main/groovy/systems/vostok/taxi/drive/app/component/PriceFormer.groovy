@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
-import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceCtcRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceDtdRepository
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.SettingRepository
+import systems.vostok.taxi.drive.app.util.CommonUtil
 
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.SETTING
 import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.SETTING_RIDE_FREE
 
 @Component
@@ -24,7 +24,8 @@ class PriceFormer {
     SettingRepository settingRepository
 
     @Autowired
-    UniversalCrudRepository universalCrudRepository
+    ClientRepository clientRepository
+
 
     @Autowired
     DistrictMatcher districtMatcher
@@ -43,15 +44,21 @@ class PriceFormer {
         if (discount == FREE_DISCOUNT) {
             0
         } else {
-            String districtFrom = districtMatcher.getDistrictId(ride.fromAddress)
-            String districtTo = districtMatcher.getDistrictId(ride.toAddress)
-            priceDao.getDistrictsRidePrice(districtFrom, districtTo) * (1 - discount)
+            String distFrom = districtMatcher.getDistrictId(ride.rawFromAddress)
+            String distTo = districtMatcher.getDistrictId(ride.rawToAddress)
+
+            CommonUtil.generateId(distFrom, distTo)
+                    .with(priceDtdRepository.&findPrice)
+                    ?.multiply(1 - discount)
         }
     }
 
     Integer calculateCtcPrice(Ride ride) {
-        priceCtcRepository.getByCityFromAndCityTo(entityMatcher.getCityId(ride.fromAddress.city),
-                entityMatcher.getCityId(ride.toAddress.city))
+        String cityFrom = entityMatcher.getCityId(ride.rawFromAddress.city)
+        String cityTo =  entityMatcher.getCityId(ride.rawToAddress.city)
+
+        CommonUtil.generateId(cityFrom, cityTo)
+                .with(priceCtcRepository.&findPrice)
     }
 
     Boolean isRideFree(Integer ridesAmount) {
@@ -60,11 +67,11 @@ class PriceFormer {
     }
 
     private Double calculateDiscount(String clientLogin) {
-        Client client = clientDao.getByLogin(clientLogin)
+        Client client = clientRepository.findOne(clientLogin)
         if (client) {
             if (isRideFree(client.ridesAmount)) {
                 return FREE_DISCOUNT
-            } else if (client.clientType == 'VIP') {
+            } else if (client.type == 'VIP') {
                 return VIP_DISCOUNT
             }
         }

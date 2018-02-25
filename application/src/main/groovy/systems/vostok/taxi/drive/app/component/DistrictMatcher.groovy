@@ -4,15 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.entity.Address
 import systems.vostok.taxi.drive.app.dao.entity.geo.Street
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.StreetDistrictMapperRepository
+import systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo.StreetRepository
+import systems.vostok.taxi.drive.app.util.JavaConverters
+import systems.vostok.tda.domain.Mapper
 import systems.vostok.tda.service.DistrictMapperService
 
 @Component
 class DistrictMatcher {
 
-
     @Autowired
     EntityMatcher entityMatcher
 
+    @Autowired
+    StreetRepository streetRepository
+
+    @Autowired
+    StreetDistrictMapperRepository sdMapperRepository
 
     @Autowired
     DistrictMapperService districtMapperService
@@ -24,15 +32,16 @@ class DistrictMatcher {
     }
 
     String defineDistrict(Address address) {
-        Street street = geoDao.getStreetByNameAndCity(address.street, DEFAULT_CITY)
+        Street street = streetRepository.findByNameAndCity(address.street, DEFAULT_CITY)
 
         if (!street) {
             throw new IllegalArgumentException('no_such_street_in_db')
         }
 
-        List<Map> mapper = streetDistrictDao.getByStreetId(street.id)
-                .collect { [streetId: it.streetId, building: it.building, districtId: it.districtId] }
+        scala.collection.immutable.List<Mapper> mapper = sdMapperRepository.findByStreetId(street.id)
+                .collect { new Mapper(it.streetId, it.building,  it.districtId) }
+                .with(JavaConverters.&convertList)
 
-        districtMapperService.getDistrict(mapper, [streetId: street.id, building: address.building])
+        districtMapperService.getDistrict(mapper, new systems.vostok.tda.domain.Address(street.id, address.building))
     }
 }
