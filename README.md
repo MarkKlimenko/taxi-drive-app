@@ -145,3 +145,7 @@ docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 80
 CASSANDRA CQLSH:
 docker run -it --link cassandra:cassandra --rm cassandra cqlsh cassandra <some commands for example auth -u cassandra -p cassandra>
 
+### Prepare docker
+
+docker run --restart always -d --name cassandra -p 9042:9042 cassandra
+docker run --restart always -d --name postgres -p 5432:5432 postgres
