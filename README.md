@@ -9,6 +9,38 @@
 -Dspring.data.cassandra.password=
 </pre>
 
+### Prepare environment
+
+**Launch docker containers**
+<pre>
+docker run --restart always -d --name cassandra -p 9042:9042 cassandra
+docker run --restart always -d --name postgres -p 5432:5432 postgres
+</pre>
+
+**Setup SQL db**
+<pre>
+1. Create database tda (using migrator)
+    CREATE DATABASE new_database;    
+2. Create schema and user for database tda (using migrator)
+    CREATE SCHEMA tda_example;
+    CREATE USER tda_example;
+    ALTER ROLE tda_example PASSWORD '12345';
+    GRANT  ALL  ON SCHEMA tda_example TO tda_example;
+3. Connect to db, using tda_example user and schema    
+</pre>
+
+**Execute SQL migrations**
+<pre>
+gradlew flywayMigrate -PflywayUrl=jdbc:postgresql://192.168.99.100:5432/tda 
+                      -PflywayUser=tda_example
+                      -PflywayPassword=12345
+</pre>
+
+**Execute CQL migrations**
+<pre>
+gradlew migratorExecute -PmigratorHost=192.168.99.100
+</pre>
+
 ### DB connection
 **Local DB connection (docker full version)**
 <pre>
@@ -145,7 +177,3 @@ docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 80
 CASSANDRA CQLSH:
 docker run -it --link cassandra:cassandra --rm cassandra cqlsh cassandra <some commands for example auth -u cassandra -p cassandra>
 
-### Prepare docker
-
-docker run --restart always -d --name cassandra -p 9042:9042 cassandra
-docker run --restart always -d --name postgres -p 5432:5432 postgres

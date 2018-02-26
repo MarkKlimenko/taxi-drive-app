@@ -46,11 +46,11 @@ migratorExecute {
 }
 
 flyway {
-    url = 'jdbc:postgresql://192.168.99.100:5432/tda'
-    schemas = ['tda_klimenko']
-    user = 'tda_klimenko'
-    password = '12345'
+    url = flywayUrl
+    schemas = [flywayUser]
+    user = flywayUser
+    password = flywayPassword
     placeholders = [
-            'schema': 'tda_klimenko',
+            'schema': flywayUser,
     ]
 }
