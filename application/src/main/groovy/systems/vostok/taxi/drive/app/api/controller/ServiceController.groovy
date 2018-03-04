@@ -27,4 +27,8 @@ class ServiceController {
          dbCql  : getCqlStatus(),
          dbSql  : getSqlStatus()]
     }
+
+    // TODO: Add update cache controller by entity
+    // TODO: Add update cache controller all
+
 }

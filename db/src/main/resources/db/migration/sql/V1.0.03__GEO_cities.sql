@@ -63,15 +63,18 @@ INSERT INTO "${schema}".cities (id, name, state) VALUES ('iva', 'Ивановк�
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('ili', 'Ильинка', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kav', 'Кавалерово', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kaz', 'Казанка', 'pk');
-INSERT INTO "${schema}".cities (id, name, state) VALUES ('kal', 'Калиновка', 'pk');
+INSERT INTO "${schema}".cities (id, name, state) VALUES ('kalin', 'Калиновка', 'pk');
+INSERT INTO "${schema}".cities (id, name, state) VALUES ('kalen', 'Каленовка', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kam', 'Каменка', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kar', 'Камень Рыболов', 'pk');
+INSERT INTO "${schema}".cities (id, name, state) VALUES ('krem', 'Кремово', 'pk');
 
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kir', 'Кировский', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('knr', 'Кнорринг', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kon', 'Константиновка', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kras', 'Краскино', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('kron', 'Кронштадка', 'pk');
+INSERT INTO "${schema}".cities (id, name, state) VALUES ('kril', 'Крыловка', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('lasl', 'Лазо(Лазовский р-н)', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('lasd', 'Лазо(Дальний р-н)', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('lasa', 'Лазаревка', 'pk');
@@ -165,6 +168,7 @@ INSERT INTO "${schema}".cities (id, name, state) VALUES ('hval', 'Хвалынк
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('hor', 'Хороль', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('cher', 'Черёмушки', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('chern', 'Черниговка', 'pk');
+INSERT INTO "${schema}".cities (id, name, state) VALUES ('chernish', 'Чернышевка', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('chal', 'Чкаловка', 'pk');
 
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('chug', 'Чугуевка', 'pk');

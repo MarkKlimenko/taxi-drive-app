@@ -21,5 +21,3 @@ INSERT INTO "${schema}".street_district_mapper (id, street_id, building, distric
 INSERT INTO "${schema}".street_district_mapper (id, street_id, building, district_id) VALUES (nextval('seq_global'), '4izap', '', 'cemz');
 INSERT INTO "${schema}".street_district_mapper (id, street_id, building, district_id) VALUES (nextval('seq_global'), '50lpri', '', 'mtf');
 INSERT INTO "${schema}".street_district_mapper (id, street_id, building, district_id) VALUES (nextval('seq_global'), '70lokt', '', 'grk');
-
-

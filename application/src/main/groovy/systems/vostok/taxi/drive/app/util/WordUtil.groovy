@@ -7,5 +7,6 @@ class WordUtil {
                 .replaceAll(/[(]/, '')
                 .replaceAll(/[)]/, '')
                 .replaceAll(/[-]/, '')
+                .replaceAll(/[ ]/, '')
     }
 }
