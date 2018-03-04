@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.component.PriceFormer
+import systems.vostok.taxi.drive.app.dao.domain.RidePrice
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
 import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientRepository
@@ -37,12 +38,12 @@ class ClientManagementService {
         }
     }
 
-    String calculatePrice(Ride ride) {
+    RidePrice calculatePrice(Ride ride) {
         // TODO: Get default city from settings
         if (ride.rawFromAddress.city == ride.rawToAddress.city && ride.rawToAddress.city == 'Спасск-Дальний') {
-            priceFormer.calculateDtdPrice(ride)
+            [priceFormer.calculateDtdPrice(ride)]
         } else {
-            priceFormer.calculateCtcPrice(ride)
+            [priceFormer.calculateCtcPrice(ride)]
         }
     }
 
