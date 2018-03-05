@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.entity.Address
 import systems.vostok.taxi.drive.app.dao.entity.geo.Street
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.StreetDistrictMapperRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo.StreetRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.StreetDistrictMapperRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.geo.StreetRepository
 import systems.vostok.taxi.drive.app.util.JavaConverters
 import systems.vostok.tda.domain.Mapper
 import systems.vostok.tda.service.DistrictMapperService

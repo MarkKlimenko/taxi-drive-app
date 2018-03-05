@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.component.EntityMatcher
 import systems.vostok.taxi.drive.app.dao.entity.PriceCtc
 import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
-import systems.vostok.taxi.drive.app.dao.repository.sql.UniversalCrudRepository
+import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.util.JavaConverters
 import systems.vostok.tda.domain.ParsedRow
 import systems.vostok.tda.service.ExcelParserService

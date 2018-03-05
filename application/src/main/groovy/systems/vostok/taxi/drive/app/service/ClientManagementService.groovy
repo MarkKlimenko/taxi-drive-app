@@ -7,9 +7,9 @@ import systems.vostok.taxi.drive.app.component.PriceFormer
 import systems.vostok.taxi.drive.app.dao.domain.RidePrice
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.RideRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.geo.AddressRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.RideRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.geo.AddressRepository
 
 import java.time.LocalDateTime
 

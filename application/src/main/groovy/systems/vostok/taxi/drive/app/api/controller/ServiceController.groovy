@@ -23,9 +23,8 @@ class ServiceController {
     @GET
     @Path('status')
     getStatus() {
-        [version: getVersion(),
-         dbCql  : getCqlStatus(),
-         dbSql  : getSqlStatus()]
+        [version: version,
+         db     : sqlStatus]
     }
 
     // TODO: Add update cache controller by entity

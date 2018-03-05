@@ -1,8 +1,7 @@
-package systems.vostok.taxi.drive.app.dao.repository.sql
+package systems.vostok.taxi.drive.app.dao.repository
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import scala.collection.Iterable
 
 /**
  * Methods def put and def putAll could be applied for both - direct entity object and entity map

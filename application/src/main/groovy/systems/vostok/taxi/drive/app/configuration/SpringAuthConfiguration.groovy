@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.configuration.authentication
+package systems.vostok.taxi.drive.app.configuration
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Conditional
@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 
 @Configuration
-@Conditional(SsoDisabledCondition.class)
 @EnableWebSecurity
 class SpringAuthConfiguration extends WebSecurityConfigurerAdapter {
 

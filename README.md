@@ -3,17 +3,16 @@
 ### Run application local
 **Start spring boot application with VM options:**
 <pre>
--Dspring.profiles.active=local 
--Dspring.data.cassandra.contact-points=
--Dspring.data.cassandra.username=
--Dspring.data.cassandra.password=
+    -Dspring.datasource.url=jdbc:postgresql://192.168.99.100:5432/tda   
+    -Dspring.datasource.username=tda_klimenko 
+    -Dspring.datasource.password=12345
+    -Dserver.port=8087
 </pre>
 
 ### Prepare environment
 
 **Launch docker containers**
 <pre>
-docker run --restart always -d --name cassandra -p 9042:9042 cassandra
 docker run --restart always -d --name postgres -p 5432:5432 postgres
 </pre>
 
@@ -36,58 +35,7 @@ gradlew flywayMigrate -PflywayUrl=jdbc:postgresql://192.168.99.100:5432/tda
                       -PflywayPassword=12345
 </pre>
 
-**Execute CQL migrations**
-<pre>
-gradlew migratorExecute -PmigratorHost=192.168.99.100
-</pre>
-
-### DB connection
-**Local DB connection (docker full version)**
-<pre>
-(not need to add parameters)
-</pre>
-
-**Local DB connection (docker toolbox)**
-<pre>
--Dspring.data.cassandra.contact-points=192.168.99.100
-</pre>
-
-**Dev DB connection**
-<pre>
--Dspring.data.cassandra.contact-points=vostok.systems
--Dspring.data.cassandra.keyspace-name=tda_dev
--Dspring.data.cassandra.username=tda_dev
--Dspring.data.cassandra.password=some_password
-</pre>
-
-### Execute migrations
-**Commands:**
-<pre>
-gradlew migratorDropKeyspace
-gradlew migratorExecute
-</pre>
-
-**Parameters:**
-<pre>
--PmigratorHost=
--PmigratorUser= 
--PmigratorPassword= 
--PmigratorKeyspace=
--PmigratorScript=
-</pre>
-
-**Examples:**
-<pre>
-gradlew migratorDropKeyspace -PmigratorUser=cassandra -PmigratorPassword=cassandra 
-gradlew migratorExecute -PmigratorUser=cassandra -PmigratorPassword=cassandra -PmigratorScript=db/src/main/resources/scripts/migrations
-
-gradlew migratorExecute -PmigratorHost=192.168.99.100 -PmigratorScript=db/src/main/resources/scripts/migrations
-gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
-</pre>
-
-
 ## Useful information 
-
 ### Test Ride Workflow
 **Create client**
 <pre>
@@ -164,16 +112,3 @@ gradlew migratorDropKeyspace -PmigratorHost=192.168.99.100
 	}
 }
 </pre>
-
-
-- "JAVA_OPTS=-Dmessaging.user=admin
-
-docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod -Dspring.data.cassandra.contact-points=172.18.0.22" markklim/taxi-drive-app:0.1
-docker run -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod -Dspring.data.cassandra.contact-points=172.18.0.22" markklim/taxi-drive-app:0.1
-docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod" markklim/taxi-drive-app:0.1
-
-docker run --restart always -d --name tda --net dockernet --ip 172.18.0.21 -p 8087:8080 -e JAVA_OPTS="-Dspring.profiles.active=prod -Dspring.data.cassandra.username=XXX -Dspring.data.cassandra.password=XXX" markklim/taxi-drive-app:0.1
-
-CASSANDRA CQLSH:
-docker run -it --link cassandra:cassandra --rm cassandra cqlsh cassandra <some commands for example auth -u cassandra -p cassandra>
-

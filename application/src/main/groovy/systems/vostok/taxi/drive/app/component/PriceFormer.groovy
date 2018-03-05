@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.ClientRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceCtcRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.PriceDtdRepository
-import systems.vostok.taxi.drive.app.dao.repository.sql.impl.SettingRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.PriceCtcRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.PriceDtdRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.SettingRepository
 import systems.vostok.taxi.drive.app.util.CommonUtil
 
 import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.SETTING_RIDE_FREE

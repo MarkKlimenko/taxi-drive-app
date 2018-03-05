@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.dao.repository.sql
+package systems.vostok.taxi.drive.app.dao.repository
 
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.data.jpa.repository.support.JpaEntityInformation

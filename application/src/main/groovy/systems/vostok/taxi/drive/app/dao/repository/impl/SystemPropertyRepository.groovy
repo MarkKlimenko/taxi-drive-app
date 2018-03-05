@@ -1,9 +1,8 @@
-package systems.vostok.taxi.drive.app.dao.repository.sql.impl
+package systems.vostok.taxi.drive.app.dao.repository.impl
 
 import org.springframework.stereotype.Repository
 import systems.vostok.taxi.drive.app.dao.entity.SystemProperty
-import systems.vostok.taxi.drive.app.dao.entity.geo.City
-import systems.vostok.taxi.drive.app.dao.repository.sql.BasicRepository
+import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 
 import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.SYSTEM_PROPERTY
 

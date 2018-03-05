@@ -36,6 +36,7 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.12',
+
             'org.springframework.boot:spring-boot-starter-jersey:1.5.7.RELEASE',
             'org.glassfish.jersey.media:jersey-media-multipart:2.19',
             'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE',
@@ -45,12 +46,11 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-cache:1.5.7.RELEASE',
             'net.sf.ehcache:ehcache:2.10.4',
 
-            'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.7.RELEASE',
             'org.postgresql:postgresql:42.1.4',
 
             'org.springframework.boot:spring-boot-starter-data-jpa:1.5.10.RELEASE',
+
             'org.springframework.boot:spring-boot-starter-security:1.5.7.RELEASE',
-            'org.keycloak:keycloak-spring-security-adapter:3.2.0.Final',
 
             'systems.vostok.tda:tda-district-mapper:0.1.6',
             'systems.vostok.tda:tda-excel-parser:0.1.6'
