@@ -28,6 +28,8 @@ INSERT INTO "${schema}".districts (id, name, city) VALUES ('voskr', 'Воскр�
 INSERT INTO "${schema}".districts (id, name, city) VALUES ('krasn', 'Красный кут', 'spa');
 INSERT INTO "${schema}".districts (id, name, city) VALUES ('nov', 'Новинка', 'spa');
 INSERT INTO "${schema}".districts (id, name, city) VALUES ('tra', 'Тракторный', 'spa');
+INSERT INTO "${schema}".districts (id, name, city) VALUES ('530', '530 км', 'spa');
+INSERT INTO "${schema}".districts (id, name, city) VALUES ('shan', 'Шанхай', 'spa');
 
 
 

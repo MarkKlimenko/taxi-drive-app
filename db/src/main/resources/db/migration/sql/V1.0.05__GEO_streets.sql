@@ -47,11 +47,11 @@ INSERT INTO "${schema}".streets (id, name, city) VALUES ('vokz', 'Вокзаль
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('voloch', 'Волочаевская', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('vostpe', 'Восточный пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('vostrec', 'Вострецова', 'spa');
-INSERT INTO "${schema}".streets (id, name, city) VALUES ('gageri', 'Гагарина', 'spa');
+INSERT INTO "${schema}".streets (id, name, city) VALUES ('gagari', 'Гагарина', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('gvardper', 'Гвардейский пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('gercen', 'Герцена', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('gogol', 'Гоголя', 'spa');
-INSERT INTO "${schema}".streets (id, name, city) VALUES ('vorov', 'Горовая', 'spa');
+INSERT INTO "${schema}".streets (id, name, city) VALUES ('gorov', 'Горовая', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('gork', 'Горького', 'spa');
 
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('gosp', 'Госпитальная', 'spa');
