@@ -93,7 +93,6 @@ INSERT INTO "${schema}".streets (id, name, city) VALUES ('kustarn', 'Куста�
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('kustarnper', 'Кустарный пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('kustov', 'Кустовиновская', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('kolch', 'Колхозный', 'spa');
-INSERT INTO "${schema}".streets (id, name, city) VALUES ('tolsto', 'Толстого', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('lazar', 'Лазаренко', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('ltolst', 'Льва Толстого', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('lazo', 'Лазо', 'spa');
@@ -107,7 +106,7 @@ INSERT INTO "${schema}".streets (id, name, city) VALUES ('lomon', 'Ломоно�
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('matr', 'Матросова', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('mayak', 'Маяковского', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('meln', 'Мельничная', 'spa');
-INSERT INTO "${schema}".streets (id, name, city) VALUES ('malnper', 'Мельничный пер.', 'spa');
+INSERT INTO "${schema}".streets (id, name, city) VALUES ('melnper', 'Мельничный пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('mira', 'Мира', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('michail', 'Михайловская', 'spa');
 
@@ -127,7 +126,8 @@ INSERT INTO "${schema}".streets (id, name, city) VALUES ('nachim', 'Нахимо
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('nekras', 'Некрасова', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('nikol', 'Николаевская', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('nikper', 'Николаевский пер.', 'spa');
-INSERT INTO "${schema}".streets (id, name, city) VALUES ('nov', 'Новая', 'spa');
+INSERT INTO "${schema}".streets (id, name, city) VALUES ('novgork', 'Новая (Горка)', 'spa');
+INSERT INTO "${schema}".streets (id, name, city) VALUES ('novnovink', 'Новая (Новинка)', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('olkash', 'Олега Кошевого', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('ovrash', 'Овражный', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('ozern', 'Озерная', 'spa');
@@ -192,7 +192,6 @@ INSERT INTO "${schema}".streets (id, name, city) VALUES ('chresh', 'Хрещат
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('chrust', 'Хрустальная', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('cement', 'Цементная', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('chap', 'Чапаевская', 'spa');
-INSERT INTO "${schema}".streets (id, name, city) VALUES ('chevsper', 'Черёмуховский пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('cherhoper', 'Черёмуховый пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('cherny', 'Чернышевского', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('chechov', 'Чеховская', 'spa');
