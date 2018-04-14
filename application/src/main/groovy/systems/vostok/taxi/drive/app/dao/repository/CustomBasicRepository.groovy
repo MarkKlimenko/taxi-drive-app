@@ -1,18 +1,18 @@
 package systems.vostok.taxi.drive.app.dao.repository
 
-import org.hibernate.criterion.Order
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.data.jpa.repository.support.JpaEntityInformation
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.Assert
 import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryFilter
+import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryPagination
 import systems.vostok.taxi.drive.app.dao.repository.criteria.QuerySorter
 
 import javax.persistence.EntityManager
+import javax.persistence.TypedQuery
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaQuery
-import javax.persistence.criteria.Predicate
 import javax.persistence.criteria.Root
 
 class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BasicRepository<T, ID> {
@@ -48,10 +48,8 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     }
 
     @Override
-    List<T> findByCriteria(List<QueryFilter> filter, List<QuerySorter> sorter) {
-        createCriteriaQuery(filter, sorter)
-                .with(entityManager.&createQuery)
-                .getResultList()
+    List<T> findByCriteria(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
+        createCriteriaQuery(filter, sorter, pagination).getResultList()
     }
 
     @Override
@@ -71,13 +69,10 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
         entity
     }
 
-    private CriteriaQuery<T> createCriteriaQuery(List<QueryFilter> filter, List<QuerySorter> sorter) {
+    private TypedQuery<T> createCriteriaQuery(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder()
         CriteriaQuery<T> query = builder.createQuery(entityInformation.javaType)
-        Root root = query.from(entityInformation.javaType)
-
-        List<Predicate> predicates = [builder.conjunction()]
-        List<Order> orders = []
+        Root<T> root = query.from(entityInformation.javaType)
 
         Map<String, Closure> filterMapper = [
                 '='          : { builder.equal(root.get(it.parameter), it.value) },
@@ -96,10 +91,29 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
                 'DESC': { builder.desc(root.get(it.parameter)) }
         ]
 
-        filter.each { predicates << filterMapper[it.operator].call(it) }
-        sorter.each { orders << sortMapper[it.order].call(it) }
+        def addFilter = { CriteriaQuery filteredQuery ->
+            filter.collect { filterMapper[it.operator].call(it) }
+                    .with { add(builder.conjunction()); it }
+                    .with { filteredQuery.where(*it) }
+        }
 
-        query.where(*predicates).orderBy(*orders)
+        def addSorter = { CriteriaQuery sortedQuery ->
+            sorter.collect { sortMapper[it.order].call(it) }
+                    .with { sortedQuery.orderBy(*it) }
+        }
+
+        def addPageable = { TypedQuery pageableQuery ->
+            if (pagination) {
+                pageableQuery.setFirstResult(pagination.firstResult)
+                pageableQuery.setMaxResults(pagination.maxResults)
+            }
+            pageableQuery
+        }
+
+        query.with(addFilter)
+                .with(addSorter)
+                .with(entityManager.&createQuery)
+                .with(addPageable)
     }
 }
 

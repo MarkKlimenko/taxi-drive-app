@@ -3,6 +3,7 @@ package systems.vostok.taxi.drive.app.dao.repository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryFilter
+import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryPagination
 import systems.vostok.taxi.drive.app.dao.repository.criteria.QuerySorter
 
 /**
@@ -31,8 +32,8 @@ class UniversalCrudRepository {
         findRepository(entityType).findAll()
     }
 
-    def findByCriteria(String entityType, List<QueryFilter> filter, List<QuerySorter> sorter) {
-        findRepository(entityType).findByCriteria(filter, sorter)
+    def findByCriteria(String entityType, List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
+        findRepository(entityType).findByCriteria(filter, sorter, pagination)
     }
 
     def findById(String entityType, String entityId) {

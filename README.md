@@ -158,4 +158,11 @@ http://localhost:8087/api/client
 - 'DESC'
 
 ## Pagination
-TBD
+<pre>
+    pagination={"firstResult": 0, "maxResults": 50} 
+</pre>
+
+**Row num**
+<pre>
+    api/{entityType}/count
+</pre>

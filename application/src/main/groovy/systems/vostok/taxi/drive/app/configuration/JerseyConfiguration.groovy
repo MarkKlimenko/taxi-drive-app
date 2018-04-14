@@ -5,6 +5,7 @@ import org.glassfish.jersey.server.ResourceConfig
 import org.springframework.context.annotation.Configuration
 import systems.vostok.taxi.drive.app.api.controller.*
 import systems.vostok.taxi.drive.app.api.provider.FilterProvider
+import systems.vostok.taxi.drive.app.api.provider.PaginationProvider
 import systems.vostok.taxi.drive.app.api.provider.SortProvider
 
 @Configuration
@@ -31,5 +32,6 @@ class JerseyConfiguration extends ResourceConfig {
     void registerProviders() {
         register(FilterProvider.class)
         register(SortProvider.class)
+        register(PaginationProvider.class)
     }
 }
