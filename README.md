@@ -141,6 +141,10 @@ sorter=[
 ]
 </pre>
 
+**Supported orders:**
+- 'ASC'
+- 'DESC'
+
 ### Examples
 <pre>
 http://localhost:8087/api/client
@@ -152,10 +156,6 @@ http://localhost:8087/api/client
                 {"parameter" : "ridesAmount", "order" : "DESC"}
             ]
 </pre>
-
-**Supported orders**
-- 'ASC'
-- 'DESC'
 
 ## Pagination
 <pre>
