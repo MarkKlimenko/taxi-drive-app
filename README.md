@@ -141,6 +141,18 @@ sorter=[
 ]
 </pre>
 
+### Examples
+<pre>
+http://localhost:8087/api/client
+    ?filter=[
+                {"parameter" : "ridesAmount", "operator" : ">", "value" : 5}, 
+                {"parameter" : "firstName", "operator" : "LIKE", "value" : "%a%"}
+            ]
+    &sorter=[
+                {"parameter" : "ridesAmount", "order" : "DESC"}
+            ]
+</pre>
+
 **Supported orders**
 - 'ASC'
 - 'DESC'

@@ -47,6 +47,10 @@ class UniversalCrudRepository {
                 .with(repository.&delete)
     }
 
+    Long count(String entityType) {
+        findRepository(entityType).count()
+    }
+
     private BasicRepository findRepository(String entityType) {
         repositories.find { entityType == it.entityType }
     }

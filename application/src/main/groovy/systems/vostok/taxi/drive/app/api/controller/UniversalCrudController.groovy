@@ -1,9 +1,9 @@
 package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
+import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryFilter
 import systems.vostok.taxi.drive.app.dao.repository.criteria.QuerySorter
-import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
 
 import javax.ws.rs.*
 
@@ -18,29 +18,35 @@ class UniversalCrudController {
 
     @PUT
     @Path('{entityType}')
-    putGeoEntity(@PathParam('entityType') String entityType, Map entityMap) {
+    putEntity(@PathParam('entityType') String entityType, Map entityMap) {
         crudRepository.put(entityType, entityMap)
     }
 
     @GET
     @Path('{entityType}')
-    getAllGeoEntities(@PathParam('entityType') String entityType,
-                      @QueryParam('filter') List<QueryFilter> filter,
-                      @QueryParam('sorter') List<QuerySorter> sorter) {
+    getFilteredEntities(@PathParam('entityType') String entityType,
+                        @QueryParam('filter') List<QueryFilter> filter,
+                        @QueryParam('sorter') List<QuerySorter> sorter) {
         crudRepository.findByCriteria(entityType, filter, sorter)
     }
 
     @GET
     @Path('{entityType}/{entityId}')
-    getGeoEntity(@PathParam('entityType') String entityType,
-                 @PathParam('entityId') String entityId) {
+    getEntityById(@PathParam('entityType') String entityType,
+                  @PathParam('entityId') String entityId) {
         crudRepository.findById(entityType, entityId)
     }
 
     @DELETE
     @Path('{entityType}/{entityId}')
-    deleteGeoEntity(@PathParam('entityType') String entityType,
-                    @PathParam('entityId') String entityId) {
+    deleteEntity(@PathParam('entityType') String entityType,
+                 @PathParam('entityId') String entityId) {
         crudRepository.deleteById(entityType, entityId)
+    }
+
+    @GET
+    @Path('{entityType}/count')
+    countEntities(@PathParam('entityType') String entityType) {
+        crudRepository.count(entityType)
     }
 }
