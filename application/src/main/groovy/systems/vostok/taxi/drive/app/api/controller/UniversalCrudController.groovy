@@ -1,6 +1,8 @@
 package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
+import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryFilter
+import systems.vostok.taxi.drive.app.dao.repository.criteria.QuerySorter
 import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
 
 import javax.ws.rs.*
@@ -22,8 +24,10 @@ class UniversalCrudController {
 
     @GET
     @Path('{entityType}')
-    getAllGeoEntities(@PathParam('entityType') String entityType) {
-        crudRepository.findAll(entityType)
+    getAllGeoEntities(@PathParam('entityType') String entityType,
+                      @QueryParam('filter') List<QueryFilter> filter,
+                      @QueryParam('sorter') List<QuerySorter> sorter) {
+        crudRepository.findByCriteria(entityType, filter, sorter)
     }
 
     @GET

@@ -112,3 +112,38 @@ gradlew flywayMigrate -PflywayUrl=jdbc:postgresql://192.168.99.100:5432/tda
 	}
 }
 </pre>
+
+## Query filters and sorters
+### Filters
+<pre>
+filter=[
+    {"parameter" : "ridesAmount", "operator" : ">", "value" : 5}, 
+    {"parameter" : "firstName", "operator" : "LIKE", "value" : "%Mon%"}
+]
+</pre>
+
+**Supported operators:**
+- '='          
+- '!='         
+- '>'          
+- '>='         
+- '<'          
+- '<='         
+- 'IS NULL'    
+- 'IS NOT NULL'
+- 'LIKE'       
+
+### Sorters
+<pre>
+sorter=[
+    {"parameter" : "ridesAmount", "order" : "ASC"},
+    {"parameter" : "firstName", "order" : "DESC"},
+]
+</pre>
+
+**Supported orders**
+- 'ASC'
+- 'DESC'
+
+## Pagination
+TBD

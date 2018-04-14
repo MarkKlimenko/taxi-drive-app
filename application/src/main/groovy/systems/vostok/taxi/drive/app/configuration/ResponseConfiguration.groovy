@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.api
+package systems.vostok.taxi.drive.app.configuration
 
 import javax.ws.rs.container.ContainerRequestContext
 import javax.ws.rs.container.ContainerResponseContext
@@ -15,6 +15,5 @@ class ResponseConfiguration implements ContainerResponseFilter {
         responseCtx.getHeaders().add("Access-Control-Allow-Credentials", "true")
         responseCtx.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
         responseCtx.getHeaders().addAll("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-        //responseCtx.getHeaders().add("Content-type", "charset=utf-8")
     }
 }
