@@ -10,6 +10,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 import javax.persistence.Transient
 import javax.validation.constraints.NotNull
+import javax.validation.constraints.PositiveOrZero
 
 
 @Entity
@@ -20,6 +21,7 @@ import javax.validation.constraints.NotNull
 class Client {
     @Id
     @NotNull
+    // TODO: Add custom validation for login phone number
     String login
 
     @NotNull
@@ -27,6 +29,7 @@ class Client {
     String lastName
 
     @NotNull
+    @PositiveOrZero
     Integer ridesAmount
 
     String type

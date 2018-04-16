@@ -39,9 +39,11 @@ dependencies {
 
     compile 'org.springframework.boot:spring-boot-starter-jersey:1.5.9.RELEASE'
     compile 'org.glassfish.jersey.media:jersey-media-multipart:2.19'
-    //compile 'org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0'
     //compile 'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0'
+
+    compile 'javax.validation:validation-api:2.0.1.Final'
+    compile 'org.hibernate.validator:hibernate-validator:6.0.9.Final'
 
     compile 'org.springframework.boot:spring-boot-starter-cache:1.5.9.RELEASE'
     compile 'net.sf.ehcache:ehcache:2.10.4'

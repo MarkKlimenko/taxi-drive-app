@@ -19,6 +19,7 @@ import javax.persistence.Table
 class Car {
     @Id
     @GeneratedValue(generator = 'ID_GENERATOR')
+    // TODO: Get rid of deprecated SequenceGenerator
     @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
     Long id
 
