@@ -9,6 +9,8 @@ import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
 import javax.persistence.Transient
+import javax.validation.constraints.NotNull
+
 
 @Entity
 @Table(name = 'clients')
@@ -17,11 +19,16 @@ import javax.persistence.Transient
 @ToString(includeNames = true, includeFields = true)
 class Client {
     @Id
+    @NotNull
     String login
 
+    @NotNull
     String firstName
     String lastName
+
+    @NotNull
     Integer ridesAmount
+
     String type
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
