@@ -76,6 +76,7 @@ gradlew flywayMigrate -PflywayUrl=jdbc:postgresql://192.168.99.100:5432/tda
 	"fromAddress": -13275131,
 	"toAddress": 1437201388,
 	"dateIn": "2017-11-13T12:45:30",
+	"rideIn": "2017-11-13T12:45:30",
 	"menInCar": 2
 }
 </pre>

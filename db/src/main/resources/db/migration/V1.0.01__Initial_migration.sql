@@ -70,7 +70,7 @@ CREATE TABLE "${schema}".addresses (
 
 CREATE TABLE "${schema}".cars (
   id     BIGINT PRIMARY KEY,
-  call   VARCHAR(255) UNIQUE,
+  call   VARCHAR(255) UNIQUE NOT NULL,
   number VARCHAR(255) NOT NULL,
   model  VARCHAR(255) NOT NULL
 );
@@ -81,15 +81,15 @@ id              BIGINT PRIMARY KEY,
 client          VARCHAR(255) REFERENCES "${schema}".clients (login) NOT NULL,
 from_address    INTEGER REFERENCES "${schema}".addresses (id) NOT NULL,
 to_address      INTEGER REFERENCES "${schema}".addresses (id) NOT NULL,
-date_in         TIMESTAMP,
-ride_in         TIMESTAMP,
+date_in         TIMESTAMP NOT NULL,
+ride_in         TIMESTAMP NOT NULL,
 ride_out        TIMESTAMP,
 car_id          BIGINT REFERENCES "${schema}".cars (id),
 adult_in_car    INTEGER,
 children_in_car INTEGER,
 price           INTEGER,
 state           VARCHAR(255),
-prepaid         VARCHAR(255),
+prepaid         BOOLEAN,
 comment         VARCHAR(255)
 );
 CREATE INDEX ride_client_login ON "${schema}".rides (client);
@@ -97,10 +97,10 @@ CREATE INDEX ride_date_in ON "${schema}".rides (date_in);
 CREATE INDEX ride_state ON "${schema}".rides (state);
 
 CREATE TABLE "${schema}".app_users (
-  id         VARCHAR(255) PRIMARY KEY,
-  name       VARCHAR(255) NOT NULL,
-  email      VARCHAR(255),
-  date_in    TIMESTAMP    NOT NULL,
+  id              VARCHAR(255) PRIMARY KEY,
+  name            VARCHAR(255) NOT NULL,
+  email           VARCHAR(255),
+  date_in         TIMESTAMP    NOT NULL,
   last_login_time TIMESTAMP    NOT NULL
 );
 CREATE INDEX app_users_name ON "${schema}".app_users (name);

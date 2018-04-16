@@ -1,18 +1,16 @@
 package systems.vostok.taxi.drive.app.dao.entity
 
 import com.fasterxml.jackson.annotation.JsonInclude
-import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.SequenceGenerator
-import javax.persistence.Table
-import javax.persistence.Transient
+import javax.persistence.*
+import javax.validation.constraints.Min
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.Positive
+import javax.validation.constraints.PositiveOrZero
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
 
@@ -27,13 +25,20 @@ class Ride {
     @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
     Long id
 
+    @NotNull
     String client
+
+    @NotNull
     Integer fromAddress
+
+    @NotNull
     Integer toAddress
 
+    @NotNull
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     LocalDateTime dateIn
 
+    @NotNull
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     LocalDateTime rideIn
 
@@ -41,11 +46,20 @@ class Ride {
     LocalDateTime rideOut
 
     Long carId
+
+    @Min(value = 1L)
     Integer adultInCar
+
+    @Positive
     Integer childrenInCar
-    String prepaid
+
+    Boolean prepaid
     String comment
+
+    @PositiveOrZero
     Integer price
+
+    
     String state
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

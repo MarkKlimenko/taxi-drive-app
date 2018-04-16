@@ -4,12 +4,8 @@ import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.SequenceGenerator
-import javax.persistence.Table
+import javax.persistence.*
+import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = 'cars')
@@ -23,6 +19,12 @@ class Car {
     @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')
     Long id
 
+    @NotNull
+    String call
+
+    @NotNull
     String number
+
+    @NotNull
     String model
 }

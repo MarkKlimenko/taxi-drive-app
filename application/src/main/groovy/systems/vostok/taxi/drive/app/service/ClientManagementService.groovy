@@ -17,7 +17,6 @@ import static systems.vostok.taxi.drive.app.dao.entity.Ride.Constants.STATE_ACTI
 
 @Service
 class ClientManagementService {
-
     @Autowired
     ClientRepository clientRepository
 
