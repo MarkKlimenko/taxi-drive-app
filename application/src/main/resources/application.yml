@@ -13,3 +13,9 @@ spring:
     jpa:
         hibernate:
             ddl-auto: validate
+
+hibernate:
+    search:
+        default:
+            directory_provider: filesystem
+            indexBase: ./application/out/data/index/default

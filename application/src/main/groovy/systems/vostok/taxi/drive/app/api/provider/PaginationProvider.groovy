@@ -1,7 +1,7 @@
 package systems.vostok.taxi.drive.app.api.provider
 
 import groovy.json.JsonSlurper
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryPagination
+import systems.vostok.taxi.drive.app.dao.repository.util.QueryPagination
 
 import javax.ws.rs.ext.ParamConverter
 import javax.ws.rs.ext.ParamConverterProvider

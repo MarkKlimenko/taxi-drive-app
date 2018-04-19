@@ -3,6 +3,8 @@ package systems.vostok.taxi.drive.app.dao.entity
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.Canonical
+import org.hibernate.search.annotations.Field
+import org.hibernate.search.annotations.Indexed
 import systems.vostok.taxi.drive.app.util.CommonUtil
 
 import javax.persistence.Entity
@@ -11,15 +13,27 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = 'addresses')
+@Indexed
 @Canonical
 class Address {
     @Id
     Integer id
+
     String country
+
+    @Field
     String state
+
+    @Field
     String city
+
+    @Field
     String street
+
+    @Field
     String building
+
+    @Field
     String district
 
     @JsonCreator

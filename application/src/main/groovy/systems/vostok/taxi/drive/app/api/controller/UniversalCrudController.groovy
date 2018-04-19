@@ -2,10 +2,12 @@ package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryFilter
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryPagination
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QuerySorter
+import systems.vostok.taxi.drive.app.dao.repository.util.QueryFilter
+import systems.vostok.taxi.drive.app.dao.repository.util.QueryPagination
+import systems.vostok.taxi.drive.app.dao.repository.util.QuerySorter
+import systems.vostok.taxi.drive.app.dao.repository.util.SearchParameters
 
+import javax.validation.Valid
 import javax.ws.rs.*
 
 import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
@@ -30,6 +32,13 @@ class UniversalCrudController {
                         @QueryParam('sorter') List<QuerySorter> sorter,
                         @QueryParam('pagination') QueryPagination pagination) {
         crudRepository.findByCriteria(entityType, filter, sorter, pagination)
+    }
+
+    @GET
+    @Path('{entityType}/search')
+    searchByEntities(@PathParam('entityType') String entityType,
+                     @QueryParam('parameters') @Valid SearchParameters parameters) {
+        crudRepository.search(entityType, parameters)
     }
 
     @GET

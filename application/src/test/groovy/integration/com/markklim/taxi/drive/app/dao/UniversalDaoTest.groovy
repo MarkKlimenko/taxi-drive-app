@@ -1,9 +1,6 @@
 package integration.com.markklim.taxi.drive.app.dao
 
-import com.datastax.driver.core.querybuilder.QueryBuilder
-import com.datastax.driver.core.querybuilder.Select
 import systems.vostok.taxi.drive.app.Application
-import systems.vostok.taxi.drive.app.dao.repository.cql.UniversalDao
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -19,7 +16,7 @@ import static org.testng.Assert.*
 @WebAppConfiguration
 class UniversalDaoTest extends AbstractTestNGSpringContextTests {
 
-    @Autowired
+    /*@Autowired
     @Delegate
     UniversalDao universalDao
 
@@ -60,5 +57,5 @@ class UniversalDaoTest extends AbstractTestNGSpringContextTests {
 
         selectAll(select, Client.class)
                 .with { assertEquals(it, []) }
-    }
+    }*/
 }

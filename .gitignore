@@ -1,11 +1,11 @@
-
 /.gradle/
 /.idea/
+/out/
 /build/
 
-/out/
-/application/build/
 /application/out/
+/application/build/
+/application/indexes/
 
 /db/out/
 /db/build/

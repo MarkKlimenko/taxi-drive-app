@@ -1,22 +1,26 @@
 package systems.vostok.taxi.drive.app.dao.repository
 
+import org.hibernate.search.jpa.FullTextEntityManager
+import org.hibernate.search.jpa.Search
+import org.hibernate.search.query.dsl.QueryBuilder
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.data.jpa.repository.support.JpaEntityInformation
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.Assert
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryFilter
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryPagination
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QuerySorter
+import systems.vostok.taxi.drive.app.dao.repository.util.QueryFilter
+import systems.vostok.taxi.drive.app.dao.repository.util.QueryPagination
+import systems.vostok.taxi.drive.app.dao.repository.util.QuerySorter
+import systems.vostok.taxi.drive.app.dao.repository.util.SearchParameters
 
 import javax.persistence.EntityManager
+import javax.persistence.Query
 import javax.persistence.TypedQuery
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaQuery
 import javax.persistence.criteria.Root
 
 class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BasicRepository<T, ID> {
-
     private static final String ID_MUST_NOT_BE_NULL = 'The given id must not be null!'
 
     private final EntityManager entityManager
@@ -54,6 +58,12 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
 
     @Override
     @Transactional
+    List<T> search(SearchParameters parameters) {
+        createSearchQuery(parameters).getResultList()
+    }
+
+    @Override
+    @Transactional
     void delete(ID id) {
         Assert.notNull(id, ID_MUST_NOT_BE_NULL)
 
@@ -70,8 +80,8 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     }
 
     // TODO: Create unit tests (check queryString & namedParameters)
-    // TODO: Create state, integration tests
-    private TypedQuery<T> createCriteriaQuery(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
+    // TODO: Create state/integration tests
+    private Query createCriteriaQuery(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder()
         CriteriaQuery<T> query = builder.createQuery(entityInformation.javaType)
         Root<T> root = query.from(entityInformation.javaType)
@@ -116,6 +126,24 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
                 .with(addSorter)
                 .with(entityManager.&createQuery)
                 .with(addPageable)
+    }
+
+    // TODO: Create extended search implementation
+    private Query createSearchQuery(SearchParameters parameters) {
+        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager)
+
+        QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory()
+                .buildQueryBuilder()
+                .forEntity(entityInformation.javaType)
+                .get()
+
+        org.apache.lucene.search.Query query = queryBuilder.simpleQueryString()
+                .onFields(*parameters.fields)
+                .withAndAsDefaultOperator()
+                .matching(parameters.request)
+                .createQuery()
+
+        fullTextEntityManager.createFullTextQuery(query)
     }
 }
 

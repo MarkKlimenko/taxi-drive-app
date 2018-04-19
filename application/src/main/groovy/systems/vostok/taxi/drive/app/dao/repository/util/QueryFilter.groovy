@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.dao.repository.criteria
+package systems.vostok.taxi.drive.app.dao.repository.util
 
 import groovy.transform.Canonical
 

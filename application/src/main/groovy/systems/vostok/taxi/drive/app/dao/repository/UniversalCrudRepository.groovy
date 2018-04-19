@@ -2,9 +2,10 @@ package systems.vostok.taxi.drive.app.dao.repository
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryFilter
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QueryPagination
-import systems.vostok.taxi.drive.app.dao.repository.criteria.QuerySorter
+import systems.vostok.taxi.drive.app.dao.repository.util.QueryFilter
+import systems.vostok.taxi.drive.app.dao.repository.util.QueryPagination
+import systems.vostok.taxi.drive.app.dao.repository.util.QuerySorter
+import systems.vostok.taxi.drive.app.dao.repository.util.SearchParameters
 
 /**
  * Methods def put and def putAll could be applied for both - direct entity object and entity map
@@ -36,10 +37,14 @@ class UniversalCrudRepository {
         findRepository(entityType).findByCriteria(filter, sorter, pagination)
     }
 
+    def search(String entityType, SearchParameters parameters) {
+        findRepository(entityType).search(parameters)
+    }
+
     def findById(String entityType, String entityId) {
         BasicRepository repository = findRepository(entityType)
         repository.convertToIdType(entityId)
-            .with(repository.&findOne)
+                .with(repository.&findOne)
     }
 
     void deleteById(String entityType, String entityId) {
@@ -52,6 +57,7 @@ class UniversalCrudRepository {
         findRepository(entityType).count()
     }
 
+    // TODO: Add cache
     private BasicRepository findRepository(String entityType) {
         repositories.find { entityType == it.entityType }
     }
