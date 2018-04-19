@@ -1,21 +1,23 @@
 package systems.vostok.taxi.drive.app.dao.repository
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
-import systems.vostok.taxi.drive.app.dao.repository.util.QueryFilter
-import systems.vostok.taxi.drive.app.dao.repository.util.QueryPagination
-import systems.vostok.taxi.drive.app.dao.repository.util.QuerySorter
-import systems.vostok.taxi.drive.app.dao.repository.util.SearchParameters
+import org.springframework.stereotype.Component
+import systems.vostok.taxi.drive.app.dao.domain.util.QueryFilter
+import systems.vostok.taxi.drive.app.dao.domain.util.QueryPagination
+import systems.vostok.taxi.drive.app.dao.domain.util.QuerySorter
+import systems.vostok.taxi.drive.app.dao.domain.util.SearchParameters
+import systems.vostok.taxi.drive.app.dao.repository.util.RepositoryResolver
 
 /**
  * Methods def put and def putAll could be applied for both - direct entity object and entity map
  * def return type is required
  */
 
-@Service
+@Component
 class UniversalCrudRepository {
     @Autowired
-    List<BasicRepository> repositories
+    @Delegate
+    RepositoryResolver repositoryResolver
 
     def put(String entityType, Object entityObject) {
         BasicRepository repository = findRepository(entityType)
@@ -55,10 +57,5 @@ class UniversalCrudRepository {
 
     Long count(String entityType) {
         findRepository(entityType).count()
-    }
-
-    // TODO: Add cache
-    private BasicRepository findRepository(String entityType) {
-        repositories.find { entityType == it.entityType }
     }
 }

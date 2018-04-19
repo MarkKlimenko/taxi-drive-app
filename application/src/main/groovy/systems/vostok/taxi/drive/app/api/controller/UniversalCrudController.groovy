@@ -2,10 +2,10 @@ package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
-import systems.vostok.taxi.drive.app.dao.repository.util.QueryFilter
-import systems.vostok.taxi.drive.app.dao.repository.util.QueryPagination
-import systems.vostok.taxi.drive.app.dao.repository.util.QuerySorter
-import systems.vostok.taxi.drive.app.dao.repository.util.SearchParameters
+import systems.vostok.taxi.drive.app.dao.domain.util.QueryFilter
+import systems.vostok.taxi.drive.app.dao.domain.util.QueryPagination
+import systems.vostok.taxi.drive.app.dao.domain.util.QuerySorter
+import systems.vostok.taxi.drive.app.dao.domain.util.SearchParameters
 
 import javax.validation.Valid
 import javax.ws.rs.*

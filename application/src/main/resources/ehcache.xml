@@ -18,4 +18,6 @@
 
     <cache name="districtIdByName" maxElementsInMemory="1000" timeToLiveSeconds="3600" timeToIdleSeconds="1800"/>
     <cache name="cityIdByName" maxElementsInMemory="1000" timeToLiveSeconds="3600" timeToIdleSeconds="1800"/>
+
+    <cache name="repositoryResolver" maxElementsInMemory="100"/>
 </ehcache>

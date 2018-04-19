@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.dao.repository.util
+package systems.vostok.taxi.drive.app.dao.domain.util
 
 class QueryPagination {
     Integer firstResult

@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.support.JpaEntityInformation
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.Assert
-import systems.vostok.taxi.drive.app.dao.repository.util.QueryFilter
-import systems.vostok.taxi.drive.app.dao.repository.util.QueryPagination
-import systems.vostok.taxi.drive.app.dao.repository.util.QuerySorter
-import systems.vostok.taxi.drive.app.dao.repository.util.SearchParameters
+import systems.vostok.taxi.drive.app.dao.domain.util.QueryFilter
+import systems.vostok.taxi.drive.app.dao.domain.util.QueryPagination
+import systems.vostok.taxi.drive.app.dao.domain.util.QuerySorter
+import systems.vostok.taxi.drive.app.dao.domain.util.SearchParameters
 
 import javax.persistence.EntityManager
 import javax.persistence.Query
