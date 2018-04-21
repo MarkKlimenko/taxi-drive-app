@@ -90,7 +90,7 @@ releaseToDocker {
     registryUrl = 'markklim'
     imageName = 'taxi-drive-app'
     dockerFileLocation = 'src/main/resources/docker'
-    imageFileName = 'taxi-drive-app.war'
+    imageFileName = 'taxi-drive-app.jar'
     imageVersion = projectVersion
     username = dockerUsername
     password = dockerPassword

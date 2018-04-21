@@ -6,6 +6,11 @@
          dynamicConfig="false"
          name="tdaCache">
 
+    <!--
+        TODO: Add Redis cache for hibernate second level cache
+        TODO: Use EhCache for internal processes
+    -->
+
     <defaultCache
             maxEntriesLocalHeap="10000"
             timeToIdleSeconds="3600"

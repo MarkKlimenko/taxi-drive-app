@@ -163,7 +163,25 @@ http://localhost:8087/api/client
     pagination={"firstResult": 0, "maxResults": 50} 
 </pre>
 
-**Row num**
+### Examples
+<pre>
+http://localhost:8087/api/client
+        ?pagination={"firstResult": 0, "maxResults": 50} 
+</pre>
+
+**Get row num**
 <pre>
     api/{entityType}/count
+</pre>
+
+## Extended search
+TBD
+ 
+### Examples
+<pre>
+http://localhost:8087/api/address/search
+        ?parameters={
+            "fields": ["city", "street", "building"], 
+            "request": "Vladivostok Svetlanskaya"
+        }
 </pre>

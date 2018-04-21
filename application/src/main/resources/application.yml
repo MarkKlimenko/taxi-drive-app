@@ -1,3 +1,7 @@
+# TODO: Change file format to .properties
+# TODO: Get variables from secrets
+# TODO: How to work with secrets in Spring
+
 project:
     version: @projectVersion@
 
