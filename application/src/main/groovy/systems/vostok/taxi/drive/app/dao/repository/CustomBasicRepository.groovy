@@ -81,6 +81,7 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
 
     // TODO: Create unit tests (check queryString & namedParameters)
     // TODO: Create state/integration tests
+    // TODO: Implement IN operator
     private Query createCriteriaQuery(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder()
         CriteriaQuery<T> query = builder.createQuery(entityInformation.javaType)
