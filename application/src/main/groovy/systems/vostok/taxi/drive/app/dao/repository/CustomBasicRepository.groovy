@@ -81,7 +81,6 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
 
     // TODO: Create unit tests (check queryString & namedParameters)
     // TODO: Create state/integration tests
-    // TODO: Implement IN operator
     private Query createCriteriaQuery(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder()
         CriteriaQuery<T> query = builder.createQuery(entityInformation.javaType)
@@ -96,7 +95,9 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
                 '<='         : { builder.lessThanOrEqualTo(root.get(it.parameter), it.value) },
                 'IS NULL'    : { builder.isNull(root.get(it.parameter)) },
                 'IS NOT NULL': { builder.isNotNull(root.get(it.parameter)) },
-                'LIKE'       : { builder.like(root.get(it.parameter), it.value) }
+                'LIKE'       : { builder.like(root.get(it.parameter), it.value) },
+                'IN'         : { builder.isTrue(root.get(it.parameter).in(it.value)) },
+                'NOT IN'     : { builder.isTrue(root.get(it.parameter).in(it.value).not()) },
         ]
 
         Map<String, Closure> sortMapper = [
