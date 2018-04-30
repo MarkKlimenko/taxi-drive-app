@@ -48,6 +48,8 @@ class GeoService {
         entity
     }
 
+    // TODO: Store hash for all tables(or annotated as hashable) in Redis
+    // and if hash is provided in query - check it and provide result by it
     @CacheEvict(['citiesModifiedList', 'cityIdByName', 'districtsModifiedList', 'districtIdByName'])
     def updateGeoCache() {
         crudRepository.put(SYSTEM_PROPERTY, [property: PROPERTY_GEO_VERSION,
