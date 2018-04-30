@@ -24,6 +24,9 @@ class CommonConfiguration {
         new DistrictMapperService()
     }
 
+    // TODO: Create persistence config
+    // TODO: Add Hikaricp
+
     @Bean
     FullTextEntityManager fullTextEntityManager() {
         entityManager.getEntityManagerFactory()
