@@ -1,28 +1,26 @@
 package integration.com.markklim.taxi.drive.app.component.evaluation
 
-import systems.vostok.taxi.drive.app.Application
-import systems.vostok.taxi.drive.app.component.PriceFormer
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests
 import org.springframework.test.context.web.WebAppConfiguration
-import org.testng.annotations.DataProvider
+import systems.vostok.taxi.drive.app.Application
+
+//import org.testng.annotations.DataProvider
 
 @TestPropertySource(locations = "classpath:test-properties.properties")
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
-class PriceFormerTest extends AbstractTestNGSpringContextTests {
+class PriceFormerTest {
 
-    @Autowired
-    PriceFormer priceFormer
+    /* @Autowired
+     PriceFormer priceFormer
 
-    @DataProvider(name = 'dist_to_dist_price_test')
-    Object[][] priceDistToDistParam() {
-        [ ['grk', 'grd', 110],
-          ['grd', 'grk', 110],
-          ['grk', 'mtf', 110] ]
-    }
+     @DataProvider(name = 'dist_to_dist_price_test')
+     Object[][] priceDistToDistParam() {
+         [ ['grk', 'grd', 110],
+           ['grd', 'grk', 110],
+           ['grk', 'mtf', 110] ]
+     }*/
 
 //    @Test(dataProvider = 'dist_to_dist_price_test')
 //    void priceDistToDistTest(String from, String to, Integer price) {

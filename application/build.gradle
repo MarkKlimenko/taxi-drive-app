@@ -61,7 +61,9 @@ dependencies {
     compile 'systems.vostok.tda:tda-excel-parser:0.1.6'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.9.RELEASE'
-    testCompile 'org.testng:testng:6.11'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-params:5.2.0'
 }
 
 processResources {

@@ -1,31 +1,36 @@
 package unit.com.markklim.taxi.drive.app.api.adapter
 
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
-import org.junit.Before
-import org.junit.Test
 
 import java.time.LocalDateTime
+import java.util.stream.Stream
+
+import static org.junit.jupiter.api.Assertions.assertEquals
 
 class LocalDateTimeAdapterTest {
+    static LocalDateTimeAdapter localDateTimeAdapter = new LocalDateTimeAdapter()
 
-    private String stringTime
-    private LocalDateTime time
-    private LocalDateTimeAdapter adapter
-
-    @Before
-    void setUp() throws Exception {
-        time = LocalDateTime.of(2017, 9, 25, 10, 35, 15)
-        stringTime = "2017-09-25T10:35:15"
-        adapter = new LocalDateTimeAdapter()
+    static Stream<Arguments> testSource() {
+        Stream.of(
+                Arguments.of('2017-09-25T10:35:15', LocalDateTime.of(2017, 9, 25, 10, 35, 15)),
+                Arguments.of('2017-09-25T10:00:00', LocalDateTime.of(2017, 9, 25, 10, 00, 00))
+        )
     }
 
-    @Test
-    void marshalTest() throws Exception {
-        assert adapter.marshal(time) == stringTime
+    @ParameterizedTest
+    @MethodSource('testSource')
+    void marshalTest(String stringTime, LocalDateTime time) {
+        localDateTimeAdapter.marshal(time)
+                .with { assertEquals(it, stringTime) }
     }
 
-    @Test
-    void unmarshalTest() throws Exception {
-        assert adapter.unmarshal(stringTime) == time
+    @ParameterizedTest
+    @MethodSource('testSource')
+    void unmarshalTest(String stringTime, LocalDateTime time) {
+        localDateTimeAdapter.unmarshal(stringTime)
+                .with { assertEquals(it, time) }
     }
 }
