@@ -33,7 +33,7 @@ before_cache:
 
 stages:
   - name: unit_tests_and_sonar_scaner
-  - name: integration_tests
+#  - name: integration_tests
   - name: set_minor_version
     if: branch = release
   - name: release_docker
