@@ -76,13 +76,14 @@ processResources {
 }
 
 test {
-    useTestNG {
+    useJUnitPlatform {
         exclude 'integration/**'
     }
 }
 
 task integrationTest(type: Test) {
-    useTestNG {
+    //useJUnitPlatform()
+    useJUnit {
         include 'integration/**'
     }
 }
