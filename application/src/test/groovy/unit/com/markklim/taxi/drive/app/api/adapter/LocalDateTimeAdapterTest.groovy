@@ -9,15 +9,15 @@ import java.time.LocalDateTime
 import java.util.stream.Stream
 
 import static org.junit.jupiter.api.Assertions.assertEquals
+import static unit.com.markklim.taxi.drive.app.test.JUnitUtil.toStreamArguments
 
 class LocalDateTimeAdapterTest {
-    static LocalDateTimeAdapter localDateTimeAdapter = new LocalDateTimeAdapter()
+    LocalDateTimeAdapter localDateTimeAdapter = new LocalDateTimeAdapter()
 
     static Stream<Arguments> testSource() {
-        Stream.of(
-                Arguments.of('2017-09-25T10:35:15', LocalDateTime.of(2017, 9, 25, 10, 35, 15)),
-                Arguments.of('2017-09-25T10:00:00', LocalDateTime.of(2017, 9, 25, 10, 00, 00))
-        )
+        [['2017-09-25T10:35:15', LocalDateTime.of(2017, 9, 25, 10, 35, 15)],
+         ['2017-09-25T10:00:00', LocalDateTime.of(2017, 9, 25, 10, 00, 00)]]
+                .with(toStreamArguments)
     }
 
     @ParameterizedTest
