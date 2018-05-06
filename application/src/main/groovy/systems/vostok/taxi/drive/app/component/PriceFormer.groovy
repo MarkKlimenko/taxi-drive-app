@@ -10,8 +10,10 @@ import systems.vostok.taxi.drive.app.dao.repository.impl.PriceDtdRepository
 import systems.vostok.taxi.drive.app.dao.repository.impl.SettingRepository
 import systems.vostok.taxi.drive.app.util.CommonUtil
 
-import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.SETTING_RIDE_FREE
+import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.*
+import static systems.vostok.taxi.drive.app.dao.entity.Client.Constants.*
 
+// TODO: Add tests for all methods
 @Component
 class PriceFormer {
     @Autowired
@@ -26,23 +28,20 @@ class PriceFormer {
     @Autowired
     ClientRepository clientRepository
 
-
     @Autowired
     DistrictMatcher districtMatcher
 
     @Autowired
     EntityMatcher entityMatcher
 
-
-    static final Double VIP_DISCOUNT = 0.2
-    static final Double FREE_DISCOUNT = 1
-    static final Double ZERO_DISCOUNT = 0
+    static final Double FREE_RIDE_DISCOUNT = 1
+    static final Double FREE_RIDE_PRICE = 0
 
     Integer calculateDtdPrice(Ride ride) {
         Double discount = calculateDiscount(ride.client)
 
-        if (discount == FREE_DISCOUNT) {
-            0
+        if (discount == FREE_RIDE_DISCOUNT) {
+            FREE_RIDE_PRICE
         } else {
             String distFrom = districtMatcher.getDistrictId(ride.rawFromAddress)
             String distTo = districtMatcher.getDistrictId(ride.rawToAddress)
@@ -55,14 +54,15 @@ class PriceFormer {
 
     Integer calculateCtcPrice(Ride ride) {
         String cityFrom = entityMatcher.getCityId(ride.rawFromAddress.city)
-        String cityTo =  entityMatcher.getCityId(ride.rawToAddress.city)
+        String cityTo = entityMatcher.getCityId(ride.rawToAddress.city)
 
         CommonUtil.generateId(cityFrom, cityTo)
                 .with(priceCtcRepository.&findPrice)
     }
 
     Boolean isRideFree(Integer ridesAmount) {
-        (settingRepository.findValueBySetting(SETTING_RIDE_FREE) as Integer)
+        settingRepository.findValueBySetting(SETTING_RIDE_FREE)
+                .with { it as Integer }
                 .with { (ridesAmount + 1) % it == 0 }
     }
 
@@ -70,11 +70,11 @@ class PriceFormer {
         Client client = clientRepository.findOne(clientLogin)
         if (client) {
             if (isRideFree(client.ridesAmount)) {
-                return FREE_DISCOUNT
-            } else if (client.type == 'VIP') {
-                return VIP_DISCOUNT
+                return settingRepository.findValueBySetting(SETTING_FREE_DISCOUNT) as Double
+            } else if (client.type == CLIENT_TYPE_VIP) {
+                return settingRepository.findValueBySetting(SETTING_VIP_DISCOUNT) as Double
             }
         }
-        ZERO_DISCOUNT
+        settingRepository.findValueBySetting(SETTING_ZERO_DISCOUNT) as Double
     }
 }

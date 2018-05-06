@@ -41,4 +41,8 @@ class Client {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Transient
     List<Ride> previousRides
+
+    static interface Constants {
+        String CLIENT_TYPE_VIP = 'vip'
+    }
 }

@@ -62,6 +62,8 @@ class GeoService {
                 .each { it.name = WordUtil.modifyGeoName(it.name) }
     }
 
+    // TODO: Store all modified lists in Redis (modified Entity : proper Key)
+    // and get proper key by entity (update single record in the list)
     @Cacheable(value = 'districtsModifiedList')
     List<District> getDistrictsModifiedList() {
         crudRepository.findAll(DISTRICT)
