@@ -16,7 +16,9 @@ class LocalDateTimeAdapterTest {
 
     static Stream<Arguments> testSource() {
         [['2017-09-25T10:35:15', LocalDateTime.of(2017, 9, 25, 10, 35, 15)],
-         ['2017-09-25T10:00:00', LocalDateTime.of(2017, 9, 25, 10, 00, 00)]]
+         ['2017-09-25T10:00:00', LocalDateTime.of(2017, 9, 25, 10, 0, 0)],
+         ['2017-09-25T00:00:00', LocalDateTime.of(2017, 9, 25, 0, 0, 0)],
+         ['2017-09-25T00:03:00', LocalDateTime.of(2017, 9, 25, 0, 3, 0)]]
                 .with(toStreamArguments)
     }
 
