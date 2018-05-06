@@ -1,4 +1,4 @@
--- CITIES
+-- CITIES TODO: Use four letters for ids
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('26', '26 км', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('ada', 'Адарка', 'pk');
 INSERT INTO "${schema}".cities (id, name, state) VALUES ('ars', 'Арсеньев', 'pk');
