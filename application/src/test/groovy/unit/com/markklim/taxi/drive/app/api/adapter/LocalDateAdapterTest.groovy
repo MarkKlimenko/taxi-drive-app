@@ -1,36 +1,38 @@
 package unit.com.markklim.taxi.drive.app.api.adapter
 
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import systems.vostok.taxi.drive.app.api.adapter.LocalDateAdapter
 
-/*import org.testng.annotations.DataProvider
-import org.testng.annotations.Test
 import java.time.LocalDate
+import java.util.stream.Stream
 
-import static org.testng.Assert.**/
+import static org.junit.jupiter.api.Assertions.assertEquals
+import static unit.com.markklim.taxi.drive.app.test.JUnitUtil.getToStreamArguments
 
 class LocalDateAdapterTest {
+    LocalDateAdapter localDateAdapter = new LocalDateAdapter()
 
-  /*  @DataProvider(name = "marshal_test")
-    Object[][] marshalParam() {
-        [[LocalDate.of(2017, 5, 14), '2017-05-14'],
-         [LocalDate.of(2014, 10, 5), '2014-10-05']]
+    static Stream<Arguments> testSource() {
+        [['2017-09-25', LocalDate.of(2017, 9, 25)],
+         ['2000-01-25', LocalDate.of(2000, 1, 25)],
+         ['2056-09-25', LocalDate.of(2056, 9, 25)],
+         ['2017-12-05', LocalDate.of(2017, 12, 5)]]
+                .with(toStreamArguments)
     }
 
-    @Test(dataProvider = "marshal_test")
-    void marshalTest(LocalDate value, String expected) {
-        new LocalDateAdapter().marshal(value)
-                .with { assertEquals(it, expected) }
+    @ParameterizedTest
+    @MethodSource('testSource')
+    void marshalTest(String stringDate, LocalDate date) {
+        localDateAdapter.marshal(date)
+                .with { assertEquals(it, stringDate) }
     }
 
-    @DataProvider(name = "unmarshal_test")
-    Object[][] unmarshalParam() {
-        [['2017-05-14', LocalDate.of(2017, 5, 14)],
-         ['2014-10-05', LocalDate.of(2014, 10, 5)]]
+    @ParameterizedTest
+    @MethodSource('testSource')
+    void unmarshalTest(String stringDate, LocalDate date) {
+        localDateAdapter.unmarshal(stringDate)
+                .with { assertEquals(it, date) }
     }
-
-    @Test(dataProvider = "unmarshal_test")
-    void unmarshalTest(String value, LocalDate expected) {
-        new LocalDateAdapter().unmarshal(value)
-                .with{ assertEquals(it, expected) }
-    }*/
 }
