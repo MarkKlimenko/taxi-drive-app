@@ -1,0 +1,28 @@
+group 'taxi.drive.app'
+version projectVersion
+
+buildscript {
+    repositories {
+        repositories {
+            mavenCentral()
+            jcenter()
+            maven {
+                url 'https://plugins.gradle.org/m2/'
+            }
+        }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:5.0.7'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'groovy'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+}
+
