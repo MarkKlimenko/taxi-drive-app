@@ -21,6 +21,7 @@ class GeoService {
     @Autowired
     StreetDistrictMapperRepository streetDistrictMapperRepository
 
+    // TODO: Get geo info for particular entity by hash code
     Map getGeoInfo() {
         [geoVersion: crudRepository.findById(SYSTEM_PROPERTY, PROPERTY_GEO_VERSION).value,
          states    : getAllGeoEntities(STATE),
