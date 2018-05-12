@@ -11,7 +11,7 @@ import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
 import systems.vostok.taxi.drive.app.util.WordUtil
 
 import static systems.vostok.taxi.drive.app.dao.entity.SystemProperty.Constants.PROPERTY_GEO_VERSION
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.*
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.*
 
 @Service
 class GeoService {

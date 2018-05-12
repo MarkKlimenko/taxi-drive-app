@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 import systems.vostok.taxi.drive.app.dao.entity.PriceDtd
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.PRICE_DTD
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.PRICE_DTD
 
 @Repository
 interface PriceDtdRepository extends BasicRepository<PriceDtd, Integer> {

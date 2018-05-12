@@ -10,8 +10,8 @@ import systems.vostok.taxi.drive.app.util.JavaConverters
 import systems.vostok.tda.domain.ParsedRow
 import systems.vostok.tda.service.ExcelParserService
 
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.PRICE_CTC
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.PRICE_DTD
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.PRICE_CTC
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.PRICE_DTD
 import static systems.vostok.tda.util.constants.ParserType.MIRROR_DIAGONAL
 import static systems.vostok.tda.util.constants.ParserType.PLAIN_HEADER
 import static systems.vostok.tda.util.constants.RowType.SIMPLE

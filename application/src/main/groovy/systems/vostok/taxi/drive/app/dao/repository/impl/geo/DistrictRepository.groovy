@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 import systems.vostok.taxi.drive.app.dao.entity.geo.District
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.DISTRICT
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.DISTRICT
 
 @Repository
 interface DistrictRepository extends BasicRepository<District, String> {

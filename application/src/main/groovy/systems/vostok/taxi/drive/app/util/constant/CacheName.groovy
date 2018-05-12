@@ -1,5 +1,5 @@
 package systems.vostok.taxi.drive.app.util.constant
 
-interface CacheNames {
+interface CacheName {
     String REPOSITORY_RESOLVER = 'repositoryResolver'
 }

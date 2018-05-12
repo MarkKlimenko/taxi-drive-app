@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.CLIENT
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.CLIENT
 
 @Repository
 interface ClientRepository extends BasicRepository<Client, String> {

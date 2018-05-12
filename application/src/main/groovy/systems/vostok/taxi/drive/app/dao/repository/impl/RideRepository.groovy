@@ -9,7 +9,7 @@ import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 
 import java.time.LocalDateTime
 
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.RIDE
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.RIDE
 
 @Repository
 interface RideRepository extends BasicRepository<Ride, Long> {

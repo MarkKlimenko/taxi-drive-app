@@ -1,6 +1,6 @@
 package systems.vostok.taxi.drive.app.util.constant
 
-interface SqlEntities {
+interface SqlEntity {
     String ADDRESS = 'address'
     String COUNTRY = 'country'
     String STATE = 'state'

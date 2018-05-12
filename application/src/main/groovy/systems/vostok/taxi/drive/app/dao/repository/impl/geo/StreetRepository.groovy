@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository
 import systems.vostok.taxi.drive.app.dao.entity.geo.Street
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 
-import static systems.vostok.taxi.drive.app.util.constant.SqlEntities.STREET
+import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.STREET
 
 @Repository
 interface StreetRepository extends BasicRepository<Street, String> {

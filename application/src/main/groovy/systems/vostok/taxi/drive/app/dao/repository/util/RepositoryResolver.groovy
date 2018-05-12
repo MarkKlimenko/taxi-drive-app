@@ -5,7 +5,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 
-import static systems.vostok.taxi.drive.app.util.constant.CacheNames.REPOSITORY_RESOLVER
+import static systems.vostok.taxi.drive.app.util.constant.CacheName.REPOSITORY_RESOLVER
 
 @Component
 class RepositoryResolver {
