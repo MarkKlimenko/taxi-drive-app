@@ -4,6 +4,7 @@ import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -18,7 +19,7 @@ import java.time.LocalDateTime
 @Canonical
 @EqualsAndHashCode(includes = ['userId'])
 @ToString(includeNames = true, includeFields = true)
-class User {
+class User implements ObjectCreator {
 
     @Id
     String id

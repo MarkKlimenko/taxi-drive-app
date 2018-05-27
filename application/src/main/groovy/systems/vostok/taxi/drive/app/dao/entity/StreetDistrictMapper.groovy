@@ -3,6 +3,7 @@ package systems.vostok.taxi.drive.app.dao.entity
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -15,7 +16,7 @@ import javax.persistence.Table
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)
-class StreetDistrictMapper {
+class StreetDistrictMapper implements ObjectCreator {
     @Id
     @GeneratedValue(generator = 'ID_GENERATOR')
     @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')

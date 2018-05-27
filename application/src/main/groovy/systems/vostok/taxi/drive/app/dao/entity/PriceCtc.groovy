@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -17,7 +18,7 @@ import static systems.vostok.taxi.drive.app.util.CommonUtil.generateId
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)
-class PriceCtc {
+class PriceCtc implements ObjectCreator {
     @Id
     Integer id
 

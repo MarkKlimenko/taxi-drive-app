@@ -3,6 +3,7 @@ package systems.vostok.taxi.drive.app.dao.entity
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -13,7 +14,7 @@ import javax.persistence.Table
 @Canonical
 @EqualsAndHashCode(includes = ['setting'])
 @ToString(includeNames = true, includeFields = true)
-class Setting {
+class Setting implements ObjectCreator {
     @Id
     String setting
     String value

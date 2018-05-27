@@ -5,6 +5,7 @@ import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 import systems.vostok.taxi.drive.app.util.validator.OneOf
 
 import javax.persistence.*
@@ -23,7 +24,7 @@ import static systems.vostok.taxi.drive.app.dao.entity.Ride.Constants.STATE_PEND
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true, excludes = 'id')
-class Ride {
+class Ride implements ObjectCreator {
     @Id
     @GeneratedValue(generator = 'ID_GENERATOR')
     @SequenceGenerator(name = 'ID_GENERATOR', sequenceName = 'seq_global')

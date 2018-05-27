@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.Canonical
 import org.hibernate.search.annotations.Field
 import org.hibernate.search.annotations.Indexed
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 import systems.vostok.taxi.drive.app.util.CommonUtil
 
 import javax.persistence.Entity
@@ -15,7 +16,7 @@ import javax.persistence.Table
 @Table(name = 'addresses')
 @Indexed
 @Canonical
-class Address {
+class Address implements ObjectCreator {
     @Id
     Integer id
 

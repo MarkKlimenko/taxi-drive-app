@@ -3,6 +3,7 @@ package systems.vostok.taxi.drive.app.dao.entity
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 
 import javax.persistence.*
 import javax.validation.constraints.NotNull
@@ -12,7 +13,7 @@ import javax.validation.constraints.NotNull
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)
-class Car {
+class Car implements ObjectCreator {
     @Id
     @GeneratedValue(generator = 'ID_GENERATOR')
     // TODO: Get rid of deprecated SequenceGenerator

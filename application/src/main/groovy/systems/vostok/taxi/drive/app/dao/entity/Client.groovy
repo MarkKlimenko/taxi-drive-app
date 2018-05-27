@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import groovy.transform.Canonical
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import systems.vostok.taxi.drive.app.dao.ObjectCreator
 
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -18,7 +19,7 @@ import javax.validation.constraints.PositiveOrZero
 @Canonical
 @EqualsAndHashCode(includes = ['clientLogin'])
 @ToString(includeNames = true, includeFields = true)
-class Client {
+class Client implements ObjectCreator {
     @Id
     @NotNull
     // TODO: Add custom validation for login phone number
