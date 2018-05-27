@@ -14,7 +14,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE',
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE',
                 'gradle.plugin.com.markklim.plugins:release-to-docker:0.9',
                 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5'
     }
@@ -53,6 +53,7 @@ dependencies {
     compile 'com.zaxxer:HikariCP:2.7.8'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.9.RELEASE'
     compile 'org.hibernate:hibernate-core:5.2.12.Final'
+    compile 'org.hibernate:hibernate-entitymanager:5.2.12.Final'
     compile 'org.hibernate:hibernate-search-orm:5.9.1.Final'
     compile 'org.infinispan:infinispan-directory-provider:9.0.1.Final'
     compile 'org.springframework:spring-orm:4.3.16.RELEASE'
