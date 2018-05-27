@@ -60,6 +60,8 @@ dependencies {
     compile 'org.infinispan:infinispan-directory-provider:9.0.1.Final'
     compile 'org.springframework:spring-orm:4.3.16.RELEASE'
 
+    compile 'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.9.RELEASE'
+
     compile 'org.springframework.boot:spring-boot-starter-security:1.5.9.RELEASE'
 
     compile 'systems.vostok.tda:tda-district-mapper:0.1.6'

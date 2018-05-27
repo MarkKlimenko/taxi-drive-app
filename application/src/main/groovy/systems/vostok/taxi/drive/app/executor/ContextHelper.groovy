@@ -3,8 +3,8 @@ package systems.vostok.taxi.drive.app.executor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.domain.OperationRequest
-import systems.vostok.taxi.drive.app.dao.support.entity.ContextMessage
-import systems.vostok.taxi.drive.app.dao.support.repository.ContextMessageRepository
+import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
+import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepository
 
 import java.time.LocalDateTime
 

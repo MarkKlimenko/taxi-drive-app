@@ -12,7 +12,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:5.0.7'
+        classpath 'gradle.plugin.com.markklim.plugins:migrator-for-cassandra:0.1.23'
     }
 }
 
@@ -21,8 +21,20 @@ repositories {
 }
 
 apply plugin: 'groovy'
+apply plugin: 'com.markklim.plugins.mfc'
 
-dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+migrator {
+    host = cassandraHost
+    port = cassandraPort
+    keyspace = cassandraKeyspace
+    user = cassandraUser
+    password = cassandraPassword
+}
+
+migratorExecute {
+    script = cassandraScript
+    placeholders = [
+            keyspace: cassandraKeyspace
+    ]
 }
 

@@ -23,6 +23,24 @@
       "type": "java.lang.String",
       "description": "Db Password.",
       "sourceType": "systems.vostok.taxi.drive.app.configuration.DatabaseConfiguration"
+    },
+    {
+      "name": "db.support.contactPoints",
+      "type": "java.lang.String",
+      "description": "Db Support contact points.",
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.SupportDatabaseConfiguration"
+    },
+    {
+      "name": "db.support.port",
+      "type": "java.lang.String",
+      "description": "Db Support port.",
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.SupportDatabaseConfiguration"
+    },
+    {
+      "name": "db.support.keyspaceName",
+      "type": "java.lang.String",
+      "description": "Db Support keyspace name.",
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.SupportDatabaseConfiguration"
     }
   ]
 }
