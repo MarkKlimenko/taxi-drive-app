@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "project.version",
+      "type": "java.lang.String",
+      "description": "Project version, set automatically by gradle.",
+      "sourceType": "systems.vostok.taxi.drive.app.service.UtilService"
+    },
+    {
+      "name": "db.url",
+      "type": "java.lang.String",
+      "description": "Db URL.",
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.DatabaseConfiguration"
+    },
+    {
+      "name": "db.username",
+      "type": "java.lang.String",
+      "description": "Db Username.",
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.DatabaseConfiguration"
+    },
+    {
+      "name": "db.password",
+      "type": "java.lang.String",
+      "description": "Db Password.",
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.DatabaseConfiguration"
+    }
+  ]
+}

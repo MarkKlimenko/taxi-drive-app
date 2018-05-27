@@ -3,6 +3,7 @@ package systems.vostok.taxi.drive.app.configuration
 import com.zaxxer.hikari.HikariDataSource
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
@@ -15,16 +16,11 @@ import java.sql.SQLException
 @Configuration
 @Slf4j
 @EnableJpaRepositories(basePackages = 'systems.vostok.taxi.drive.app.dao', repositoryBaseClass = CustomBasicRepository.class)
+@ConfigurationProperties(prefix = 'db')
 class DatabaseConfiguration {
-    // TODO: Get rid of properties
-    @Value('${db.url}')
-    String dbUrl
-
-    @Value('${db.username}')
-    String dbUsername
-
-    @Value('${db.password}')
-    String dbPassword
+    String url
+    String username
+    String password
 
     @Value('${spring.jpa.hibernate.ddl-auto}')
     String ddlAuto
@@ -32,9 +28,9 @@ class DatabaseConfiguration {
     @Bean
     DataSource dataSource() {
         new HikariDataSource().with {
-            jdbcUrl = dbUrl
-            username = dbUsername
-            password = dbPassword
+            it.jdbcUrl = this.url
+            it.username = this.username
+            it.password = this.password
             it
         }
     }

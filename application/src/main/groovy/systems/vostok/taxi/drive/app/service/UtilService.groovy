@@ -1,14 +1,14 @@
 package systems.vostok.taxi.drive.app.service
 
-import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Service
 
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 
 @Service
+@ConfigurationProperties(prefix = 'project')
 class UtilService {
-    @Value('${project.version}')
     String version
 
     @PersistenceContext
@@ -16,7 +16,7 @@ class UtilService {
 
     String getSqlStatus() {
         try {
-            entityManager.createNativeQuery("SELECT 'OK' FROM flyway_schema_history;")
+            entityManager.createNativeQuery('SELECT version()')
                     .getSingleResult() as String
         } catch (Exception e) {
             e.toString()
