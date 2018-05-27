@@ -5,6 +5,8 @@ import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
+import systems.vostok.taxi.drive.app.dao.repository.CustomBasicRepository
 
 import javax.annotation.PostConstruct
 import javax.sql.DataSource
@@ -12,6 +14,7 @@ import java.sql.SQLException
 
 @Configuration
 @Slf4j
+@EnableJpaRepositories(basePackages = 'systems.vostok.taxi.drive.app.dao', repositoryBaseClass = CustomBasicRepository.class)
 class DatabaseConfiguration {
     // TODO: Get rid of properties
     @Value('${db.url}')
