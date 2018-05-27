@@ -4,7 +4,7 @@ CREATE KEYSPACE IF NOT EXISTS %keyspace% WITH REPLICATION = {
     'replication_factor' : 1
 };
 
-// RIDE TABLE
+
 CREATE TABLE IF NOT EXISTS %keyspace%.contextMessages (
                               id UUID,
                               operationName text,
