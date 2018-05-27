@@ -3,9 +3,9 @@
 ### Run application local
 **Start spring boot application with VM options:**
 <pre>
-    -Dspring.datasource.url=jdbc:postgresql://192.168.99.100:5432/tda   
-    -Dspring.datasource.username=tda_klimenko 
-    -Dspring.datasource.password=12345
+    -Ddb.url=jdbc:postgresql://192.168.99.100:5432/tda
+    -Ddb.username=tda_klimenko
+    -Ddb.password=12345
     -Dserver.port=8087
 </pre>
 
