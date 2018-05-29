@@ -3,3 +3,6 @@
 
 ### Redis
 - Implement versioned Entity representation
+
+### Security
+- Add Spring security @PreFilter @PostFilter on universal crud methods
