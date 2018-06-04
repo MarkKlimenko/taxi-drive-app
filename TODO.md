@@ -9,3 +9,7 @@
 
 ### Metrics, statistic
 - Add flyway with actuator
+
+### Other
+- Move all constant interfaces to classes
+- Add annotation @Constants and add private constructor programmatically  

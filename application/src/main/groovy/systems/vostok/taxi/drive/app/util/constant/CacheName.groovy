@@ -1,5 +1,7 @@
 package systems.vostok.taxi.drive.app.util.constant
 
-interface CacheName {
-    String REPOSITORY_RESOLVER = 'repositoryResolver'
+class CacheName {
+    private CacheName() { throw new UnsupportedOperationException() }
+
+    static final String REPOSITORY_RESOLVER = 'repositoryResolver'
 }
