@@ -9,6 +9,23 @@ import systems.vostok.taxi.drive.app.operation.Operation
 
 import static systems.vostok.taxi.drive.app.util.constant.OperationName.ADD_CITY_OPERATION
 
+/*
+enroll
+ {
+    "operationName": "ADD_CITY",
+    "direction": "enroll",
+    "body": {
+        "id": "spdTest",
+        "name": "Спасск-Дальний-Тест",
+        "state": "pk"
+    }
+ }
+
+rollback
+
+
+*/
+
 @Component
 class AddCityOperation implements Operation {
     String operationName = ADD_CITY_OPERATION
@@ -18,8 +35,12 @@ class AddCityOperation implements Operation {
 
     @Override
     Object enroll(OperationRequest request) {
-        (request.body as City)
-            .with(cityRepository.&save)
+        City city = request.body as City
+
+        City checkedCity = cityRepository.findOne(city.id)
+        assert !checkedCity : 'City with target ID already exists'
+
+        city.with(cityRepository.&save)
     }
 
     @Override

@@ -28,9 +28,9 @@ class CoreOperationExecutor implements OperationExecutor {
             Object operationContext = directionMap[direction].call(operation, request)
             contextHelper.reportSuccess(request, operationContext)
             operationContext
-        } catch (Exception e) {
+        } catch (Throwable e) {
             contextHelper.reportFail(request, e.message)
-            throw new Exception(e)
+            throw new Throwable(e)
         }
     }
 

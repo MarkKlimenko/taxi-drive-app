@@ -11,6 +11,5 @@ class ExecutorService {
 
     Object executeOperation(OperationRequest operationRequest) {
         coreOperationExecutor.execute(operationRequest)
-
     }
 }

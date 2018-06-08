@@ -37,6 +37,6 @@ class ContextMessage {
     String context
 
     void setContext(Object context) {
-        new ObjectMapper().writeValueAsString(context)
+        this.context = new ObjectMapper().writeValueAsString(context)
     }
 }

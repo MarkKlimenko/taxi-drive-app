@@ -23,6 +23,7 @@ class JerseyConfiguration extends ResourceConfig {
         register(ClientManagementController.class)
         register(RateController.class)
         register(GeoController.class)
+        register(OperationController.class)
     }
 
     void registerComponents() {

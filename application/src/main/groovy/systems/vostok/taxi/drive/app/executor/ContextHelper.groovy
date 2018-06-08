@@ -26,12 +26,12 @@ class ContextHelper {
     private ContextMessage composeMessage(OperationRequest request, String state, Object context) {
         [
                 operationName: request.operationName,
-                owner : 'admin',
-                dateIn : LocalDateTime.now(),
-                state : state,
-                direction : request.direction,
-                requestBody: request.body,
-                context : context
+                owner        : 'admin',
+                dateIn       : LocalDateTime.now(),
+                state        : state,
+                direction    : request.direction,
+                requestBody  : request.body,
+                context      : context
         ]
     }
 }
