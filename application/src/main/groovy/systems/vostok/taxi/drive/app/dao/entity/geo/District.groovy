@@ -14,9 +14,7 @@ import javax.persistence.Table
 @Canonical
 @EqualsAndHashCode(includes = ['id'])
 @ToString(includeNames = true, includeFields = true)
-class District implements ObjectCreator {
-    @Id
-    String id
+class District extends GeoEntity {
     String name
     String city
 }
