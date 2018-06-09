@@ -21,13 +21,13 @@ class ContextMessage {
     @PrimaryKeyColumn(name = 'id', ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     UUID id = UUID.randomUUID()
 
-    @PrimaryKeyColumn(name = 'operationName', ordinal = 1, type = PrimaryKeyType.PARTITIONED)
+    @PrimaryKeyColumn(name = 'operationName', ordinal = 1, type = PrimaryKeyType.CLUSTERED)
     String operationName
 
-    @PrimaryKeyColumn(name = 'owner', ordinal = 2, type = PrimaryKeyType.PARTITIONED)
+    @PrimaryKeyColumn(name = 'owner', ordinal = 2, type = PrimaryKeyType.CLUSTERED)
     String owner
 
-    @PrimaryKeyColumn(name = 'dateIn', ordinal = 3, type = PrimaryKeyType.CLUSTERED, ordering = Ordering.ASCENDING)
+    @PrimaryKeyColumn(name = 'dateIn', ordinal = 3, type = PrimaryKeyType.CLUSTERED)
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     LocalDateTime dateIn
 

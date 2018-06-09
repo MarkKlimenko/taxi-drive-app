@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.operation.impl.geo
+package systems.vostok.taxi.drive.app.operation.geo
 
 import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.domain.OperationRequest

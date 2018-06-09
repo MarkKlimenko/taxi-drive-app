@@ -14,5 +14,4 @@ CREATE TABLE IF NOT EXISTS %keyspace%.contextMessages (
                               direction text,
                               requestBody text,
                               context text,
-PRIMARY KEY ((id, operationName, owner), dateIn))
-WITH CLUSTERING ORDER BY (dateIn ASC);
+PRIMARY KEY (id, operationName, owner, dateIn));

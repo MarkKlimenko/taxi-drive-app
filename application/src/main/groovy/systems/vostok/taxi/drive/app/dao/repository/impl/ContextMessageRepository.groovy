@@ -4,4 +4,5 @@ import org.springframework.data.cassandra.repository.CassandraRepository
 import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
 
 interface ContextMessageRepository extends CassandraRepository<ContextMessage> {
+    ContextMessage findById(UUID id)
 }

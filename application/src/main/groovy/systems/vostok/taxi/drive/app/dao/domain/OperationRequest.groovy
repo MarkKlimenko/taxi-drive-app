@@ -4,8 +4,12 @@ import groovy.transform.Canonical
 
 @Canonical
 class OperationRequest {
-    String id
+    UUID id
     String operationName
     String direction
     Object body
+
+    void setId(String id) {
+        this.id = UUID.fromString(id)
+    }
 }
