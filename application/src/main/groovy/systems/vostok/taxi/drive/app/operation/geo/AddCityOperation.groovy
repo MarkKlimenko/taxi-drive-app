@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.domain.OperationRequest
 import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
 import systems.vostok.taxi.drive.app.dao.entity.geo.City
-import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepository
 import systems.vostok.taxi.drive.app.dao.repository.impl.geo.CityRepository
 import systems.vostok.taxi.drive.app.operation.Operation
 
@@ -39,32 +38,25 @@ class AddCityOperation implements Operation {
     @Autowired
     CityRepository cityRepository
 
-    @Autowired
-    ContextMessageRepository contextMessageRepository
-
     @Override
     Object enroll(OperationRequest request) {
         City city = request.body as City
 
         City checkedCity = cityRepository.findOne(city.id)
-        assert !checkedCity : 'City with target ID already exists'
+        assert !checkedCity: 'City with target ID already exists'
 
         city.with(cityRepository.&save)
     }
 
     @Override
-    Object rollback(OperationRequest request) {
-        ContextMessage contextMessage = contextMessageRepository.findById(request.id)
-        City contextBody = new JsonSlurper().parseText(contextMessage.context) as City
+    Object rollback(OperationRequest request, ContextMessage contextMessage) {
+        City contextCity = new JsonSlurper().parseText(contextMessage.context) as City
+        City persistentCity = cityRepository.findOne(contextCity.id)
 
-        City checkedCity = cityRepository.findOne(contextBody.id)
+        assert contextCity == persistentCity: 'Rollback rejected: city was modified'
 
-        assert contextBody == checkedCity : 'Rollback rejected: city was modified'
+        cityRepository.delete(contextCity.id)
 
-        cityRepository.delete(contextBody.id)
-
-        //TODO: Add canceled for rollbacked operation
-
-        checkedCity
+        persistentCity
     }
 }
