@@ -43,6 +43,8 @@ class CoreOperationExecutor implements OperationExecutor {
         operation.enroll(request)
     }
 
+    //TODO: Operation states to constants
+
     private Object executeRollback(Operation operation, OperationRequest request) {
         ContextMessage contextMessage = contextMessageRepository.findById(request.id)
         assert contextMessage.state == 'success' : 'Rollback rejected: not suitable state for rollback'
