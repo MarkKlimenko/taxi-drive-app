@@ -1,6 +1,7 @@
 package systems.vostok.taxi.drive.app.operation.geo
 
 import groovy.json.JsonSlurper
+import org.springframework.stereotype.Component
 import systems.vostok.taxi.drive.app.dao.domain.OperationRequest
 import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
 import systems.vostok.taxi.drive.app.dao.entity.geo.GeoEntity
@@ -10,7 +11,7 @@ import systems.vostok.taxi.drive.app.operation.Operation
 /*
 enroll
  {
-    "operationName": "ADD_CITY",
+    "operationName": "EDIT_CITY",
     "direction": "enroll",
     "body": {
         "id": "spdTest",
@@ -22,30 +23,35 @@ enroll
 rollback
  {
     "id": "51ae64c4-3327-4b73-9498-1fa3347d2a15",
-    "operationName": "ADD_CITY",
+    "operationName": "EDIT_CITY",
     "direction": "rollback"
  }
 */
 
-class AddGeoOperation<T extends GeoEntity> implements Operation {
+@Component
+class EditGeoOperation<T extends GeoEntity> implements Operation {
     String operationName
     BasicRepository<T, String> entityRepository
 
     @Override
     Object enroll(OperationRequest request) {
+        //TODO: Add transactional here
+
         def getTargetEntity = {
             entityRepository.convertToEntityType(request.body)
         }
 
         def checkEntity = { T targetEntity ->
             T checkedEntity = entityRepository.findOne(targetEntity.id)
-            assert !checkedEntity: 'Geo entity with target ID already exists'
+            assert checkedEntity: 'Geo entity with target ID does NOT exist'
             targetEntity
         }
 
         getTargetEntity()
                 .with(checkEntity)
                 .with(entityRepository.&save)
+
+        // TODO: Save proper context (before: after:)
     }
 
     @Override
@@ -62,17 +68,19 @@ class AddGeoOperation<T extends GeoEntity> implements Operation {
         }
 
         def checkEntity = {
+            // TODO: add proper checking
             assert contextEntity: 'Rollback rejected: context entity must not be null'
             assert contextEntity == persistentEntity: 'Rollback rejected: entity was modified'
         }
 
         def executeRollback = {
-            entityRepository.delete(contextEntity.id)
+            // TODO: edit entity here
+            // entityRepository.delete(contextEntity.id)
             persistentEntity
         }
 
         getTargetEntities()
-            .with(checkEntity)
-            .with(executeRollback)
+                .with(checkEntity)
+                .with(executeRollback)
     }
 }
