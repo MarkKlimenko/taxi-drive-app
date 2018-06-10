@@ -9,6 +9,9 @@ import systems.vostok.taxi.drive.app.executor.ContextHelper
 import systems.vostok.taxi.drive.app.executor.OperationExecutor
 import systems.vostok.taxi.drive.app.operation.Operation
 
+import static systems.vostok.taxi.drive.app.util.constant.OperationState.CANCELED_OPERATION_STATE
+import static systems.vostok.taxi.drive.app.util.constant.OperationState.SUCCESS_OPERATION_STATE
+
 @Service
 class CoreOperationExecutor implements OperationExecutor {
     @Autowired
@@ -43,15 +46,13 @@ class CoreOperationExecutor implements OperationExecutor {
         operation.enroll(request)
     }
 
-    //TODO: Operation states to constants
-
     private Object executeRollback(Operation operation, OperationRequest request) {
         ContextMessage contextMessage = contextMessageRepository.findById(request.id)
-        assert contextMessage.state == 'success' : 'Rollback rejected: not suitable state for rollback'
+        assert contextMessage.state == SUCCESS_OPERATION_STATE: 'Rollback rejected: not suitable state for rollback'
 
         operation.rollback(request, contextMessage)
 
-        contextMessage.with { it.state = 'cancelled'; it }
+        contextMessage.with { it.state = CANCELED_OPERATION_STATE; it }
                 .with(contextMessageRepository.&save)
     }
 
