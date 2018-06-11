@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.operation.geo
+package systems.vostok.taxi.drive.app.operation.geo.add
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

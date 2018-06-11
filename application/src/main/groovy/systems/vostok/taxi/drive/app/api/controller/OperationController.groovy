@@ -1,7 +1,7 @@
 package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
-import systems.vostok.taxi.drive.app.dao.domain.OperationRequest
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
 import systems.vostok.taxi.drive.app.executor.ExecutorService
 
 import javax.ws.rs.Consumes

@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.dao.domain
+package systems.vostok.taxi.drive.app.dao.domain.operation
 
 import groovy.transform.Canonical
 

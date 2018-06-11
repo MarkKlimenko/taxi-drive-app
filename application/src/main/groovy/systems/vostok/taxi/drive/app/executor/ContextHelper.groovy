@@ -2,40 +2,56 @@ package systems.vostok.taxi.drive.app.executor
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import systems.vostok.taxi.drive.app.dao.domain.OperationRequest
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
 import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
 import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepository
 
 import java.time.LocalDateTime
 
-import static systems.vostok.taxi.drive.app.util.constant.OperationState.SUCCESS_OPERATION_STATE
-import static systems.vostok.taxi.drive.app.util.constant.OperationState.FAIL_OPERATION_STATE
+import static systems.vostok.taxi.drive.app.util.constant.OperationState.*
 
 @Service
 class ContextHelper {
     @Autowired
     ContextMessageRepository contextMessageRepository
 
-    void reportSuccess(OperationRequest request, Object operationContext) {
-        composeMessage(request, SUCCESS_OPERATION_STATE, operationContext)
+    ContextMessage createContextMessage(OperationRequest request) {
+        composeMessage(request)
                 .with(contextMessageRepository.&save)
     }
 
-    void reportFail(OperationRequest request, String exceptionMessage) {
-        composeMessage(request, FAIL_OPERATION_STATE, exceptionMessage)
+    OperationContext setSuccess(OperationContext operationContext) {
+        operationContext.contextMessage
+            .with { it.state = SUCCESS_OPERATION_STATE; it }
+            .with(contextMessageRepository.&save)
+
+        operationContext
+    }
+
+    OperationContext setFail(OperationContext operationContext) {
+        operationContext.contextMessage
+                .with { it.state = FAIL_OPERATION_STATE; it }
                 .with(contextMessageRepository.&save)
+
+        operationContext
+    }
+
+    OperationContext setContext(OperationContext operationContext, Object context) {
+        operationContext.contextMessage.context = context
+        operationContext
     }
 
     // TODO: get owner name from security context
-    private ContextMessage composeMessage(OperationRequest request, String state, Object context) {
+    private ContextMessage composeMessage(OperationRequest request) {
         [
                 operationName: request.operationName,
                 owner        : 'admin',
                 dateIn       : LocalDateTime.now(),
-                state        : state,
+                state        : IN_PROCESS_OPERATION_STATE,
                 direction    : request.direction,
                 requestBody  : request.body,
-                context      : context
+                context      : null
         ]
     }
 }

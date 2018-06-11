@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.operation.geo
+package systems.vostok.taxi.drive.app.operation.geo.delete
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -10,7 +10,7 @@ import static systems.vostok.taxi.drive.app.util.constant.OperationName.*
 @Configuration
 class DeleteGeoOperationConfig {
     @Bean
-    DeleteGeoOperation addCountry(CountryRepository countryRepository) {
+    DeleteGeoOperation deleteCountry(CountryRepository countryRepository) {
         new DeleteGeoOperation<Country>(
                 operationName: DELETE_COUNTRY_OPERATION,
                 entityRepository: countryRepository
@@ -18,7 +18,7 @@ class DeleteGeoOperationConfig {
     }
 
     @Bean
-    DeleteGeoOperation addState(StateRepository stateRepository) {
+    DeleteGeoOperation deleteState(StateRepository stateRepository) {
         new DeleteGeoOperation<State>(
                 operationName: DELETE_STATE_OPERATION,
                 entityRepository: stateRepository
@@ -26,7 +26,7 @@ class DeleteGeoOperationConfig {
     }
 
     @Bean
-    DeleteGeoOperation addCity(CityRepository cityRepository) {
+    DeleteGeoOperation deleteCity(CityRepository cityRepository) {
         new DeleteGeoOperation<City>(
                 operationName: DELETE_CITY_OPERATION,
                 entityRepository: cityRepository
@@ -34,7 +34,7 @@ class DeleteGeoOperationConfig {
     }
 
     @Bean
-    DeleteGeoOperation addDistrict(DistrictRepository districtRepository) {
+    DeleteGeoOperation deleteDistrict(DistrictRepository districtRepository) {
         new DeleteGeoOperation<District>(
                 operationName: DELETE_DISTRICT_OPERATION,
                 entityRepository: districtRepository
@@ -42,7 +42,7 @@ class DeleteGeoOperationConfig {
     }
 
     @Bean
-    DeleteGeoOperation addStreet(StreetRepository streetRepository) {
+    DeleteGeoOperation deleteStreet(StreetRepository streetRepository) {
         new DeleteGeoOperation<Street>(
                 operationName: DELETE_STREET_OPERATION,
                 entityRepository: streetRepository

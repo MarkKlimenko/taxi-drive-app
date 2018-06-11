@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.operation.geo
+package systems.vostok.taxi.drive.app.operation.geo.edit
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -10,7 +10,7 @@ import static systems.vostok.taxi.drive.app.util.constant.OperationName.*
 @Configuration
 class EditGeoOperationConfig {
     @Bean
-    EditGeoOperation addCountry(CountryRepository countryRepository) {
+    EditGeoOperation editCountry(CountryRepository countryRepository) {
         new EditGeoOperation<Country>(
                 operationName: EDIT_COUNTRY_OPERATION,
                 entityRepository: countryRepository
@@ -18,7 +18,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    EditGeoOperation addState(StateRepository stateRepository) {
+    EditGeoOperation editState(StateRepository stateRepository) {
         new EditGeoOperation<State>(
                 operationName: EDIT_STATE_OPERATION,
                 entityRepository: stateRepository
@@ -26,7 +26,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    EditGeoOperation addCity(CityRepository cityRepository) {
+    EditGeoOperation editCity(CityRepository cityRepository) {
         new EditGeoOperation<City>(
                 operationName: EDIT_CITY_OPERATION,
                 entityRepository: cityRepository
@@ -34,7 +34,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    EditGeoOperation addDistrict(DistrictRepository districtRepository) {
+    EditGeoOperation editDistrict(DistrictRepository districtRepository) {
         new EditGeoOperation<District>(
                 operationName: EDIT_DISTRICT_OPERATION,
                 entityRepository: districtRepository
@@ -42,7 +42,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    EditGeoOperation addStreet(StreetRepository streetRepository) {
+    EditGeoOperation editStreet(StreetRepository streetRepository) {
         new EditGeoOperation<Street>(
                 operationName: EDIT_STREET_OPERATION,
                 entityRepository: streetRepository

@@ -2,7 +2,7 @@ package systems.vostok.taxi.drive.app.executor
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import systems.vostok.taxi.drive.app.dao.domain.OperationRequest
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
 
 @Service
 class ExecutorService {
