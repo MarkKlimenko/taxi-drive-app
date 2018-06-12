@@ -41,7 +41,7 @@ class EditGeoOperation<T extends GeoEntity> implements Operation {
         }
 
         def checkPersistentEntity = {
-            assert persistentEntity: 'Geo entity with target ID does not exists'
+            assert persistentEntity: 'Geo entity with target ID does not exist'
         }
 
         def setContext = { T resultEntity ->
@@ -87,8 +87,13 @@ class EditGeoOperation<T extends GeoEntity> implements Operation {
             entityRepository.save(contextEntityBefore)
         }
 
+        def setContext = {
+            context.contextHelper.setContext(context, context.operationRequest.id)
+        }
+
         getTargetEntities()
                 .with(checkEntity)
                 .with(executeRollback)
+                .with(setContext)
     }
 }

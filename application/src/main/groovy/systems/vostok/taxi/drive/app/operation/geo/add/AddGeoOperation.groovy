@@ -76,8 +76,13 @@ class AddGeoOperation<T extends GeoEntity> implements Operation {
             persistentEntity
         }
 
+        def setContext = {
+            context.contextHelper.setContext(context, context.operationRequest.id)
+        }
+
         getTargetEntities()
                 .with(checkEntity)
                 .with(executeRollback)
+                .with(setContext)
     }
 }
