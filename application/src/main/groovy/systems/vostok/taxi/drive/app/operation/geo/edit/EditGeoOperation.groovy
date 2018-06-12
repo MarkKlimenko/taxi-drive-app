@@ -1,5 +1,6 @@
 package systems.vostok.taxi.drive.app.operation.geo.edit
 
+import groovy.json.JsonSlurper
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.entity.geo.GeoEntity
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
@@ -29,15 +30,65 @@ class EditGeoOperation<T extends GeoEntity> implements Operation {
     String operationName
     BasicRepository<T, String> entityRepository
 
-    // TODO: Implement edit geo operation type
-
     @Override
     Object enroll(OperationContext context) {
-        null
+        T contextEntity = null
+        T persistentEntity = null
+
+        def getTargetEntities = {
+            contextEntity = entityRepository.convertToEntityType(context.operationRequest.body)
+            persistentEntity = entityRepository.findOne(contextEntity.id)
+        }
+
+        def checkPersistentEntity = {
+            assert persistentEntity: 'Geo entity with target ID does not exists'
+        }
+
+        def setContext = { T resultEntity ->
+            Map<String, T> contextBody = [before: persistentEntity,
+                                          after : resultEntity]
+
+            context.contextHelper.setContext(context, contextBody)
+            resultEntity
+        }
+
+        getTargetEntities()
+                .with(checkPersistentEntity)
+                .with { this.entityRepository.save(contextEntity) }
+                .with(setContext)
     }
 
     @Override
     Object rollback(OperationContext context) {
-        null
+        T contextEntityBefore = null
+        T contextEntityAfter = null
+        T persistentEntity = null
+
+        def getContextEntity = { String entityType ->
+            context.rollbackContextMessage.context
+                    .with(new JsonSlurper().&parseText)
+                    .with { it[entityType] }
+                    .with(entityRepository.&convertToEntityType)
+        }
+
+        def getTargetEntities = {
+            contextEntityBefore = getContextEntity('before')
+            contextEntityAfter = getContextEntity('after')
+
+            persistentEntity = entityRepository.findOne(contextEntityAfter.id)
+        }
+
+        def checkEntity = {
+            assert contextEntityAfter: 'Rollback rejected: context entities must not be null'
+            assert contextEntityAfter == persistentEntity: 'Rollback rejected: entity was modified'
+        }
+
+        def executeRollback = {
+            entityRepository.save(contextEntityBefore)
+        }
+
+        getTargetEntities()
+                .with(checkEntity)
+                .with(executeRollback)
     }
 }
