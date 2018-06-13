@@ -1,4 +1,4 @@
--- DISTRICTS TODO: Use four letters for ids
+-- DISTRICTS
 INSERT INTO "${schema}".districts (id, name, city) VALUES ('grk', 'Горка', 'spa');
 INSERT INTO "${schema}".districts (id, name, city) VALUES ('mtf', 'МТФ', 'spa');
 INSERT INTO "${schema}".districts (id, name, city) VALUES ('grd', 'Город', 'spa');

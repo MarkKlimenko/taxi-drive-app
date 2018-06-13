@@ -1,4 +1,4 @@
--- STREETS TODO: Use four letters for ids
+-- STREETS
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('1izap', '1-й Западный пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('1irab', '1-й Рабочий пер.', 'spa');
 INSERT INTO "${schema}".streets (id, name, city) VALUES ('1agr', '1-я Гражданская', 'spa');
