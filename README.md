@@ -1,39 +1,18 @@
 # Taxi drive app
 
-### Run application local
-**Start spring boot application with VM options:**
-<pre>
-    -Ddb.url=jdbc:postgresql://192.168.99.100:5432/tda
-    -Ddb.username=tda_klimenko
-    -Ddb.password=12345
-    -Dserver.port=8087
-</pre>
+## Run application local
+**Start spring boot application via spring boot plugin**
 
-### Prepare environment
+## Prepare environment
 
 **Launch docker containers**
 <pre>
-docker run --restart always -d --name postgres -p 5432:5432 postgres
+    docker run --restart always -d --name postgres -p 5432:5432 postgres
 </pre>
 
-**Setup SQL db**
-<pre>
-1. Create database tda (using migrator)
-    CREATE DATABASE new_database;    
-2. Create schema and user for database tda (using migrator)
-    CREATE SCHEMA tda_example;
-    CREATE USER tda_example;
-    ALTER ROLE tda_example PASSWORD '12345';
-    GRANT  ALL  ON SCHEMA tda_example TO tda_example;
-3. Connect to db, using tda_example user and schema    
-</pre>
-
-**Execute SQL migrations**
-<pre>
-gradlew flywayMigrate -PflywayUrl=jdbc:postgresql://192.168.99.100:5432/tda 
-                      -PflywayUser=tda_example
-                      -PflywayPassword=12345
-</pre>
+**Execute DB migrations**
+- Execute Postgres migrations (info in module ./db)
+- Execute Cassandra migrations (info in module ./db-support)
 
 ## Useful information 
 ### Test Ride Workflow

@@ -48,7 +48,7 @@ jobs:
   - stage: unit_tests_and_sonar_scaner
     script:
       - ./gradlew test
-      - sonar-scanner
+#      - sonar-scanner
 
   - stage: integration_tests
     script:

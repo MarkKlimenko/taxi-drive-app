@@ -11,7 +11,7 @@
 - Add flyway with actuator
 
 ### Other
-- Move all constant interfaces to classes +
++ Move all constant interfaces to classes
 
 ### Docker
-- Prepare appropriate compose files
++ Prepare appropriate compose files
