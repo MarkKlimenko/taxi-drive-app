@@ -1,4 +1,4 @@
-# DB module
+# Migrations DB application
 ## PostgreSQL DB
 
 ### Prepare environment

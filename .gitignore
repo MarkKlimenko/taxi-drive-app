@@ -1,11 +1,18 @@
 /.gradle/
 /.idea/
-/out/
-/build/
 
-/application/out/
+/build/
+/out/
+
 /application/build/
+/application/out/
 /application/indexes/
 
-/db/out/
-/db/build/
+/migrations-db-application/build/
+/migrations-db-application/out/
+
+/migrations-db-sso/build/
+/migrations-db-sso/out/
+
+/migrations-db-support/build/
+/mmigrations-db-support/out/

@@ -1,5 +1,6 @@
 rootProject.name = 'taxi-drive-app'
 include 'application'
-include 'db'
-include 'db-support'
+include 'migrations-db-application'
+include 'migrations-db-support'
+include 'migrations-db-sso'
 

@@ -1,4 +1,4 @@
-# DB support module
+# Migrations DB support
 ## Cassandra DB
 
 ### Prepare environment

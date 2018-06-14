@@ -1,0 +1,37 @@
+group 'taxi.drive.app'
+version projectVersion
+
+buildscript {
+    repositories {
+        repositories {
+            mavenCentral()
+            jcenter()
+            maven {
+                url 'https://plugins.gradle.org/m2/'
+            }
+        }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:5.0.7'
+        classpath 'org.postgresql:postgresql:42.1.4'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'groovy'
+apply plugin: 'org.flywaydb.flyway'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+}
+
+flyway {
+    url = flywayUrl
+    schemas = [flywayUser]
+    user = flywayUser
+    password = flywayPassword
+    placeholders = ['schema': flywayUser]
+}

@@ -17,5 +17,6 @@
 + Prepare appropriate compose files
 
 ### Security
-+ Add Keycloak SSO to compose 
++ Add Keycloak SSO to compose
+- Create migrators for SSO and others 
 - Connect SSO/Spring security
