@@ -15,3 +15,7 @@
 
 ### Docker
 + Prepare appropriate compose files
+
+### Security
++ Add Keycloak SSO to compose 
+- Connect SSO/Spring security

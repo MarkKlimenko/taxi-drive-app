@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:10
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: tda
+      POSTGRES_PASSWORD: 123456
+
+  db_support:
+    image: cassandra:3.11
+    ports:
+      - 9042:9042
+
+  sso:
+    image: jboss/keycloak:4.0.0.Final
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: db
+      DB_DATABASE: tda
+      DB_USER: tda
+      DB_PASSWORD: 123456
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: 123456
+    ports:
+      - 8280:8080
+    depends_on:
+      - db
