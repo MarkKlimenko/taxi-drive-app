@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.configuration
+package systems.vostok.taxi.drive.app.configuration.persistent
 
 import org.hibernate.search.jpa.FullTextEntityManager
 import org.hibernate.search.jpa.Search

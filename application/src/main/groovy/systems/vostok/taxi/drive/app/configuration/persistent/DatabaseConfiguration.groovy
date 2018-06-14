@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.configuration
+package systems.vostok.taxi.drive.app.configuration.persistent
 
 import com.zaxxer.hikari.HikariDataSource
 import groovy.util.logging.Slf4j

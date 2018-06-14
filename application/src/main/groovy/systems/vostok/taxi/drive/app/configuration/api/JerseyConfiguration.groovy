@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.configuration
+package systems.vostok.taxi.drive.app.configuration.api
 
 import org.glassfish.jersey.media.multipart.MultiPartFeature
 import org.glassfish.jersey.server.ResourceConfig

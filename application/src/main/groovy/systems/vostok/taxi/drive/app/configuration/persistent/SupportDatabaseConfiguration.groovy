@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.configuration
+package systems.vostok.taxi.drive.app.configuration.persistent
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean

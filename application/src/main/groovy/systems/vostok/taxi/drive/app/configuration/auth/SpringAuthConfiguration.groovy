@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.configuration
+package systems.vostok.taxi.drive.app.configuration.auth
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Conditional

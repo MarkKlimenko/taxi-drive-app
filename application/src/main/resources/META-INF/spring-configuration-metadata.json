@@ -10,37 +10,37 @@
       "name": "db.url",
       "type": "java.lang.String",
       "description": "Db URL.",
-      "sourceType": "systems.vostok.taxi.drive.app.configuration.DatabaseConfiguration"
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.DatabaseConfiguration"
     },
     {
       "name": "db.username",
       "type": "java.lang.String",
       "description": "Db Username.",
-      "sourceType": "systems.vostok.taxi.drive.app.configuration.DatabaseConfiguration"
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.DatabaseConfiguration"
     },
     {
       "name": "db.password",
       "type": "java.lang.String",
       "description": "Db Password.",
-      "sourceType": "systems.vostok.taxi.drive.app.configuration.DatabaseConfiguration"
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.DatabaseConfiguration"
     },
     {
       "name": "db.support.contactPoints",
       "type": "java.lang.String",
       "description": "Db Support contact points.",
-      "sourceType": "systems.vostok.taxi.drive.app.configuration.SupportDatabaseConfiguration"
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.SupportDatabaseConfiguration"
     },
     {
       "name": "db.support.port",
       "type": "java.lang.String",
       "description": "Db Support port.",
-      "sourceType": "systems.vostok.taxi.drive.app.configuration.SupportDatabaseConfiguration"
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.SupportDatabaseConfiguration"
     },
     {
       "name": "db.support.keyspaceName",
       "type": "java.lang.String",
       "description": "Db Support keyspace name.",
-      "sourceType": "systems.vostok.taxi.drive.app.configuration.SupportDatabaseConfiguration"
+      "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.SupportDatabaseConfiguration"
     }
   ]
 }
