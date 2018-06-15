@@ -3,7 +3,7 @@
 
 ### Prepare environment
 <pre>
-    gradlew flywayClean flywayMigrate
+    gradlew :migrations-db-application:flywayClean :migrations-db-application:flywayMigrate
 </pre>
 
 ### Execute migrations

@@ -9,7 +9,7 @@ Need for default realm, client, user creation
 
 ### Prepare environment
 <pre>
-    gradlew flywayMigrate
+    gradlew :migrations-db-sso:flywayMigrate
 </pre>
 
 ### Execute migrations

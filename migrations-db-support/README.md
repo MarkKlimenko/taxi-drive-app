@@ -3,7 +3,7 @@
 
 ### Prepare environment
 <pre>
-    gradlew migratorExecute
+    gradlew :migrations-db-sso:migratorExecute
 </pre>
 
 ### Execute migrations
