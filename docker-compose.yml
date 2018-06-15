@@ -14,13 +14,21 @@ services:
     ports:
       - 9042:9042
 
+  db_sso:
+      image: postgres:10
+      ports:
+        - 5431:5432
+      environment:
+        POSTGRES_USER: sso
+        POSTGRES_PASSWORD: 123456
+
   sso:
     image: jboss/keycloak:4.0.0.Final
     environment:
       DB_VENDOR: POSTGRES
-      DB_ADDR: db
-      DB_DATABASE: tda
-      DB_USER: tda
+      DB_ADDR: db_sso
+      DB_DATABASE: sso
+      DB_USER: sso
       DB_PASSWORD: 123456
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: 123456
