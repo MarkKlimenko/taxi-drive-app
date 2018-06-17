@@ -41,6 +41,21 @@
       "type": "java.lang.String",
       "description": "Db Support keyspace name.",
       "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.SupportDatabaseConfiguration"
+    },
+    {
+      "name": "security.type",
+      "type": "java.lang.String",
+      "description": "Used security type."
+    }
+  ],
+  "hints": [
+    {
+      "name": "security.type",
+      "values": [
+          {"value": "sso", "description": "Use sso auth type."},
+          {"value": "spring", "description": "Use spring auth type."},
+          {"value": "disabled", "description": "Disable authentication."}
+        ]
     }
   ]
 }
