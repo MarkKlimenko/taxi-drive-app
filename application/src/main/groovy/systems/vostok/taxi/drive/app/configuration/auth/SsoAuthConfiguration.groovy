@@ -10,19 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-@ConditionalOnProperty(name = 'security.type', havingValue = 'spring')
-class SpringAuthConfiguration extends WebSecurityConfigurerAdapter {
+@ConditionalOnProperty(name = 'security.type', havingValue = 'sso')
+class SsoAuthConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser('admin').password('123').roles('ADMIN')
+        // TODO: Implement Sso
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers('/**').hasRole('ADMIN')
-                .anyRequest().authenticated()
-                .and().csrf().disable()
-                .httpBasic()
+        // TODO: Implement Sso
     }
 }

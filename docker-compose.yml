@@ -15,12 +15,12 @@ services:
       - 9042:9042
 
   db_sso:
-      image: postgres:10
-      ports:
-        - 5431:5432
-      environment:
-        POSTGRES_USER: sso
-        POSTGRES_PASSWORD: 123456
+    image: postgres:10
+    ports:
+      - 5431:5432
+    environment:
+      POSTGRES_USER: sso
+      POSTGRES_PASSWORD: 123456
 
   sso:
     image: jboss/keycloak:4.0.0.Final
