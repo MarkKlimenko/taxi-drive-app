@@ -63,6 +63,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.9.RELEASE'
 
     compile 'org.springframework.boot:spring-boot-starter-security:1.5.9.RELEASE'
+    compile 'org.keycloak:keycloak-spring-boot-starter:3.4.3.Final'
 
     compile 'systems.vostok.tda:tda-district-mapper:0.1.6'
     compile 'systems.vostok.tda:tda-excel-parser:0.1.6'
