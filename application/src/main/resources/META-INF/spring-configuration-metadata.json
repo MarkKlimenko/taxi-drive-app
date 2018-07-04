@@ -25,7 +25,7 @@
       "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.DatabaseConfiguration"
     },
     {
-      "name": "db.support.contactPoints",
+      "name": "db.support.contact-points",
       "type": "java.lang.String",
       "description": "Db Support contact points.",
       "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.SupportDatabaseConfiguration"
@@ -37,7 +37,7 @@
       "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.SupportDatabaseConfiguration"
     },
     {
-      "name": "db.support.keyspaceName",
+      "name": "db.support.keyspace-name",
       "type": "java.lang.String",
       "description": "Db Support keyspace name.",
       "sourceType": "systems.vostok.taxi.drive.app.configuration.persistent.SupportDatabaseConfiguration"
