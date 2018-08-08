@@ -1,7 +1,5 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
-group 'taxi.drive.app'
-version projectVersion
 
 buildscript {
     repositories {
@@ -36,7 +34,25 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+    compile lib.groovy_all
+    compile lib.spring_boot_configuration_processor
+    //compile lib.javamelody_spring_boot_starter
+
+    compile lib_pack.vostok_libs
+    compile lib_pack.rest_api
+    compile lib_pack.validation
+    compile lib_pack.cache
+    compile lib_pack.db
+    compile lib_pack.db_support
+    compile lib_pack.security
+
+    testCompile lib_pack.test
+
+
+
+
+
+    /*compile 'org.codehaus.groovy:groovy-all:2.4.12'
 
     compile "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
 
@@ -71,7 +87,7 @@ dependencies {
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     testCompile "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}"
     testCompile "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}"
-    testCompile "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}"*/
 }
 
 processResources {

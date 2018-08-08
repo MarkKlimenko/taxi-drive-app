@@ -1,0 +1,78 @@
+ext.lib = [
+        groovy_all                         : 'org.codehaus.groovy:groovy-all:2.4.12',
+
+        spring_boot_starter_security       : "org.springframework.boot:spring-boot-starter-security:${springBootVersion}",
+        spring_boot_starter_test           : "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
+        spring_boot_starter_data_cassandra : "org.springframework.boot:spring-boot-starter-data-cassandra:${springBootVersion}",
+        spring_boot_starter_jersey         : "org.springframework.boot:spring-boot-starter-jersey:${springBootVersion}",
+        spring_boot_starter_cache          : "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}",
+        spring_boot_starter_data_jpa       : "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}",
+        spring_boot_configuration_processor: "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}",
+        keycloak_spring_boot_starter       : 'org.keycloak:keycloak-spring-boot-starter:4.2.0.Final',
+        javamelody_spring_boot_starter     : 'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
+
+        jersey_media_multipart             : 'org.glassfish.jersey.media:jersey-media-multipart:2.27',
+        jackson_datatype_jsr310            : 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0',
+
+        validation_api                     : 'javax.validation:validation-api:2.0.1.Final',
+        
+        postgresql                         : 'org.postgresql:postgresql:42.1.4',
+        HikariCP                           : 'com.zaxxer:HikariCP:2.7.8',
+        hibernate_core                     : 'org.hibernate:hibernate-core:5.2.12.Final',
+        hibernate_entitymanager            : 'org.hibernate:hibernate-entitymanager:5.2.12.Final',
+        hibernate_search_orm               : 'org.hibernate:hibernate-search-orm:5.9.1.Final',
+        hibernate_validator                : 'org.hibernate.validator:hibernate-validator:6.0.9.Final',
+        ehcache                            : 'net.sf.ehcache:ehcache:2.10.4',
+        infinispan_directory_provider      : 'org.infinispan:infinispan-directory-provider:9.0.1.Final',
+        spring_orm                         : 'org.springframework:spring-orm:4.3.16.RELEASE',
+
+        tda_district_mapper                : 'systems.vostok.tda:tda-district-mapper:0.1.6',
+        tda_excel_parser                   : 'systems.vostok.tda:tda-excel-parser:0.1.6',
+
+        junit_jupiter_api                  : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
+        junit_jupiter_engine               : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
+        junit_jupiter_params               : "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}",
+]
+
+ext.lib_pack = [
+        vostok_libs: [
+                ext.lib.tda_district_mapper,
+                ext.lib.tda_excel_parser
+        ],
+        rest_api   : [
+                ext.lib.spring_boot_starter_jersey,
+                ext.lib.jersey_media_multipart,
+                ext.lib.jackson_datatype_jsr310
+        ],
+        validation : [
+                ext.lib.validation_api,
+                ext.lib.hibernate_validator
+        ],
+        cache      : [
+                ext.lib.spring_boot_starter_cache,
+                ext.lib.ehcache
+        ],
+        db         : [
+                ext.lib.postgresql,
+                ext.lib.HikariCP,
+                ext.lib.spring_boot_starter_data_jpa,
+                ext.lib.hibernate_core,
+                ext.lib.hibernate_entitymanager,
+                ext.lib.hibernate_search_orm,
+                ext.lib.infinispan_directory_provider,
+                ext.lib.spring_orm
+        ],
+        db_support : [
+                ext.lib.spring_boot_starter_data_cassandra
+        ],
+        security   : [
+                ext.lib.spring_boot_starter_security,
+                ext.lib.keycloak_spring_boot_starter
+        ],
+        test       : [
+                ext.lib.spring_boot_starter_test,
+                ext.lib.junit_jupiter_api,
+                ext.lib.junit_jupiter_engine,
+                ext.lib.junit_jupiter_params
+        ]
+]

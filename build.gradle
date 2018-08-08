@@ -25,3 +25,10 @@ setMinorVersion {
     projectPath = ciProjectPath
 }
 
+subprojects {
+    group 'taxi.drive.app'
+    version projectVersion
+
+    apply from: "$rootProject.projectDir/dependencies.gradle"
+}
+
