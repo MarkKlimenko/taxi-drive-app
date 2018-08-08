@@ -2,7 +2,26 @@
 
 
 ## Run application local
-**Start spring boot application via spring boot plugin**
+**Execute 'application db' migrations**
+```
+    gradlew :migrations-db-application:flywayMigrate
+```
+
+**Execute 'support db' migrations**
+```
+    gradlew :migrations-db-support:migratorExecute
+```
+
+**Start spring boot application via spring boot plugin or gradle**
+```
+    Using Spring Boot plugin
+```
+_OR_
+```
+     Using gradle command
+     gradlew :application:bootRun
+```
+
 
 ## Prepare environment
 

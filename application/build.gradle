@@ -83,6 +83,11 @@ processResources {
     ]
 }
 
+
+bootRun {
+    systemProperties = System.properties as Map
+}
+
 test {
     useJUnitPlatform {
         exclude 'integration/**'
@@ -100,7 +105,7 @@ releaseToDocker {
     dockerHub = true
     registryUrl = 'markklim'
     imageName = 'taxi-drive-app'
-    dockerFileLocation = 'src/main/resources/docker'
+    dockerFileLocation = ''
     imageFileName = 'taxi-drive-app.jar'
     imageVersion = projectVersion
     username = dockerUsername
