@@ -14,7 +14,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE',
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}",
                 'gradle.plugin.com.markklim.plugins:release-to-docker:0.9',
                 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5'
     }
@@ -38,40 +38,40 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.12'
 
-    compile 'org.springframework.boot:spring-boot-configuration-processor:1.5.9.RELEASE'
+    compile "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
 
-    compile 'org.springframework.boot:spring-boot-starter-jersey:1.5.9.RELEASE'
-    compile 'org.glassfish.jersey.media:jersey-media-multipart:2.19'
+    compile "org.springframework.boot:spring-boot-starter-jersey:${springBootVersion}"
+    compile 'org.glassfish.jersey.media:jersey-media-multipart:2.27'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0'
     //compile 'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0'
 
     compile 'javax.validation:validation-api:2.0.1.Final'
     compile 'org.hibernate.validator:hibernate-validator:6.0.9.Final'
 
-    compile 'org.springframework.boot:spring-boot-starter-cache:1.5.9.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}"
     compile 'net.sf.ehcache:ehcache:2.10.4'
 
     compile 'org.postgresql:postgresql:42.1.4'
     compile 'com.zaxxer:HikariCP:2.7.8'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.9.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
     compile 'org.hibernate:hibernate-core:5.2.12.Final'
     compile 'org.hibernate:hibernate-entitymanager:5.2.12.Final'
     compile 'org.hibernate:hibernate-search-orm:5.9.1.Final'
     compile 'org.infinispan:infinispan-directory-provider:9.0.1.Final'
     compile 'org.springframework:spring-orm:4.3.16.RELEASE'
 
-    compile 'org.springframework.boot:spring-boot-starter-data-cassandra:1.5.9.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-data-cassandra:${springBootVersion}"
 
-    compile 'org.springframework.boot:spring-boot-starter-security:1.5.9.RELEASE'
-    compile 'org.keycloak:keycloak-spring-boot-starter:3.4.3.Final'
+    compile "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+    compile 'org.keycloak:keycloak-spring-boot-starter:4.2.0.Final'
 
     compile 'systems.vostok.tda:tda-district-mapper:0.1.6'
     compile 'systems.vostok.tda:tda-excel-parser:0.1.6'
 
-    testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.9.RELEASE'
-    testCompile 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
-    testCompile 'org.junit.jupiter:junit-jupiter-params:5.2.0'
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}"
 }
 
 processResources {

@@ -3,10 +3,9 @@ package systems.vostok.taxi.drive.app.configuration.persistent
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.cassandra.config.AbstractCassandraConfiguration
 import org.springframework.data.cassandra.config.CassandraClusterFactoryBean
-import org.springframework.data.cassandra.config.java.AbstractCassandraConfiguration
-import org.springframework.data.cassandra.mapping.BasicCassandraMappingContext
-import org.springframework.data.cassandra.mapping.CassandraMappingContext
+import org.springframework.data.cassandra.core.mapping.CassandraMappingContext
 
 @Configuration
 @ConfigurationProperties(prefix = 'db.support')
@@ -28,6 +27,6 @@ class SupportDatabaseConfiguration extends AbstractCassandraConfiguration {
     @Bean
     @Override
     CassandraMappingContext cassandraMapping() {
-        new BasicCassandraMappingContext()
+        new CassandraMappingContext()
     }
 }

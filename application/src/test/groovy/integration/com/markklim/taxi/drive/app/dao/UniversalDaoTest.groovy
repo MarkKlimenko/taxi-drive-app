@@ -1,5 +1,6 @@
 package integration.com.markklim.taxi.drive.app.dao
 
+import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource
 import org.springframework.test.context.web.WebAppConfiguration
@@ -13,6 +14,11 @@ import systems.vostok.taxi.drive.app.Application
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
 class UniversalDaoTest {
+
+    @Test
+    void selectSingleTest() {
+       ' '
+    }
 
     /*@Autowired
     @Delegate

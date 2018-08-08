@@ -56,7 +56,7 @@ class CoreOperationExecutor implements OperationExecutor {
 
     private Object executeRollback(Operation operation, OperationContext context) {
         def getRollbackContextMessage = {
-            ContextMessage contextMessage = contextMessageRepository.findById(context.operationRequest.id)
+            ContextMessage contextMessage = contextMessageRepository.findById(context.operationRequest.id).get()
             assert contextMessage.state == SUCCESS_OPERATION_STATE: 'Rollback rejected: not suitable state for rollback'
             contextMessage
         }

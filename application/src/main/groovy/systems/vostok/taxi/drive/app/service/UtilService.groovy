@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 
+
+// TODO: Implement actuator
 @Service
 @ConfigurationProperties(prefix = 'project')
 class UtilService {
@@ -31,7 +33,7 @@ class UtilService {
 
     String getDbSupportStatus() {
         try {
-            cassandraTemplate.execute('SELECT * FROM system_schema.keyspaces;')
+            //cassandraTemplate.execute('SELECT * FROM system_schema.keyspaces;')
             'OK'
         } catch (Exception e) {
             e.toString()

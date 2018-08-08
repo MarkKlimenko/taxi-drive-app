@@ -1,30 +1,11 @@
 package systems.vostok.taxi.drive.app
 
-import org.glassfish.jersey.servlet.ServletContainer
-import org.glassfish.jersey.servlet.ServletProperties
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.builder.SpringApplicationBuilder
-import org.springframework.boot.web.servlet.ServletRegistrationBean
-import org.springframework.boot.web.support.SpringBootServletInitializer
-import org.springframework.context.annotation.Bean
-import systems.vostok.taxi.drive.app.configuration.api.JerseyConfiguration
 
 @SpringBootApplication
-class Application extends SpringBootServletInitializer {
-    @Override
-    SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        application.sources(Application.class)
-    }
-
-    static void main(String[] args) throws Exception {
+class Application {
+    static void main(String... args) throws Exception {
         SpringApplication.run(Application.class, args)
-    }
-
-    @Bean
-    ServletRegistrationBean jerseyServlet() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/*")
-        registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfiguration.class.getName())
-        registration
     }
 }
