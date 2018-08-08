@@ -29,7 +29,7 @@ jar {
 dependencies {
     compile lib.groovy_all
     compile lib.spring_boot_configuration_processor
-    //compile lib.javamelody_spring_boot_starter
+    compile lib.javamelody_spring_boot_starter
 
     compile lib_pack.vostok_libs
     compile lib_pack.rest_api

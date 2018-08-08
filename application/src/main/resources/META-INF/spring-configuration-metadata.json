@@ -46,6 +46,11 @@
       "name": "security.type",
       "type": "java.lang.String",
       "description": "Used security type."
+    },
+    {
+      "name": "javamelody.advisor-auto-proxy-creator-enabled",
+      "type": "java.lang.Boolean",
+      "description": "Monitoring. Disable Java Melody auto proxy creator(need to be disabled)."
     }
   ],
   "hints": [

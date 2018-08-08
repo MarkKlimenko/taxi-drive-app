@@ -9,13 +9,13 @@ ext.lib = [
         spring_boot_starter_data_jpa       : "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}",
         spring_boot_configuration_processor: "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}",
         keycloak_spring_boot_starter       : 'org.keycloak:keycloak-spring-boot-starter:4.2.0.Final',
-        javamelody_spring_boot_starter     : 'net.bull.javamelody:javamelody-spring-boot-starter:1.69.0',
+        javamelody_spring_boot_starter     : 'net.bull.javamelody:javamelody-spring-boot-starter:1.72.0',
 
         jersey_media_multipart             : 'org.glassfish.jersey.media:jersey-media-multipart:2.27',
         jackson_datatype_jsr310            : 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.0',
 
         validation_api                     : 'javax.validation:validation-api:2.0.1.Final',
-        
+
         postgresql                         : 'org.postgresql:postgresql:42.1.4',
         HikariCP                           : 'com.zaxxer:HikariCP:2.7.8',
         hibernate_core                     : 'org.hibernate:hibernate-core:5.2.12.Final',
