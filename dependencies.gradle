@@ -8,6 +8,8 @@ ext.lib = [
         spring_boot_starter_cache          : "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}",
         spring_boot_starter_data_jpa       : "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}",
         spring_boot_configuration_processor: "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}",
+        spring_boot_starter_actuator       : "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}",
+
         keycloak_spring_boot_starter       : 'org.keycloak:keycloak-spring-boot-starter:4.2.0.Final',
         javamelody_spring_boot_starter     : 'net.bull.javamelody:javamelody-spring-boot-starter:1.72.0',
 
@@ -68,6 +70,10 @@ ext.lib_pack = [
         security   : [
                 ext.lib.spring_boot_starter_security,
                 ext.lib.keycloak_spring_boot_starter
+        ],
+        metrics : [
+                ext.lib.spring_boot_starter_actuator,
+                ext.lib.javamelody_spring_boot_starter
         ],
         test       : [
                 ext.lib.spring_boot_starter_test,
