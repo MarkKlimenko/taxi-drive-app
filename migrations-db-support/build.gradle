@@ -13,11 +13,6 @@ buildscript {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-apply plugin: 'groovy'
 apply plugin: 'com.markklim.plugins.mfc'
 
 migrator {

@@ -1,6 +1,3 @@
-group 'taxi.drive.app'
-version projectVersion
-
 buildscript {
     repositories {
         repositories {
@@ -25,10 +22,18 @@ setMinorVersion {
     projectPath = ciProjectPath
 }
 
+
 subprojects {
     group 'taxi.drive.app'
     version projectVersion
 
+    apply plugin: 'groovy'
+
     apply from: "$rootProject.projectDir/dependencies.gradle"
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 }
 
