@@ -36,5 +36,6 @@
         - Create ride
         - Change ride status
         - Close ride
-    
+        - Active rides (Store in Redis)
+        - Pending rides (Akka for changing status to active)   
      
