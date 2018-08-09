@@ -25,7 +25,7 @@
 
 
 # Global
-- Primary test flow (CI ++)
++ Primary test flow (CI ++)
     + Integration
     + Unit
     + CI 
@@ -35,7 +35,11 @@
  
 - Function flow
     - Create entities using operations
+        - Clients
+        - Rides
     - Implement rate flow
+        - Load rates using operation
+        - Get rate info flow
     - Ride flow
         - Create ride
         - Change ride status
