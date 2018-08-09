@@ -53,18 +53,18 @@ jobs:
 
   - stage: integration_tests
     script:
-      - docker-compose up
-
-      - while ! cqlsh cassandra; do
+      - docker run --name cassandra -p 9042:9042 -d cassandra:3.11
+      - while ! docker run --link cassandra:cassandra --rm cassandra:3.11 cqlsh cassandra; do
             echo 'Waiting for cassandra...';
             sleep 3;
         done;
-      - while ! psql postgresql://tda:123456@postgres/tda; do
+      - ./gradlew :migrations-db-support:migratorExecute
+
+      - docker run --name postgres -p 5432:5432 -d -e POSTGRES_USER=tda -e POSTGRES_PASSWORD=123456 postgres:10
+      - while ! docker run --link postgres:postgres --rm postgres:10 psql postgresql://tda:123456@postgres/tda; do
             echo 'Waiting for postgres...';
             sleep 3;
         done;
-
-      - ./gradlew :migrations-db-support:migratorExecute
       - ./gradlew :migrations-db-application:flywayMigrate
 
       - ./gradlew testIntegration

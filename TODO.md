@@ -29,8 +29,8 @@
     + Integration
     + Unit
     - CI 
-        - DB checker
-        - Run services from compose file
+        + DB checker
+        * Run services from compose file
         + Subsequent stage fail
  
 - Function flow
