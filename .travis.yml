@@ -48,7 +48,7 @@ jobs:
   include:
   - stage: unit_tests_and_sonar_scaner
     script:
-      - ./gradlew testTEST
+      - ./gradlew test
 #      - sonar-scanner
 
   - stage: integration_tests
@@ -58,14 +58,14 @@ jobs:
             echo 'Waiting for cassandra...';
             sleep 3;
         done;
-#      - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/migrations
-#      - ./gradlew migratorExecute -PmigratorScript=db/src/main/resources/scripts/test
+      - ./gradlew :migrations-db-support:migratorExecute
 
       - docker run --name postgres -p 5432:5432 -d -e POSTGRES_USER=tda -e POSTGRES_PASSWORD=123456 postgres:10
       - while ! docker run --link postgres:postgres --rm postgres:10 psql postgresql://tda:123456@postgres/tda; do
             echo 'Waiting for postgres...';
             sleep 3;
         done;
+      - gradlew :migrations-db-application:flywayMigrate
 
       - ./gradlew testIntegration
 

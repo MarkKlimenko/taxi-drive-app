@@ -30,7 +30,7 @@
     + Unit
     - CI 
         - DB checker
-        - Subsequent stage fail
+        + Subsequent stage fail
  
 - Function flow
     - Create entities using operations
