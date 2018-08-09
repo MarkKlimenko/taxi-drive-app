@@ -20,7 +20,6 @@ buildscript {
 apply plugin: 'org.springframework.boot'
 apply plugin: 'com.markklim.plugins.rtd'
 apply plugin: 'org.sonarqube'
-apply plugin: 'jacoco'
 
 jar {
     archiveName = 'taxi-drive-app.jar'
@@ -58,15 +57,15 @@ bootRun {
 
 test {
     useJUnitPlatform {
-        exclude 'integration/**'
+        exclude '**/*TestIntegration*'
     }
 }
 
-task integrationTest(type: Test) {
-    //useJUnitPlatform()
-    useJUnit {
-        include 'integration/**'
+task testIntegration(type: Test) {
+    useJUnitPlatform {
+        include '**/*TestIntegration*'
     }
+    systemProperties = System.properties as Map
 }
 
 releaseToDocker {

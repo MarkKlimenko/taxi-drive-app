@@ -1,15 +1,14 @@
-package unit.com.markklim.taxi.drive.app.api.adapter
+package systems.vostok.taxi.drive.app.api.adapter
 
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 
 import java.time.LocalDateTime
 import java.util.stream.Stream
 
 import static org.junit.jupiter.api.Assertions.assertEquals
-import static unit.com.markklim.taxi.drive.app.test.JUnitUtil.toStreamArguments
+import static systems.vostok.taxi.drive.app.test.JUnitUtil.toStreamArguments
 
 class LocalDateTimeAdapterTest {
     LocalDateTimeAdapter localDateTimeAdapter = new LocalDateTimeAdapter()
