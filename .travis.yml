@@ -55,11 +55,11 @@ jobs:
     script:
       - docker-compose up
 
-      - while ! docker run --link cassandra:cassandra --rm cassandra:3.11 cqlsh cassandra; do
+      - while ! cqlsh cassandra; do
             echo 'Waiting for cassandra...';
             sleep 3;
         done;
-      - while ! docker run --link postgres:postgres --rm postgres:10 psql postgresql://tda:123456@postgres/tda; do
+      - while ! psql postgresql://tda:123456@postgres/tda; do
             echo 'Waiting for postgres...';
             sleep 3;
         done;
