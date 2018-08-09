@@ -26,8 +26,11 @@
 
 # Global
 - Primary test flow (CI ++)
-    - Integration
-    - Unit
+    + Integration
+    + Unit
+    - CI 
+        - DB checker
+        - Subsequent stage fail
  
 - Function flow
     - Create entities using operations
