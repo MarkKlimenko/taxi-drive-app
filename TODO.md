@@ -28,7 +28,7 @@
 - Primary test flow (CI ++)
     + Integration
     + Unit
-    - CI 
+    + CI 
         + DB checker
         * Run services from compose file
         + Subsequent stage fail

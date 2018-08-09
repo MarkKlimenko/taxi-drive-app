@@ -14,13 +14,16 @@ addons:
     branches:
       - master
 
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
 cache:
   directories:
     - $HOME/.m2/repository
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
     - $HOME/.sonar/cache
-    - $HOME/.gradle
     - .gradle
-
 
 before_install:
   - chmod +x gradlew
@@ -29,8 +32,6 @@ before_install:
 
 install: true
 
-before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 
 
 stages:
