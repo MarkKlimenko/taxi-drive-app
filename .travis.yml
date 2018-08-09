@@ -24,6 +24,8 @@ cache:
 
 before_install:
   - chmod +x gradlew
+  - sudo service postgresql stop
+  - while lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
 
 install: true
 
@@ -32,7 +34,7 @@ before_cache:
 
 
 stages:
-  - name: unit_tests_and_sonar_scaner
+#  - name: unit_tests_and_sonar_scaner
   - name: integration_tests
   - name: set_minor_version
     if: branch = release

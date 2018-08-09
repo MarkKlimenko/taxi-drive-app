@@ -42,3 +42,5 @@
         - Active rides (Store in Redis)
         - Pending rides (Akka for changing status to active)   
      
+    
+- Create good readme and TODO list     
