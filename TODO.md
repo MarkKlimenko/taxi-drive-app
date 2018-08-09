@@ -30,6 +30,7 @@
     + Unit
     - CI 
         - DB checker
+        - Run services from compose file
         + Subsequent stage fail
  
 - Function flow
@@ -43,4 +44,7 @@
         - Pending rides (Akka for changing status to active)   
      
     
-- Create good readme and TODO list     
+- Create good readme and TODO list  
+
+# Minor 
+- Sonar for groovy 
