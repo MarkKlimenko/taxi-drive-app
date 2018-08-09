@@ -34,7 +34,7 @@ before_cache:
 
 
 stages:
-#  - name: unit_tests_and_sonar_scaner
+  - name: unit_tests_and_sonar_scaner
   - name: integration_tests
   - name: set_minor_version
     if: branch = release
@@ -48,7 +48,7 @@ jobs:
   include:
   - stage: unit_tests_and_sonar_scaner
     script:
-      - ./gradlew test
+      - ./gradlew testTEST
 #      - sonar-scanner
 
   - stage: integration_tests
@@ -67,7 +67,7 @@ jobs:
             sleep 3;
         done;
 
-      - ./gradlew integrationTest
+      - ./gradlew testIntegration
 
   - stage: set_minor_version
     script:
