@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.operation.geo.edit
+package systems.vostok.taxi.drive.app.operation.geo
 
 import groovy.json.JsonSlurper
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
