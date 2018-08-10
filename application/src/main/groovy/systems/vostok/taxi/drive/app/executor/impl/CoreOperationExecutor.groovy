@@ -89,7 +89,7 @@ class CoreOperationExecutor implements OperationExecutor {
             operation
         }
 
-        operations.find { it.operationName == operationName }
+        operations.find { it.operationName.name == operationName }
                 .with(checkOperation)
     }
 }

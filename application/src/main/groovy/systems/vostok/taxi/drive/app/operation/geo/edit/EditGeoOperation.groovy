@@ -5,6 +5,8 @@ import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.entity.geo.GeoEntity
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 import systems.vostok.taxi.drive.app.operation.Operation
+import systems.vostok.taxi.drive.app.util.constant.OperationName
+import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 /*
 enroll
@@ -27,73 +29,40 @@ rollback
 */
 
 class EditGeoOperation<T extends GeoEntity> implements Operation {
-    String operationName
+    OperationName operationName
     BasicRepository<T, String> entityRepository
 
     @Override
     Object enroll(OperationContext context) {
-        T contextEntity = null
-        T persistentEntity = null
+        T contextEntity = entityRepository.convertToEntityType(context.operationRequest.body)
+        T persistentEntity = entityRepository.getOne(contextEntity.id)
 
-        def getTargetEntities = {
-            contextEntity = entityRepository.convertToEntityType(context.operationRequest.body)
-            persistentEntity = entityRepository.findOne(contextEntity.id)
+        if (!persistentEntity) {
+            throw new OperationExecutionException('Geo entity with target ID does not exist')
         }
 
-        def checkPersistentEntity = {
-            assert persistentEntity: 'Geo entity with target ID does not exist'
-        }
-
-        def setContext = { T resultEntity ->
-            Map<String, T> contextBody = [before: persistentEntity,
-                                          after : resultEntity]
-
-            context.contextHelper.setContext(context, contextBody)
-            resultEntity
-        }
-
-        getTargetEntities()
-                .with(checkPersistentEntity)
-                .with { this.entityRepository.save(contextEntity) }
-                .with(setContext)
+        T resultEntity = entityRepository.save(contextEntity)
+        context.contextHelper.setContext(context, [before: persistentEntity, after : resultEntity])
     }
 
     @Override
     Object rollback(OperationContext context) {
-        T contextEntityBefore = null
-        T contextEntityAfter = null
-        T persistentEntity = null
+        Map parsedContext = context.rollbackContextMessage.context
+                .with(new JsonSlurper().&parseText) as Map
 
-        def getContextEntity = { String entityType ->
-            context.rollbackContextMessage.context
-                    .with(new JsonSlurper().&parseText)
-                    .with { it[entityType] }
-                    .with(entityRepository.&convertToEntityType)
+        T contextEntityBefore = parsedContext.before.with(entityRepository.&convertToEntityType)
+        T contextEntityAfter = parsedContext.after.with(entityRepository.&convertToEntityType)
+        T persistentEntity = entityRepository.getOne(contextEntityAfter.id)
+
+        if(!contextEntityAfter) {
+            throw new OperationExecutionException('Rollback rejected: context entities must not be null')
         }
 
-        def getTargetEntities = {
-            contextEntityBefore = getContextEntity('before')
-            contextEntityAfter = getContextEntity('after')
-
-            persistentEntity = entityRepository.findOne(contextEntityAfter.id)
+        if(contextEntityAfter != persistentEntity) {
+            throw new OperationExecutionException('Rollback rejected: entity was modified')
         }
 
-        def checkEntity = {
-            assert contextEntityAfter: 'Rollback rejected: context entities must not be null'
-            assert contextEntityAfter == persistentEntity: 'Rollback rejected: entity was modified'
-        }
-
-        def executeRollback = {
-            entityRepository.save(contextEntityBefore)
-        }
-
-        def setContext = {
-            context.contextHelper.setContext(context, context.operationRequest.id)
-        }
-
-        getTargetEntities()
-                .with(checkEntity)
-                .with(executeRollback)
-                .with(setContext)
+        entityRepository.save(contextEntityBefore)
+        context.contextHelper.setContext(context, context.operationRequest.id)
     }
 }

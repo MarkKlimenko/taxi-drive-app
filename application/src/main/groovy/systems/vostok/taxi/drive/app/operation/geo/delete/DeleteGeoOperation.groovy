@@ -5,6 +5,8 @@ import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.entity.geo.GeoEntity
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 import systems.vostok.taxi.drive.app.operation.Operation
+import systems.vostok.taxi.drive.app.util.constant.OperationName
+import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 /*
 enroll
@@ -25,62 +27,36 @@ rollback
 */
 
 class DeleteGeoOperation<T extends GeoEntity> implements Operation {
-    String operationName
+    OperationName operationName
     BasicRepository<T, String> entityRepository
 
     @Override
     Object enroll(OperationContext context) {
-        def getTargetEntityId = {
-            context.operationRequest.body.id
+        T targetEntity = entityRepository.getOne(context.operationRequest.body.id)
+
+        if (!targetEntity) {
+            throw new OperationExecutionException('Geo entity with target ID does not exist')
         }
 
-        def getTargetEntity = { String targetEntityId ->
-            T targetEntity = entityRepository.findOne(targetEntityId)
-            assert targetEntity: 'Geo entity with target ID does not exist'
-            targetEntity
-        }
-
-        def setContext = { T entity ->
-            context.contextHelper.setContext(context, entity)
-            null
-        }
-
-        getTargetEntityId()
-                .with(getTargetEntity)
-                .with{ this.entityRepository.delete(it); it }
-                .with(setContext)
+        entityRepository.delete(targetEntity)
+                .with { context.contextHelper.setContext(context, it) }
     }
 
     @Override
     Object rollback(OperationContext context) {
-        def getTargetEntity = {
-            context.rollbackContextMessage.context
-                    .with(new JsonSlurper().&parseText)
-                    .with(entityRepository.&convertToEntityType)
+        T contextEntity = context.rollbackContextMessage.context
+                .with(new JsonSlurper().&parseText)
+                .with(entityRepository.&convertToEntityType)
 
+        if (!contextEntity) {
+            throw new OperationExecutionException('Rollback rejected: context entity must not be null')
         }
 
-        def checkEntity = { T contextEntity ->
-            assert contextEntity: 'Rollback rejected: context entity must not be null'
-
-            T persistentEntity = entityRepository.findOne(contextEntity.id)
-            assert !persistentEntity: 'Rollback rejected: entity already exists'
-
-            contextEntity
+        if (entityRepository.getOne(contextEntity.id)) {
+            throw new OperationExecutionException('Rollback rejected: entity already exists')
         }
 
-        def executeRollback = { T contextEntity ->
-            entityRepository.save(contextEntity)
-            contextEntity
-        }
-
-        def setContext = {
-            context.contextHelper.setContext(context, context.operationRequest.id)
-        }
-
-        getTargetEntity()
-                .with(checkEntity)
-                .with(executeRollback)
-                .with(setContext)
+        entityRepository.save(contextEntity)
+                .with { context.contextHelper.setContext(context, context.operationRequest.id) }
     }
 }

@@ -1,25 +1,34 @@
 package systems.vostok.taxi.drive.app.util.constant
 
-class OperationName {
-    private OperationName() { throw new UnsupportedOperationException() }
+enum OperationName {
+    ADD_CLIENT_OPERATION('ADD_CLIENT'),
+    EDIT_CLIENT_OPERATION('EDIT_CLIENT'),
+    DELETE_CLIENT_OPERATION('DELETE_CLIENT'),
 
-    public static final String ADD_COUNTRY_OPERATION = 'ADD_COUNTRY'
-    public static final String EDIT_COUNTRY_OPERATION = 'EDIT_COUNTRY'
-    public static final String DELETE_COUNTRY_OPERATION = 'DELETE_COUNTRY'
+    ADD_COUNTRY_OPERATION('ADD_COUNTRY'),
+    EDIT_COUNTRY_OPERATION('EDIT_COUNTRY'),
+    DELETE_COUNTRY_OPERATION('DELETE_COUNTRY'),
 
-    public static final String ADD_STATE_OPERATION = 'ADD_STATE'
-    public static final String EDIT_STATE_OPERATION = 'EDIT_STATE'
-    public static final String DELETE_STATE_OPERATION = 'DELETE_STATE'
+    ADD_STATE_OPERATION('ADD_STATE'),
+    EDIT_STATE_OPERATION('EDIT_STATE'),
+    DELETE_STATE_OPERATION('DELETE_STATE'),
 
-    public static final String ADD_CITY_OPERATION = 'ADD_CITY'
-    public static final String EDIT_CITY_OPERATION = 'EDIT_CITY'
-    public static final String DELETE_CITY_OPERATION = 'DELETE_CITY'
+    ADD_CITY_OPERATION('ADD_CITY'),
+    EDIT_CITY_OPERATION('EDIT_CITY'),
+    DELETE_CITY_OPERATION('DELETE_CITY'),
 
-    public static final String ADD_DISTRICT_OPERATION = 'ADD_DISTRICT'
-    public static final String EDIT_DISTRICT_OPERATION = 'EDIT_DISTRICT'
-    public static final String DELETE_DISTRICT_OPERATION = 'DELETE_DISTRICT'
+    ADD_DISTRICT_OPERATION('ADD_DISTRICT'),
+    EDIT_DISTRICT_OPERATION('EDIT_DISTRICT'),
+    DELETE_DISTRICT_OPERATION('DELETE_DISTRICT'),
 
-    public static final String ADD_STREET_OPERATION = 'ADD_STREET'
-    public static final String EDIT_STREET_OPERATION = 'EDIT_STREET'
-    public static final String DELETE_STREET_OPERATION = 'DELETE_STREET'
+    ADD_STREET_OPERATION('ADD_STREET'),
+    EDIT_STREET_OPERATION('EDIT_STREET'),
+    DELETE_STREET_OPERATION('DELETE_STREET')
+
+
+    String name
+
+    private OperationName(String name) {
+        this.name = name
+    }
 }

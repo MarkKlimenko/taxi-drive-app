@@ -34,7 +34,7 @@
         + Subsequent stage fail
  
 - Function flow
-    - Create entities using operations
+    - Crud entities using operations
         - Clients
         - Rides
     - Implement rate flow
