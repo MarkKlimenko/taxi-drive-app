@@ -32,7 +32,7 @@ class EntityDeleteOperation<T, ID extends Serializable> implements Operation {
                 .orElseThrow({ new OperationExecutionException('Entity with target ID does not exist') })
 
         entityRepository.delete(targetEntity)
-                .with { context.contextHelper.setContext(context, it) }
+        context.contextHelper.setContext(context, targetEntity)
     }
 
     @Override
@@ -50,6 +50,6 @@ class EntityDeleteOperation<T, ID extends Serializable> implements Operation {
         }
 
         entityRepository.save(contextEntity)
-                .with { context.contextHelper.setContext(context, context.operationRequest.id) }
+        context.contextHelper.setContext(context, context.operationRequest.id)
     }
 }

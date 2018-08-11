@@ -35,8 +35,9 @@ class EntityAddOperation<T, ID extends Serializable> implements Operation {
             throw new OperationExecutionException('Entity with target ID already exists')
         }
 
-        entityRepository.save(targetEntity)
-                .with { context.contextHelper.setContext(context, it); it }
+        T savedEntity = entityRepository.save(targetEntity)
+        context.contextHelper.setContext(context, savedEntity)
+        savedEntity
     }
 
     @Override
@@ -55,6 +56,6 @@ class EntityAddOperation<T, ID extends Serializable> implements Operation {
         }
 
         entityRepository.delete(contextEntity)
-                .with { context.contextHelper.setContext(context, context.operationRequest.id) }
+        context.contextHelper.setContext(context, context.operationRequest.id)
     }
 }

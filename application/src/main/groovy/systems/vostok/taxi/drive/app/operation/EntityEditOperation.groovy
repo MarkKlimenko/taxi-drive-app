@@ -36,8 +36,9 @@ class EntityEditOperation<T, ID extends Serializable> implements Operation {
             throw new OperationExecutionException('Entity with target ID does not exist')
         }
 
-        T resultEntity = entityRepository.save(contextEntity)
-        context.contextHelper.setContext(context, [before: persistentEntity, after : resultEntity])
+        T editedEntity = entityRepository.save(contextEntity)
+        context.contextHelper.setContext(context, [before: persistentEntity, after : editedEntity])
+        editedEntity
     }
 
     @Override
