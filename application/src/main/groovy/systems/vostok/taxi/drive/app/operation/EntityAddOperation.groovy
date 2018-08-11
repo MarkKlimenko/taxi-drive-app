@@ -10,19 +10,15 @@ import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 /*
 enroll
  {
-    "operationName": "ADD_CITY",
+    "operationName": "OPERATION_NAME",
     "direction": "enroll",
-    "body": {
-        "id": "spdTest",
-        "name": "Спасск-Дальний-Тест",
-        "state": "pk"
-    }
+    "body": {:}
  }
 
 rollback
  {
     "id": "51ae64c4-3327-4b73-9498-1fa3347d2a15",
-    "operationName": "ADD_CITY",
+    "operationName": "OPERATION_NAME",
     "direction": "rollback"
  }
 */
@@ -36,7 +32,7 @@ class EntityAddOperation<T, ID extends Serializable> implements Operation {
         T targetEntity = entityRepository.convertToEntityType(context.operationRequest.body)
 
         if (entityRepository.getByEntityId(targetEntity)) {
-            throw new OperationExecutionException('Geo entity with target ID already exists')
+            throw new OperationExecutionException('Entity with target ID already exists')
         }
 
         entityRepository.save(targetEntity)

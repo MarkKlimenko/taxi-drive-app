@@ -4,46 +4,48 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import systems.vostok.taxi.drive.app.dao.entity.geo.*
 import systems.vostok.taxi.drive.app.dao.repository.impl.geo.*
+import systems.vostok.taxi.drive.app.operation.EntityAddOperation
+import systems.vostok.taxi.drive.app.operation.Operation
 
 import static systems.vostok.taxi.drive.app.util.constant.OperationName.*
 
 @Configuration
 class AddGeoOperationConfig {
     @Bean
-    AddGeoOperation addCountry(CountryRepository countryRepository) {
-        new AddGeoOperation<Country>(
+    Operation addCountry(CountryRepository countryRepository) {
+        new EntityAddOperation<Country, String>(
                 operationName: ADD_COUNTRY_OPERATION,
                 entityRepository: countryRepository
         )
     }
 
     @Bean
-    AddGeoOperation addState(StateRepository stateRepository) {
-        new AddGeoOperation<State>(
+    Operation addState(StateRepository stateRepository) {
+        new EntityAddOperation<State, String>(
                 operationName: ADD_STATE_OPERATION,
                 entityRepository: stateRepository
         )
     }
 
     @Bean
-    AddGeoOperation addCity(CityRepository cityRepository) {
-        new AddGeoOperation<City>(
+    Operation addCity(CityRepository cityRepository) {
+        new EntityAddOperation<City, String>(
                 operationName: ADD_CITY_OPERATION,
                 entityRepository: cityRepository
         )
     }
 
     @Bean
-    AddGeoOperation addDistrict(DistrictRepository districtRepository) {
-        new AddGeoOperation<District>(
+    Operation addDistrict(DistrictRepository districtRepository) {
+        new EntityAddOperation<District, String>(
                 operationName: ADD_DISTRICT_OPERATION,
                 entityRepository: districtRepository
         )
     }
 
     @Bean
-    AddGeoOperation addStreet(StreetRepository streetRepository) {
-        new AddGeoOperation<Street>(
+    Operation addStreet(StreetRepository streetRepository) {
+        new EntityAddOperation<Street, String>(
                 operationName: ADD_STREET_OPERATION,
                 entityRepository: streetRepository
         )

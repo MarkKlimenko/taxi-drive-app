@@ -1,44 +1,39 @@
-package systems.vostok.taxi.drive.app.operation.geo
+package systems.vostok.taxi.drive.app.operation
 
 import groovy.json.JsonSlurper
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.entity.geo.GeoEntity
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.operation.Operation
 import systems.vostok.taxi.drive.app.util.constant.OperationName
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 /*
 enroll
  {
-    "operationName": "EDIT_CITY",
+    "operationName": "OPERATION_NAME",
     "direction": "enroll",
-    "body": {
-        "id": "spdTest",
-        "name": "Спасск-Дальний-Тест",
-        "state": "pk"
-    }
+    "body": {:}
  }
 
 rollback
  {
     "id": "51ae64c4-3327-4b73-9498-1fa3347d2a15",
-    "operationName": "EDIT_CITY",
+    "operationName": "OPERATION_NAME",
     "direction": "rollback"
  }
 */
 
-class EditGeoOperation<T extends GeoEntity> implements Operation {
+class EntityEditOperation<T, ID extends Serializable> implements Operation {
     OperationName operationName
-    BasicRepository<T, String> entityRepository
+    BasicRepository<T, ID> entityRepository
 
     @Override
     Object enroll(OperationContext context) {
         T contextEntity = entityRepository.convertToEntityType(context.operationRequest.body)
-        T persistentEntity = entityRepository.getOne(contextEntity.id)
+        T persistentEntity = entityRepository.getByEntityId(contextEntity)
 
         if (!persistentEntity) {
-            throw new OperationExecutionException('Geo entity with target ID does not exist')
+            throw new OperationExecutionException('Entity with target ID does not exist')
         }
 
         T resultEntity = entityRepository.save(contextEntity)
@@ -52,7 +47,7 @@ class EditGeoOperation<T extends GeoEntity> implements Operation {
 
         T contextEntityBefore = parsedContext.before.with(entityRepository.&convertToEntityType)
         T contextEntityAfter = parsedContext.after.with(entityRepository.&convertToEntityType)
-        T persistentEntity = entityRepository.getOne(contextEntityAfter.id)
+        T persistentEntity = entityRepository.getByEntityId(contextEntityAfter)
 
         if(!contextEntityAfter) {
             throw new OperationExecutionException('Rollback rejected: context entities must not be null')

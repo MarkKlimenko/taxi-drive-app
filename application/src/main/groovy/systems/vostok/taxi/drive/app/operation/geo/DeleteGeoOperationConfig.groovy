@@ -4,46 +4,48 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import systems.vostok.taxi.drive.app.dao.entity.geo.*
 import systems.vostok.taxi.drive.app.dao.repository.impl.geo.*
+import systems.vostok.taxi.drive.app.operation.EntityDeleteOperation
+import systems.vostok.taxi.drive.app.operation.Operation
 
 import static systems.vostok.taxi.drive.app.util.constant.OperationName.*
 
 @Configuration
 class DeleteGeoOperationConfig {
     @Bean
-    DeleteGeoOperation deleteCountry(CountryRepository countryRepository) {
-        new DeleteGeoOperation<Country>(
+    Operation deleteCountry(CountryRepository countryRepository) {
+        new EntityDeleteOperation<Country, String>(
                 operationName: DELETE_COUNTRY_OPERATION,
                 entityRepository: countryRepository
         )
     }
 
     @Bean
-    DeleteGeoOperation deleteState(StateRepository stateRepository) {
-        new DeleteGeoOperation<State>(
+    Operation deleteState(StateRepository stateRepository) {
+        new EntityDeleteOperation<State, String>(
                 operationName: DELETE_STATE_OPERATION,
                 entityRepository: stateRepository
         )
     }
 
     @Bean
-    DeleteGeoOperation deleteCity(CityRepository cityRepository) {
-        new DeleteGeoOperation<City>(
+    Operation deleteCity(CityRepository cityRepository) {
+        new EntityDeleteOperation<City, String>(
                 operationName: DELETE_CITY_OPERATION,
                 entityRepository: cityRepository
         )
     }
 
     @Bean
-    DeleteGeoOperation deleteDistrict(DistrictRepository districtRepository) {
-        new DeleteGeoOperation<District>(
+    Operation deleteDistrict(DistrictRepository districtRepository) {
+        new EntityDeleteOperation<District, String>(
                 operationName: DELETE_DISTRICT_OPERATION,
                 entityRepository: districtRepository
         )
     }
 
     @Bean
-    DeleteGeoOperation deleteStreet(StreetRepository streetRepository) {
-        new DeleteGeoOperation<Street>(
+    Operation deleteStreet(StreetRepository streetRepository) {
+        new EntityDeleteOperation<Street, String>(
                 operationName: DELETE_STREET_OPERATION,
                 entityRepository: streetRepository
         )
