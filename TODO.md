@@ -36,6 +36,8 @@
 - Function flow
     - Crud entities using operations
         - Clients
+            - Implement universal Entity Operations
+            - Create feature tests for Client Flow
         - Rides
     - Implement rate flow
         - Load rates using operation

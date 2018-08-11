@@ -11,6 +11,9 @@ import systems.vostok.taxi.drive.app.dao.domain.util.SearchParameters
 interface BasicRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
     T convertToEntityType(Object entity)
     ID convertToIdType(String entity)
+
+    T getByEntityId(T entity)
+
     List<T> findByCriteria(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination)
     List<T> search(SearchParameters parameters)
 }

@@ -26,7 +26,7 @@ ext.lib = [
         hibernate_validator                : 'org.hibernate.validator:hibernate-validator:6.0.9.Final',
         ehcache                            : 'net.sf.ehcache:ehcache:2.10.4',
         infinispan_directory_provider      : 'org.infinispan:infinispan-directory-provider:9.0.1.Final',
-        spring_orm                         : 'org.springframework:spring-orm:4.3.16.RELEASE',
+        spring_orm                         : 'org.springframework:spring-orm:5.0.8.RELEASE',
 
         tda_district_mapper                : 'systems.vostok.tda:tda-district-mapper:0.1.6',
         tda_excel_parser                   : 'systems.vostok.tda:tda-excel-parser:0.1.6',
@@ -34,6 +34,11 @@ ext.lib = [
         junit_jupiter_api                  : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
         junit_jupiter_engine               : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
         junit_jupiter_params               : "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}",
+
+        cucumber_groovy                    : "info.cukes:cucumber-groovy:${cucumberVersion}",
+        cucumber_java                      : "info.cukes:cucumber-java:${cucumberVersion}",
+        cucumber_junit                     : "info.cukes:cucumber-junit:${cucumberVersion}",
+        cucumber_spring                    : "info.cukes:cucumber-spring:${cucumberVersion}",
 ]
 
 ext.lib_pack = [
@@ -71,7 +76,7 @@ ext.lib_pack = [
                 ext.lib.spring_boot_starter_security,
                 ext.lib.keycloak_spring_boot_starter
         ],
-        metrics : [
+        metrics    : [
                 ext.lib.spring_boot_starter_actuator,
                 ext.lib.javamelody_spring_boot_starter
         ],
@@ -80,5 +85,11 @@ ext.lib_pack = [
                 ext.lib.junit_jupiter_api,
                 ext.lib.junit_jupiter_engine,
                 ext.lib.junit_jupiter_params
+        ],
+        cucumber_test: [
+                ext.lib.cucumber_groovy,
+                ext.lib.cucumber_java,
+                ext.lib.cucumber_junit,
+                ext.lib.cucumber_spring
         ]
 ]

@@ -46,7 +46,7 @@ class UniversalCrudRepository {
     def findById(String entityType, String entityId) {
         BasicRepository repository = findRepository(entityType)
         repository.convertToIdType(entityId)
-                .with(repository.&findOne)
+                .with { repository.findById(it).get() }
     }
 
     void deleteById(String entityType, String entityId) {

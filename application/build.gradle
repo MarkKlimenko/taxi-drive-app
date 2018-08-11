@@ -39,6 +39,7 @@ dependencies {
     compile lib_pack.metrics
 
     testCompile lib_pack.test
+    testCompile lib_pack.cucumber_test
 }
 
 processResources {

@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
+import org.springframework.transaction.annotation.EnableTransactionManagement
 import systems.vostok.taxi.drive.app.dao.repository.CustomBasicRepository
 
 import javax.annotation.PostConstruct
@@ -17,6 +18,7 @@ import java.sql.SQLException
 @Slf4j
 @EnableJpaRepositories(basePackages = 'systems.vostok.taxi.drive.app.dao', repositoryBaseClass = CustomBasicRepository.class)
 @ConfigurationProperties(prefix = 'db')
+@EnableTransactionManagement
 class DatabaseConfiguration {
     String url
     String username

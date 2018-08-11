@@ -21,8 +21,6 @@ import javax.persistence.criteria.CriteriaQuery
 import javax.persistence.criteria.Root
 
 class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BasicRepository<T, ID> {
-    private static final String ID_MUST_NOT_BE_NULL = 'The given id must not be null!'
-
     private final EntityManager entityManager
     private final JpaEntityInformation entityInformation
 
@@ -52,6 +50,11 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     }
 
     @Override
+    T getByEntityId(T entity) {
+        findById(entity."${entityInformation.idAttribute.name}" as ID).get()
+    }
+
+    @Override
     List<T> findByCriteria(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         createCriteriaQuery(filter, sorter, pagination).getResultList()
     }
@@ -60,23 +63,6 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     @Transactional
     List<T> search(SearchParameters parameters) {
         createSearchQuery(parameters).getResultList()
-    }
-
-    @Override
-    @Transactional
-    void delete(ID id) {
-        Assert.notNull(id, ID_MUST_NOT_BE_NULL)
-
-        findOne(id).with(this.&checkEntityExistence)
-                .with(this.&delete)
-    }
-
-    private T checkEntityExistence(T entity) {
-        if (!entity) {
-            throw new EmptyResultDataAccessException(
-                    String.format("No %s entity with such id exists!", entityInformation.javaType), 1)
-        }
-        entity
     }
 
     // TODO: Create unit tests (check queryString & namedParameters)
