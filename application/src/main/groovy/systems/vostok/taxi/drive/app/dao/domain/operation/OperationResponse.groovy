@@ -5,7 +5,7 @@ import groovy.transform.Canonical
 @Canonical
 class OperationResponse {
     UUID id
-    String operationName
+    OperationName operationName
     String state
     Object body
 }
