@@ -2,11 +2,12 @@ package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
-import systems.vostok.taxi.drive.app.executor.ExecutorService
+import systems.vostok.taxi.drive.app.executor.OperationService
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.POST
 import javax.ws.rs.Path
+import javax.ws.rs.PathParam
 import javax.ws.rs.Produces
 
 import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
@@ -16,10 +17,11 @@ import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_
 @Consumes(APPLICATION_JSON)
 class OperationController {
     @Autowired
-    ExecutorService executorService
+    OperationService operationService
 
     @POST
-    execute(OperationRequest operationRequest) {
-        executorService.executeOperation(operationRequest)
+    @Path('{direction}')
+    Operation execute(@PathParam('direction') String direction, OperationRequest operationRequest) {
+        operationService.process(direction, operationRequest)
     }
 }

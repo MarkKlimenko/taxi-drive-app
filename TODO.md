@@ -36,9 +36,12 @@
 - Function flow
     - Crud entities using operations
         - Clients
-            - Implement universal Entity Operations
+            + Implement universal Entity Operations
+            - Create Entity to Operation table 
             - Create feature tests for Client Flow
         - Rides
+    - Operation executor
+        - Change operation executor workflow   
     - Implement rate flow
         - Load rates using operation
         - Get rate info flow

@@ -4,9 +4,9 @@ import groovy.transform.Canonical
 
 @Canonical
 class OperationRequest {
-    UUID id
+    UUID id = UUID.randomUUID()
     String operationName
-    String direction
+    Boolean async = false
     Object body
 
     void setId(String id) {

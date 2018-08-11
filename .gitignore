@@ -7,6 +7,7 @@
 /application/build/
 /application/out/
 /application/indexes/
+/application/application/
 
 /migrations-db-application/build/
 /migrations-db-application/out/

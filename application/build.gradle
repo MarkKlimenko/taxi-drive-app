@@ -58,13 +58,23 @@ bootRun {
 
 test {
     useJUnitPlatform {
-        exclude '**/*TestIntegration*'
+        exclude(
+                '**/*TestIntegration*',
+                '**/FunctionalRunner*',
+        )
     }
 }
 
 task testIntegration(type: Test) {
     useJUnitPlatform {
         include '**/*TestIntegration*'
+    }
+    systemProperties = System.properties as Map
+}
+
+task testFunctional(type: Test) {
+    useJUnitPlatform {
+        include '**/FunctionalRunner*'
     }
     systemProperties = System.properties as Map
 }

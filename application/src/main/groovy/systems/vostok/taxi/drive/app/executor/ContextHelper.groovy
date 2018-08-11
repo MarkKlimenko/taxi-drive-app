@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
 import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
+import systems.vostok.taxi.drive.app.dao.entity.ContextMessageToEntity
 import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageToEntityRepository
 
 import java.time.LocalDateTime
 
@@ -16,6 +18,9 @@ class ContextHelper {
     @Autowired
     ContextMessageRepository contextMessageRepository
 
+    @Autowired
+    ContextMessageToEntityRepository contextMessageToEntityRepository
+
     ContextMessage createContextMessage(OperationRequest request) {
         composeMessage(request)
                 .with(contextMessageRepository.&save)
@@ -23,8 +28,8 @@ class ContextHelper {
 
     OperationContext setSuccess(OperationContext operationContext) {
         operationContext.contextMessage
-            .with { it.state = SUCCESS_OPERATION_STATE; it }
-            .with(contextMessageRepository.&save)
+                .with { it.state = SUCCESS_OPERATION_STATE; it }
+                .with(contextMessageRepository.&save)
 
         operationContext
     }
@@ -39,6 +44,14 @@ class ContextHelper {
 
     OperationContext setContext(OperationContext operationContext, Object context) {
         operationContext.contextMessage.context = context
+        operationContext
+    }
+
+    OperationContext setEntityToContextMessage(OperationContext operationContext, Object context) {
+        operationContext.contextMessage.context = context
+
+        contextMessageToEntityRepository.save(new ContextMessageToEntity())
+
         operationContext
     }
 
