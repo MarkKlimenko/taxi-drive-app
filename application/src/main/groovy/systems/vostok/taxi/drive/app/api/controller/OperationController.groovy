@@ -2,7 +2,9 @@ package systems.vostok.taxi.drive.app.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.executor.OperationService
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirection
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.POST
@@ -21,7 +23,7 @@ class OperationController {
 
     @POST
     @Path('{direction}')
-    Operation execute(@PathParam('direction') String direction, OperationRequest operationRequest) {
-        operationService.process(direction, operationRequest)
+    OperationResponse execute(@PathParam('direction') String directionType, OperationRequest operationRequest) {
+        operationService.process(OperationDirection.get(directionType), operationRequest)
     }
 }

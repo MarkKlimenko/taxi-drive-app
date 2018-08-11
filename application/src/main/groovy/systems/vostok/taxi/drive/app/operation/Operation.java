@@ -1,7 +1,7 @@
 package systems.vostok.taxi.drive.app.operation;
 
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext;
-import systems.vostok.taxi.drive.app.util.constant.OperationName;
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationName;
 
 public interface Operation {
     OperationName getOperationName();

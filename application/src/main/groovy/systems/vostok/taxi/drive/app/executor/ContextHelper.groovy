@@ -11,7 +11,7 @@ import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageToEntityR
 
 import java.time.LocalDateTime
 
-import static systems.vostok.taxi.drive.app.util.constant.OperationState.*
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationState.*
 
 @Service
 class ContextHelper {

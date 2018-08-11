@@ -1,5 +1,6 @@
-package systems.vostok.taxi.drive.app.util.constant
+package systems.vostok.taxi.drive.app.dao.domain.operation
 
+// TODO: Change to Enum
 class OperationState {
     private OperationState() { throw new UnsupportedOperationException() }
 

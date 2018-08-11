@@ -7,7 +7,7 @@ import systems.vostok.taxi.drive.app.dao.repository.impl.geo.*
 import systems.vostok.taxi.drive.app.operation.EntityEditOperation
 import systems.vostok.taxi.drive.app.operation.Operation
 
-import static systems.vostok.taxi.drive.app.util.constant.OperationName.*
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationName.*
 
 @Configuration
 class EditGeoOperationConfig {

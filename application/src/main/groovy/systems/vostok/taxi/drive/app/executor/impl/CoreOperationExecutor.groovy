@@ -3,6 +3,7 @@ package systems.vostok.taxi.drive.app.executor.impl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationName
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
 import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
 import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepository
@@ -10,8 +11,8 @@ import systems.vostok.taxi.drive.app.executor.ContextHelper
 import systems.vostok.taxi.drive.app.executor.OperationExecutor
 import systems.vostok.taxi.drive.app.operation.Operation
 
-import static systems.vostok.taxi.drive.app.util.constant.OperationState.CANCELED_OPERATION_STATE
-import static systems.vostok.taxi.drive.app.util.constant.OperationState.SUCCESS_OPERATION_STATE
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationState.CANCELED_OPERATION_STATE
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationState.SUCCESS_OPERATION_STATE
 
 @Service
 class CoreOperationExecutor implements OperationExecutor {
@@ -84,12 +85,6 @@ class CoreOperationExecutor implements OperationExecutor {
     }
 
     private Operation getOperation(String operationName) {
-        def checkOperation = { Operation operation ->
-            assert operation: "No such operation: { $operationName }"
-            operation
-        }
-
-        operations.find { it.operationName.name == operationName }
-                .with(checkOperation)
+        operations.find { it.operationName == OperationName.get(operationName) }
     }
 }

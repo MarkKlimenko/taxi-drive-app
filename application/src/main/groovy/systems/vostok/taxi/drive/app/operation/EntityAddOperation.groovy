@@ -2,9 +2,8 @@ package systems.vostok.taxi.drive.app.operation
 
 import groovy.json.JsonSlurper
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
-import systems.vostok.taxi.drive.app.dao.entity.geo.GeoEntity
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.util.constant.OperationName
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationName
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 /*
