@@ -41,7 +41,8 @@
             - Create feature tests for Client Flow
         - Rides
     - Operation executor
-        - Change operation executor workflow   
+        - Change operation executor workflow\
+        - Use OperationRequest/Response with Avro  
     - Implement rate flow
         - Load rates using operation
         - Get rate info flow
