@@ -43,6 +43,7 @@
         + Change operation executor workflow
         + Add Operation to Entity relation using entityId
         * Create Entity to Operation table 
+        - Add circuit breaker
         - Use OperationRequest/Response with Avro  
     - Implement rate flow
         - Load rates using operation

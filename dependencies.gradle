@@ -34,11 +34,6 @@ ext.lib = [
         junit_jupiter_api                  : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
         junit_jupiter_engine               : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
         junit_jupiter_params               : "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}",
-
-        cucumber_groovy                    : "info.cukes:cucumber-groovy:${cucumberVersion}",
-        cucumber_java                      : "info.cukes:cucumber-java:${cucumberVersion}",
-        cucumber_junit                     : "info.cukes:cucumber-junit:${cucumberVersion}",
-        cucumber_spring                    : "info.cukes:cucumber-spring:${cucumberVersion}",
 ]
 
 ext.lib_pack = [
@@ -85,11 +80,5 @@ ext.lib_pack = [
                 ext.lib.junit_jupiter_api,
                 ext.lib.junit_jupiter_engine,
                 ext.lib.junit_jupiter_params
-        ],
-        cucumber_test: [
-                ext.lib.cucumber_groovy,
-                ext.lib.cucumber_java,
-                ext.lib.cucumber_junit,
-                ext.lib.cucumber_spring
         ]
 ]
