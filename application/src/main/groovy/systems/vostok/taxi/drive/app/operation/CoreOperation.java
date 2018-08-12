@@ -1,7 +1,7 @@
 package systems.vostok.taxi.drive.app.operation;
 
-import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext;
 import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames;
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext;
 
 public interface CoreOperation {
     CoreOperationNames getOperationName();
@@ -12,5 +12,12 @@ public interface CoreOperation {
 
     Object rollback(OperationContext context);
 
-    Object breakOperation(OperationContext context);
+    default Object breakEnroll(OperationContext context) {
+        return null;
+    }
+
+    default Object breakRollback(OperationContext context) {
+        return null;
+
+    }
 }

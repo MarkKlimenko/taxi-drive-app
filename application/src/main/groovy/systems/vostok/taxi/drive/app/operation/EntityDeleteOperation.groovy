@@ -60,9 +60,4 @@ class EntityDeleteOperation<T, ID extends Serializable> implements CoreOperation
         context.contextHelper.setContext(context, context.operationRequest.id)
         context.contextHelper.setEntityId(context, entityRepository.getEntityId(contextEntity))
     }
-
-    @Override
-    Object breakOperation(OperationContext context) {
-        return null
-    }
 }
