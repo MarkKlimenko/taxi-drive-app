@@ -3,7 +3,7 @@ package systems.vostok.taxi.drive.app.operation
 import groovy.json.JsonSlurper
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.dao.domain.operation.OperationName
+import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 /*
@@ -22,8 +22,9 @@ rollback
  }
 */
 
-class EntityAddOperation<T, ID extends Serializable> implements Operation {
-    OperationName operationName
+class EntityAddOperation<T, ID extends Serializable> implements CoreOperation {
+    CoreOperationNames operationName
+    String operationTimeout
     BasicRepository<T, ID> entityRepository
 
     @Override
@@ -36,12 +37,13 @@ class EntityAddOperation<T, ID extends Serializable> implements Operation {
 
         T savedEntity = entityRepository.save(targetEntity)
         context.contextHelper.setContext(context, savedEntity)
+        context.contextHelper.setEntityId(context, entityRepository.getEntityId(savedEntity))
         savedEntity
     }
 
     @Override
     Object rollback(OperationContext context) {
-        T contextEntity = context.rollbackContextMessage.context
+        T contextEntity = context.rolledBackContextMessage.context
                 .with(new JsonSlurper().&parseText)
                 .with(entityRepository.&convertToEntityType)
 
@@ -56,5 +58,11 @@ class EntityAddOperation<T, ID extends Serializable> implements Operation {
 
         entityRepository.delete(contextEntity)
         context.contextHelper.setContext(context, context.operationRequest.id)
+        context.contextHelper.setEntityId(context, entityRepository.getEntityId(contextEntity))
+    }
+
+    @Override
+    Object breakOperation(OperationContext context) {
+        return null
     }
 }

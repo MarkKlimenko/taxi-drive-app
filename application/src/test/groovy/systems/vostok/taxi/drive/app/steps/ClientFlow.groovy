@@ -7,8 +7,8 @@ import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
 import systems.vostok.taxi.drive.app.executor.OperationService
 
 import static systems.vostok.taxi.drive.app.test.Dataset.getJsonDataset
-import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirection.ENROLL
-import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationName.ADD_CLIENT_OPERATION
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections.ENROLL
+import static systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames.ADD_CLIENT_OPERATION
 
 class ClientFlow extends SpringConfig {
     @Autowired

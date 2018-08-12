@@ -5,7 +5,8 @@ import groovy.transform.Canonical
 @Canonical
 class OperationRequest {
     UUID id = UUID.randomUUID()
-    OperationName operationName
+    String operationName
+    String owner
     Boolean async = false
     Object body
 

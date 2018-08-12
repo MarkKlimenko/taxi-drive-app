@@ -4,15 +4,15 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import systems.vostok.taxi.drive.app.dao.entity.geo.*
 import systems.vostok.taxi.drive.app.dao.repository.impl.geo.*
+import systems.vostok.taxi.drive.app.operation.CoreOperation
 import systems.vostok.taxi.drive.app.operation.EntityEditOperation
-import systems.vostok.taxi.drive.app.operation.Operation
 
-import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationName.*
+import static systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames.*
 
 @Configuration
 class EditGeoOperationConfig {
     @Bean
-    Operation editCountry(CountryRepository countryRepository) {
+    CoreOperation editCountry(CountryRepository countryRepository) {
         new EntityEditOperation<Country, String>(
                 operationName: EDIT_COUNTRY_OPERATION,
                 entityRepository: countryRepository
@@ -20,7 +20,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    Operation editState(StateRepository stateRepository) {
+    CoreOperation editState(StateRepository stateRepository) {
         new EntityEditOperation<State, String>(
                 operationName: EDIT_STATE_OPERATION,
                 entityRepository: stateRepository
@@ -28,7 +28,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    Operation editCity(CityRepository cityRepository) {
+    CoreOperation editCity(CityRepository cityRepository) {
         new EntityEditOperation<City, String>(
                 operationName: EDIT_CITY_OPERATION,
                 entityRepository: cityRepository
@@ -36,7 +36,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    Operation editDistrict(DistrictRepository districtRepository) {
+    CoreOperation editDistrict(DistrictRepository districtRepository) {
         new EntityEditOperation<District, String>(
                 operationName: EDIT_DISTRICT_OPERATION,
                 entityRepository: districtRepository
@@ -44,7 +44,7 @@ class EditGeoOperationConfig {
     }
 
     @Bean
-    Operation editStreet(StreetRepository streetRepository) {
+    CoreOperation editStreet(StreetRepository streetRepository) {
         new EntityEditOperation<Street, String>(
                 operationName: EDIT_STREET_OPERATION,
                 entityRepository: streetRepository

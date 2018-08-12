@@ -1,10 +1,6 @@
 package systems.vostok.taxi.drive.app.dao.domain.operation
 
-import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
-
-import java.util.concurrent.ConcurrentHashMap
-
-enum OperationName {
+enum CoreOperationNames {
     ADD_CLIENT_OPERATION('ADD_CLIENT'),
     EDIT_CLIENT_OPERATION('EDIT_CLIENT'),
     DELETE_CLIENT_OPERATION('DELETE_CLIENT'),
@@ -32,29 +28,7 @@ enum OperationName {
 
     String name
 
-    private static final Map<String,OperationName> ENUM_MAP
-
-    private OperationName(String name) {
+    private CoreOperationNames(String name) {
         this.name = name
-    }
-
-    static {
-        Map<String,OperationName> map = new ConcurrentHashMap<String,OperationName>()
-        for (OperationName instance : values()) {
-            map.put(instance.name, instance)
-        }
-        ENUM_MAP = Collections.unmodifiableMap(map)
-    }
-
-    static OperationName get(String name) {
-        if(ENUM_MAP.containsKey(name)) {
-            ENUM_MAP.get(name)
-        } else {
-            throw new OperationExecutionException("No such Operation with name: { ${name} }")
-        }
-    }
-
-    static Map getOperationNames() {
-        ENUM_MAP
     }
 }

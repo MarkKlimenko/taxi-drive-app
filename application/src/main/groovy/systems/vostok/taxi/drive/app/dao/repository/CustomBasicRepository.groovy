@@ -51,8 +51,13 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
 
     @Override
     T getByEntityId(T entity) {
-        findById(entity."${entityInformation.idAttribute.name}" as ID)
+        findById(getEntityId(entity))
                 .orElseGet(null)
+    }
+
+    @Override
+    ID getEntityId(T entity) {
+        entity."${entityInformation.idAttribute.name}" as ID
     }
 
     @Override

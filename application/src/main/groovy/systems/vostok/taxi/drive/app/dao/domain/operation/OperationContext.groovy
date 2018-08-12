@@ -7,39 +7,8 @@ class OperationContext {
     ContextHelper contextHelper
 
     OperationRequest operationRequest
+    OperationDirections direction
+
     ContextMessage contextMessage
-    ContextMessage rollbackContextMessage
-
-    static class Builder {
-        ContextHelper contextHelper
-
-        OperationRequest operationRequest
-        ContextMessage contextMessage
-
-        Builder contextHelper(ContextHelper contextHelper) {
-            this.contextHelper = contextHelper
-            this
-        }
-
-        Builder operationRequest(OperationRequest operationRequest) {
-            this.operationRequest = operationRequest
-            this
-        }
-
-        Builder contextMessage(ContextMessage contextMessage) {
-            this.contextMessage = contextMessage
-            this
-        }
-
-        OperationContext build() {
-            new OperationContext(this)
-        }
-    }
-
-    private OperationContext(Builder builder) {
-        contextHelper = builder.contextHelper
-
-        operationRequest = builder.operationRequest
-        contextMessage = builder.contextMessage
-    }
+    ContextMessage rolledBackContextMessage
 }

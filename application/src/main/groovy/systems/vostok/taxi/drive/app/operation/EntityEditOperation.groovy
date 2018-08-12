@@ -3,7 +3,7 @@ package systems.vostok.taxi.drive.app.operation
 import groovy.json.JsonSlurper
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.dao.domain.operation.OperationName
+import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 /*
@@ -22,8 +22,9 @@ rollback
  }
 */
 
-class EntityEditOperation<T, ID extends Serializable> implements Operation {
-    OperationName operationName
+class EntityEditOperation<T, ID extends Serializable> implements CoreOperation {
+    CoreOperationNames operationName
+    String operationTimeout
     BasicRepository<T, ID> entityRepository
 
     @Override
@@ -37,12 +38,13 @@ class EntityEditOperation<T, ID extends Serializable> implements Operation {
 
         T editedEntity = entityRepository.save(contextEntity)
         context.contextHelper.setContext(context, [before: persistentEntity, after : editedEntity])
+        context.contextHelper.setEntityId(context, entityRepository.getEntityId(persistentEntity))
         editedEntity
     }
 
     @Override
     Object rollback(OperationContext context) {
-        Map parsedContext = context.rollbackContextMessage.context
+        Map parsedContext = context.rolledBackContextMessage.context
                 .with(new JsonSlurper().&parseText) as Map
 
         T contextEntityBefore = parsedContext.before.with(entityRepository.&convertToEntityType)
@@ -59,5 +61,11 @@ class EntityEditOperation<T, ID extends Serializable> implements Operation {
 
         entityRepository.save(contextEntityBefore)
         context.contextHelper.setContext(context, context.operationRequest.id)
+        context.contextHelper.setEntityId(context, entityRepository.getEntityId(contextEntityBefore))
+    }
+
+    @Override
+    Object breakOperation(OperationContext context) {
+        return null
     }
 }

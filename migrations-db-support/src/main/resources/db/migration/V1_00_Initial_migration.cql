@@ -10,8 +10,9 @@ CREATE TABLE IF NOT EXISTS %keyspace%.contextMessages (
                               operationName text,
                               owner text,
                               dateIn timestamp,
+                              entityId text,
                               state text,
                               direction text,
                               requestBody text,
                               context text,
-PRIMARY KEY (id, operationName, owner, dateIn));
+PRIMARY KEY (id, operationName, owner, dateIn, entityId));
