@@ -33,7 +33,7 @@ class ContextMessage {
     LocalDateTime dateIn
 
     @PrimaryKeyColumn(name = 'entityId', ordinal = 4, type = PrimaryKeyType.CLUSTERED)
-    String entityId
+    String entityId = 'null'
 
     String state
     String direction

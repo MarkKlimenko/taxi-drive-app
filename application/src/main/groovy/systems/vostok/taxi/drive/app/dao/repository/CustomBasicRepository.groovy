@@ -52,7 +52,7 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     @Override
     T getByEntityId(T entity) {
         findById(getEntityId(entity))
-                .orElseGet(null)
+                .orElseGet({null})
     }
 
     @Override

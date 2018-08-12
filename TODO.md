@@ -38,6 +38,7 @@
         - Clients
             + Implement universal Entity Operations
             - Create feature tests for Client Flow
+            - Add transaction support
         - Rides
     - Operation executor
         + Change operation executor workflow
@@ -45,6 +46,7 @@
         * Create Entity to Operation table 
         - Add circuit breaker
         - Use OperationRequest/Response with Avro  
+        - Add async operation flow using Kafka
     - Implement rate flow
         - Load rates using operation
         - Get rate info flow

@@ -20,7 +20,7 @@ class ContextHelper {
     ContextMessage createContextMessage(OperationDirections direction, OperationRequest request) {
         ContextMessage contextMessage = new ContextMessage(
                 operationName: request.operationName,
-                owner        : request.owner,
+                owner        : 'test', // TODO: get from security context
                 dateIn       : LocalDateTime.now(),
                 state        : IN_PROCESS,
                 direction    : direction,
@@ -55,7 +55,4 @@ class ContextHelper {
         operationContext.contextMessage.entityId = entityId as String
         operationContext
     }
-
-    // TODO: get owner name from security context
-
 }

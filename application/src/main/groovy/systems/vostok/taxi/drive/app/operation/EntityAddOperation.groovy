@@ -6,6 +6,8 @@ import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
+import javax.transaction.Transactional
+
 /*
 enroll
  {
@@ -28,6 +30,7 @@ class EntityAddOperation<T, ID extends Serializable> implements CoreOperation {
     BasicRepository<T, ID> entityRepository
 
     @Override
+    @Transactional
     Object enroll(OperationContext context) {
         T targetEntity = entityRepository.convertToEntityType(context.operationRequest.body)
 
@@ -42,6 +45,7 @@ class EntityAddOperation<T, ID extends Serializable> implements CoreOperation {
     }
 
     @Override
+    @Transactional
     Object rollback(OperationContext context) {
         T contextEntity = context.rolledBackContextMessage.context
                 .with(new JsonSlurper().&parseText)
