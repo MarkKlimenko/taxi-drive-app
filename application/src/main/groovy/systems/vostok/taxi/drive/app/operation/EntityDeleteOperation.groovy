@@ -1,9 +1,9 @@
 package systems.vostok.taxi.drive.app.operation
 
 import groovy.json.JsonSlurper
+import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import javax.transaction.Transactional
@@ -32,7 +32,8 @@ class EntityDeleteOperation<T, ID extends Serializable> implements CoreOperation
     @Override
     @Transactional
     Object enroll(OperationContext context) {
-        T targetEntity = entityRepository.findById(context.operationRequest.body.id)
+        ID targetEntityId = entityRepository.getEntityId(context.operationRequest.body as Map)
+        T targetEntity = entityRepository.findById(targetEntityId)
                 .orElseThrow({ new OperationExecutionException('Entity with target ID does not exist') })
 
         entityRepository.delete(targetEntity)

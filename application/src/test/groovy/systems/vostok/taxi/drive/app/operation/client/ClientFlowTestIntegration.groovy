@@ -29,13 +29,19 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Edit client')
     void editTest() {
-
+        clientUtil.removeAllClients()
+        clientUtil.createClient('simple_client')
+        clientUtil.editClient('simple_client_edited')
+                .with { clientUtil.checkClient('simple_client_edited', it) }
     }
 
     @Test
     @DisplayName('Delete client')
     void deleteTest() {
-
+        clientUtil.removeAllClients()
+        clientUtil.createClient('simple_client')
+        clientUtil.deleteClient('simple_client')
+        clientUtil.checkClientDeletion('simple_client')
     }
 
     @Test

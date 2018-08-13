@@ -14,6 +14,7 @@ interface BasicRepository<T, ID extends Serializable> extends JpaRepository<T, I
 
     T getByEntityId(T entity)
     ID getEntityId(T entity)
+    ID getEntityId(Map entity)
 
     List<T> findByCriteria(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination)
     List<T> search(SearchParameters parameters)

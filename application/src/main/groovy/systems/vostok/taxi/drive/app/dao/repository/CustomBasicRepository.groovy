@@ -61,6 +61,11 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     }
 
     @Override
+    ID getEntityId(Map entity) {
+        entity."${entityInformation.idAttribute.name}" as ID
+    }
+
+    @Override
     List<T> findByCriteria(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         createCriteriaQuery(filter, sorter, pagination).getResultList()
     }
