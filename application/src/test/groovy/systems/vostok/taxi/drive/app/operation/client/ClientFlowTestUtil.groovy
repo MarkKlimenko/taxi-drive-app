@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertFalse
 import static systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames.*
 import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections.ENROLL
-import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections.ROLLBACK
 import static systems.vostok.taxi.drive.app.test.Dataset.getJsonDataset
 
 @Component
@@ -52,24 +51,6 @@ class ClientFlowTestUtil {
         )
 
         operationService.execute(ENROLL, operationRequest)
-    }
-
-    OperationResponse rollbackCreateClient(OperationResponse addResponse) {
-        OperationRequest operationRequest = new OperationRequest(
-                operationName: ADD_CLIENT_OPERATION.name,
-                body: [id: addResponse.id.toString()]
-        )
-
-        operationService.execute(ROLLBACK, operationRequest)
-    }
-
-    OperationResponse rollbackEditClient(OperationResponse editResponse) {
-        OperationRequest operationRequest = new OperationRequest(
-                operationName: EDIT_CLIENT_OPERATION.name,
-                body: [id: editResponse.id.toString()]
-        )
-
-        operationService.execute(ROLLBACK, operationRequest)
     }
 
     void checkClient(String detasetName, OperationResponse response) {
