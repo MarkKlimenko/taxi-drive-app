@@ -64,6 +64,12 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
     }
 
     @Override
+    T detach(T entity) {
+        entityManager.detach(entity)
+        entity
+    }
+
+    @Override
     List<T> findByCriteria(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         createCriteriaQuery(filter, sorter, pagination).getResultList()
     }

@@ -57,7 +57,7 @@ class EntityAddOperation<T, ID extends Serializable> implements CoreOperation {
             throw new OperationExecutionException('Rollback rejected: context entity must not be null')
         }
         if (contextEntity != persistentEntity) {
-            throw new OperationExecutionException('Rollback rejected: entity was modified')
+            throw new OperationExecutionException('Rollback rejected: entity was modified or removed')
         }
 
         entityRepository.delete(contextEntity)

@@ -1,9 +1,10 @@
 package systems.vostok.taxi.drive.app.dao.entity
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import groovy.transform.AutoClone
 import groovy.transform.Canonical
-import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import org.hibernate.annotations.Immutable
 import systems.vostok.taxi.drive.app.dao.ObjectCreator
 
 import javax.persistence.Entity
@@ -17,8 +18,8 @@ import javax.validation.constraints.PositiveOrZero
 @Entity
 @Table(name = 'clients')
 @Canonical
-@EqualsAndHashCode(includes = ['clientLogin'])
 @ToString(includeNames = true, includeFields = true)
+@AutoClone
 class Client implements ObjectCreator {
     @Id
     @NotNull

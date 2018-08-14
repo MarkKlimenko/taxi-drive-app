@@ -33,7 +33,7 @@ class EntityEditOperation<T, ID extends Serializable> implements CoreOperation {
     @Transactional
     Object enroll(OperationContext context) {
         T contextEntity = entityRepository.convertToEntityType(context.operationRequest.body)
-        T persistentEntity = entityRepository.getByEntityId(contextEntity)
+        T persistentEntity = entityRepository.getByEntityId(contextEntity).clone() as T
 
         if (!persistentEntity) {
             throw new OperationExecutionException('Entity with target ID does not exist')
@@ -60,7 +60,7 @@ class EntityEditOperation<T, ID extends Serializable> implements CoreOperation {
         }
 
         if(contextEntityAfter != persistentEntity) {
-            throw new OperationExecutionException('Rollback rejected: entity was modified')
+            throw new OperationExecutionException('Rollback rejected: entity was modified or removed')
         }
 
         entityRepository.save(contextEntityBefore)

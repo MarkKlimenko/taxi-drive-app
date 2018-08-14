@@ -37,14 +37,14 @@
     - Crud entities using operations
         - Clients
             + Implement universal Entity Operations
-            - Create feature tests for Client Flow
+            + Create feature tests for Client Flow
             - Add transaction support
         - Rides
     - Operation executor
         + Change operation executor workflow
         + Add Operation to Entity relation using entityId
         * Create Entity to Operation table 
-        - Fix Rollback flow
+        + Fix Rollback flow
         - Get owner from security context
         * Get rid of operation name in rollback(need for context message construction)
         - Use slurper inside of operation

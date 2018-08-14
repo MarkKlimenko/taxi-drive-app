@@ -54,10 +54,19 @@ class ClientFlowTestUtil {
         operationService.execute(ENROLL, operationRequest)
     }
 
-    OperationResponse rollbackCreateClient(OperationResponse previousResult) {
+    OperationResponse rollbackCreateClient(OperationResponse addResponse) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: ADD_CLIENT_OPERATION.name,
-                body: [id: previousResult.id.toString()]
+                body: [id: addResponse.id.toString()]
+        )
+
+        operationService.execute(ROLLBACK, operationRequest)
+    }
+
+    OperationResponse rollbackEditClient(OperationResponse editResponse) {
+        OperationRequest operationRequest = new OperationRequest(
+                operationName: EDIT_CLIENT_OPERATION.name,
+                body: [id: editResponse.id.toString()]
         )
 
         operationService.execute(ROLLBACK, operationRequest)
