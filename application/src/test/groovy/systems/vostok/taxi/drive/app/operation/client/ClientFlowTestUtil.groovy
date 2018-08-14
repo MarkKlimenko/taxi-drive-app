@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertFalse
 import static systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames.*
 import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections.ENROLL
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections.ROLLBACK
 import static systems.vostok.taxi.drive.app.test.Dataset.getJsonDataset
 
 @Component
@@ -53,6 +54,15 @@ class ClientFlowTestUtil {
         operationService.execute(ENROLL, operationRequest)
     }
 
+    OperationResponse rollbackCreateClient(OperationResponse previousResult) {
+        OperationRequest operationRequest = new OperationRequest(
+                operationName: ADD_CLIENT_OPERATION.name,
+                body: [id: previousResult.id.toString()]
+        )
+
+        operationService.execute(ROLLBACK, operationRequest)
+    }
+
     void checkClient(String detasetName, OperationResponse response) {
         Client expectedClient = getJsonDataset('client', detasetName) as Client
         Client actualResponseClient = response.body as Client
@@ -64,7 +74,7 @@ class ClientFlowTestUtil {
         }
     }
 
-    void checkClientDeletion(String detasetName) {
+    void checkClientNonexistence(String detasetName) {
         Client expectedClient = getJsonDataset('client', detasetName) as Client
         assertFalse(clientRepository.existsById(expectedClient.login))
     }

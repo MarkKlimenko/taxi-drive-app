@@ -12,15 +12,15 @@ import javax.transaction.Transactional
 enroll
  {
     "operationName": "OPERATION_NAME",
-    "direction": "enroll",
     "body": {:}
  }
 
 rollback
  {
-    "id": "51ae64c4-3327-4b73-9498-1fa3347d2a15",
-    "operationName": "OPERATION_NAME",
-    "direction": "rollback"
+     "operationName": "OPERATION_NAME",
+    "body": {
+        "id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"
+    }
  }
 */
 

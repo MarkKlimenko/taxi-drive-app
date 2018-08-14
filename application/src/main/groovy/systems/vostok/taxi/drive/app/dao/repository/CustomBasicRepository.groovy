@@ -3,15 +3,13 @@ package systems.vostok.taxi.drive.app.dao.repository
 import org.hibernate.search.jpa.FullTextEntityManager
 import org.hibernate.search.jpa.Search
 import org.hibernate.search.query.dsl.QueryBuilder
-import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.data.jpa.repository.support.JpaEntityInformation
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 import org.springframework.transaction.annotation.Transactional
-import org.springframework.util.Assert
-import systems.vostok.taxi.drive.app.dao.domain.util.QueryFilter
-import systems.vostok.taxi.drive.app.dao.domain.util.QueryPagination
-import systems.vostok.taxi.drive.app.dao.domain.util.QuerySorter
-import systems.vostok.taxi.drive.app.dao.domain.util.SearchParameters
+import systems.vostok.taxi.drive.app.dao.domain.query.QueryFilter
+import systems.vostok.taxi.drive.app.dao.domain.query.QueryPagination
+import systems.vostok.taxi.drive.app.dao.domain.query.QuerySorter
+import systems.vostok.taxi.drive.app.dao.domain.query.SearchParameters
 
 import javax.persistence.EntityManager
 import javax.persistence.Query

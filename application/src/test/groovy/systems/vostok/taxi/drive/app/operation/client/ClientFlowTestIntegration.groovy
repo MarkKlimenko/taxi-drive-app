@@ -6,7 +6,10 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
+
+import static org.junit.jupiter.api.Assertions.assertThrows
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -41,13 +44,17 @@ class ClientFlowTestIntegration {
         clientUtil.removeAllClients()
         clientUtil.createClient('simple_client')
         clientUtil.deleteClient('simple_client')
-        clientUtil.checkClientDeletion('simple_client')
+        clientUtil.checkClientNonexistence('simple_client')
     }
 
     @Test
-    @DisplayName('Rollback delete client operation')
-    void rollbackDeleteTest() {
-
+    @DisplayName('Rollback create client operation')
+    void rollbackCreationTest() {
+        clientUtil.removeAllClients()
+        OperationResponse response = clientUtil.createClient('simple_client')
+        clientUtil.checkClient('simple_client', response)
+        clientUtil.rollbackCreateClient(response)
+        clientUtil.checkClientNonexistence('simple_client')
     }
 
     @Test
@@ -57,21 +64,34 @@ class ClientFlowTestIntegration {
     }
 
     @Test
-    @DisplayName('Rollback create client operation')
-    void rollbackCreationTest() {
+    @DisplayName('Rollback delete client operation')
+    void rollbackDeleteTest() {
 
     }
 
     @Test
     @DisplayName('Create already existing client')
     void editAlreadyExistingTest() {
+        clientUtil.removeAllClients()
+        clientUtil.createClient('simple_client')
 
+        assertThrows(
+                Exception.class,
+                { clientUtil.createClient('simple_client') },
+                'Entity with target ID already exists'
+        )
     }
 
     @Test
-    @DisplayName('Create nonexistent client')
+    @DisplayName('Delete nonexistent client')
     void deleteNonexistentTest() {
+        clientUtil.removeAllClients()
 
+        assertThrows(
+                Exception.class,
+                { clientUtil.deleteClient('simple_client') },
+                'Entity with target ID does not exist'
+        )
     }
 
     @Test

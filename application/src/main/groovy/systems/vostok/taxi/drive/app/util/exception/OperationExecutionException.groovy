@@ -1,10 +1,15 @@
 package systems.vostok.taxi.drive.app.util.exception
 
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections
 
 class OperationExecutionException extends RuntimeException {
     OperationExecutionException(String message) {
         super(message)
+    }
+
+    OperationExecutionException(Throwable cause) {
+        super(cause)
     }
 
 
@@ -18,5 +23,12 @@ class OperationExecutionException extends RuntimeException {
 
     static OperationExecutionException contextMessageStateException(String contextMessageState) {
         new OperationExecutionException("Unappropriate Context message state: { ${contextMessageState} }")
+    }
+
+    static OperationExecutionException rollbackOperationNamesException(OperationContext context) {
+        new OperationExecutionException(
+                "Rollback Operation names are not the same: " +
+                        "{ ${context.rolledBackContextMessage.operationName} } != { ${context.operationRequest.operationName} }"
+        )
     }
 }

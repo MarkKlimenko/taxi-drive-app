@@ -15,4 +15,6 @@ CREATE TABLE IF NOT EXISTS %keyspace%.contextMessages (
                               direction text,
                               requestBody text,
                               context text,
-PRIMARY KEY (id, operationName, owner, dateIn, entityId));
+PRIMARY KEY (id, operationName, owner, dateIn));
+
+CREATE INDEX ON %keyspace%.contextMessages (entityId);

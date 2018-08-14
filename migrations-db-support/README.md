@@ -3,6 +3,7 @@
 
 ### Prepare environment
 <pre>
+    gradlew :migrations-db-support:migratorDropKeyspace
     gradlew :migrations-db-support:migratorExecute
 </pre>
 

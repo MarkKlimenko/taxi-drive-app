@@ -19,6 +19,7 @@ class ContextHelper {
 
     ContextMessage createContextMessage(OperationDirections direction, OperationRequest request) {
         ContextMessage contextMessage = new ContextMessage(
+                id: request.id,
                 operationName: request.operationName,
                 owner        : 'test', // TODO: get from security context
                 dateIn       : LocalDateTime.now(),

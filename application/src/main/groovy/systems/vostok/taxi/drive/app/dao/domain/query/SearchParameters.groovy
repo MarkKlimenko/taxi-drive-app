@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.dao.domain.util
+package systems.vostok.taxi.drive.app.dao.domain.query
 
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Size

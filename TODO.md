@@ -44,6 +44,15 @@
         + Change operation executor workflow
         + Add Operation to Entity relation using entityId
         * Create Entity to Operation table 
+        - Fix Rollback flow
+        - Get owner from security context
+        * Get rid of operation name in rollback(need for context message construction)
+        - Use slurper inside of operation
+        
+        + Set unique for operation id (problem was in primary key)
+        + Get rid of UUID hysteric auto generation (problem was in primary key)
+        + Fix double context creation bug (problem was in primary key)
+        
         - Add circuit breaker
         - Use OperationRequest/Response with Avro  
         - Add async operation flow using Kafka

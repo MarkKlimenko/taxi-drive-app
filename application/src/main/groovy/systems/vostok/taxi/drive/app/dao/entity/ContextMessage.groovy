@@ -20,7 +20,7 @@ import java.time.LocalDateTime
 @ToString(includeNames = true, includeFields = true)
 class ContextMessage {
     @PrimaryKeyColumn(name = 'id', ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-    UUID id = UUID.randomUUID()
+    UUID id
 
     @PrimaryKeyColumn(name = 'operationName', ordinal = 1, type = PrimaryKeyType.CLUSTERED)
     String operationName
@@ -32,9 +32,7 @@ class ContextMessage {
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     LocalDateTime dateIn
 
-    @PrimaryKeyColumn(name = 'entityId', ordinal = 4, type = PrimaryKeyType.CLUSTERED)
     String entityId = 'null'
-
     String state
     String direction
     String requestBody
@@ -49,6 +47,6 @@ class ContextMessage {
     }
 
     void setDirection(OperationDirections operationDirection) {
-        this.state = operationDirection.type
+        this.direction = operationDirection.type
     }
 }

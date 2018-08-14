@@ -69,10 +69,15 @@ class OperationService {
 
     protected OperationResponse rollbackOperation(OperationExecutor executor, OperationContext context) {
         try {
-            context.rolledBackContextMessage = contextMessageRepository.findById(context.operationRequest.id)
+            UUID rolledBackContextMessageId = UUID.fromString(context.operationRequest.body.id)
+            context.rolledBackContextMessage = contextMessageRepository.findOneById(rolledBackContextMessageId)
                     .orElseThrow({ noContextMessageException(context.operationRequest.id) })
 
-            if (context.rolledBackContextMessage.state == SUCCESS.state) {
+            if (context.rolledBackContextMessage.operationName != context.operationRequest.operationName) {
+                throw rollbackOperationNamesException(context)
+            }
+
+            if (context.rolledBackContextMessage.state != SUCCESS.state) {
                 throw contextMessageStateException(context.rolledBackContextMessage.state)
             }
 
@@ -83,8 +88,10 @@ class OperationService {
 
             return createOperationResponse(context, result)
         } catch (Exception e) {
-            context.rolledBackContextMessage.state = ROLLBACK_FAILED
-            contextMessageRepository.save(context.rolledBackContextMessage)
+            if (context.rolledBackContextMessage) {
+                context.rolledBackContextMessage.state = ROLLBACK_FAILED
+                contextMessageRepository.save(context.rolledBackContextMessage)
+            }
 
             throw e
         }
