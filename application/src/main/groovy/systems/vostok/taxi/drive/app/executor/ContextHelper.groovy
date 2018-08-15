@@ -1,6 +1,7 @@
 package systems.vostok.taxi.drive.app.executor
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections
@@ -14,6 +15,8 @@ import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates
 
 @Service
 class ContextHelper {
+    private final static String ANONYMOUS_USER = 'anonymous'
+
     @Autowired
     ContextMessageRepository contextMessageRepository
 
@@ -21,11 +24,11 @@ class ContextHelper {
         ContextMessage contextMessage = new ContextMessage(
                 id: request.id,
                 operationName: request.operationName,
-                owner        : 'test', // TODO: get from security context
-                dateIn       : LocalDateTime.now(),
-                state        : IN_PROCESS,
-                direction    : direction,
-                requestBody  : request.body
+                owner: SecurityContextHolder.getContext().getAuthentication()?.name ?: ANONYMOUS_USER,
+                dateIn: LocalDateTime.now(),
+                state: IN_PROCESS,
+                direction: direction,
+                requestBody: request.body
         )
 
         contextMessageRepository.save(contextMessage)

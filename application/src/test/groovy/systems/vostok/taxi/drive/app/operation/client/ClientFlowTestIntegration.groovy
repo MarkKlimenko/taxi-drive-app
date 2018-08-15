@@ -1,10 +1,15 @@
 package systems.vostok.taxi.drive.app.operation.client
 
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.context.SecurityContext
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.core.context.SecurityContextImpl
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
@@ -25,6 +30,13 @@ class ClientFlowTestIntegration {
 
     @Autowired
     OperationFlowTestUtil operationUtil
+
+    @BeforeAll
+    static void initTest() {
+        SecurityContext context = new SecurityContextImpl()
+        context.setAuthentication(new UsernamePasswordAuthenticationToken('tester', '123456'))
+        SecurityContextHolder.setContext(context)
+    }
 
     @Test
     @DisplayName('Create client')
