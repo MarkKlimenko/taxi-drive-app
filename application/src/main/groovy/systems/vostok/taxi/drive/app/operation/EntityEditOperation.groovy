@@ -1,12 +1,14 @@
 package systems.vostok.taxi.drive.app.operation
 
 import groovy.json.JsonSlurper
+import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import javax.transaction.Transactional
+
+import static systems.vostok.taxi.drive.app.util.ContentTypeConverter.toMap
 
 /*
 enroll
@@ -32,7 +34,7 @@ class EntityEditOperation<T, ID extends Serializable> implements CoreOperation {
     @Override
     @Transactional
     Object enroll(OperationContext context) {
-        T contextEntity = entityRepository.convertToEntityType(context.operationRequest.body)
+        T contextEntity = entityRepository.convertToEntityType(toMap(context.operationRequest.body))
         T persistentEntity = entityRepository.getByEntityId(contextEntity).clone() as T
 
         if (!persistentEntity) {
@@ -40,7 +42,7 @@ class EntityEditOperation<T, ID extends Serializable> implements CoreOperation {
         }
 
         T editedEntity = entityRepository.save(contextEntity)
-        context.contextHelper.setContext(context, [before: persistentEntity, after : editedEntity])
+        context.contextHelper.setContext(context, [before: persistentEntity, after: editedEntity])
         context.contextHelper.setEntityId(context, entityRepository.getEntityId(persistentEntity))
         editedEntity
     }
@@ -55,11 +57,11 @@ class EntityEditOperation<T, ID extends Serializable> implements CoreOperation {
         T contextEntityAfter = parsedContext.after.with(entityRepository.&convertToEntityType)
         T persistentEntity = entityRepository.getByEntityId(contextEntityAfter)
 
-        if(!contextEntityAfter) {
+        if (!contextEntityAfter) {
             throw new OperationExecutionException('Rollback rejected: context entities must not be null')
         }
 
-        if(contextEntityAfter != persistentEntity) {
+        if (contextEntityAfter != persistentEntity) {
             throw new OperationExecutionException('Rollback rejected: entity was modified or removed')
         }
 

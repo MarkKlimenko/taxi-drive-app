@@ -47,7 +47,7 @@
         + Fix Rollback flow
         + Get owner from security context
         * Get rid of operation name in rollback(need for context message construction)
-        - Use slurper inside of operation
+        + Use slurper inside of operation
         
         + Set unique for operation id (problem was in primary key)
         + Get rid of UUID hysteric auto generation (problem was in primary key)

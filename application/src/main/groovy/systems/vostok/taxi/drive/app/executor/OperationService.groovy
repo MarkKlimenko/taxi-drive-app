@@ -7,12 +7,14 @@ import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepository
+import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import javax.annotation.PostConstruct
 
 import static OperationDirections.ENROLL
 import static OperationDirections.ROLLBACK
 import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates.*
+import static systems.vostok.taxi.drive.app.util.ContentTypeConverter.toMap
 import static systems.vostok.taxi.drive.app.util.exception.OperationExecutionException.*
 
 @Service
@@ -59,7 +61,7 @@ class OperationService {
             operationResponse
         } catch (Exception e) {
             contextHelper.setFailed(operationContext)
-            throw new Exception(e)
+            throw new OperationExecutionException(e)
         }
     }
 
@@ -69,7 +71,7 @@ class OperationService {
 
     protected OperationResponse rollbackOperation(OperationExecutor executor, OperationContext context) {
         try {
-            UUID rolledBackContextMessageId = UUID.fromString(context.operationRequest.body.id)
+            UUID rolledBackContextMessageId = UUID.fromString(toMap(context.operationRequest.body).id)
             context.rolledBackContextMessage = contextMessageRepository.findOneById(rolledBackContextMessageId)
                     .orElseThrow({ noContextMessageException(context.operationRequest.id) })
 

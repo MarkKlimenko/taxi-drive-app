@@ -8,6 +8,8 @@ import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import javax.transaction.Transactional
 
+import static systems.vostok.taxi.drive.app.util.ContentTypeConverter.toMap
+
 /*
 enroll
  {
@@ -32,7 +34,7 @@ class EntityDeleteOperation<T, ID extends Serializable> implements CoreOperation
     @Override
     @Transactional
     Object enroll(OperationContext context) {
-        ID targetEntityId = entityRepository.getEntityId(context.operationRequest.body as Map)
+        ID targetEntityId = entityRepository.getEntityId(toMap(context.operationRequest.body))
         T targetEntity = entityRepository.findById(targetEntityId)
                 .orElseThrow({ new OperationExecutionException('Entity with target ID does not exist') })
 

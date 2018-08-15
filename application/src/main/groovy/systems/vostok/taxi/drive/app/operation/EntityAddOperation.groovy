@@ -1,12 +1,14 @@
 package systems.vostok.taxi.drive.app.operation
 
 import groovy.json.JsonSlurper
+import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
-import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import javax.transaction.Transactional
+
+import static systems.vostok.taxi.drive.app.util.ContentTypeConverter.toMap
 
 /*
 enroll
@@ -32,7 +34,7 @@ class EntityAddOperation<T, ID extends Serializable> implements CoreOperation {
     @Override
     @Transactional
     Object enroll(OperationContext context) {
-        T targetEntity = entityRepository.convertToEntityType(context.operationRequest.body)
+        T targetEntity = entityRepository.convertToEntityType(toMap(context.operationRequest.body))
 
         if (entityRepository.getByEntityId(targetEntity)) {
             throw new OperationExecutionException('Entity with target ID already exists')
