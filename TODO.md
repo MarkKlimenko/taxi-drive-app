@@ -34,15 +34,11 @@
         + Subsequent stage fail
  
 - Function flow
-    - Crud entities using operations
+    + Crud entities using operations
         + Clients
             + Implement universal Entity Operations
             + Create feature tests for Client Flow
             + Add transaction support
-        - Rides
-            - Create ride for client(increment client ride count)
-            - Change ride state
-            - Close ride
     - Operation executor
         + Change operation executor workflow
         + Add Operation to Entity relation using entityId
