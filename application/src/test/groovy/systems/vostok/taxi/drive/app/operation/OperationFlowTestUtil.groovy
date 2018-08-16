@@ -21,6 +21,15 @@ class OperationFlowTestUtil {
     @Autowired
     OperationService operationService
 
+    OperationResponse enrollOperation(String operationName, Map body) {
+        OperationRequest operationRequest = new OperationRequest(
+                operationName: operationName,
+                body: body
+        )
+
+        operationService.execute(ENROLL, operationRequest)
+    }
+
     OperationResponse rollbackOperation(CoreOperationNames operationName, OperationResponse response) {
         OperationRequest rollbackRequest = new OperationRequest(
                 operationName: operationName.name,

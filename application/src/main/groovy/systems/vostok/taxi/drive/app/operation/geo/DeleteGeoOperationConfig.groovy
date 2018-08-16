@@ -14,7 +14,7 @@ class DeleteGeoOperationConfig {
     @Bean
     CoreOperation deleteCountry(CountryRepository countryRepository) {
         new EntityDeleteOperation<Country, String>(
-                operationName: DELETE_COUNTRY_OPERATION,
+                operationName: DELETE_COUNTRY_OPERATION.name,
                 entityRepository: countryRepository
         )
     }
@@ -22,7 +22,7 @@ class DeleteGeoOperationConfig {
     @Bean
     CoreOperation deleteState(StateRepository stateRepository) {
         new EntityDeleteOperation<State, String>(
-                operationName: DELETE_STATE_OPERATION,
+                operationName: DELETE_STATE_OPERATION.name,
                 entityRepository: stateRepository
         )
     }
@@ -30,7 +30,7 @@ class DeleteGeoOperationConfig {
     @Bean
     CoreOperation deleteCity(CityRepository cityRepository) {
         new EntityDeleteOperation<City, String>(
-                operationName: DELETE_CITY_OPERATION,
+                operationName: DELETE_CITY_OPERATION.name,
                 entityRepository: cityRepository
         )
     }
@@ -38,7 +38,7 @@ class DeleteGeoOperationConfig {
     @Bean
     CoreOperation deleteDistrict(DistrictRepository districtRepository) {
         new EntityDeleteOperation<District, String>(
-                operationName: DELETE_DISTRICT_OPERATION,
+                operationName: DELETE_DISTRICT_OPERATION.name,
                 entityRepository: districtRepository
         )
     }
@@ -46,7 +46,7 @@ class DeleteGeoOperationConfig {
     @Bean
     CoreOperation deleteStreet(StreetRepository streetRepository) {
         new EntityDeleteOperation<Street, String>(
-                operationName: DELETE_STREET_OPERATION,
+                operationName: DELETE_STREET_OPERATION.name,
                 entityRepository: streetRepository
         )
     }

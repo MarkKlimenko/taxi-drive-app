@@ -1,10 +1,9 @@
 package systems.vostok.taxi.drive.app.operation;
 
-import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames;
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext;
 
 public interface CoreOperation {
-    CoreOperationNames getOperationName();
+    String getOperationName();
 
     String getOperationTimeout();
 

@@ -16,7 +16,7 @@ class ClientOperationConfig {
     @Bean
     CoreOperation addClient(ClientRepository clientRepository) {
         new EntityAddOperation<Country, String>(
-                operationName: ADD_CLIENT_OPERATION,
+                operationName: ADD_CLIENT_OPERATION.name,
                 entityRepository: clientRepository
         )
     }
@@ -24,7 +24,7 @@ class ClientOperationConfig {
     @Bean
     CoreOperation editClient(ClientRepository clientRepository) {
         new EntityEditOperation<Country, String>(
-                operationName: EDIT_CLIENT_OPERATION,
+                operationName: EDIT_CLIENT_OPERATION.name,
                 entityRepository: clientRepository
         )
     }
@@ -32,7 +32,7 @@ class ClientOperationConfig {
     @Bean
     CoreOperation deleteClient(ClientRepository clientRepository) {
         new EntityDeleteOperation<Country, String>(
-                operationName: DELETE_CLIENT_OPERATION,
+                operationName: DELETE_CLIENT_OPERATION.name,
                 entityRepository: clientRepository
         )
     }

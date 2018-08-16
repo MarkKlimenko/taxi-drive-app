@@ -14,7 +14,7 @@ class AddGeoOperationConfig {
     @Bean
     CoreOperation addCountry(CountryRepository countryRepository) {
         new EntityAddOperation<Country, String>(
-                operationName: ADD_COUNTRY_OPERATION,
+                operationName: ADD_COUNTRY_OPERATION.name,
                 entityRepository: countryRepository
         )
     }
@@ -22,7 +22,7 @@ class AddGeoOperationConfig {
     @Bean
     CoreOperation addState(StateRepository stateRepository) {
         new EntityAddOperation<State, String>(
-                operationName: ADD_STATE_OPERATION,
+                operationName: ADD_STATE_OPERATION.name,
                 entityRepository: stateRepository
         )
     }
@@ -30,7 +30,7 @@ class AddGeoOperationConfig {
     @Bean
     CoreOperation addCity(CityRepository cityRepository) {
         new EntityAddOperation<City, String>(
-                operationName: ADD_CITY_OPERATION,
+                operationName: ADD_CITY_OPERATION.name,
                 entityRepository: cityRepository
         )
     }
@@ -38,7 +38,7 @@ class AddGeoOperationConfig {
     @Bean
     CoreOperation addDistrict(DistrictRepository districtRepository) {
         new EntityAddOperation<District, String>(
-                operationName: ADD_DISTRICT_OPERATION,
+                operationName: ADD_DISTRICT_OPERATION.name,
                 entityRepository: districtRepository
         )
     }
@@ -46,7 +46,7 @@ class AddGeoOperationConfig {
     @Bean
     CoreOperation addStreet(StreetRepository streetRepository) {
         new EntityAddOperation<Street, String>(
-                operationName: ADD_STREET_OPERATION,
+                operationName: ADD_STREET_OPERATION.name,
                 entityRepository: streetRepository
         )
     }

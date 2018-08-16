@@ -1,7 +1,6 @@
 package systems.vostok.taxi.drive.app.operation
 
 import groovy.json.JsonSlurper
-import systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.repository.BasicRepository
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
@@ -27,7 +26,7 @@ rollback
 */
 
 class EntityDeleteOperation<T, ID extends Serializable> implements CoreOperation {
-    CoreOperationNames operationName
+    String operationName
     String operationTimeout
     BasicRepository<T, ID> entityRepository
 

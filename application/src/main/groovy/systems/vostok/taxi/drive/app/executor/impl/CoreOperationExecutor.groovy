@@ -27,7 +27,7 @@ class CoreOperationExecutor implements OperationExecutor {
 
     @Override
     Set<String> refreshOperations() {
-        Map<String, CoreOperation> map = operations.collectEntries { [it.operationName.name, it] }
+        Map<String, CoreOperation> map = operations.collectEntries { [it.operationName, it] }
 
         operationNameToOperationMap = Collections.unmodifiableMap(map)
         operationNameToOperationMap.keySet()

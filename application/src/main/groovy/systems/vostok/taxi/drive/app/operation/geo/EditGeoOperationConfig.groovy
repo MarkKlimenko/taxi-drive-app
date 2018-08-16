@@ -14,7 +14,7 @@ class EditGeoOperationConfig {
     @Bean
     CoreOperation editCountry(CountryRepository countryRepository) {
         new EntityEditOperation<Country, String>(
-                operationName: EDIT_COUNTRY_OPERATION,
+                operationName: EDIT_COUNTRY_OPERATION.name,
                 entityRepository: countryRepository
         )
     }
@@ -22,7 +22,7 @@ class EditGeoOperationConfig {
     @Bean
     CoreOperation editState(StateRepository stateRepository) {
         new EntityEditOperation<State, String>(
-                operationName: EDIT_STATE_OPERATION,
+                operationName: EDIT_STATE_OPERATION.name,
                 entityRepository: stateRepository
         )
     }
@@ -30,7 +30,7 @@ class EditGeoOperationConfig {
     @Bean
     CoreOperation editCity(CityRepository cityRepository) {
         new EntityEditOperation<City, String>(
-                operationName: EDIT_CITY_OPERATION,
+                operationName: EDIT_CITY_OPERATION.name,
                 entityRepository: cityRepository
         )
     }
@@ -38,7 +38,7 @@ class EditGeoOperationConfig {
     @Bean
     CoreOperation editDistrict(DistrictRepository districtRepository) {
         new EntityEditOperation<District, String>(
-                operationName: EDIT_DISTRICT_OPERATION,
+                operationName: EDIT_DISTRICT_OPERATION.name,
                 entityRepository: districtRepository
         )
     }
@@ -46,7 +46,7 @@ class EditGeoOperationConfig {
     @Bean
     CoreOperation editStreet(StreetRepository streetRepository) {
         new EntityEditOperation<Street, String>(
-                operationName: EDIT_STREET_OPERATION,
+                operationName: EDIT_STREET_OPERATION.name,
                 entityRepository: streetRepository
         )
     }

@@ -49,6 +49,10 @@ class OperationService {
             OperationExecutor executor = operationToExecutorMap[request.operationName]
             OperationResponse operationResponse = null
 
+            if(!executor) {
+                throw noOperationExecutorException(request.operationName)
+            }
+
             if (direction == ENROLL) {
                 operationResponse = enrollOperation(executor, operationContext)
             } else if (direction == ROLLBACK) {

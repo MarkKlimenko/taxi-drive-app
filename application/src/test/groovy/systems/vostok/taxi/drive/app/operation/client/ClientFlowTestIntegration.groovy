@@ -14,7 +14,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
 import systems.vostok.taxi.drive.app.operation.OperationFlowTestUtil
+import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
+import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertThrows
 import static systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNames.*
 
@@ -109,11 +111,11 @@ class ClientFlowTestIntegration {
         clientUtil.removeAllClients()
         clientUtil.createClient('simple_client')
 
-        assertThrows(
-                Exception.class,
-                { clientUtil.createClient('simple_client') },
-                'Entity with target ID already exists'
+        OperationExecutionException e = assertThrows(
+                OperationExecutionException.class,
+                { clientUtil.createClient('simple_client') }
         )
+        assertEquals('Entity with target ID already exists', e.cause.message)
     }
 
     @Test
@@ -121,11 +123,11 @@ class ClientFlowTestIntegration {
     void deleteNonexistentTest() {
         clientUtil.removeAllClients()
 
-        assertThrows(
-                Exception.class,
-                { clientUtil.deleteClient('simple_client') },
-                'Entity with target ID does not exist'
+        OperationExecutionException e = assertThrows(
+                OperationExecutionException.class,
+                { clientUtil.deleteClient('simple_client') }
         )
+        assertEquals('Entity with target ID does not exist', e.cause.message)
     }
 
     @Test
@@ -136,11 +138,11 @@ class ClientFlowTestIntegration {
         OperationResponse addResponse = clientUtil.createClient('simple_client')
         OperationResponse editResponse = clientUtil.editClient('simple_client_edited')
 
-        assertThrows(
-                Exception.class,
-                { operationUtil.rollbackOperation(ADD_CLIENT_OPERATION, addResponse) },
-                'Rollback rejected: entity was modified or removed'
+        OperationExecutionException e = assertThrows(
+                OperationExecutionException.class,
+                { operationUtil.rollbackOperation(ADD_CLIENT_OPERATION, addResponse) }
         )
+        assertEquals('Rollback rejected: entity was modified or removed', e.cause.message)
 
         clientUtil.checkClient('simple_client_edited', editResponse)
     }
@@ -154,11 +156,11 @@ class ClientFlowTestIntegration {
         OperationResponse editFirstResponse = clientUtil.editClient('simple_client_edited')
         OperationResponse editSecondResponse = clientUtil.editClient('simple_client_edited_2')
 
-        assertThrows(
-                Exception.class,
-                { operationUtil.rollbackOperation(EDIT_CLIENT_OPERATION, editFirstResponse) },
-                'Rollback rejected: entity was modified or removed'
+        OperationExecutionException e = assertThrows(
+                OperationExecutionException.class,
+                { operationUtil.rollbackOperation(EDIT_CLIENT_OPERATION, editFirstResponse) }
         )
+        assertEquals('Rollback rejected: entity was modified or removed', e.cause.message)
 
         clientUtil.checkClient('simple_client_edited_2', editSecondResponse)
     }
@@ -171,11 +173,11 @@ class ClientFlowTestIntegration {
         OperationResponse addResponse = clientUtil.createClient('simple_client')
         clientUtil.deleteClient('simple_client')
 
-        assertThrows(
-                Exception.class,
-                { operationUtil.rollbackOperation(ADD_CLIENT_OPERATION, addResponse) },
-                'Rollback rejected: entity was modified or removed'
+        OperationExecutionException e = assertThrows(
+                OperationExecutionException.class,
+                { operationUtil.rollbackOperation(ADD_CLIENT_OPERATION, addResponse) }
         )
+        assertEquals('Rollback rejected: entity was modified or removed', e.cause.message)
 
         clientUtil.checkClientNonexistence('simple_client')
     }

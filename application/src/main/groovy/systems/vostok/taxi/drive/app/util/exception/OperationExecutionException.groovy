@@ -17,6 +17,10 @@ class OperationExecutionException extends RuntimeException {
         new OperationExecutionException("Unsupported operation direction: { ${direction.type} }")
     }
 
+    static OperationExecutionException noOperationExecutorException(String operationName) {
+        new OperationExecutionException("No operation Executor for target Operation: { ${operationName} }")
+    }
+
     static OperationExecutionException noContextMessageException(UUID contextMessageId) {
         new OperationExecutionException("No such Context message with ID: { ${contextMessageId.toString()} }")
     }
