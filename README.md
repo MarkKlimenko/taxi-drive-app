@@ -1,4 +1,8 @@
+![](https://raw.githubusercontent.com/hurryfox/docs/master/img/hf-logo-m.gif)
+
 # Taxi drive app
+
+[![Build status](https://travis-ci.org/hurryfox/taxi-drive-app.svg?branch=master)](https://travis-ci.org/hurryfox/taxi-drive-app)
 
 
 ## Run application local
