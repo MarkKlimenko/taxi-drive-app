@@ -11,4 +11,7 @@ public interface OperationExecutor {
 
     Object enrollOperation(OperationContext context);
     Object rollbackOperation(OperationContext context);
+
+    Object breakEnrollOperation(OperationContext context);
+    Object breakRollbackOperation(OperationContext context);
 }

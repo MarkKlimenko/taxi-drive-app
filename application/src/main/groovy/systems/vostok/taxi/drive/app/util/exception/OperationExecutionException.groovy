@@ -4,6 +4,10 @@ import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections
 
 class OperationExecutionException extends RuntimeException {
+    OperationExecutionException() {
+        super()
+    }
+
     OperationExecutionException(String message) {
         super(message)
     }

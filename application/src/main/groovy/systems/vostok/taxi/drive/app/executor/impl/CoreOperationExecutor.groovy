@@ -44,4 +44,16 @@ class CoreOperationExecutor implements OperationExecutor {
         operationNameToOperationMap[context.contextMessage.operationName]
                 .rollback(context)
     }
+
+    @Override
+    Object breakEnrollOperation(OperationContext context) {
+        operationNameToOperationMap[context.contextMessage.operationName]
+                .breakEnroll(context)
+    }
+
+    @Override
+    Object breakRollbackOperation(OperationContext context) {
+        operationNameToOperationMap[context.contextMessage.operationName]
+                .breakRollback(context)
+    }
 }

@@ -28,6 +28,8 @@ ext.lib = [
         infinispan_directory_provider      : 'org.infinispan:infinispan-directory-provider:9.0.1.Final',
         spring_orm                         : 'org.springframework:spring-orm:5.0.8.RELEASE',
 
+        spring_cloud_hystrix               : "org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${springCloudVersion}",
+
         tda_district_mapper                : 'systems.vostok.tda:tda-district-mapper:0.1.6',
         tda_excel_parser                   : 'systems.vostok.tda:tda-excel-parser:0.1.6',
 

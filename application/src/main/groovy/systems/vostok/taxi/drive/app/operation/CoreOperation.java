@@ -1,6 +1,7 @@
 package systems.vostok.taxi.drive.app.operation;
 
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext;
+import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException;
 
 public interface CoreOperation {
     String getOperationName();
@@ -12,11 +13,10 @@ public interface CoreOperation {
     Object rollback(OperationContext context);
 
     default Object breakEnroll(OperationContext context) {
-        return null;
+        throw new OperationExecutionException();
     }
 
     default Object breakRollback(OperationContext context) {
-        return null;
-
+        throw new OperationExecutionException();
     }
 }
