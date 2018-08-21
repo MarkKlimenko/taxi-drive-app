@@ -80,8 +80,6 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
         createSearchQuery(parameters).getResultList()
     }
 
-    // TODO: Create unit tests (check queryString & namedParameters)
-    // TODO: Create state/integration tests
     private Query createCriteriaQuery(List<QueryFilter> filter, List<QuerySorter> sorter, QueryPagination pagination) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder()
         CriteriaQuery<T> query = builder.createQuery(entityInformation.javaType)
@@ -131,7 +129,6 @@ class CustomBasicRepository<T, ID extends Serializable> extends SimpleJpaReposit
                 .with(addPageable)
     }
 
-    // TODO: Create extended search implementation
     private Query createSearchQuery(SearchParameters parameters) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager)
 

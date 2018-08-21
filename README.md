@@ -11,52 +11,149 @@ Management solutions for taxi business needs
 
 
 ## Run application local
-**Execute 'application db' migrations**
+Start docker services
+```
+    docker-compose up
+```
+
+Execute 'application db' migrations
 ```
     gradlew :migrations-db-application:flywayMigrate
 ```
 
-**Execute 'support db' migrations**
+Execute 'support db' migrations
 ```
     gradlew :migrations-db-support:migratorExecute
 ```
 
-**Start spring boot application via spring boot plugin or gradle**
+Start spring boot application via **spring boot plugin** or gradle
 ```
-    Using Spring Boot plugin
-```
-_OR_
-```
-     Using gradle command
      gradlew :application:bootRun
 ```
 
+## Features
+### Operation executor 
+[Diagram](https://raw.githubusercontent.com/hurryfox/docs/master/img/tech.gif)
+- Core operation executor
+- Groovy executor(scripts loaded from DB) TBD
+- Spring function executor TBD
+#### Usage 
+Execute operation by name in **sync** mode (POST request - api/operation/enroll). Operation will be executed internally using the same service.
+```
+{
+    "operationName": "OPERATION_NAME",
+    "body": {:}
+ }
+```
+Execute operation by name in **async** mode (POST request - api/operation/enroll). Operation will be executed using Kafka stream and any idle service.
+```
+{
+    "operationName": "OPERATION_NAME",
+    "async": true,
+    "body": {:}
+ }
+```
+Rollback operation execution (POST request - api/operation/rollback)
+```
+{
+    "operationName": "OPERATION_NAME",
+    "body": {
+        "id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"
+    }
+}
+```
 
-## Prepare environment
+### Query filters and sorters
+Criteria API
+#### Filters
+```
+?filter=[
+    {"parameter" : "ridesAmount", "operator" : ">", "value" : 5}, 
+    {"parameter" : "firstName", "operator" : "LIKE", "value" : "%Mon%"}
+]
+```
 
-**Launch docker containers**
-<pre>
-    docker run --restart always -d --name postgres -p 5432:5432 postgres
-</pre>
+Supported operators:
+```
+    '='          
+    '!='         
+    '>'          
+    '>='         
+    '<'          
+    '<='         
+    'IS NULL'    
+    'IS NOT NULL'
+    'LIKE'   
+```    
 
-**Execute DB migrations**
-- Execute Postgres migrations (info in module ./db)
-- Execute Cassandra migrations (info in module ./db-support)
+#### Sorters
+```
+?sorter=[
+    {"parameter" : "ridesAmount", "order" : "ASC"},
+    {"parameter" : "firstName", "order" : "DESC"},
+]
+```
+
+Supported orders:
+```
+    'ASC'
+    'DESC'
+```
+
+**Examples**
+```
+http://localhost:8080/api/client
+    ?filter=[
+                {"parameter" : "ridesAmount", "operator" : ">", "value" : 5}, 
+                {"parameter" : "firstName", "operator" : "LIKE", "value" : "%a%"}
+            ]
+    &sorter=[
+                {"parameter" : "ridesAmount", "order" : "DESC"}
+            ]
+```
+
+### Pagination
+```
+    ?pagination={"firstResult": 0, "maxResults": 50} 
+```
+
+**Examples**
+```
+http://localhost:8087/api/client
+        ?pagination={"firstResult": 0, "maxResults": 50} 
+```
+
+### Get row num
+```
+    api/{entityType}/count
+```
+
+### Extended search
+Apache Lucene
+ 
+**Examples**
+```
+http://localhost:8087/api/address/search
+        ?parameters={
+            "fields": ["city", "street", "building"], 
+            "request": "Vladivostok Svetlanskaya"
+        }
+```
 
 ## Useful information 
 ### Test Ride Workflow
 **Create client**
-<pre>
+```
 {
 	"login":"+79147654321",
 	"firstName":"Polly",
 	"lastName":"Crocodile",
 	"ridesAmount": 5
 }
-</pre>
+```
 
 **Create address from**
-<pre>
+```
 {
 		"country":"Russia",
 		"state":"Primorskiy",
@@ -64,10 +161,10 @@ _OR_
 		"street":"Svetlanskaya",
 		"building":"64"
 }
-</pre>
+```
 
 **Create address to**
-<pre>
+```
 {
 		"country":"Russia",
 		"state":"Primorskiy",
@@ -75,10 +172,10 @@ _OR_
 		"street":"Lugovaya",
 		"building":"3"
 }
-</pre>
+```
 
 **Create ride**
-<pre>
+```
 {
 	"client":"+79147654321",
 	"fromAddress": -13275131,
@@ -87,11 +184,11 @@ _OR_
 	"rideIn": "2017-11-13T12:45:30",
 	"menInCar": 2
 }
-</pre>
+```
 
 ### Check ride price
 **Check ctc price**
-<pre>
+```
 {
 	"client":"+79147654321",
 	"rawFromAddress": {
@@ -103,10 +200,10 @@ _OR_
 		
 	}
 }
-</pre>
+```
 
 **Check dtd price**
-<pre>
+```
 {
 	"client":"+79147654320",
 	"rawFromAddress": {
@@ -120,76 +217,5 @@ _OR_
 		"building": "125"
 	}
 }
-</pre>
+```
 
-## Query filters and sorters
-### Filters
-<pre>
-filter=[
-    {"parameter" : "ridesAmount", "operator" : ">", "value" : 5}, 
-    {"parameter" : "firstName", "operator" : "LIKE", "value" : "%Mon%"}
-]
-</pre>
-
-**Supported operators:**
-- '='          
-- '!='         
-- '>'          
-- '>='         
-- '<'          
-- '<='         
-- 'IS NULL'    
-- 'IS NOT NULL'
-- 'LIKE'       
-
-### Sorters
-<pre>
-sorter=[
-    {"parameter" : "ridesAmount", "order" : "ASC"},
-    {"parameter" : "firstName", "order" : "DESC"},
-]
-</pre>
-
-**Supported orders:**
-- 'ASC'
-- 'DESC'
-
-### Examples
-<pre>
-http://localhost:8087/api/client
-    ?filter=[
-                {"parameter" : "ridesAmount", "operator" : ">", "value" : 5}, 
-                {"parameter" : "firstName", "operator" : "LIKE", "value" : "%a%"}
-            ]
-    &sorter=[
-                {"parameter" : "ridesAmount", "order" : "DESC"}
-            ]
-</pre>
-
-## Pagination
-<pre>
-    pagination={"firstResult": 0, "maxResults": 50} 
-</pre>
-
-### Examples
-<pre>
-http://localhost:8087/api/client
-        ?pagination={"firstResult": 0, "maxResults": 50} 
-</pre>
-
-**Get row num**
-<pre>
-    api/{entityType}/count
-</pre>
-
-## Extended search
-TBD
- 
-### Examples
-<pre>
-http://localhost:8087/api/address/search
-        ?parameters={
-            "fields": ["city", "street", "building"], 
-            "request": "Vladivostok Svetlanskaya"
-        }
-</pre>
