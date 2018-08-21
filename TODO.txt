@@ -68,7 +68,8 @@
         - Pending rides (Akka for changing status to active)   
      
     
-- Create good readme and TODO list  
+- Create good readme and TODO list
+    - Create Operation Executor diagram
 
 - Implement Swagger for api
 
