@@ -4,6 +4,10 @@
 
 [![Build status](https://travis-ci.org/hurryfox/taxi-drive-app.svg?branch=master)](https://travis-ci.org/hurryfox/taxi-drive-app)
 
+Management solutions for taxi business needs  
+
+![](https://raw.githubusercontent.com/hurryfox/docs/master/img/tech.gif)
+
 
 ## Run application local
 **Execute 'application db' migrations**
