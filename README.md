@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/hurryfox/docs/master/img/banner.gif)
+![](https://raw.githubusercontent.com/hurryfox/docs/master/img/header.gif)
 
 # Taxi drive app
 
