@@ -70,5 +70,7 @@
     
 - Create good readme and TODO list  
 
+- Implement Swagger for api
+
 # Minor 
 - Sonar for groovy 
