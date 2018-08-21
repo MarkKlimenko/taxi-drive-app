@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/hurryfox/docs/master/img/hf-logo-m.gif)
+![](https://raw.githubusercontent.com/hurryfox/docs/master/img/banner.gif)
 
 # Taxi drive app
 
@@ -6,6 +6,7 @@
 
 Management solutions for taxi business needs  
 
+## Used technologies
 ![](https://raw.githubusercontent.com/hurryfox/docs/master/img/tech.gif)
 
 
