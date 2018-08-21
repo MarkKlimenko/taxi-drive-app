@@ -9,6 +9,7 @@ Management solutions for taxi business needs
 ## Used technologies
 ![](https://raw.githubusercontent.com/hurryfox/docs/master/img/tech.gif)
 
+- - - -
 
 ## Run application local
 Start docker services
@@ -30,6 +31,8 @@ Start spring boot application via **spring boot plugin** or gradle
 ```
      gradlew :application:bootRun
 ```
+
+- - - -
 
 ## Features
 ### Operation executor 
@@ -139,6 +142,8 @@ http://localhost:8087/api/address/search
             "request": "Vladivostok Svetlanskaya"
         }
 ```
+
+- - - -
 
 ## Useful information 
 ### Test Ride Workflow
