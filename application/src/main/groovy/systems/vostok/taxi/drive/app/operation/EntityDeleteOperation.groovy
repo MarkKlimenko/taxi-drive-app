@@ -13,12 +13,14 @@ import static systems.vostok.taxi.drive.app.util.ContentTypeConverter.toMap
 enroll
  {
     "operationName": "OPERATION_NAME",
+    "direction": "enroll",
     "body": {:}
  }
 
 rollback
  {
-     "operationName": "OPERATION_NAME",
+    "operationName": "OPERATION_NAME",
+    "direction": "rollback",
     "body": {
         "id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"
     }

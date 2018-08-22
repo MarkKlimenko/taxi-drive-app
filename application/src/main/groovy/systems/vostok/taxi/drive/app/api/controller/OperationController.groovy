@@ -22,8 +22,7 @@ class OperationController {
     OperationService operationService
 
     @POST
-    @Path('{direction}')
-    OperationResponse execute(@PathParam('direction') String directionType, OperationRequest operationRequest) {
-        operationService.execute(OperationDirections.get(directionType), operationRequest)
+    OperationResponse execute(OperationRequest operationRequest) {
+        operationService.execute(operationRequest)
     }
 }

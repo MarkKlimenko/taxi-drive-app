@@ -24,18 +24,20 @@ class OperationFlowTestUtil {
     OperationResponse enrollOperation(String operationName, Map body) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: operationName,
+                direction: ENROLL,
                 body: body
         )
 
-        operationService.execute(ENROLL, operationRequest)
+        operationService.execute(operationRequest)
     }
 
     OperationResponse rollbackOperation(CoreOperationNames operationName, OperationResponse response) {
         OperationRequest rollbackRequest = new OperationRequest(
                 operationName: operationName.name,
+                direction: ROLLBACK,
                 body: [id: response.id.toString()]
         )
 
-        operationService.execute(ROLLBACK, rollbackRequest)
+        operationService.execute(rollbackRequest)
     }
 }

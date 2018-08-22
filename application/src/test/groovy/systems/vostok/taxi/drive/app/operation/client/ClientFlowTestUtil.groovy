@@ -29,28 +29,31 @@ class ClientFlowTestUtil {
     OperationResponse createClient(String detasetName) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: ADD_CLIENT_OPERATION.name,
+                direction: ENROLL,
                 body: getJsonDataset('client', detasetName)
         )
 
-        operationService.execute(ENROLL, operationRequest)
+        operationService.execute(operationRequest)
     }
 
     OperationResponse editClient(String detasetName) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: EDIT_CLIENT_OPERATION.name,
+                direction: ENROLL,
                 body: getJsonDataset('client', detasetName)
         )
 
-        operationService.execute(ENROLL, operationRequest)
+        operationService.execute(operationRequest)
     }
 
     OperationResponse deleteClient(String detasetName) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: DELETE_CLIENT_OPERATION.name,
+                direction: ENROLL,
                 body: getJsonDataset('client', detasetName)
         )
 
-        operationService.execute(ENROLL, operationRequest)
+        operationService.execute(operationRequest)
     }
 
     void checkClient(String detasetName, OperationResponse response) {

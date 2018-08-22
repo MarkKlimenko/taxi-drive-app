@@ -40,23 +40,16 @@ class OperationService {
         }.collectEntries()
     }
 
-    OperationResponse execute(OperationDirections direction, OperationRequest request) {
-        OperationContext operationContext = createOperationContext(direction, request)
+    OperationResponse execute(OperationRequest request) {
+        OperationContext operationContext = createOperationContext(request)
 
         try {
-            OperationExecutor executor = operationToExecutorMap[request.operationName]
             OperationResponse operationResponse = null
 
-            if (!executor) {
-                throw noOperationExecutorException(request.operationName)
-            }
-
-            if (direction == ENROLL) {
-                operationResponse = operationManager.enrollOperation(executor, operationContext)
-            } else if (direction == ROLLBACK) {
-                operationResponse = operationManager.rollbackOperation(executor, operationContext)
+            if (request.async) {
+                operationResponse = executeAsync(operationContext)
             } else {
-                throw unsupportedOperationDirectionException(direction)
+                operationResponse = executeSync(operationContext)
             }
 
             contextHelper.setSuccess(operationContext)
@@ -67,11 +60,32 @@ class OperationService {
         }
     }
 
-    protected OperationContext createOperationContext(OperationDirections direction, OperationRequest request) {
+    protected OperationContext createOperationContext(OperationRequest request) {
         new OperationContext(
                 contextHelper: contextHelper,
                 operationRequest: request,
-                contextMessage: contextHelper.createContextMessage(direction, request)
+                direction: request.direction,
+                contextMessage: contextHelper.createContextMessage(request.direction, request)
         )
+    }
+
+    OperationResponse executeSync (OperationContext operationContext) {
+        OperationExecutor executor = operationToExecutorMap[operationContext.operationRequest.operationName]
+
+        if (!executor) {
+            throw noOperationExecutorException(operationContext.operationRequest.operationName)
+        }
+
+        if (operationContext.direction == ENROLL) {
+            operationManager.enrollOperation(executor, operationContext)
+        } else if (operationContext.direction == ROLLBACK) {
+            operationManager.rollbackOperation(executor, operationContext)
+        } else {
+            throw unsupportedOperationDirectionException(operationContext.direction)
+        }
+    }
+
+    OperationResponse executeAsync (OperationContext operationContext) {
+        null
     }
 }

@@ -41,25 +41,28 @@ Start spring boot application via **spring boot plugin** or gradle
 - Groovy executor(scripts loaded from DB) TBD
 - Spring function executor TBD
 #### Usage 
-Execute operation by name in **sync** mode (POST request - api/operation/enroll). Operation will be executed internally using the same service.
+Execute operation by name in **sync** mode (POST request - api/operation). Operation will be executed internally using the same service.
 ```
 {
     "operationName": "OPERATION_NAME",
+    "direction": "enroll",
     "body": {:}
  }
 ```
-Execute operation by name in **async** mode (POST request - api/operation/enroll). Operation will be executed using Kafka stream and any idle service.
+Execute operation by name in **async** mode (POST request - api/operation). Operation will be executed using Kafka stream and any idle service.
 ```
 {
     "operationName": "OPERATION_NAME",
+    "direction": "enroll",    
     "async": true,
     "body": {:}
  }
 ```
-Rollback operation execution (POST request - api/operation/rollback)
+Rollback operation execution (POST request - api/operation)
 ```
 {
     "operationName": "OPERATION_NAME",
+    "direction": "rollback",
     "body": {
         "id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"
     }
