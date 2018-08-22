@@ -1,9 +1,11 @@
 {"namespace": "systems.vostok.taxi.drive.app.operation",
   "type": "record",  "name": "OperationRequest",
     "fields": [
-        {"name": "firstName", "type": "string"},
-        {"name": "lastName", "type": "string"},
-        {"name": "age",  "type": "int"},
-        {"name": "phoneNumber",  "type": "string"}
+        {"name": "id", "type": "string"},
+        {"name": "operationName", "type": "string"},
+        {"name": "owner",  "type": ["null", "string"]},
+        {"name": "direction",  "type": "OperationDirection"},
+        {"name": "async",  "type": "boolean"},
+        {"name": "body",  "type": "bytes"}
     ]
 }

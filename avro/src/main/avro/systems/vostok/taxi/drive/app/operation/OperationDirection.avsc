@@ -1,0 +1,4 @@
+{"namespace": "systems.vostok.taxi.drive.app.operation",
+  "type": "enum",  "name": "OperationDirection",
+    "symbols": ["enroll", "rollback"]
+}
