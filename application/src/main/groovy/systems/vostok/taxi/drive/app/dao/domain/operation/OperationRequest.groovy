@@ -2,7 +2,12 @@ package systems.vostok.taxi.drive.app.dao.domain.operation
 
 import groovy.transform.Canonical
 
+/**
+ * Used only in operation controller
+ */
+
 @Canonical
+@Deprecated
 class OperationRequest {
     UUID id = UUID.randomUUID()
     String operationName

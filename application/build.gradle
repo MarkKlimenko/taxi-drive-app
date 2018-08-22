@@ -26,8 +26,9 @@ jar {
 }
 
 dependencies {
-    compile lib.groovy_all
+    compile project(':avro')
 
+    compile lib.groovy_all
     compile lib.spring_boot_configuration_processor
     compile lib.spring_cloud_hystrix
 

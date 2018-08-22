@@ -86,6 +86,8 @@ class OperationService {
     }
 
     OperationResponse executeAsync (OperationContext operationContext) {
+        systems.vostok.taxi.drive.app.operation.OperationRequest.newBuilder()
+
         null
     }
 }

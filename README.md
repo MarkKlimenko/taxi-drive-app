@@ -27,6 +27,11 @@ Execute 'support db' migrations
     gradlew :migrations-db-support:migratorExecute
 ```
 
+Build Avro classes
+```
+    gradlew :avro:build
+```
+
 Start spring boot application via **spring boot plugin** or gradle
 ```
      gradlew :application:bootRun

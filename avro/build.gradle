@@ -1,0 +1,20 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.commercehub.gradle.plugin:gradle-avro-plugin:0.14.2'
+    }
+}
+apply plugin: 'com.commercehub.gradle.plugin.avro'
+
+dependencies {
+    compile lib.avro
+}
+
+avro {
+    createSetters = false
+    fieldVisibility = 'PRIVATE'
+}
+
+

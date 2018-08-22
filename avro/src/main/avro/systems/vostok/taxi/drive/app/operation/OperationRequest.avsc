@@ -1,0 +1,9 @@
+{"namespace": "systems.vostok.taxi.drive.app.operation",
+  "type": "record",  "name": "OperationRequest",
+    "fields": [
+        {"name": "firstName", "type": "string"},
+        {"name": "lastName", "type": "string"},
+        {"name": "age",  "type": "int"},
+        {"name": "phoneNumber",  "type": "string"}
+    ]
+}

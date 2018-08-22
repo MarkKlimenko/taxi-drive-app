@@ -33,6 +33,8 @@ ext.lib = [
         tda_district_mapper                : 'systems.vostok.tda:tda-district-mapper:0.1.6',
         tda_excel_parser                   : 'systems.vostok.tda:tda-excel-parser:0.1.6',
 
+        avro                               : 'org.apache.avro:avro:1.8.2',
+
         junit_jupiter_api                  : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
         junit_jupiter_engine               : "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
         junit_jupiter_params               : "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}",

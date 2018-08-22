@@ -9,6 +9,9 @@
 /application/indexes/
 /application/application/
 
+/avro/build/
+/avro/out/
+
 /migrations-db-application/build/
 /migrations-db-application/out/
 
