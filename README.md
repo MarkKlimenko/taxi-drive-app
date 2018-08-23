@@ -68,9 +68,7 @@ Rollback operation execution (POST request - api/operation)
 {
     "operationName": "OPERATION_NAME",
     "direction": "rollback",
-    "body": {
-        "id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"
-    }
+    "body": "Json payload({"id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"})"
 }
 ```
 
