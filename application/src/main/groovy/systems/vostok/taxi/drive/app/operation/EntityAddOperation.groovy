@@ -22,7 +22,7 @@ rollback
     "operationName": "OPERATION_NAME",
     "direction": "rollback",
     "body": {
-        "id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"
+        "id" : "Json payload({"id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"})"
     }
  }
 */
