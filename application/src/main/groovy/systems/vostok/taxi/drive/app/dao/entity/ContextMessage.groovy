@@ -8,8 +8,8 @@ import org.springframework.data.cassandra.core.cql.PrimaryKeyType
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn
 import org.springframework.data.cassandra.core.mapping.Table
 import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
-import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates
+import systems.vostok.taxi.drive.app.operation.OperationDirection
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
@@ -46,7 +46,7 @@ class ContextMessage {
         this.state = operationState.state
     }
 
-    void setDirection(OperationDirections operationDirection) {
-        this.direction = operationDirection.type
+    void setDirection(OperationDirection operationDirection) {
+        this.direction = operationDirection.name()
     }
 }

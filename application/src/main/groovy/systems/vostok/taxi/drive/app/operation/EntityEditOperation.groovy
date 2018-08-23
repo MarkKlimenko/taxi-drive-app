@@ -14,7 +14,7 @@ enroll
  {
     "operationName": "OPERATION_NAME",
     "direction": "enroll",
-    "body": {:}
+    "body": "Json payload(Map, List, String...)"
  }
 
 rollback

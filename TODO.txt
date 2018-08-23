@@ -55,7 +55,7 @@
         - Add circuit breaker
             + First implementation(10000ms for all operations)
             - Custom timeout for each operation
-        - Use OperationRequest/Response with Avro  
+        + OperationRequest per Avro
         - Add async operation flow using Kafka
     - Implement rate flow
         - Load rates using operation

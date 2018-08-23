@@ -1,7 +1,7 @@
 package systems.vostok.taxi.drive.app.util.exception
 
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
-import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections
+import systems.vostok.taxi.drive.app.operation.OperationDirection
 
 class OperationExecutionException extends RuntimeException {
     OperationExecutionException() {
@@ -17,8 +17,8 @@ class OperationExecutionException extends RuntimeException {
     }
 
 
-    static OperationExecutionException unsupportedOperationDirectionException(OperationDirections direction) {
-        new OperationExecutionException("Unsupported operation direction: { ${direction.type} }")
+    static OperationExecutionException unsupportedOperationDirectionException(OperationDirection direction) {
+        new OperationExecutionException("Unsupported operation direction: { ${direction.name()} }")
     }
 
     static OperationExecutionException noOperationExecutorException(String operationName) {

@@ -3,15 +3,14 @@ package systems.vostok.taxi.drive.app.executor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
-import systems.vostok.taxi.drive.app.dao.domain.operation.OperationDirections
-import systems.vostok.taxi.drive.app.dao.domain.operation.OperationRequest
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
+import systems.vostok.taxi.drive.app.operation.OperationRequest
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import javax.annotation.PostConstruct
 
-import static OperationDirections.ENROLL
-import static OperationDirections.ROLLBACK
+import static systems.vostok.taxi.drive.app.operation.OperationDirection.enroll
+import static systems.vostok.taxi.drive.app.operation.OperationDirection.rollback
 import static systems.vostok.taxi.drive.app.util.exception.OperationExecutionException.noOperationExecutorException
 import static systems.vostok.taxi.drive.app.util.exception.OperationExecutionException.unsupportedOperationDirectionException
 
@@ -41,7 +40,7 @@ class OperationService {
     }
 
     OperationResponse execute(OperationRequest request) {
-        OperationContext operationContext = createOperationContext(request)
+        OperationContext operationContext = createPrimaryOperationContext(request)
 
         try {
             OperationResponse operationResponse = null
@@ -60,7 +59,7 @@ class OperationService {
         }
     }
 
-    protected OperationContext createOperationContext(OperationRequest request) {
+    protected OperationContext createPrimaryOperationContext(OperationRequest request) {
         new OperationContext(
                 contextHelper: contextHelper,
                 operationRequest: request,
@@ -76,9 +75,9 @@ class OperationService {
             throw noOperationExecutorException(operationContext.operationRequest.operationName)
         }
 
-        if (operationContext.direction == ENROLL) {
+        if (operationContext.direction == enroll) {
             operationManager.enrollOperation(executor, operationContext)
-        } else if (operationContext.direction == ROLLBACK) {
+        } else if (operationContext.direction == rollback) {
             operationManager.rollbackOperation(executor, operationContext)
         } else {
             throw unsupportedOperationDirectionException(operationContext.direction)
@@ -86,8 +85,6 @@ class OperationService {
     }
 
     OperationResponse executeAsync (OperationContext operationContext) {
-        systems.vostok.taxi.drive.app.operation.OperationRequest.newBuilder()
-
         null
     }
 }

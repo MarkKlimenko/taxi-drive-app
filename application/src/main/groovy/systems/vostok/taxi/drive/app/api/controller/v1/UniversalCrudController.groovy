@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.api.controller
+package systems.vostok.taxi.drive.app.api.controller.v1
 
 import org.springframework.beans.factory.annotation.Autowired
 import systems.vostok.taxi.drive.app.dao.repository.UniversalCrudRepository
@@ -10,7 +10,7 @@ import systems.vostok.taxi.drive.app.dao.domain.query.SearchParameters
 import javax.validation.Valid
 import javax.ws.rs.*
 
-import static systems.vostok.taxi.drive.app.util.constant.MediaType.APPLICATION_JSON
+import static systems.vostok.taxi.drive.app.util.constant.CustomMediaType.APPLICATION_JSON
 
 @Path('api')
 @Produces(APPLICATION_JSON)

@@ -1,46 +1,73 @@
 package systems.vostok.taxi.drive.app.api.controller
 
-import org.apache.catalina.core.ApplicationContext
+import groovy.json.JsonOutput
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import org.springframework.web.client.RestTemplate
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
+import systems.vostok.taxi.drive.app.operation.OperationDirection
+import systems.vostok.taxi.drive.app.operation.OperationRequest
 
 import static org.junit.jupiter.api.Assertions.assertEquals
-import static org.junit.jupiter.api.Assertions.assertTrue
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext
 @DisplayName('Operation controller test')
 class OperationControllerTestIntegration {
     @Autowired
-    private ApplicationContext context
-
-    private TestRestTemplate restTemplate = new TestRestTemplate()
+    TestRestTemplate restTemplate
 
     @Test
     @DisplayName('Execute operation with JSON operationRequest')
     void jsonPayloadOperationTest() {
-        ResponseEntity<String> entity = restTemplate.getForEntity("http://localhost:"
-                + context.getEmbeddedServletContainer().getPort() + "/hello", String.class);
+        HttpHeaders headers = new HttpHeaders()
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8)
 
+        Map operationRequest = [
+                operationName: 'CORE_SIMPLE_OPERATION',
+                direction    : OperationDirection.enroll,
+                body         : JsonOutput.toJson([sum: 25])
+        ]
 
-        OperationResponse or = operationUtil.enrollOperation('CORE_TIMEOUT_OPERATION', [:])
-        assertTrue(or.body instanceof BigDecimal)
-        assertEquals(new BigDecimal(5), or.body)
+        ResponseEntity<OperationResponse> response = restTemplate.postForEntity(
+                '/api/operation',
+                new HttpEntity<>(operationRequest, headers),
+                OperationResponse.class
+        )
+
+        assertEquals(125, response.body.body)
     }
 
     @Test
     @DisplayName('Execute operation with byte operationRequest')
     void bytePayloadOperationTest() {
-        OperationResponse or = operationUtil.enrollOperation('CORE_TIMEOUT_OPERATION', [:])
-        assertTrue(or.body instanceof BigDecimal)
-        assertEquals(new BigDecimal(5), or.body)
+        HttpHeaders headers = new HttpHeaders()
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM)
+
+        OperationRequest or = new OperationRequest(
+                id: UUID.randomUUID().toString(),
+                operationName: 'CORE_SIMPLE_OPERATION',
+                direction: OperationDirection.valueOf('enroll' as String),
+                async: false,
+                body: JsonOutput.toJson([sum: 25])
+        )
+
+        ResponseEntity<OperationResponse> response = restTemplate.postForEntity(
+                '/api/v2/operation',
+                new HttpEntity<>(or.toByteBuffer().array(), headers),
+                OperationResponse.class
+        )
+
+        assertEquals(125, response.body.body)
     }
 }

@@ -37,7 +37,7 @@ class OperationManager {
         try {
             UUID rolledBackContextMessageId = UUID.fromString(toMap(context.operationRequest.body).id)
             context.rolledBackContextMessage = contextMessageRepository.findOneById(rolledBackContextMessageId)
-                    .orElseThrow({ noContextMessageException(context.operationRequest.id) })
+                    .orElseThrow({ noContextMessageException(rolledBackContextMessageId) })
 
             if (context.rolledBackContextMessage.operationName != context.operationRequest.operationName) {
                 throw rollbackOperationNamesException(context)
@@ -65,10 +65,10 @@ class OperationManager {
 
     protected OperationResponse createOperationResponse(OperationContext context, Object result) {
         new OperationResponse(
-                id: context.operationRequest.id,
+                id: context.contextMessage.id,
                 operationName: context.operationRequest.operationName,
                 state: context.contextMessage.state,
-                owner: context.operationRequest.owner,
+                owner: context.contextMessage.owner,
                 body: result
         )
     }
