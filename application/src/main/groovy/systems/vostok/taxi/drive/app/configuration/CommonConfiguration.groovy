@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration
 import systems.vostok.tda.service.DistrictMapperService
 
 @Configuration
-@EnableCaching
 @EnableConfigurationProperties
 @EnableCircuitBreaker
 class CommonConfiguration {

@@ -22,8 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@DirtiesContext
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName('Operation controller test')
 class OperationControllerTestIntegration {
     @Autowired
