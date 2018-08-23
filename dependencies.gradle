@@ -24,7 +24,7 @@ ext.lib = [
         hibernate_entitymanager            : 'org.hibernate:hibernate-entitymanager:5.2.12.Final',
         hibernate_search_orm               : 'org.hibernate:hibernate-search-orm:5.9.1.Final',
         hibernate_validator                : 'org.hibernate.validator:hibernate-validator:6.0.9.Final',
-        ehcache                            : 'net.sf.ehcache:ehcache:2.10.4',
+        ehcache                            : 'org.hibernate:hibernate-ehcache:5.2.12.Final',
         infinispan_directory_provider      : 'org.infinispan:infinispan-directory-provider:9.0.1.Final',
         spring_orm                         : 'org.springframework:spring-orm:5.0.8.RELEASE',
 
