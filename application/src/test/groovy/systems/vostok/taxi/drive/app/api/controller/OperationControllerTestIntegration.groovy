@@ -3,6 +3,7 @@ package systems.vostok.taxi.drive.app.api.controller
 import groovy.json.JsonOutput
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName('Operation controller test')
 class OperationControllerTestIntegration {
     @Autowired
