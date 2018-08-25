@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
+import systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates
 import systems.vostok.taxi.drive.app.operation.OperationDirection
 import systems.vostok.taxi.drive.app.operation.OperationRequest
 import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
@@ -54,34 +55,9 @@ class ContextHelper {
         contextMessageRepository.save(contextMessage)
     }
 
-    //TODO: Merge in one
-    OperationContext setSuccess(OperationContext operationContext) {
+    OperationContext setState(OperationContext operationContext, OperationStates state) {
         operationContext.contextMessage
-                .with { it.state = SUCCESS; it }
-                .with(contextMessageRepository.&save)
-
-        operationContext
-    }
-
-    OperationContext setInProcess(OperationContext operationContext) {
-        operationContext.contextMessage
-                .with { it.state = IN_PROCESS; it }
-                .with(contextMessageRepository.&save)
-
-        operationContext
-    }
-
-    OperationContext setPending(OperationContext operationContext) {
-        operationContext.contextMessage
-                .with { it.state = PENDING; it }
-                .with(contextMessageRepository.&save)
-
-        operationContext
-    }
-
-    OperationContext setFailed(OperationContext operationContext) {
-        operationContext.contextMessage
-                .with { it.state = FAILED; it }
+                .with { it.state = state; it }
                 .with(contextMessageRepository.&save)
 
         operationContext

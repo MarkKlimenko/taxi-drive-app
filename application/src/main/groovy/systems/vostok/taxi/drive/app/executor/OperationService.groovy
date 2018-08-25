@@ -11,6 +11,10 @@ import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import javax.annotation.PostConstruct
 
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates.FAILED
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates.IN_PROCESS
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates.PENDING
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates.SUCCESS
 import static systems.vostok.taxi.drive.app.operation.OperationDirection.enroll
 import static systems.vostok.taxi.drive.app.operation.OperationDirection.rollback
 import static systems.vostok.taxi.drive.app.util.exception.OperationExecutionException.noOperationExecutorException
@@ -57,7 +61,7 @@ class OperationService {
                 executeSync(operationContext)
             }
         } catch (Exception e) {
-            contextHelper.setFailed(operationContext)
+            contextHelper.setState(operationContext, FAILED)
             throw new OperationExecutionException(e)
         }
     }
@@ -70,7 +74,7 @@ class OperationService {
             throw noOperationExecutorException(operationContext.operationRequest.operationName)
         }
 
-        contextHelper.setInProcess(operationContext)
+        contextHelper.setState(operationContext, IN_PROCESS)
 
         if (operationContext.direction == enroll) {
             operationResponse = operationManager.enrollOperation(executor, operationContext)
@@ -80,7 +84,7 @@ class OperationService {
             throw unsupportedOperationDirectionException(operationContext.direction)
         }
 
-        contextHelper.setSuccess(operationContext)
+        contextHelper.setState(operationContext, SUCCESS)
         operationResponse
     }
 
@@ -90,7 +94,7 @@ class OperationService {
                 .build()
 
         amqpTemplate.convertAndSend(messagingConfig.queue.operationExecutor, operationRequestWithId.toByteBuffer().array())
-        contextHelper.setPending(operationContext)
+        contextHelper.setState(operationContext, PENDING)
 
         OperationManager.createOperationResponse(operationContext, null)
     }

@@ -10,6 +10,8 @@ import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import java.nio.ByteBuffer
 
+import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates.FAILED
+
 @Service
 @Slf4j
 class AsyncOperationHandler {
@@ -32,7 +34,7 @@ class AsyncOperationHandler {
             operationService.executeSync(operationContext)
         } catch (Exception e) {
             if(operationContext) {
-                contextHelper.setFailed(operationContext)
+                contextHelper.setState(operationContext, FAILED)
             }
 
             throw new OperationExecutionException(e)
