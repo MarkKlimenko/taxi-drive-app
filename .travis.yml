@@ -33,7 +33,6 @@ before_install:
 install: true
 
 
-
 stages:
   - name: unit_tests_and_sonar_scaner
   - name: integration_tests
@@ -54,23 +53,23 @@ jobs:
 
   - stage: integration_tests
     script:
-      - docker run --name rabbit -p 5672:5672 -d -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=123456 -e RABBITMQ_DEFAULT_VHOST=tda rabbitmq:3-management
+      - docker run --name rabbit -p 5672:5672 -d -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=123456 -e RABBITMQ_DEFAULT_VHOST=tda rabbitmq:3-management;
 
-      - docker run --name cassandra -p 9042:9042 -d cassandra:3.11
-      - while ! docker run --link cassandra:cassandra --rm cassandra:3.11 cqlsh cassandra; do
+        docker run --name cassandra -p 9042:9042 -d cassandra:3.11;
+        while ! docker run --link cassandra:cassandra --rm cassandra:3.11 cqlsh cassandra; do
             echo 'Waiting for cassandra...';
             sleep 3;
         done;
-      - ./gradlew :migrations-db-support:migratorExecute
+        ./gradlew :migrations-db-support:migratorExecute;
 
-      - docker run --name postgres -p 5432:5432 -d -e POSTGRES_USER=tda -e POSTGRES_PASSWORD=123456 postgres:10
-      - while ! docker run --link postgres:postgres --rm postgres:10 psql postgresql://tda:123456@postgres/tda; do
+        docker run --name postgres -p 5432:5432 -d -e POSTGRES_USER=tda -e POSTGRES_PASSWORD=123456 postgres:10;
+        while ! docker run --link postgres:postgres --rm postgres:10 psql postgresql://tda:123456@postgres/tda; do
             echo 'Waiting for postgres...';
             sleep 3;
         done;
-      - ./gradlew :migrations-db-application:flywayMigrate
+        ./gradlew :migrations-db-application:flywayMigrate;
 
-      - ./gradlew testIntegration
+        ./gradlew testIntegration;
 
   - stage: set_minor_version
     script:
@@ -79,7 +78,7 @@ jobs:
   - stage: release_docker
     script:
       - ./gradlew build;
-      - ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
+        ./gradlew releaseToDocker -PdockerUsername=$DOCKER_USER -PdockerPassword=$DOCKER_PASSWORD;
 
   - stage: deploy_prod
     script:
