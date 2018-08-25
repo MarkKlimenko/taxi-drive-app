@@ -56,7 +56,9 @@
             + First implementation(10000ms for all operations)
             - Custom timeout for each operation
         + OperationRequest per Avro
-        - Add async operation flow using Kafka
+        - Add async operation flow using -Kafka- Rabbit
+            - Add independent steps in CI
+            - Merge state methods
     - Implement rate flow
         - Load rates using operation
         - Get rate info flow
