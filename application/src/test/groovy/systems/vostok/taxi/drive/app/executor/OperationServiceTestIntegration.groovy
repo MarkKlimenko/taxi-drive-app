@@ -50,4 +50,12 @@ class OperationServiceTestIntegration {
 
         assertEquals('Enroll operation exception in ExceptionOperation', e.cause.message)
     }
+
+    @Test
+    @DisplayName('Async operation execution')
+    void asyncOperationExecution() {
+        OperationResponse or = operationUtil.enrollAsyncOperation('CORE_SIMPLE_OPERATION', [:])
+
+        or
+    }
 }

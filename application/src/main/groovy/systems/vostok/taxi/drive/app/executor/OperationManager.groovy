@@ -63,7 +63,7 @@ class OperationManager {
         }
     }
 
-    protected OperationResponse createOperationResponse(OperationContext context, Object result) {
+    static OperationResponse createOperationResponse(OperationContext context, Object result) {
         new OperationResponse(
                 id: context.contextMessage.id,
                 operationName: context.operationRequest.operationName,

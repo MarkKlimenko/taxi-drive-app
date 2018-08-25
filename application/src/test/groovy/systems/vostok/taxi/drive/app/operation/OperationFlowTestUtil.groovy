@@ -16,9 +16,18 @@ class OperationFlowTestUtil {
     OperationService operationService
 
     OperationResponse enrollOperation(String operationName, Map body) {
+        enrollOperationWithParameters(operationName, body, false)
+    }
+
+    OperationResponse enrollAsyncOperation(String operationName, Map body) {
+        enrollOperationWithParameters(operationName, body, true)
+    }
+
+    private OperationResponse enrollOperationWithParameters(String operationName, Map body, Boolean async) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: operationName,
                 direction: enroll,
+                async: async,
                 body: JsonOutput.toJson(body)
         )
 

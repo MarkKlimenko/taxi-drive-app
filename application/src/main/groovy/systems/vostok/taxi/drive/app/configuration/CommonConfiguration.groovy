@@ -1,8 +1,9 @@
 package systems.vostok.taxi.drive.app.configuration
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties
-import org.springframework.cache.annotation.EnableCaching
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker
+import org.springframework.cloud.stream.annotation.EnableBinding
+import org.springframework.cloud.stream.messaging.Source
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import systems.vostok.tda.service.DistrictMapperService
@@ -10,6 +11,7 @@ import systems.vostok.tda.service.DistrictMapperService
 @Configuration
 @EnableConfigurationProperties
 @EnableCircuitBreaker
+@EnableBinding(Source.class)
 class CommonConfiguration {
     @Bean
     DistrictMapperService districtMapperService() {

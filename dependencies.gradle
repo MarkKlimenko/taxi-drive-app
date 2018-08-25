@@ -29,6 +29,14 @@ ext.lib = [
         spring_orm                         : 'org.springframework:spring-orm:5.0.8.RELEASE',
 
         spring_cloud_hystrix               : "org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${springCloudVersion}",
+        //spring_cloud_stream                : "org.springframework.cloud:spring-cloud-stream:${springCloudVersion}",
+//        spring_cloud_stream_schema         : "org.springframework.cloud:spring-cloud-stream-schema:${springCloudVersion}",
+        spring_cloud_kafka                 : "org.springframework.cloud:spring-cloud-stream-binder-kafka:${springCloudVersion}",
+
+       // kafka_clients                 : 'org.apache.kafka:kafka-clients:2.0.0',
+
+        //spring_kafka                       : 'org.springframework.kafka:spring-kafka:2.1.9.RELEASE',
+
 
         tda_district_mapper                : 'systems.vostok.tda:tda-district-mapper:0.1.6',
         tda_excel_parser                   : 'systems.vostok.tda:tda-excel-parser:0.1.6',
@@ -70,6 +78,13 @@ ext.lib_pack = [
         ],
         db_support : [
                 ext.lib.spring_boot_starter_data_cassandra
+        ],
+        cloud      : [
+                ext.lib.spring_cloud_hystrix,
+                //ext.lib.spring_cloud_stream,
+                //ext.lib.spring_cloud_stream_schema,
+                ext.lib.spring_cloud_kafka,
+                //ext.lib.kafka_clients
         ],
         security   : [
                 ext.lib.spring_boot_starter_security,

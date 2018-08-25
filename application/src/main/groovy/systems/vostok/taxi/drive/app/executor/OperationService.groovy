@@ -1,7 +1,13 @@
 package systems.vostok.taxi.drive.app.executor
 
+import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cloud.stream.annotation.StreamListener
+import org.springframework.cloud.stream.messaging.Sink
+import org.springframework.kafka.annotation.KafkaListener
+import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
+import systems.vostok.taxi.drive.app.configuration.SimpleSourceBean
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.operation.OperationRequest
@@ -26,6 +32,13 @@ class OperationService {
 
     @Autowired
     OperationManager operationManager
+
+    /*@Autowired
+    KafkaTemplate<String, String> kafkaTemplate*/
+
+    @Autowired
+            SimpleSourceBean simpleSourceBean
+
 
     @PostConstruct
     void init() {
@@ -68,7 +81,7 @@ class OperationService {
         )
     }
 
-    OperationResponse executeSync (OperationContext operationContext) {
+    OperationResponse executeSync(OperationContext operationContext) {
         OperationExecutor executor = operationToExecutorMap[operationContext.operationRequest.operationName]
 
         if (!executor) {
@@ -84,7 +97,21 @@ class OperationService {
         }
     }
 
-    OperationResponse executeAsync (OperationContext operationContext) {
-        null
+    OperationResponse executeAsync(OperationContext operationContext) {
+//        operationStream.outboundOperations().send(
+//                MessageBuilder
+//                        .withPayload(operationContext.operationRequest)
+//                        .setHeader(MessageHeaders.CONTENT_TYPE, 'application/avro')
+//                        .build()
+//        )
+
+        simpleSourceBean.publishOrgChange()
+
+        OperationManager.createOperationResponse(operationContext, null)
+    }
+
+    @StreamListener(Sink.INPUT)
+    void receive(String s) {
+        s
     }
 }
