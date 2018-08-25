@@ -1,13 +1,9 @@
 package systems.vostok.taxi.drive.app.executor
 
-import org.apache.kafka.clients.consumer.ConsumerRecord
+import org.springframework.amqp.core.AmqpTemplate
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.cloud.stream.annotation.StreamListener
-import org.springframework.cloud.stream.messaging.Sink
-import org.springframework.kafka.annotation.KafkaListener
-import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
-import systems.vostok.taxi.drive.app.configuration.SimpleSourceBean
+import systems.vostok.taxi.drive.app.configuration.MessagingConfig
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.operation.OperationRequest
@@ -33,12 +29,11 @@ class OperationService {
     @Autowired
     OperationManager operationManager
 
-    /*@Autowired
-    KafkaTemplate<String, String> kafkaTemplate*/
+    @Autowired
+    AmqpTemplate amqpTemplate
 
     @Autowired
-            SimpleSourceBean simpleSourceBean
-
+    MessagingConfig messagingConfig
 
     @PostConstruct
     void init() {
@@ -53,65 +48,50 @@ class OperationService {
     }
 
     OperationResponse execute(OperationRequest request) {
-        OperationContext operationContext = createPrimaryOperationContext(request)
+        OperationContext operationContext = contextHelper.createPrimaryOperationContext(request)
 
         try {
-            OperationResponse operationResponse = null
-
             if (request.async) {
-                operationResponse = executeAsync(operationContext)
+                executeAsync(operationContext)
             } else {
-                operationResponse = executeSync(operationContext)
+                executeSync(operationContext)
             }
-
-            contextHelper.setSuccess(operationContext)
-            operationResponse
         } catch (Exception e) {
             contextHelper.setFailed(operationContext)
             throw new OperationExecutionException(e)
         }
     }
 
-    protected OperationContext createPrimaryOperationContext(OperationRequest request) {
-        new OperationContext(
-                contextHelper: contextHelper,
-                operationRequest: request,
-                direction: request.direction,
-                contextMessage: contextHelper.createContextMessage(request.direction, request)
-        )
-    }
-
     OperationResponse executeSync(OperationContext operationContext) {
         OperationExecutor executor = operationToExecutorMap[operationContext.operationRequest.operationName]
+        OperationResponse operationResponse = null
 
         if (!executor) {
             throw noOperationExecutorException(operationContext.operationRequest.operationName)
         }
 
+        contextHelper.setInProcess(operationContext)
+
         if (operationContext.direction == enroll) {
-            operationManager.enrollOperation(executor, operationContext)
+            operationResponse = operationManager.enrollOperation(executor, operationContext)
         } else if (operationContext.direction == rollback) {
-            operationManager.rollbackOperation(executor, operationContext)
+            operationResponse = operationManager.rollbackOperation(executor, operationContext)
         } else {
             throw unsupportedOperationDirectionException(operationContext.direction)
         }
+
+        contextHelper.setSuccess(operationContext)
+        operationResponse
     }
 
     OperationResponse executeAsync(OperationContext operationContext) {
-//        operationStream.outboundOperations().send(
-//                MessageBuilder
-//                        .withPayload(operationContext.operationRequest)
-//                        .setHeader(MessageHeaders.CONTENT_TYPE, 'application/avro')
-//                        .build()
-//        )
+        OperationRequest operationRequestWithId = OperationRequest.newBuilder(operationContext.operationRequest)
+                .setId(operationContext.contextMessage.id as String)
+                .build()
 
-        simpleSourceBean.publishOrgChange()
+        amqpTemplate.convertAndSend(messagingConfig.queue.operationExecutor, operationRequestWithId.toByteBuffer().array())
+        contextHelper.setPending(operationContext)
 
         OperationManager.createOperationResponse(operationContext, null)
-    }
-
-    @StreamListener(Sink.INPUT)
-    void receive(String s) {
-        s
     }
 }

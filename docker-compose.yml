@@ -14,18 +14,17 @@ services:
     ports:
       - 9042:9042
 
-#  zoo:
-#    image: zookeeper:3.4.13
-#    hostname: zoo
-#    ports:
-#      - 2181:2181
-#
-#  kafka:
-#    image: vostoksystems/kafka:latest
-#    ports:
-#      - 9092:9092
-#    environment:
-#      ZK_CONNECT: zoo:2181
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: 123456
+      RABBITMQ_DEFAULT_VHOST: tda
+
+
 
 #  db_sso:
 #    image: postgres:10

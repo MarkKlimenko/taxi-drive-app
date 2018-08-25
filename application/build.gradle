@@ -30,7 +30,6 @@ dependencies {
 
     compile lib.groovy_all
     compile lib.spring_boot_configuration_processor
-    //compile lib.spring_kafka
 
     compile lib_pack.vostok_libs
     compile lib_pack.rest_api
@@ -39,6 +38,7 @@ dependencies {
     compile lib_pack.db
     compile lib_pack.db_support
     compile lib_pack.cloud
+    compile lib_pack.messaging
     compile lib_pack.security
     compile lib_pack.metrics
 

@@ -15,7 +15,9 @@ class SimpleOperation<T, ID extends Serializable> implements CoreOperation {
     Object enroll(OperationContext context) {
         Map requestBody = toMap(context.operationRequest.body)
 
-        5 * requestBody.sum
+        Integer result = 5 * requestBody.sum
+        context.contextHelper.setContext(context, result)
+        result
     }
 
     @Override

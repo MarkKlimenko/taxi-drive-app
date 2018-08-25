@@ -54,6 +54,8 @@ jobs:
 
   - stage: integration_tests
     script:
+      - docker run --name rabbit -p 5672:5672 -d -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=123456 -e RABBITMQ_DEFAULT_VHOST=tda rabbitmq:3-management
+
       - docker run --name cassandra -p 9042:9042 -d cassandra:3.11
       - while ! docker run --link cassandra:cassandra --rm cassandra:3.11 cqlsh cassandra; do
             echo 'Waiting for cassandra...';

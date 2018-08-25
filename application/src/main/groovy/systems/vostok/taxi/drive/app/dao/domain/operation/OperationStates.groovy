@@ -1,7 +1,9 @@
 package systems.vostok.taxi.drive.app.dao.domain.operation
 
 enum OperationStates {
+    NEW('new'),
     IN_PROCESS('in process'),
+    PENDING('pending'),
     SUCCESS('success'),
     FAILED('failed'),
     CANCELED('canceled'),

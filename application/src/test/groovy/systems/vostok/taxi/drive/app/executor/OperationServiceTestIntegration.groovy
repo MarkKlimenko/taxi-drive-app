@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
+import systems.vostok.taxi.drive.app.dao.entity.ContextMessage
+import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepository
 import systems.vostok.taxi.drive.app.operation.OperationFlowTestUtil
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
-import static org.junit.jupiter.api.Assertions.assertEquals
-import static org.junit.jupiter.api.Assertions.assertThrows
-import static org.junit.jupiter.api.Assertions.assertTrue
+import static org.junit.jupiter.api.Assertions.*
+import static systems.vostok.taxi.drive.app.test.Check.recheck
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -20,6 +21,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue
 class OperationServiceTestIntegration {
     @Autowired
     OperationFlowTestUtil operationUtil
+
+    @Autowired
+    ContextMessageRepository contextMessageRepository
 
     @Test
     @DisplayName('Operation timeout test')
@@ -54,8 +58,16 @@ class OperationServiceTestIntegration {
     @Test
     @DisplayName('Async operation execution')
     void asyncOperationExecution() {
-        OperationResponse or = operationUtil.enrollAsyncOperation('CORE_SIMPLE_OPERATION', [:])
+        OperationResponse operationResponse = operationUtil.enrollAsyncOperation('CORE_SIMPLE_OPERATION', [sum: 5])
+        ContextMessage contextMessage = null
 
-        or
+        recheck(5) {
+            contextMessage = contextMessageRepository.findOneById(operationResponse.id)
+                    .orElseThrow({ new RuntimeException('Context message is not found') })
+
+            assertEquals('success', contextMessage.state)
+        }
+
+        assertEquals('25', contextMessage.context)
     }
 }

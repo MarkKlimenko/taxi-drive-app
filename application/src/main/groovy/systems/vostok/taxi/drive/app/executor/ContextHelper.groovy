@@ -12,6 +12,7 @@ import systems.vostok.taxi.drive.app.dao.repository.impl.ContextMessageRepositor
 import java.time.LocalDateTime
 
 import static systems.vostok.taxi.drive.app.dao.domain.operation.OperationStates.*
+import static systems.vostok.taxi.drive.app.util.exception.OperationExecutionException.noContextMessageException
 
 @Service
 class ContextHelper {
@@ -20,13 +21,32 @@ class ContextHelper {
     @Autowired
     ContextMessageRepository contextMessageRepository
 
+    OperationContext createPrimaryOperationContext(OperationRequest request) {
+        new OperationContext(
+                contextHelper: this,
+                operationRequest: request,
+                direction: request.direction,
+                contextMessage: this.createContextMessage(request.direction, request)
+        )
+    }
+
+    OperationContext createAsyncOperationContext(OperationRequest request) {
+        new OperationContext(
+                contextHelper: this,
+                operationRequest: request,
+                direction: request.direction,
+                contextMessage: contextMessageRepository.findOneById(UUID.fromString(request.id))
+                        .orElseThrow({ noContextMessageException(request.id) })
+        )
+    }
+
     ContextMessage createContextMessage(OperationDirection direction, OperationRequest request) {
         ContextMessage contextMessage = new ContextMessage(
                 id: request.id ? UUID.fromString(request.id) : UUID.randomUUID(),
                 operationName: request.operationName,
                 owner: SecurityContextHolder.getContext().getAuthentication()?.name ?: ANONYMOUS_USER,
                 dateIn: LocalDateTime.now(),
-                state: IN_PROCESS,
+                state: NEW,
                 direction: direction,
                 requestBody: request.body
         )
@@ -34,9 +54,26 @@ class ContextHelper {
         contextMessageRepository.save(contextMessage)
     }
 
+    //TODO: Merge in one
     OperationContext setSuccess(OperationContext operationContext) {
         operationContext.contextMessage
                 .with { it.state = SUCCESS; it }
+                .with(contextMessageRepository.&save)
+
+        operationContext
+    }
+
+    OperationContext setInProcess(OperationContext operationContext) {
+        operationContext.contextMessage
+                .with { it.state = IN_PROCESS; it }
+                .with(contextMessageRepository.&save)
+
+        operationContext
+    }
+
+    OperationContext setPending(OperationContext operationContext) {
+        operationContext.contextMessage
+                .with { it.state = PENDING; it }
                 .with(contextMessageRepository.&save)
 
         operationContext

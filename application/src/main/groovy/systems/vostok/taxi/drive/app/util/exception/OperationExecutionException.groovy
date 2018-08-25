@@ -1,11 +1,12 @@
 package systems.vostok.taxi.drive.app.util.exception
 
+import org.springframework.amqp.AmqpRejectAndDontRequeueException
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.operation.OperationDirection
 
-class OperationExecutionException extends RuntimeException {
+class OperationExecutionException extends AmqpRejectAndDontRequeueException {
     OperationExecutionException() {
-        super()
+        super('Operation execution exception')
     }
 
     OperationExecutionException(String message) {
@@ -27,6 +28,10 @@ class OperationExecutionException extends RuntimeException {
 
     static OperationExecutionException noContextMessageException(UUID contextMessageId) {
         new OperationExecutionException("No such Context message with ID: { ${contextMessageId.toString()} }")
+    }
+
+    static OperationExecutionException noContextMessageException(String contextMessageId) {
+        new OperationExecutionException("No such Context message with ID: { ${contextMessageId} }")
     }
 
     static OperationExecutionException contextMessageStateException(String contextMessageState) {
