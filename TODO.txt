@@ -60,8 +60,10 @@
             + Add independent steps in CI
             + Merge state methods
     - Implement rate flow
-        - Load rates using operation
+        + Load rates using operation
         - Get rate info flow
+    - Geo
+        - Refactor 'get geo info'
     - Ride flow
         - Create ride
         - Change ride status

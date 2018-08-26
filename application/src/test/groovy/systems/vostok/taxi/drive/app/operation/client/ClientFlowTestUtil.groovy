@@ -27,38 +27,38 @@ class ClientFlowTestUtil {
         clientRepository.deleteAll()
     }
 
-    OperationResponse createClient(String detasetName) {
+    OperationResponse createClient(String datasetName) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: ADD_CLIENT_OPERATION.name,
                 direction: enroll,
-                body: getRawJsonDataset('client', detasetName)
+                stringPayload: getRawJsonDataset('client', datasetName)
         )
 
         operationService.execute(operationRequest)
     }
 
-    OperationResponse editClient(String detasetName) {
+    OperationResponse editClient(String datasetName) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: EDIT_CLIENT_OPERATION.name,
                 direction: enroll,
-                body: getRawJsonDataset('client', detasetName)
+                stringPayload: getRawJsonDataset('client', datasetName)
         )
 
         operationService.execute(operationRequest)
     }
 
-    OperationResponse deleteClient(String detasetName) {
+    OperationResponse deleteClient(String datasetName) {
         OperationRequest operationRequest = new OperationRequest(
                 operationName: DELETE_CLIENT_OPERATION.name,
                 direction: enroll,
-                body: getRawJsonDataset('client', detasetName)
+                stringPayload: getRawJsonDataset('client', datasetName)
         )
 
         operationService.execute(operationRequest)
     }
 
-    void checkClient(String detasetName, OperationResponse response) {
-        Client expectedClient = getJsonDataset('client', detasetName) as Client
+    void checkClient(String datasetName, OperationResponse response) {
+        Client expectedClient = getJsonDataset('client', datasetName) as Client
         Client actualResponseClient = response.body as Client
         Client actualClient = clientRepository.findById(expectedClient.login).get()
 
@@ -68,8 +68,8 @@ class ClientFlowTestUtil {
         }
     }
 
-    void checkClientNonexistence(String detasetName) {
-        Client expectedClient = getJsonDataset('client', detasetName) as Client
+    void checkClientNonexistence(String datasetName) {
+        Client expectedClient = getJsonDataset('client', datasetName) as Client
         assertFalse(clientRepository.existsById(expectedClient.login))
     }
 }

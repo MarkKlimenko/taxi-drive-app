@@ -19,4 +19,8 @@ class Dataset {
     static String getRawJsonDataset(String type, String name) {
         Dataset.getClass().getResource("/dataset/${type}/${name}.json").text
     }
+
+    static byte[] getFile(String type, String nameWithExtension) {
+        Dataset.getClass().getResource("/dataset/${type}/${nameWithExtension}").bytes
+    }
 }

@@ -1,12 +1,6 @@
 {
   "properties": [
     {
-      "name": "project.version",
-      "type": "java.lang.String",
-      "description": "Project version, set automatically by gradle.",
-      "sourceType": "systems.vostok.taxi.drive.app.service.UtilService"
-    },
-    {
       "name": "db.url",
       "type": "java.lang.String",
       "description": "Db URL.",

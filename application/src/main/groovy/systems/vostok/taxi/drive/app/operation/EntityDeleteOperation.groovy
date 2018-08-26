@@ -14,14 +14,14 @@ enroll
  {
     "operationName": "OPERATION_NAME",
     "direction": "enroll",
-    "body": "Json payload(Map, List, String...)"
+    "stringPayload": "Json payload(Map, List, String...)"
  }
 
 rollback
  {
     "operationName": "OPERATION_NAME",
     "direction": "rollback",
-    "body": {
+    "stringPayload": {
         "id" : "Json payload({"id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"})"
     }
  }
@@ -35,7 +35,7 @@ class EntityDeleteOperation<T, ID extends Serializable> implements CoreOperation
     @Override
     @Transactional
     Object enroll(OperationContext context) {
-        ID targetEntityId = entityRepository.getEntityId(toMap(context.operationRequest.body))
+        ID targetEntityId = entityRepository.getEntityId(toMap(context.operationRequest.stringPayload))
         T targetEntity = entityRepository.findById(targetEntityId)
                 .orElseThrow({ new OperationExecutionException('Entity with target ID does not exist') })
 

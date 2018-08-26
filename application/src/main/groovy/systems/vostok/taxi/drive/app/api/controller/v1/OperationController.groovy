@@ -19,6 +19,11 @@ class OperationController {
     @Autowired
     OperationService operationService
 
+    /**
+     *
+     * @param operationRequest Supports only stringPayload!
+     * @return
+     */
     @POST
     OperationResponse execute(OperationRequest operationRequest) {
         operationService.execute(operationRequest)

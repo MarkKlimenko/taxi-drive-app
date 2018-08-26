@@ -19,6 +19,7 @@ class UniversalCrudRepository {
     @Delegate
     RepositoryResolver repositoryResolver
 
+    //TODO: Rename all methods to spring data style
     def put(String entityType, Object entityObject) {
         BasicRepository repository = findRepository(entityType)
         repository.convertToEntityType(entityObject)

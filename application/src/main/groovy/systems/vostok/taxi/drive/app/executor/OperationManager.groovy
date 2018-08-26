@@ -35,7 +35,7 @@ class OperationManager {
 
     OperationResponse rollbackOperation(OperationExecutor executor, OperationContext context) {
         try {
-            UUID rolledBackContextMessageId = UUID.fromString(toMap(context.operationRequest.body).id)
+            UUID rolledBackContextMessageId = UUID.fromString(toMap(context.operationRequest.stringPayload).id)
             context.rolledBackContextMessage = contextMessageRepository.findOneById(rolledBackContextMessageId)
                     .orElseThrow({ noContextMessageException(rolledBackContextMessageId) })
 

@@ -39,7 +39,8 @@ class OperationRequestDeserializer extends StdDeserializer<OperationRequest> {
                 .setOperationName(operationRequest.operationName)
                 .setDirection(operationRequest.direction as OperationDirection)
                 .setAsync(operationRequest.async)
-                .setBody(operationRequest.body)
+                .setStringPayload(operationRequest.stringPayload)
+                .setBytePayload(null)
                 .build()
     }
 }

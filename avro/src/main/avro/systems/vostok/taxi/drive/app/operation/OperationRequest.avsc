@@ -5,6 +5,7 @@
         {"name": "operationName", "type": "string"},
         {"name": "direction",  "type": "OperationDirection"},
         {"name": "async",  "type": ["null", "boolean"]},
-        {"name": "body",  "type": ["null", "string"]}
+        {"name": "stringPayload",  "type": ["null", "string"]},
+        {"name": "bytePayload",  "type": ["null", "bytes"]}
     ]
 }

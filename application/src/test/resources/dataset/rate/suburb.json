@@ -1,0 +1,260 @@
+[
+  {
+    "cityFrom": "spa",
+    "cityTo": "ada",
+    "id": 3103879,
+    "price": 450
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ann",
+    "id": 3113892,
+    "price": 440
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ale",
+    "id": 3111691,
+    "price": 630
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "bus",
+    "id": 3150565,
+    "price": 300
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vis",
+    "id": 3654333,
+    "price": 420
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vas",
+    "id": 3654085,
+    "price": 720
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "gay",
+    "id": 3280486,
+    "price": 340
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "26",
+    "id": 164769,
+    "price": 600
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "duh",
+    "id": 3209806,
+    "price": 850
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "droz",
+    "id": 95973772,
+    "price": 670
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "evs",
+    "id": 3240899,
+    "price": 510
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "zel",
+    "id": 3658046,
+    "price": 380
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "zen",
+    "id": 3658048,
+    "price": 980
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kalin",
+    "id": -1138629814,
+    "price": 400
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "knr",
+    "id": 3411926,
+    "price": 500
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kon",
+    "id": 3412763,
+    "price": 380
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kron",
+    "id": 102438047,
+    "price": 600
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "labed",
+    "id": -1110302727,
+    "price": 450
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "lug",
+    "id": 3448103,
+    "price": 320
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "mal",
+    "id": 3458829,
+    "price": 450
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nac",
+    "id": 3488341,
+    "price": 480
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nos",
+    "id": 3502291,
+    "price": 400
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nik",
+    "id": 3496277,
+    "price": 1040
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nors",
+    "id": 105122275,
+    "price": 990
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "novk",
+    "id": 105125871,
+    "price": 470
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "proch",
+    "id": -979700781,
+    "price": 370
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "sun",
+    "id": 3651817,
+    "price": 930
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "svi",
+    "id": 3651843,
+    "price": 720
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "sos",
+    "id": 3651246,
+    "price": 470
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ste",
+    "id": 3651777,
+    "price": 240
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "sere",
+    "id": 109441536,
+    "price": 580
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "tat",
+    "id": 3652164,
+    "price": 400
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "hval",
+    "id": 99773132,
+    "price": 270
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "chal",
+    "id": 94738453,
+    "price": 770
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "zam",
+    "id": 3657923,
+    "price": 300
+  },
+  {
+    "cityFrom": "spasta",
+    "cityTo": "zam",
+    "id": -2011550869,
+    "price": 250
+  },
+  {
+    "cityFrom": "spaczd",
+    "cityTo": "zam",
+    "id": -2012021666,
+    "price": 350
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "dacsol",
+    "id": 1428162139,
+    "price": 250
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "cher",
+    "id": 94742483,
+    "price": 300
+  },
+  {
+    "cityFrom": "spa6",
+    "cityTo": "cher",
+    "id": 98165057,
+    "price": 250
+  },
+  {
+    "cityFrom": "spaczd",
+    "cityTo": "cher",
+    "id": -801563432,
+    "price": 350
+  },
+  {
+    "cityFrom": "spasta",
+    "cityTo": "cher",
+    "id": -801548245,
+    "price": 250
+  },
+  {
+    "cityFrom": "spaczd",
+    "cityTo": "hval",
+    "id": -796532783,
+    "price": 370
+  }
+]

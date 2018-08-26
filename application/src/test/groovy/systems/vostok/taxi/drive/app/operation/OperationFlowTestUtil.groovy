@@ -28,7 +28,7 @@ class OperationFlowTestUtil {
                 operationName: operationName,
                 direction: enroll,
                 async: async,
-                body: JsonOutput.toJson(body)
+                stringPayload: JsonOutput.toJson(body)
         )
 
         operationService.execute(operationRequest)
@@ -38,7 +38,7 @@ class OperationFlowTestUtil {
         OperationRequest rollbackRequest = new OperationRequest(
                 operationName: operationName.name,
                 direction: rollback,
-                body: JsonOutput.toJson([id: response.id.toString()])
+                stringPayload: JsonOutput.toJson([id: response.id.toString()])
         )
 
         operationService.execute(rollbackRequest)

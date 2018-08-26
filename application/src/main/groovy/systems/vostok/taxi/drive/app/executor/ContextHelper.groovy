@@ -49,7 +49,7 @@ class ContextHelper {
                 dateIn: LocalDateTime.now(),
                 state: NEW,
                 direction: direction,
-                requestBody: request.body
+                requestBody: request.stringPayload
         )
 
         contextMessageRepository.save(contextMessage)

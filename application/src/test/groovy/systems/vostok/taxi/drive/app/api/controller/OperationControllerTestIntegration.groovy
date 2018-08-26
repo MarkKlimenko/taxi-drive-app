@@ -3,7 +3,6 @@ package systems.vostok.taxi.drive.app.api.controller
 import groovy.json.JsonOutput
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -12,7 +11,6 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.operation.OperationDirection
@@ -36,7 +34,7 @@ class OperationControllerTestIntegration {
         Map operationRequest = [
                 operationName: 'CORE_SIMPLE_OPERATION',
                 direction    : OperationDirection.enroll,
-                body         : JsonOutput.toJson([sum: 25])
+                stringPayload: JsonOutput.toJson([sum: 25])
         ]
 
         ResponseEntity<OperationResponse> response = restTemplate.postForEntity(
@@ -59,7 +57,7 @@ class OperationControllerTestIntegration {
                 operationName: 'CORE_SIMPLE_OPERATION',
                 direction: OperationDirection.valueOf('enroll' as String),
                 async: false,
-                body: JsonOutput.toJson([sum: 25])
+                stringPayload: JsonOutput.toJson([sum: 25])
         )
 
         ResponseEntity<OperationResponse> response = restTemplate.postForEntity(

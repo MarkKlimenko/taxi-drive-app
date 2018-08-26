@@ -51,7 +51,7 @@ Execute operation by name in **sync** mode (POST request - api/operation). Opera
 {
     "operationName": "OPERATION_NAME",
     "direction": "enroll",
-    "body": "Json payload(Map, List, String...)"
+    "stringPayload": "Json payload(Map, List, String...)"
  }
 ```
 Execute operation by name in **async** mode (POST request - api/operation). Operation will be executed using Kafka stream and any idle service.
@@ -60,7 +60,7 @@ Execute operation by name in **async** mode (POST request - api/operation). Oper
     "operationName": "OPERATION_NAME",
     "direction": "enroll",    
     "async": true,
-    "body": "Json payload(Map, List, String...)"
+    "stringPayload": "Json payload(Map, List, String...)"
  }
 ```
 Rollback operation execution (POST request - api/operation)
@@ -68,7 +68,7 @@ Rollback operation execution (POST request - api/operation)
 {
     "operationName": "OPERATION_NAME",
     "direction": "rollback",
-    "body": "Json payload({"id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"})"
+    "stringPayload": "Json payload({"id" : "51ae64c4-3327-4b73-9498-1fa3347d2a15"})"
 }
 ```
 

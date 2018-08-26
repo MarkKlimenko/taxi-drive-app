@@ -13,7 +13,7 @@ class SimpleOperation<T, ID extends Serializable> implements CoreOperation {
 
     @Override
     Object enroll(OperationContext context) {
-        Map requestBody = toMap(context.operationRequest.body)
+        Map requestBody = toMap(context.operationRequest.stringPayload)
 
         Integer result = 5 * requestBody.sum
         context.contextHelper.setContext(context, result)

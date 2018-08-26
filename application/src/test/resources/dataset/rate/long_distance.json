@@ -1,0 +1,716 @@
+[
+  {
+    "cityFrom": "spa",
+    "cityTo": "abr",
+    "id": 3102484,
+    "price": 1350
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "and",
+    "id": 3113582,
+    "price": 5600
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "anu",
+    "id": 3114109,
+    "price": 2550
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ari",
+    "id": 3117581,
+    "price": 5150
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ars",
+    "id": 3117891,
+    "price": 1960
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "art",
+    "id": 3117922,
+    "price": 3580
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "arta",
+    "id": 93207239,
+    "price": 3200
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "arcp",
+    "id": 93191367,
+    "price": 1550
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "bar",
+    "id": 3131314,
+    "price": 4100
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "bez",
+    "id": 3135406,
+    "price": 4700
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "bel",
+    "id": 3134972,
+    "price": 2280
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "bik",
+    "id": 3138785,
+    "price": 5340
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "bla",
+    "id": 3141358,
+    "price": 1930
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "bol",
+    "id": 3144582,
+    "price": 4740
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vad",
+    "id": 3654070,
+    "price": 1040
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "val",
+    "id": 3654078,
+    "price": 5200
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "var",
+    "id": 3654084,
+    "price": 1430
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ver",
+    "id": 3654208,
+    "price": 3300
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vla",
+    "id": 3654408,
+    "price": 4200
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vol",
+    "id": 3654512,
+    "price": 3350
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vos",
+    "id": 3654519,
+    "price": 6200
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vra",
+    "id": 3654594,
+    "price": 6430
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "viso",
+    "id": 7157484,
+    "price": 960
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "vya",
+    "id": 3654811,
+    "price": 6800
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "gal",
+    "id": 3280083,
+    "price": 2920
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "gok",
+    "id": 3293506,
+    "price": 1900
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "gor",
+    "id": 3293723,
+    "price": 1760
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "goh",
+    "id": 3293413,
+    "price": 870
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "gri",
+    "id": 3296327,
+    "price": 930
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "gro",
+    "id": 3296513,
+    "price": 3150
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "gub",
+    "id": 3298993,
+    "price": 3880
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "dag",
+    "id": 3190555,
+    "price": 5260
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "dar",
+    "id": 3190896,
+    "price": 3290
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "dmi",
+    "id": 3202149,
+    "price": 610
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "dos",
+    "id": 3204381,
+    "price": 1550
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "dun",
+    "id": 3209992,
+    "price": 5270
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "jar",
+    "id": 3369642,
+    "price": 2870
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "zav",
+    "id": 3657932,
+    "price": 3910
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "zar",
+    "id": 3657928,
+    "price": 5800
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "iva",
+    "id": 3359505,
+    "price": 1590
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ili",
+    "id": 3350143,
+    "price": 2500
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kav",
+    "id": 3399557,
+    "price": 4220
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kaz",
+    "id": 3399681,
+    "price": 5510
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kalen",
+    "id": -1138633658,
+    "price": 1520
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kam",
+    "id": 3399278,
+    "price": 2520
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kar",
+    "id": 3399433,
+    "price": 2230
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kir",
+    "id": 3407121,
+    "price": 1410
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kras",
+    "id": 102424748,
+    "price": 5720
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "krem",
+    "id": 102428406,
+    "price": 1520
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "kril",
+    "id": 102432219,
+    "price": 2060
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "lasa",
+    "id": 102858562,
+    "price": 1300
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "lasd",
+    "id": 102858655,
+    "price": 3130
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "lasl",
+    "id": 102858903,
+    "price": 4250
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "liv",
+    "id": 3437036,
+    "price": 5680
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "lipov",
+    "id": -1102487317,
+    "price": 3230
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "luce",
+    "id": 103439130,
+    "price": 4430
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "luck",
+    "id": 103439316,
+    "price": 1470
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "lya",
+    "id": 3451761,
+    "price": 1330
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "may",
+    "id": 3459232,
+    "price": 580
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "melg",
+    "id": 103894706,
+    "price": 2670
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "mer",
+    "id": 3462859,
+    "price": 820
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "mic",
+    "id": 3466238,
+    "price": 2140
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nah",
+    "id": 3488496,
+    "price": 5880
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nes",
+    "id": 3492681,
+    "price": 2570
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "voi",
+    "id": 3654509,
+    "price": 5900
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nog",
+    "id": 3501919,
+    "price": 2360
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nod",
+    "id": 3501826,
+    "price": 1410
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nock",
+    "id": 105107612,
+    "price": 2960
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nomh",
+    "id": 105117129,
+    "price": 2310
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nonk",
+    "id": 105118183,
+    "price": 2540
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nopk",
+    "id": 105120105,
+    "price": 4360
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "noss",
+    "id": 105123236,
+    "price": 1570
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nocg",
+    "id": 105107488,
+    "price": 2350
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "nosh",
+    "id": 105122895,
+    "price": 1930
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "olg",
+    "id": 3528827,
+    "price": 5560
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ore",
+    "id": 3534531,
+    "price": 1270
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "osi",
+    "id": 3535616,
+    "price": 1600
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "par",
+    "id": 3548388,
+    "price": 5680
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "per",
+    "id": 3552232,
+    "price": 1440
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "pla",
+    "id": 3558432,
+    "price": 7020
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "pog",
+    "id": 3561501,
+    "price": 3150
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "poz",
+    "id": 3562090,
+    "price": 3990
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "pok",
+    "id": 3561625,
+    "price": 2920
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "pol",
+    "id": 3561656,
+    "price": 3400
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "pre",
+    "id": 3564322,
+    "price": 5530
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "pri",
+    "id": 3564446,
+    "price": 2390
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "pro",
+    "id": 3564632,
+    "price": 4910
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "razd",
+    "id": 108406508,
+    "price": 3140
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ret",
+    "id": 3611876,
+    "price": 1170
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ros",
+    "id": 3621455,
+    "price": 4870
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "rud",
+    "id": 3626756,
+    "price": 5720
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ruz",
+    "id": 3627438,
+    "price": 2450
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "run",
+    "id": 3627066,
+    "price": 1090
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "rya",
+    "id": 3630507,
+    "price": 4840
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "serg",
+    "id": 109441598,
+    "price": 6080
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "sib",
+    "id": 3644953,
+    "price": 1090
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "siv",
+    "id": 3645573,
+    "price": 1300
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "sin",
+    "id": 3645325,
+    "price": 660
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "slav",
+    "id": 109634263,
+    "price": 4900
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "smo",
+    "id": 3649200,
+    "price": 4300
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "sne",
+    "id": 3649851,
+    "price": 1430
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "tav",
+    "id": 3652166,
+    "price": 3510
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "tern",
+    "id": 7094026,
+    "price": 7930
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "tur",
+    "id": 3652782,
+    "price": 3180
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ubor",
+    "id": 7120845,
+    "price": 2800
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ugle",
+    "id": 7125544,
+    "price": 5520
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "uglo",
+    "id": 7125554,
+    "price": 3560
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "ussu",
+    "id": 7137309,
+    "price": 2440
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "fok",
+    "id": 3263715,
+    "price": 5030
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "hab",
+    "id": 3309564,
+    "price": 8700
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "halk",
+    "id": 99158061,
+    "price": 1000
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "hor",
+    "id": 3323514,
+    "price": 1520
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "chern",
+    "id": -1361398263,
+    "price": 770
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "chernish",
+    "id": 831541635,
+    "price": 2170
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "chug",
+    "id": 94757518,
+    "price": 2460
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "scho",
+    "id": 109372654,
+    "price": 4100
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "shm",
+    "id": 3644333,
+    "price": 1580
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "yak",
+    "id": 3656960,
+    "price": 1140
+  },
+  {
+    "cityFrom": "spa",
+    "cityTo": "yar",
+    "id": 3656967,
+    "price": 1520
+  }
+]

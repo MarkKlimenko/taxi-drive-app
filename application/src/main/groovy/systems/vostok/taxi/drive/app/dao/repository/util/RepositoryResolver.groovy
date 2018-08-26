@@ -12,13 +12,15 @@ class RepositoryResolver {
     @Autowired
     List<BasicRepository> repositories
 
+
+    // TODO: simplify repository resolver using map
     @Cacheable(REPOSITORY_RESOLVER)
     BasicRepository findRepository(String entityType) {
         repositories.find { entityType == it.entityType }
                 .with(this.&checkRepository)
     }
 
-    private checkRepository(BasicRepository repository) {
+    private static checkRepository(BasicRepository repository) {
         if(!repository) {
             throw new IllegalArgumentException('No repository for target entity')
         }
