@@ -18,9 +18,10 @@ class CacheConfiguration {
 
     @Bean
     EhCacheManagerFactoryBean getEhCacheFactory(){
-        EhCacheManagerFactoryBean factoryBean = new EhCacheManagerFactoryBean()
-        factoryBean.setConfigLocation(new ClassPathResource('ehcache.xml'))
-        factoryBean.setShared(true)
-        factoryBean
+        new EhCacheManagerFactoryBean().with{
+            it.setConfigLocation(new ClassPathResource('ehcache.xml'))
+            it.setShared(true)
+            it
+        }
     }
 }

@@ -25,8 +25,8 @@ class ClientManagementController {
 
     @POST
     @Path('ride/evaluate')
-    getPrice(Ride ride) {
-       clientManagementService.calculatePrice(ride)
+    evaluateRide(Ride ride) {
+       clientManagementService.evaluateRide(ride)
     }
 
     @PUT

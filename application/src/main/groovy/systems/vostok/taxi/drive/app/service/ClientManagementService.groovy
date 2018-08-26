@@ -37,7 +37,7 @@ class ClientManagementService {
         }
     }
 
-    RidePrice calculatePrice(Ride ride) {
+    RidePrice evaluateRide(Ride ride) {
         // TODO: Get default city from settings
         if (ride.rawFromAddress.city == ride.rawToAddress.city && ride.rawToAddress.city == 'Спасск-Дальний') {
             [priceFormer.calculateDtdPrice(ride)]
