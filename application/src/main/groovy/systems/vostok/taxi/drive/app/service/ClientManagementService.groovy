@@ -51,6 +51,8 @@ class ClientManagementService {
 
         // TODO: Calculate price
 
+        //TODO: Create operation for it
+
         rideRepository.save(ride)
     }
 

@@ -22,14 +22,12 @@ class GeoController {
         geoService.getGeoInfo()
     }
 
-    // TODO: Use universal DAO
     @GET
     @Path('geo/{entityType}')
     getAllGeoEntities(@PathParam('entityType') String entityType) {
         geoService.getAllGeoEntities(entityType)
     }
 
-    // TODO: Use universal DAO
     @GET
     @Path('geo/{entityType}/{entityId}')
     getGeoEntity(@PathParam('entityType') String entityType,

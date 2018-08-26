@@ -4,6 +4,7 @@
 
 ### Redis
 - Implement versioned Entity representation
+- Second level cache using redis
 - Add redis cache
 
 ### Security
@@ -22,6 +23,7 @@
 + Add Keycloak SSO to compose
 - Create migrators for SSO and others 
 + Connect SSO/Spring security
+- Add Spring security on particular entity types for UniversalCrudController
 
 
 # Global
@@ -63,7 +65,9 @@
         + Load rates using operation
         - Get rate info flow
     - Geo
-        - Refactor 'get geo info'
+        - Create separate handlers for each entity
+            - Get geo info for particular entity by hash code
+        - Change citiesModifiedList workflow
     - Ride flow
         - Create ride
         - Change ride status

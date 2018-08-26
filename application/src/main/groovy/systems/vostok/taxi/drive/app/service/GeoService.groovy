@@ -21,7 +21,6 @@ class GeoService {
     @Autowired
     StreetDistrictMapperRepository streetDistrictMapperRepository
 
-    // TODO: Get geo info for particular entity by hash code
     Map getGeoInfo() {
         [geoVersion: crudRepository.findById(SYSTEM_PROPERTY, PROPERTY_GEO_VERSION).value,
          states    : getAllGeoEntities(STATE),
@@ -49,8 +48,6 @@ class GeoService {
         entity
     }
 
-    // TODO: Store hash for all tables(or annotated as hashable) in Redis
-    // and if hash is provided in query - check it and provide result by it
     @CacheEvict(['citiesModifiedList', 'cityIdByName', 'districtsModifiedList', 'districtIdByName'])
     def updateGeoCache() {
         crudRepository.put(SYSTEM_PROPERTY, [property: PROPERTY_GEO_VERSION,
@@ -63,8 +60,6 @@ class GeoService {
                 .each { it.name = WordUtil.modifyGeoName(it.name) }
     }
 
-    // TODO: Store all modified lists in Redis (modified Entity : proper Key)
-    // and get proper key by entity (update single record in the list)
     @Cacheable(value = 'districtsModifiedList')
     List<District> getDistrictsModifiedList() {
         crudRepository.findAll(DISTRICT)

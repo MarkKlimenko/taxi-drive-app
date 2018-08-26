@@ -19,7 +19,6 @@ class UniversalCrudController {
     @Autowired
     UniversalCrudRepository crudRepository
 
-    // TODO: Add Spring security on particular entity types(for modification operations)
     @PUT
     @Path('{entityType}')
     putEntity(@PathParam('entityType') String entityType, Map entityMap) {

@@ -10,5 +10,5 @@ import static systems.vostok.taxi.drive.app.util.constant.CustomMediaType.APPLIC
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)
 class DriverManagementController {
-
+// TBD
 }

@@ -30,7 +30,6 @@ class FilterProvider implements ParamConverterProvider {
         } as ParamConverter<T> : null
     }
 
-    // TODO: Refactor this
     private static <T> boolean isCollectionOfFilters(Class<T> rawType, Type type) {
         Collection.class.isAssignableFrom(rawType) && QueryFilter.class == ((ParameterizedType) type).getActualTypeArguments()[0]
     }
