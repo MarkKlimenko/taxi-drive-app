@@ -63,7 +63,8 @@
             + Merge state methods
     - Implement rate flow
         + Load rates using operation
-        --> Get rate info flow
+        + Get rate info flow
+        - Rate flow for extended ride types
     - Geo
         - Create separate handlers for each entity
             - Get geo info for particular entity by hash code

@@ -20,13 +20,13 @@ class ClientManagementController {
     @GET
     @Path('client/check/{id}')
     checkUserById(@PathParam('id') String id) {
-        clientManagementService.checkClient(id)
+        clientManagementService.getClientInfo(id)
     }
 
     @POST
     @Path('ride/evaluate')
-    getPrice(Ride ride) {
-       clientManagementService.calculatePrice(ride)
+    evaluateRide(Ride ride) {
+       clientManagementService.evaluateRide(ride)
     }
 
     @PUT

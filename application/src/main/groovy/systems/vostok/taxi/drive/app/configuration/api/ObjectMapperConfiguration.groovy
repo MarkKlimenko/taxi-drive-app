@@ -18,7 +18,7 @@ class ObjectMapperConfiguration implements ContextResolver<ObjectMapper> {
 
     @Override
     ObjectMapper getContext(Class<?> type) {
-        return mapper
+        mapper
     }
 
     private static ObjectMapper createObjectMapper() {

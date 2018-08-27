@@ -10,5 +10,5 @@ import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.STREET
 interface StreetRepository extends BasicRepository<Street, String> {
     String entityType = STREET
 
-    Street findByNameAndCity(String streetName, String city)
+    Optional<Street> findByNameAndCity(String streetName, String city)
 }

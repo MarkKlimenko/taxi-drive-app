@@ -24,5 +24,8 @@ class Setting implements ObjectCreator {
         String SETTING_FREE_DISCOUNT = 'free_discount'
         String SETTING_VIP_DISCOUNT = 'vip_discount'
         String SETTING_ZERO_DISCOUNT = 'zero_discount'
+
+        String SETTING_DEFAULT_CITY = 'default_city'
+        String SETTING_DEFAULT_CITY_ID = 'default_city_id'
     }
 }

@@ -7,14 +7,13 @@ import java.time.LocalDateTime
 
 @Converter(autoApply = true)
 class SqlLocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
-
     @Override
     Timestamp convertToDatabaseColumn(LocalDateTime localDateTime) {
-        localDateTime == null ? null : Timestamp.valueOf(localDateTime)
+        localDateTime ? Timestamp.valueOf(localDateTime) : null
     }
 
     @Override
     LocalDateTime convertToEntityAttribute(Timestamp sqlTimestamp) {
-        sqlTimestamp == null ? null : sqlTimestamp.toLocalDateTime()
+        sqlTimestamp ? sqlTimestamp.toLocalDateTime() : null
     }
 }

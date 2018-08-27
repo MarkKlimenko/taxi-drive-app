@@ -11,9 +11,9 @@ import javax.ws.rs.ext.Provider
 class ResponseConfiguration implements ContainerResponseFilter {
     @Override
     void filter(ContainerRequestContext requestCtx, ContainerResponseContext responseCtx) throws IOException {
-        responseCtx.getHeaders().add("Access-Control-Allow-Origin", "*")
-        responseCtx.getHeaders().add("Access-Control-Allow-Credentials", "true")
-        responseCtx.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-        responseCtx.getHeaders().addAll("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+        responseCtx.getHeaders().add('Access-Control-Allow-Origin', '*')
+        responseCtx.getHeaders().add('Access-Control-Allow-Credentials', 'true')
+        responseCtx.getHeaders().add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, HEAD')
+        responseCtx.getHeaders().addAll('Access-Control-Allow-Headers', 'origin, content-type, accept, authorization')
     }
 }
