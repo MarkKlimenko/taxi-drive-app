@@ -13,7 +13,6 @@ import systems.vostok.taxi.drive.app.util.CommonUtil
 import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.*
 import static systems.vostok.taxi.drive.app.dao.entity.Client.Constants.*
 
-// TODO: Add tests for all methods
 @Component
 class PriceFormer {
     @Autowired
@@ -61,20 +60,24 @@ class PriceFormer {
     }
 
     Boolean isRideFree(Integer ridesAmount) {
-        settingRepository.findValueBySetting(SETTING_RIDE_FREE)
+        settingRepository.get(SETTING_RIDE_FREE)
                 .with { it as Integer }
                 .with { (ridesAmount + 1) % it == 0 }
     }
 
     private Double calculateDiscount(String clientLogin) {
-        Client client = clientRepository.findOne(clientLogin)
+        if(!clientLogin) {
+            return settingRepository.get(SETTING_ZERO_DISCOUNT) as Double
+        }
+
+        Client client = clientRepository.findById(clientLogin).orElse(null)
         if (client) {
             if (isRideFree(client.ridesAmount)) {
-                return settingRepository.findValueBySetting(SETTING_FREE_DISCOUNT) as Double
+                return settingRepository.get(SETTING_FREE_DISCOUNT) as Double
             } else if (client.type == CLIENT_TYPE_VIP) {
-                return settingRepository.findValueBySetting(SETTING_VIP_DISCOUNT) as Double
+                return settingRepository.get(SETTING_VIP_DISCOUNT) as Double
             }
         }
-        settingRepository.findValueBySetting(SETTING_ZERO_DISCOUNT) as Double
+        settingRepository.get(SETTING_ZERO_DISCOUNT) as Double
     }
 }

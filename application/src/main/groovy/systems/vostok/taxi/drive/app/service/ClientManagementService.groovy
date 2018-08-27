@@ -9,11 +9,13 @@ import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
 import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
 import systems.vostok.taxi.drive.app.dao.repository.impl.RideRepository
+import systems.vostok.taxi.drive.app.dao.repository.impl.SettingRepository
 import systems.vostok.taxi.drive.app.dao.repository.impl.geo.AddressRepository
 
 import java.time.LocalDateTime
 
 import static systems.vostok.taxi.drive.app.dao.entity.Ride.Constants.STATE_ACTIVE
+import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.SETTING_DEFAULT_CITY
 
 @Service
 class ClientManagementService {
@@ -29,17 +31,20 @@ class ClientManagementService {
     @Autowired
     PriceFormer priceFormer
 
-    Client checkClient(String id) {
-        clientRepository.findOne(id)?.with {
-            it.rideFree = priceFormer.isRideFree(it.ridesAmount)
-            it.previousRides = findPreviousRides(id)
+    @Autowired
+    SettingRepository settingRepository
+
+    Client getClientInfo(String id) {
+        clientRepository.findById(id).orElse(null)?.with {
+            rideFree = priceFormer.isRideFree(it.ridesAmount)
+            previousRides = findPreviousRides(id)
             it
         }
     }
 
     RidePrice evaluateRide(Ride ride) {
-        // TODO: Get default city from settings
-        if (ride.rawFromAddress.city == ride.rawToAddress.city && ride.rawToAddress.city == 'Спасск-Дальний') {
+        if (ride.rawFromAddress.city == ride.rawToAddress.city &&
+                ride.rawToAddress.city == settingRepository.get(SETTING_DEFAULT_CITY)) {
             [priceFormer.calculateDtdPrice(ride)]
         } else {
             [priceFormer.calculateCtcPrice(ride)]
@@ -57,6 +62,7 @@ class ClientManagementService {
     }
 
     List<Ride> getActiveRides() {
+        //TODO: Get active rides from Redis
         rideRepository.findByState(STATE_ACTIVE)
     }
 

@@ -20,7 +20,7 @@ class ClientManagementController {
     @GET
     @Path('client/check/{id}')
     checkUserById(@PathParam('id') String id) {
-        clientManagementService.checkClient(id)
+        clientManagementService.getClientInfo(id)
     }
 
     @POST

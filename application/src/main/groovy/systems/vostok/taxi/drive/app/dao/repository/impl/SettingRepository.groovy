@@ -13,5 +13,5 @@ interface SettingRepository extends BasicRepository<Setting, String> {
     String entityType = SETTING
 
     @Query('SELECT s.value FROM Setting s WHERE s.setting = :setting')
-    String findValueBySetting(@Param('setting') String setting)
+    String get(@Param('setting') String setting)
 }
