@@ -70,7 +70,7 @@
             - Get geo info for particular entity by hash code
         - Change citiesModifiedList workflow
     - Ride flow
-        - Create ride
+        + Create ride
         - Change ride status
         - Close ride
         - Active rides (Store in Redis)

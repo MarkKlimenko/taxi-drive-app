@@ -14,6 +14,11 @@ services:
     ports:
       - 9042:9042
 
+  redis:
+    image: redis:4.0.11
+    ports:
+      - 6379:6379
+
   rabbit:
     image: rabbitmq:3-management
     ports:
@@ -23,7 +28,6 @@ services:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: 123456
       RABBITMQ_DEFAULT_VHOST: tda
-
 
 
 #  db_sso:

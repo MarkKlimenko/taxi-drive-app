@@ -2,6 +2,7 @@ package systems.vostok.taxi.drive.app.operation.ride
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import systems.vostok.taxi.drive.app.component.RideComponent
 import systems.vostok.taxi.drive.app.dao.domain.RideState
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.entity.Client
@@ -35,6 +36,9 @@ class CreateRideOperation implements CoreOperation {
     @Autowired
     ClientRepository clientRepository
 
+    @Autowired
+    RideComponent rideComponent
+
     @Override
     @Transactional
     Object enroll(OperationContext context) {
@@ -56,6 +60,9 @@ class CreateRideOperation implements CoreOperation {
         Ride savedRide = rideRepository.save(ride)
         context.contextHelper.setContext(context, savedRide)
         context.contextHelper.setEntityId(context, rideRepository.getEntityId(savedRide))
+
+        rideComponent.addRideToActiveList(savedRide)
+
         savedRide
     }
 

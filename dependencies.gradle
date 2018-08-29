@@ -7,9 +7,10 @@ ext.lib = [
         spring_boot_starter_jersey         : "org.springframework.boot:spring-boot-starter-jersey:${springBootVersion}",
         spring_boot_starter_cache          : "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}",
         spring_boot_starter_data_jpa       : "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}",
-        spring_boot_configuration_processor: "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}",
         spring_boot_starter_actuator       : "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}",
         spring_boot_starter_amqp           : "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}",
+        spring_boot_starter_data_redis     : "org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}",
+        spring_boot_configuration_processor: "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}",
 
         keycloak_spring_boot_starter       : 'org.keycloak:keycloak-spring-boot-starter:4.2.0.Final',
         javamelody_spring_boot_starter     : 'net.bull.javamelody:javamelody-spring-boot-starter:1.72.0',
@@ -57,7 +58,8 @@ ext.lib_pack = [
         ],
         cache      : [
                 ext.lib.spring_boot_starter_cache,
-                ext.lib.ehcache
+                ext.lib.ehcache,
+                ext.lib.spring_boot_starter_data_redis
         ],
         db         : [
                 ext.lib.postgresql,
@@ -75,7 +77,7 @@ ext.lib_pack = [
         cloud      : [
                 ext.lib.spring_cloud_hystrix,
         ],
-        messaging: [
+        messaging  : [
                 ext.lib.spring_boot_starter_amqp
         ],
         security   : [
