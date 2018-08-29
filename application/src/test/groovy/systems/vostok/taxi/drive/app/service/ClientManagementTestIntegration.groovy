@@ -61,6 +61,6 @@ class ClientManagementTestIntegration {
         )
 
         RidePrice ridePrice = clientManagementService.evaluateRide(ride)
-        assertEquals('90', ridePrice.price)
+        assertEquals(90, ridePrice.price as Integer)
     }
 }
