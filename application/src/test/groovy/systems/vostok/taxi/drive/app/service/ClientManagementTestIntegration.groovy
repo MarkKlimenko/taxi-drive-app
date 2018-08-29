@@ -54,6 +54,7 @@ class ClientManagementTestIntegration {
     @Test
     @DisplayName('Evaluate ride for nonexistent client and dtd type')
     void evaluateRideNoClientDtdTest() {
+        preconditionUtil.ridePreconditions()
         Ride ride = new Ride(
                 rawFromAddress: new Address([city: 'Спасск-Дальний', street: 'Парковая', building: '29']),
                 rawToAddress: new Address([city: 'Спасск-Дальний', street: 'Советская', building: '10'])
