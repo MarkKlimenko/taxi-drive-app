@@ -12,8 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.context.SecurityContextImpl
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
-import systems.vostok.taxi.drive.app.dao.repository.impl.ClientRepository
 import systems.vostok.taxi.drive.app.operation.OperationFlowTestUtil
+import systems.vostok.taxi.drive.app.operation.PreconditionTestUtil
 import systems.vostok.taxi.drive.app.util.exception.OperationExecutionException
 
 import static org.junit.jupiter.api.Assertions.assertEquals
@@ -25,13 +25,13 @@ import static systems.vostok.taxi.drive.app.dao.domain.operation.CoreOperationNa
 @DisplayName('Client CRUD flow tests')
 class ClientFlowTestIntegration {
     @Autowired
-    ClientRepository clientRepository
-
-    @Autowired
     ClientFlowTestUtil clientUtil
 
     @Autowired
     OperationFlowTestUtil operationUtil
+
+    @Autowired
+    PreconditionTestUtil preconditionUtil
 
     @BeforeAll
     static void initTest() {
@@ -43,7 +43,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Create client')
     void createTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
         clientUtil.createClient('simple_client')
                 .with { clientUtil.checkClient('simple_client', it) }
     }
@@ -51,7 +51,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Edit client')
     void editTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         clientUtil.createClient('simple_client')
         clientUtil.editClient('simple_client_edited')
@@ -61,7 +61,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Delete client')
     void deleteTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         clientUtil.createClient('simple_client')
         clientUtil.deleteClient('simple_client')
@@ -71,7 +71,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Rollback create client operation')
     void rollbackCreationTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         OperationResponse addResponse = clientUtil.createClient('simple_client')
         clientUtil.checkClient('simple_client', addResponse)
@@ -83,7 +83,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Rollback edit client operation')
     void rollbackEditTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         OperationResponse addResponse = clientUtil.createClient('simple_client')
         OperationResponse editResponse = clientUtil.editClient('simple_client_edited')
@@ -95,7 +95,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Rollback delete client operation')
     void rollbackDeleteTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         OperationResponse addResponse = clientUtil.createClient('simple_client')
         OperationResponse deleteResponse = clientUtil.deleteClient('simple_client')
@@ -108,7 +108,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Create already existing client')
     void editAlreadyExistingTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
         clientUtil.createClient('simple_client')
 
         OperationExecutionException e = assertThrows(
@@ -121,7 +121,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Delete nonexistent client')
     void deleteNonexistentTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         OperationExecutionException e = assertThrows(
                 OperationExecutionException.class,
@@ -133,7 +133,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Rollback creation of edited client')
     void rollbackCreationOfEditedTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         OperationResponse addResponse = clientUtil.createClient('simple_client')
         OperationResponse editResponse = clientUtil.editClient('simple_client_edited')
@@ -150,7 +150,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Rollback of double edited client')
     void rollbackDoubleEditedTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         clientUtil.createClient('simple_client')
         OperationResponse editFirstResponse = clientUtil.editClient('simple_client_edited')
@@ -168,7 +168,7 @@ class ClientFlowTestIntegration {
     @Test
     @DisplayName('Rollback creation of already deleted client')
     void rollbackAlreadyDeletedTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.clientPreconditions()
 
         OperationResponse addResponse = clientUtil.createClient('simple_client')
         clientUtil.deleteClient('simple_client')

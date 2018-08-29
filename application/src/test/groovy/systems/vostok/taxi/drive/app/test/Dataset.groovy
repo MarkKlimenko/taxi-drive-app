@@ -12,12 +12,12 @@ class Dataset {
      *
      */
     static Object getJsonDataset(String type, String name) {
-        Dataset.getClass().getResource("/dataset/${type}/${name}.json").text
+        Dataset.getClass().getResource("/dataset/${type}/${name}.json").getText('UTF-8')
                 .with { new JsonSlurper().parseText(it) }
     }
 
     static String getRawJsonDataset(String type, String name) {
-        Dataset.getClass().getResource("/dataset/${type}/${name}.json").text
+        Dataset.getClass().getResource("/dataset/${type}/${name}.json").getText('UTF-8')
     }
 
     static byte[] getFile(String type, String nameWithExtension) {

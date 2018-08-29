@@ -60,12 +60,12 @@ CREATE TABLE "${schema}".clients (
 
 CREATE TABLE "${schema}".addresses (
   id       INTEGER PRIMARY KEY,
-  country  VARCHAR(10),
-  state    VARCHAR(10),
-  city     VARCHAR(10),
-  street   VARCHAR(10),
-  building VARCHAR(10),
-  district VARCHAR(10)
+  country  VARCHAR(30),
+  state    VARCHAR(30),
+  city     VARCHAR(30),
+  street   VARCHAR(30),
+  building VARCHAR(30),
+  district VARCHAR(30)
 );
 
 CREATE TABLE "${schema}".cars (
@@ -88,7 +88,7 @@ CREATE TABLE "${schema}".rides (
   adult_in_car    INTEGER,
   children_in_car INTEGER,
   price           INTEGER,
-  state           VARCHAR(10),
+  state           VARCHAR(30),
   prepaid         BOOLEAN,
   comment         VARCHAR(255)
 );

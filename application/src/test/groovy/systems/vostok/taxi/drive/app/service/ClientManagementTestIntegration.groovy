@@ -1,9 +1,7 @@
 package systems.vostok.taxi.drive.app.service
 
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -12,15 +10,16 @@ import systems.vostok.taxi.drive.app.dao.domain.RidePrice
 import systems.vostok.taxi.drive.app.dao.entity.Address
 import systems.vostok.taxi.drive.app.dao.entity.Client
 import systems.vostok.taxi.drive.app.dao.entity.Ride
+import systems.vostok.taxi.drive.app.operation.PreconditionTestUtil
 import systems.vostok.taxi.drive.app.operation.client.ClientFlowTestUtil
 import systems.vostok.taxi.drive.app.operation.rate.RateFlowTestUtil
+import systems.vostok.taxi.drive.app.operation.ride.RideFlowTestUtil
 
 import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertFalse
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName('Client management test')
 class ClientManagementTestIntegration {
     @Autowired
@@ -32,21 +31,16 @@ class ClientManagementTestIntegration {
     @Autowired
     ClientFlowTestUtil clientUtil
 
-    @BeforeAll
-    void init() {
-        rateFlowTestUtil.with {
-            removeAllCtcRates()
-            removeAllDtdRates()
+    @Autowired
+    RideFlowTestUtil rideUtil
 
-            uploadCtcRates('long_distance')
-            uploadDtdRates('district')
-        }
-    }
+    @Autowired
+    PreconditionTestUtil preconditionUtil
 
     @Test
     @DisplayName('Get client information')
     void getClientInfoTest() {
-        clientUtil.removeAllClients()
+        preconditionUtil.ridePreconditions()
         clientUtil.createClient('simple_client')
 
         Client client = clientManagementService.getClientInfo('+79147654321')

@@ -6,7 +6,7 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import systems.vostok.taxi.drive.app.api.adapter.LocalDateTimeAdapter
 import systems.vostok.taxi.drive.app.dao.ObjectCreator
-import systems.vostok.taxi.drive.app.util.validator.OneOf
+import systems.vostok.taxi.drive.app.util.validator.InRideState
 
 import javax.persistence.*
 import javax.validation.constraints.Min
@@ -15,9 +15,6 @@ import javax.validation.constraints.Positive
 import javax.validation.constraints.PositiveOrZero
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
 import java.time.LocalDateTime
-
-import static systems.vostok.taxi.drive.app.dao.entity.Ride.Constants.STATE_ACTIVE
-import static systems.vostok.taxi.drive.app.dao.entity.Ride.Constants.STATE_PENDING
 
 @Entity
 @Table(name = 'rides')
@@ -64,7 +61,7 @@ class Ride implements ObjectCreator {
     @PositiveOrZero
     Integer price
 
-    @OneOf([STATE_ACTIVE, STATE_PENDING])
+    @InRideState
     String state
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -74,9 +71,4 @@ class Ride implements ObjectCreator {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Transient
     Address rawToAddress
-
-    static interface Constants {
-        String STATE_ACTIVE = 'active'
-        String STATE_PENDING = 'pending'
-    }
 }

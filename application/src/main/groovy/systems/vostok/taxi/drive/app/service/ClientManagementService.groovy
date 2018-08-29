@@ -1,5 +1,6 @@
 package systems.vostok.taxi.drive.app.service
 
+import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
@@ -14,10 +15,10 @@ import systems.vostok.taxi.drive.app.dao.repository.impl.geo.AddressRepository
 
 import java.time.LocalDateTime
 
-import static systems.vostok.taxi.drive.app.dao.entity.Ride.Constants.STATE_ACTIVE
 import static systems.vostok.taxi.drive.app.dao.entity.Setting.Constants.SETTING_DEFAULT_CITY
 
 @Service
+@Slf4j
 class ClientManagementService {
     @Autowired
     ClientRepository clientRepository
@@ -49,16 +50,6 @@ class ClientManagementService {
         } else {
             [priceFormer.calculateCtcPrice(ride)]
         }
-    }
-
-    Ride addNewRide(Ride ride) {
-        ride.state = STATE_ACTIVE
-
-        // TODO: Calculate price
-
-        //TODO: Create operation for it
-
-        rideRepository.save(ride)
     }
 
     List<Ride> getActiveRides() {

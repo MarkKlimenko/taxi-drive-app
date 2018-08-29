@@ -1,0 +1,14 @@
+{
+  "client": "+79147654321",
+  "adultInCar": 2,
+  "rawFromAddress": {
+    "city": "Спасск-Дальний",
+    "street": "Парковая",
+    "building": "5"
+  },
+  "rawToAddress": {
+    "city": "Спасск-Дальний",
+    "street": "Новая (Горка)",
+    "building": "125"
+  }
+}

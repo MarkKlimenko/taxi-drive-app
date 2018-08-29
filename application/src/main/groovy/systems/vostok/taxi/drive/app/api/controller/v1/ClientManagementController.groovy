@@ -29,12 +29,6 @@ class ClientManagementController {
        clientManagementService.evaluateRide(ride)
     }
 
-    @PUT
-    @Path('ride')
-    addNewRide(Ride ride) {
-        clientManagementService.addNewRide(ride)
-    }
-
     @GET
     @Path('ride/active')
     getActiveRides() {
