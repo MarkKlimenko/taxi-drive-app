@@ -61,7 +61,7 @@ class CreateRideOperation implements CoreOperation {
         context.contextHelper.setContext(context, savedRide)
         context.contextHelper.setEntityId(context, rideRepository.getEntityId(savedRide))
 
-        rideComponent.addRideToActiveList(savedRide)
+        rideComponent.addNewRideToActiveList(savedRide)
 
         savedRide
     }

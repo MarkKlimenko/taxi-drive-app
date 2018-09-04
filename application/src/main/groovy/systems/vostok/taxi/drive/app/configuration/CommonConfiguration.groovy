@@ -8,12 +8,19 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler
 import systems.vostok.tda.service.DistrictMapperService
 
+import javax.annotation.PostConstruct
+
 @Configuration
 @EnableConfigurationProperties
 @EnableCircuitBreaker
 class CommonConfiguration {
     @Value('${scheduler.pool.size}')
     Integer schedulerPoolSize
+
+    @PostConstruct
+    void init() {
+        TimeZone.setDefault(TimeZone.getTimeZone('UTC'));
+    }
 
     @Bean
     ThreadPoolTaskScheduler threadPoolTaskScheduler() {

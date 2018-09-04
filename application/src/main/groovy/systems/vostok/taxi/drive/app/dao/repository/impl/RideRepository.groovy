@@ -15,30 +15,6 @@ import static systems.vostok.taxi.drive.app.util.constant.SqlEntity.RIDE
 interface RideRepository extends BasicRepository<Ride, Long> {
     String entityType = RIDE
 
-    //List<Ride> getPreviousRides(String clientLogin, int periodMonth, int ridesAmount)
-    //List<Ride> getActiveRides()
-
-    /*List<Ride> getPreviousRides(String clientLogin, int periodMonth, int ridesAmount) {
-        Timestamp dateGraterThan =  Timestamp.valueOf(LocalDateTime.now().minusMonths(periodMonth))
-
-        Select select = QueryBuilder.select().from('ride')
-        select.where(QueryBuilder.eq('clientLogin', clientLogin))
-                .and(QueryBuilder.gt('dateIn', dateGraterThan))
-        select.allowFiltering()
-
-        selectAll(select, Ride.class)
-                .sort { it.dateIn }
-                .reverse()
-                .take(ridesAmount)
-    }
-
-    List<Ride> getActiveRides() {
-        Select select = QueryBuilder.select().from('ride')
-        select.where(QueryBuilder.eq('state', 'active'))
-
-        selectAll(select, Ride.class)
-    }*/
-
     List<Ride> findByState(String state)
 
     @Query('SELECT r FROM Ride r WHERE r.client = :client AND r.dateIn > :targetDateFrom ORDER BY r.dateIn DESC')
@@ -46,4 +22,7 @@ interface RideRepository extends BasicRepository<Ride, Long> {
                                  @Param('targetDateFrom') LocalDateTime targetDateFrom,
                                  Pageable pageable)
 
+    @Query('SELECT r FROM Ride r WHERE r.state = :state AND r.rideIn < :dateNow')
+    List<Ride> getForActive(@Param('state') String state,
+                                 @Param('dateNow') LocalDateTime targetDateFrom)
 }
