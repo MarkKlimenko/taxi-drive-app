@@ -11,6 +11,7 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.test.context.TestPropertySource
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationResponse
 import systems.vostok.taxi.drive.app.operation.OperationDirection
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DisplayName('Operation controller test')
+@TestPropertySource(properties = 'akka.remote.netty.tcp.port=0')
 class OperationControllerTestIntegration {
     @Autowired
     TestRestTemplate restTemplate
