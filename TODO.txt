@@ -73,7 +73,10 @@
         + Create ride
         - Change ride status
         - Close ride
-        - Active rides (Store in Redis)
+        + Active rides (Store in Redis)
+            + Akka
+            - State checker impl
+            - Akka version in properties
         - Pending rides (Akka for changing status to active)   
      
     

@@ -1,4 +1,4 @@
-package systems.vostok.taxi.drive.app.component
+package systems.vostok.taxi.drive.app.component.ride
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -13,7 +13,7 @@ class RideComponent {
 
     Optional<ActiveRide> addRideToActiveList(Ride ride) {
         if (ride.dateIn == ride.rideIn) {
-            Optional.of (activeRideRepository.save(new ActiveRide(ride)))
+            Optional.of(activeRideRepository.save(new ActiveRide(ride)))
         }
         Optional.empty()
     }

@@ -39,6 +39,7 @@ dependencies {
     compile lib_pack.db_support
     compile lib_pack.cloud
     compile lib_pack.messaging
+    compile lib_pack.akka
     compile lib_pack.security
     compile lib_pack.metrics
 

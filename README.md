@@ -54,7 +54,7 @@ Execute operation by name in **sync** mode (POST request - api/operation). Opera
     "stringPayload": "Json payload(Map, List, String...)"
  }
 ```
-Execute operation by name in **async** mode (POST request - api/operation). Operation will be executed using Kafka stream and any idle service.
+Execute operation by name in **async** mode (POST request - api/operation). Operation will be executed using Rabbit queue and any idle service.
 ```
 {
     "operationName": "OPERATION_NAME",

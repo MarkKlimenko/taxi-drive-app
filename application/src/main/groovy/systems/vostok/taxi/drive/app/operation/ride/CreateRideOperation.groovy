@@ -2,7 +2,7 @@ package systems.vostok.taxi.drive.app.operation.ride
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import systems.vostok.taxi.drive.app.component.RideComponent
+import systems.vostok.taxi.drive.app.component.ride.RideComponent
 import systems.vostok.taxi.drive.app.dao.domain.RideState
 import systems.vostok.taxi.drive.app.dao.domain.operation.OperationContext
 import systems.vostok.taxi.drive.app.dao.entity.Client
